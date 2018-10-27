@@ -1,0 +1,111 @@
+--- caffe/src/caffe/util/benchmark.cpp	2017-04-19 19:07:37.000000000 +0800
++++ ../src/caffe/util/benchmark.cpp	2017-04-19 17:09:45.000000000 +0800
+@@ -1,4 +1,6 @@
++#ifdef USE_BOOST
+ #include <boost/date_time/posix_time/posix_time.hpp>
++#endif
+ 
+ #include "caffe/common.hpp"
+ #include "caffe/util/benchmark.hpp"
+@@ -32,7 +34,11 @@
+       NO_GPU;
+ #endif
+     } else {
++#ifdef USE_BOOST
+       start_cpu_ = boost::posix_time::microsec_clock::local_time();
++#else
++      gettimeofday(&start_cpu_, NULL);
++#endif
+     }
+     running_ = true;
+     has_run_at_least_once_ = true;
+@@ -48,7 +54,11 @@
+       NO_GPU;
+ #endif
+     } else {
++#ifdef USE_BOOST
+       stop_cpu_ = boost::posix_time::microsec_clock::local_time();
++#else
++      gettimeofday(&stop_cpu_, NULL);
++#endif
+     }
+     running_ = false;
+   }
+@@ -74,7 +84,12 @@
+       NO_GPU;
+ #endif
+   } else {
++#ifdef USE_BOOST
+     elapsed_microseconds_ = (stop_cpu_ - start_cpu_).total_microseconds();
++#else
++    elapsed_microseconds_ = (stop_cpu_.tv_sec - start_cpu_.tv_sec)*1000000
++    		+ (stop_cpu_.tv_usec - start_cpu_.tv_usec);
++#endif
+   }
+   return elapsed_microseconds_;
+ }
+@@ -96,7 +111,12 @@
+       NO_GPU;
+ #endif
+   } else {
++#ifdef USE_BOOST
+     elapsed_milliseconds_ = (stop_cpu_ - start_cpu_).total_milliseconds();
++#else
++    elapsed_microseconds_ = (stop_cpu_.tv_sec - start_cpu_.tv_sec)*1000
++    		+ (stop_cpu_.tv_usec - start_cpu_.tv_usec)/1000.0;
++#endif
+   }
+   return elapsed_milliseconds_;
+ }
+@@ -127,7 +147,11 @@
+ 
+ void CPUTimer::Start() {
+   if (!running()) {
++#ifdef USE_BOOST
+     this->start_cpu_ = boost::posix_time::microsec_clock::local_time();
++#else
++    gettimeofday(&start_cpu_, NULL);
++#endif
+     this->running_ = true;
+     this->has_run_at_least_once_ = true;
+   }
+@@ -135,7 +159,11 @@
+ 
+ void CPUTimer::Stop() {
+   if (running()) {
++#ifdef USE_BOOST
+     this->stop_cpu_ = boost::posix_time::microsec_clock::local_time();
++#else
++    gettimeofday(&stop_cpu_, NULL);
++#endif
+     this->running_ = false;
+   }
+ }
+@@ -148,8 +176,13 @@
+   if (running()) {
+     Stop();
+   }
++#ifdef USE_BOOST
+   this->elapsed_milliseconds_ = (this->stop_cpu_ -
+                                 this->start_cpu_).total_milliseconds();
++#else
++    elapsed_milliseconds_ = (stop_cpu_.tv_sec - start_cpu_.tv_sec)*1000
++    		+ (stop_cpu_.tv_usec - start_cpu_.tv_usec)/1000.0;
++#endif
+   return this->elapsed_milliseconds_;
+ }
+ 
+@@ -161,8 +194,13 @@
+   if (running()) {
+     Stop();
+   }
++#ifdef USE_BOOST
+   this->elapsed_microseconds_ = (this->stop_cpu_ -
+                                 this->start_cpu_).total_microseconds();
++#else
++    elapsed_microseconds_ = (stop_cpu_.tv_sec - start_cpu_.tv_sec)*1000000
++    		+ (stop_cpu_.tv_usec - start_cpu_.tv_usec);
++#endif
+   return this->elapsed_microseconds_;
+ }
+ 

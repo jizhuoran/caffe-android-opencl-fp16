@@ -1,0 +1,28 @@
+--- caffe/include/caffe/util/io.hpp	2017-04-19 19:07:36.000000000 +0800
++++ ../include/caffe/util/io.hpp	2017-04-19 17:09:45.000000000 +0800
+@@ -1,7 +1,9 @@
+ #ifndef CAFFE_UTIL_IO_H_
+ #define CAFFE_UTIL_IO_H_
+ 
++#ifdef USE_BOOST
+ #include <boost/filesystem.hpp>
++#endif
+ #include <iomanip>
+ #include <iostream>  // NOLINT(readability/streams)
+ #include <string>
+@@ -19,6 +21,7 @@
+ namespace caffe {
+ 
+ using ::google::protobuf::Message;
++#ifdef USE_BOOST
+ using ::boost::filesystem::path;
+ 
+ inline void MakeTempDir(string* temp_dirname) {
+@@ -48,6 +51,7 @@
+   *temp_filename =
+     (temp_files_subpath/caffe::format_int(next_temp_file++, 9)).string();
+ }
++#endif
+ 
+ bool ReadProtoFromTextFile(const char* filename, Message* proto);
+ 

@@ -1,0 +1,28 @@
+--- caffe/include/caffe/layers/base_data_layer.hpp	2017-04-19 19:08:25.000000000 +0800
++++ ../include/caffe/layers/base_data_layer.hpp	2017-04-19 17:09:45.000000000 +0800
+@@ -5,7 +5,9 @@
+ 
+ #include "caffe/blob.hpp"
+ #include "caffe/data_transformer.hpp"
++#ifdef USE_BOOST
+ #include "caffe/internal_thread.hpp"
++#endif
+ #include "caffe/layer.hpp"
+ #include "caffe/proto/caffe.pb.h"
+ #include "caffe/util/blocking_queue.hpp"
+@@ -51,6 +53,7 @@
+   Blob<Dtype> data_, label_;
+ };
+ 
++#ifdef NO_CAFFE_MOBILE
+ template <typename Dtype>
+ class BasePrefetchingDataLayer :
+     public BaseDataLayer<Dtype>, public InternalThread {
+@@ -78,6 +81,7 @@
+ 
+   Blob<Dtype> transformed_data_;
+ };
++#endif // NO_CAFFE_MOBILE
+ 
+ }  // namespace caffe
+ 

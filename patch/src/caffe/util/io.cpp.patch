@@ -1,0 +1,12 @@
+--- caffe/src/caffe/util/io.cpp	2017-04-19 19:07:37.000000000 +0800
++++ ../src/caffe/util/io.cpp	2017-04-19 17:09:45.000000000 +0800
+@@ -18,6 +18,9 @@
+ #include "caffe/common.hpp"
+ #include "caffe/proto/caffe.pb.h"
+ #include "caffe/util/io.hpp"
++#ifndef NO_CAFFE_MOBILE
++#include <unistd.h>
++#endif
+ 
+ const int kProtoReadBytesLimit = INT_MAX;  // Max size of 2 GB minus 1 byte.
+ 
