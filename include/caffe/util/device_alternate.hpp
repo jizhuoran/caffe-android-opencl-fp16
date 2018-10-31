@@ -1,6 +1,7 @@
 #ifndef CAFFE_UTIL_DEVICE_ALTERNATE_H_
 #define CAFFE_UTIL_DEVICE_ALTERNATE_H_
-
+#include <cxxabi.h>
+#include <execinfo.h>
 
 #ifdef USE_OPENCL
 
@@ -8,10 +9,18 @@
   /* Code block avoids redefinition of cudaError_t error */ \
   do { \
     cl_int error = condition; \
-    if(error != CL_SUCCESS) \
+    if(error != CL_SUCCESS) { \
       std::cerr << "This is a error for OpenCL "<< error << " in " << __LINE__ << " in " << __FILE__ << std::endl;\
+      void *buffer[100];\
+      int n = backtrace(buffer,10);\
+      char **str = backtrace_symbols(buffer, n);\
+      for (int i = 0; i < n; i++) {printf("%d:  %s\n", i, str[i]);}\
+      exit(0); \
+    } \
   } while (0)
 #endif
+
+
 
 
 #ifdef CPU_ONLY  // CPU-only Caffe.

@@ -41,6 +41,15 @@ class BaseConvolutionLayer : public Layer<Dtype> {
       weights);
   void backward_cpu_bias(Dtype* bias, const Dtype* input);
 
+  std::string generate_header();
+  std::string generate_fw_defs();
+  std::string generate_fw_kernels(std::string name);
+  std::string generate_gemm_core(bool dterm);
+  std::string generate_accreg_init(bool dterm, bool load);
+
+  cl_program program;
+
+
 #ifndef CPU_ONLY
   void forward_gpu_gemm(const Dtype* col_input, const Dtype* weights,
       Dtype* output, bool skip_im2col = false);

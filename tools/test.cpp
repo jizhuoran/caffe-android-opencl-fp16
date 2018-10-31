@@ -236,6 +236,7 @@ int main(int argc, char** argv) {
 
     caffe::CPUTimer timer;
     
+    // Caffe::mode() = Caffe::GPU;
     // caffe::Caffe::Get().set_mode(caffe::Caffe::GPU);
     
     timer.Start();
@@ -260,7 +261,7 @@ int main(int argc, char** argv) {
         }
     }
 
-    cl_mem tmp = (cl_mem)input_layer->mutable_gpu_data();
+    // cl_mem tmp = (cl_mem)input_layer->mutable_gpu_data();
 
     // LOG(INFO) << "Input layer info: channels:" << input_layer->channels()
     // << " width: " << input_layer->width() << " Height:" << input_layer->height();

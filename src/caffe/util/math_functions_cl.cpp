@@ -22,10 +22,21 @@ namespace caffe {
 template <>
 void caffe_gpu_set(const int N, const float alpha, float* Y) {
 
+  std::cout << "zhegehaoyongma1" << std::endl;
+  std::cout << "zhegehaoyongma1" << std::endl;
+  std::cout << "zhegehaoyongma1" << std::endl;
+  std::cout << "zhegehaoyongma1" << std::endl;
+
+
 }
 
 
 void caffe_gpu_memcpy(const size_t N, const void* X, void* Y) {
+
+  std::cout << "zhegehaoyongma" << std::endl;
+  std::cout << "zhegehaoyongma" << std::endl;
+  std::cout << "zhegehaoyongma" << std::endl;
+  std::cout << "zhegehaoyongma" << std::endl;
   if (X != Y) {
     /*std::cout << "Copy memory" << std::endl;
     std::cout << "MEM X: " << x.get_ocl_mem() << std::endl;

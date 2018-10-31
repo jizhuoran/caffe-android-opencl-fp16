@@ -2,6 +2,7 @@
 #include "caffe/syncedmem.hpp"
 #include "caffe/util/math_functions.hpp"
 
+
 namespace caffe {
 SyncedMemory::SyncedMemory()
   : cpu_ptr_(NULL), gpu_ptr_(NULL), size_(0), head_(UNINITIALIZED),
@@ -52,7 +53,7 @@ inline void SyncedMemory::to_cpu() {
       own_cpu_data_ = true;
     }
     
-    clEnqueueReadBuffer(Caffe::Get().commandQueue, gpu_ptr_, CL_TRUE, 0, size_, cpu_ptr_, 0, NULL, NULL);
+    OPENCL_CHECK(clEnqueueReadBuffer(Caffe::Get().commandQueue, gpu_ptr_, CL_TRUE, 0, size_, cpu_ptr_, 0, NULL, NULL));
 
     // caffe_gpu_memcpy(size_, gpu_ptr_, cpu_ptr_);
     head_ = SYNCED;
@@ -71,6 +72,25 @@ inline void SyncedMemory::to_gpu() {
 
 // #ifndef CPU_ONLY
 #ifdef USE_OPENCL
+
+  /*std::cout << "memory come to" << head_ << std::endl;
+
+  std::cout << "------------------"<< std::endl;
+  std::cout << "------------------"<< std::endl;
+  std::cout << "------------------"<< std::endl;
+  std::cout << "------------------"<< std::endl;
+
+  to_print_callstack();
+  std::cout << "------------------"<< std::endl;
+  std::cout << "------------------"<< std::endl;
+  std::cout << "------------------"<< std::endl;
+  std::cout << "------------------"<< std::endl;
+  std::cout << "------------------"<< std::endl;
+
+
+    float* tmp = (float*)malloc(size_);*/
+
+
   switch (head_) {
   case UNINITIALIZED:
     
@@ -81,13 +101,30 @@ inline void SyncedMemory::to_gpu() {
     break;
 
   case HEAD_AT_CPU:
+
+    std::cout << "HEAD_AT_CPU is " << head_ << std::endl;
+
+
     if (gpu_ptr_ == NULL) {
       gpu_ptr_ = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, size_, NULL, NULL);
       own_gpu_data_ = true;
     }
     
-    clEnqueueWriteBuffer(Caffe::Get().commandQueue, gpu_ptr_, CL_TRUE, 0, size_, cpu_ptr_, 0, NULL, NULL);
+    std::cout << "very very interesting, the size is is " << size_ << std::endl;
+
+
+
+    OPENCL_CHECK(clEnqueueWriteBuffer(Caffe::Get().commandQueue, gpu_ptr_, CL_TRUE, 0, size_, cpu_ptr_, 0, NULL, NULL));
     // caffe_gpu_memcpy(size_, cpu_ptr_, (void *)gpu_ptr_);
+    
+
+    // clEnqueueReadBuffer(Caffe::Get().commandQueue, gpu_ptr_, CL_TRUE, 0, size_, tmp, 0, NULL, NULL);
+
+    // for (int i = 0; i < 100; ++i) {
+    //   std::cout << tmp[i] << " ";
+    // }
+
+
     head_ = SYNCED;
     break;
   case HEAD_AT_GPU:
