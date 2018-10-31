@@ -102,7 +102,7 @@ inline void SyncedMemory::to_gpu() {
 
   case HEAD_AT_CPU:
 
-    std::cout << "HEAD_AT_CPU is " << head_ << std::endl;
+    // std::cout << "HEAD_AT_CPU is " << head_ << std::endl;
 
 
     if (gpu_ptr_ == NULL) {
@@ -110,7 +110,7 @@ inline void SyncedMemory::to_gpu() {
       own_gpu_data_ = true;
     }
     
-    std::cout << "very very interesting, the size is is " << size_ << std::endl;
+    // std::cout << "very very interesting, the size is is " << size_ << std::endl;
 
 
 

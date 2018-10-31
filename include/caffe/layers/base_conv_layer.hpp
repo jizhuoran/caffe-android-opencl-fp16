@@ -2,6 +2,8 @@
 #define CAFFE_BASE_CONVOLUTION_LAYER_HPP_
 
 #include <vector>
+#include <iomanip>
+
 
 #include "caffe/blob.hpp"
 #include "caffe/layer.hpp"
@@ -41,11 +43,35 @@ class BaseConvolutionLayer : public Layer<Dtype> {
       weights);
   void backward_cpu_bias(Dtype* bias, const Dtype* input);
 
+  template<class T>
+  inline void add_def(std::stringstream& ss,  // NOLINT
+      const char* name, T value) {
+    ss << "#ifdef " << name << std::endl;
+    ss << "#undef " << name << std::endl;
+    ss << "#endif" << std::endl;
+    if (std::is_same<T, float>::value) {
+      ss << "#define " << name << " (float) " << std::setprecision(32) << value
+          << std::endl;
+    } else if (std::is_same<T, double>::value) {
+      ss << "#define " << name << " (double) " << std::setprecision(32) << value
+          << std::endl;
+    } else {
+      ss << "#define " << name << " " << value << std::endl;
+    }
+  }
+
+  template<class T>
+  inline void add_def(std::stringstream& ss,  // NOLINT
+      const std::string name, T value) {
+    add_def(ss, name.c_str(), value);
+  }
+
+
   std::string generate_header();
-  std::string generate_fw_defs();
-  std::string generate_fw_kernels(std::string name);
-  std::string generate_gemm_core(bool dterm);
-  std::string generate_accreg_init(bool dterm, bool load);
+  virtual std::string generate_fw_defs();
+  virtual std::string generate_fw_kernels(std::string name);
+  virtual std::string generate_gemm_core(bool dterm);
+  virtual std::string generate_accreg_init(bool dterm, bool load);
 
   cl_program program;
 
