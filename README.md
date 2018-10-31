@@ -10,6 +10,13 @@ Optimized (for memory usage, speed and enegry efficiency) Caffe with OpenCL supp
 
 # For Ubuntu
 
+## Test Environment
+
+ubuntu 16.04
+OpenCL 1.2
+C++ 5.4.0
+NVIDIA 2080
+
 ## Step 1: Install dependency
 
 ```
@@ -36,9 +43,6 @@ $ make -j 4
 
 # Thanks
 
- - Based on https://github.com/BVLC/caffe
- - Inspired by https://github.com/chyh1990/caffe-compact
+ - Based on https://github.com/solrex/caffe-mobile.git
+ - Inspired by https://github.com/BVLC/caffe/tree/opencl
  - Android JNI code based on https://github.com/sh1r0/caffe
- - Use https://github.com/Yangqing/ios-cmake
- - Use https://github.com/taka-no-me/android-cmake
- - Windows build script inspired by https://github.com/luoyetx/mini-caffe/tree/master/android
