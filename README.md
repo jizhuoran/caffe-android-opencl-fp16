@@ -3,11 +3,11 @@ Caffe on Mobile Devices (Still under developing)
 
 Optimized (for memory usage, speed and enegry efficiency) Caffe with OpenCL supporting for less powerful devices such as mobile phone (NO_BACKWARD, NO_BOOST, NO_HDF5, NO_LEVELDB). 
 
-<span style="color:red"> I am developing this project. You can watch this project if you want to get the latest news </span>
+**I am developing this project. You can watch this project if you want to get the latest news**
 
 # Features
 
-1. <span style="color:red"> OpenCL supporting (mobile GPU) </span>
+1. **OpenCL supporting (mobile GPU)**
 2. As few dependencies as possible
 3. Optimized memory usage (under developing)
 4. Forward Only (backward will be added later)
