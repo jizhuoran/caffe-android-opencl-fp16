@@ -19,6 +19,9 @@ void SplitLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
         "allow in-place computation.";
     top[i]->ReshapeLike(*bottom[0]);
     CHECK_EQ(count_, top[i]->count());
+#ifdef FORWARD_LESS_MEM
+    top[i]->ShareData(*bottom[0]);
+#endif
   }
 }
 
@@ -26,7 +29,9 @@ template <typename Dtype>
 void SplitLayer<Dtype>::Forward_cpu(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top) {
   for (int i = 0; i < top.size(); ++i) {
+#ifndef FORWARD_LESS_MEM
     top[i]->ShareData(*bottom[0]);
+#endif  
   }
 }
 

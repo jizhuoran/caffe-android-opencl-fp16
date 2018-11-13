@@ -70,13 +70,22 @@ class SyncedMemory {
   SyncedHead head() { return head_; }
   size_t size() { return size_; }
 
+#ifdef FORWARD_LESS_MEM
+  void default_reference();
+  void increase_reference();
+  void decrease_reference();
+  void zhihan_release();
+#endif
+
 #ifndef CPU_ONLY
   void async_gpu_push(const cudaStream_t& stream);
 #endif
 
  private:
   void check_device();
-
+#ifdef FORWARD_LESS_MEM
+  int refer_num;
+#endif
   void to_cpu();
   void to_gpu();
   void* cpu_ptr_;

@@ -531,7 +531,39 @@ Dtype Net<Dtype>::ForwardFromTo(int start, int end) {
   CHECK_GE(start, 0);
   CHECK_LT(end, layers_.size());
   Dtype loss = 0;
+
+#ifdef FORWARD_LESS_MEM
+  int layer_num = layers_.size();
+  
+  for (int blob_id = 0; blob_id < blobs_.size(); ++blob_id) {
+      blobs_[blob_id]->default_reference();
+  }
+  
+  for (int layer_id = 0; layer_id < layer_num; ++layer_id) {
+      
+      const LayerParameter& layer_param = layers_[layer_id]->layer_param();
+      for (int bottom_id = 0; bottom_id < layer_param.bottom_size();
+           ++bottom_id) {
+          bottom_vecs_[layer_id][bottom_id]->increase_reference();
+      }
+      
+      
+  }
+  const LayerParameter& layer_param = layers_[layer_num - 1]->layer_param();
+  for (int bottom_id = 0; bottom_id < layer_param.bottom_size();
+       ++bottom_id) {
+      bottom_vecs_[layer_num - 1][bottom_id]->increase_reference();
+  }
+
+#endif
+
+
   for (int i = start; i <= end; ++i) {
+
+#ifdef FORWARD_LESS_MEM
+    layers_[i]->Qiaoge_alloc(bottom_vecs_[i], top_vecs_[i]);
+#endif
+
     for (int c = 0; c < before_forward_.size(); ++c) {
       before_forward_[c]->run(i);
     }
@@ -541,7 +573,17 @@ Dtype Net<Dtype>::ForwardFromTo(int start, int end) {
     for (int c = 0; c < after_forward_.size(); ++c) {
       after_forward_[c]->run(i);
     }
+#ifdef FORWARD_LESS_MEM
+    layers_[i]->Qiaoge_free(bottom_vecs_[i], top_vecs_[i]);
+    for (int bottom_id = 0; bottom_id < bottom_vecs_[i].size(); ++bottom_id) {
+        bottom_vecs_[i][bottom_id]->decrease_reference();
+    }
+#endif
+    
   }
+
+
+
   return loss;
 }
 

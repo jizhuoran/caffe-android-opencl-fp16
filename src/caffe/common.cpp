@@ -88,7 +88,7 @@ Caffe::Caffe()
   char *kernelSource;
   size_t kernelSize;
 
-  kernelFile = fopen("/home/zrji/android_caffe/caffe-mobile/src/caffe/opencl/kernel_code.cl", "r");
+  kernelFile = fopen("/home/zrji/android_caffe/caffe-android-opencl/src/caffe/opencl/kernel_code.cl", "r");
   if (!kernelFile) {
 
     fprintf(stderr, "No file named vecAddKernel.cl was found\n");

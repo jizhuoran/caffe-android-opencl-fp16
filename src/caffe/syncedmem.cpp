@@ -30,12 +30,42 @@ SyncedMemory::~SyncedMemory() {
     CaffeFreeHost(cpu_ptr_, cpu_malloc_use_cuda_);
   }
 
-#ifndef CPU_ONLY
+#ifdef USE_OPENCL
   if (gpu_ptr_ && own_gpu_data_) {
-    CUDA_CHECK(cudaFree(gpu_ptr_));
+    OPENCL_CHECK(clReleaseMemObject(gpu_ptr_));
   }
 #endif  // CPU_ONLY
 }
+
+#ifdef FORWARD_LESS_MEM
+void SyncedMemory::default_reference() {
+    refer_num = 0;
+}
+
+void SyncedMemory::increase_reference() {
+    refer_num++;
+}
+
+void SyncedMemory::decrease_reference() {
+    refer_num--;
+    if (refer_num == 0) {
+        zhihan_release();
+    }
+}
+
+void SyncedMemory::zhihan_release() {
+    if (cpu_ptr_ && own_cpu_data_) {
+        CaffeFreeHost(cpu_ptr_, cpu_malloc_use_cuda_);
+    }
+    
+    cpu_ptr_ = NULL;
+    own_cpu_data_ = false;
+    
+    head_ = UNINITIALIZED;
+}
+
+#endif
+
 
 inline void SyncedMemory::to_cpu() {
   check_device();

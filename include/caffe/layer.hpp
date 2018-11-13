@@ -106,6 +106,14 @@ class Layer {
   virtual void Reshape(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top) = 0;
 
+#ifdef FORWARD_LESS_MEM
+  virtual void Qiaoge_alloc(const vector<Blob<Dtype>*>& bottom,
+                                  const vector<Blob<Dtype>*>& top);
+        
+  virtual void Qiaoge_free(const vector<Blob<Dtype>*>& bottom,
+                                 const vector<Blob<Dtype>*>& top);
+#endif
+
   /**
    * @brief Given the bottom blobs, compute the top blobs and the loss.
    *

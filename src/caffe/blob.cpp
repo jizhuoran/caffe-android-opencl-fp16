@@ -231,6 +231,37 @@ Dtype Blob<Dtype>::asum_data() const {
   return 0;
 }
 
+#ifdef FORWARD_LESS_MEM
+
+template <typename Dtype>
+void Blob<Dtype>::decrease_reference() {
+    data_->decrease_reference();
+    diff_->decrease_reference();
+}
+
+template <typename Dtype>
+void Blob<Dtype>::default_reference() {
+    data_->default_reference();
+    diff_->default_reference();
+}
+
+template <typename Dtype>
+void Blob<Dtype>::increase_reference() {
+    data_->increase_reference();
+    diff_->increase_reference();
+}
+
+template <typename Dtype>
+void Blob<Dtype>::force_delete() {
+    
+    data_->zhihan_release();
+    diff_->zhihan_release();
+    
+}
+
+#endif
+
+
 template <> unsigned int Blob<unsigned int>::asum_diff() const {
   NOT_IMPLEMENTED;
   return 0;

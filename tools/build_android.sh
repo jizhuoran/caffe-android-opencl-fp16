@@ -1,4 +1,5 @@
 #!/bin/bash
+NDK_HOME = "/Users/gsq/Library/Android/sdk/ndk-bundle/"
 
 if [ ! -d "$NDK_HOME" ]; then
     echo "$(tput setaf 2)"

@@ -132,7 +132,7 @@ int vector_add() {
   char *kernelSource;
   size_t kernelSize;
 
-  kernelFile = fopen("/home/zrji/android_caffe/caffe-mobile/examples/style_transfer/vecAddKernel.cl", "r");
+  kernelFile = fopen("/home/zrji/android_caffe/caffe-android-opencl/examples/style_transfer/vecAddKernel.cl", "r");
 
   if (!kernelFile) {
 
@@ -241,13 +241,13 @@ int main(int argc, char** argv) {
     
     timer.Start();
     // NSString *modle_path = @"style.protobin"; //FilePathForResourceName(@"style", @"protobin");
-    _net = new caffe::Net<float>("/home/zrji/android_caffe/caffe-mobile/examples/style_transfer/style.protobin", caffe::TEST);
+    _net = new caffe::Net<float>("/home/zrji/android_caffe/caffe-android-opencl/examples/style_transfer/style.protobin", caffe::TEST);
     // NSString *weight_path = @"a1.caffemodel";//FilePathForResourceName(@"weight", @"caffemodel");
-    _net->CopyTrainedLayersFrom("/home/zrji/android_caffe/caffe-mobile/examples/style_transfer/a1.caffemodel");
+    _net->CopyTrainedLayersFrom("/home/zrji/android_caffe/caffe-android-opencl/examples/style_transfer/a1.caffemodel");
     timer.Stop();
     
     PPMImage *image;
-    image = readPPM("/home/zrji/android_caffe/caffe-mobile/examples/style_transfer/HKU.ppm");
+    image = readPPM("/home/zrji/android_caffe/caffe-android-opencl/examples/style_transfer/HKU.ppm");
 
 
 
@@ -283,7 +283,7 @@ int main(int argc, char** argv) {
     
     // //  code for style transfer
     caffe::Blob<float> *output_layer = _net->output_blobs()[0];
-    FILE *f = fopen("/home/zrji/android_caffe/caffe-mobile/examples/style_transfer/input.ppm", "wb");
+    FILE *f = fopen("/home/zrji/android_caffe/caffe-android-opencl/examples/style_transfer/input.ppm", "wb");
     fprintf(f, "P6\n%i %i 255\n", input_layer->width(), input_layer->width());
     for (int y = 0; y < input_layer->width(); y++) {
         for (int x = 0; x < input_layer->width(); x++) {

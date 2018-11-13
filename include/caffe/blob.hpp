@@ -104,6 +104,13 @@ class Blob {
     return count(start_axis, num_axes());
   }
 
+#ifdef FORWARD_LESS_MEM
+  void decrease_reference();
+  void default_reference();
+  void increase_reference();
+  void force_delete();
+#endif
+
   /**
    * @brief Returns the 'canonical' version of a (usually) user-specified axis,
    *        allowing for negative indexing (e.g., -1 for the last axis).
