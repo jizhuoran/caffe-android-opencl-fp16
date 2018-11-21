@@ -422,14 +422,7 @@ inline Dtype Layer<Dtype>::Forward(const vector<Blob<Dtype>*>& bottom,
     const vector<Blob<Dtype>*>& top) {
   Dtype loss = 0;
 
-    LOG(INFO) << "forward here?? 1??";
-
-
   Reshape(bottom, top);
-
-    LOG(INFO) << "forward here?? 2??";
-  
-
 
   switch (Caffe::mode()) {
   case Caffe::CPU:
@@ -459,12 +452,6 @@ inline Dtype Layer<Dtype>::Forward(const vector<Blob<Dtype>*>& bottom,
   default:
     LOG(FATAL) << "Unknown caffe mode.";
   }
-
-
-
-
-    LOG(INFO) << "forward here?? 3??";
-
 
   return loss;
 }

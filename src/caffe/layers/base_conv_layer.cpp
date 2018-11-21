@@ -481,17 +481,8 @@ void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
         bias_multiplier_.mutable_cpu_data());
   }
 
-  
-
-
-  LOG(INFO) << "Are you kidding me??";
-  LOG(INFO) << "The name of the layer is" << this->layer_param_.name() + "_forward";
-  LOG(INFO) << "The count is " << Caffe::Get().built_kernels.count(this->layer_param_.name() + "_forward");
-
 
   if (Caffe::Get().built_kernels.count(this->layer_param_.name() + "_forward") != 0) {
-    LOG(INFO) << "Does it come to here???";
-
     return;
   }
 
@@ -505,16 +496,11 @@ void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
 
   std::string conv_kernel = ss.str();
 
-  std::cout << conv_kernel << std::endl;
-
   size_t kernel_size = conv_kernel.size();
 
   char* kernelSource = (char*)malloc(kernel_size);
 
   strcpy(kernelSource, conv_kernel.c_str());
-
-  LOG(INFO) << kernel_size;
-  LOG(INFO) << conv_kernel;
 
   cl_int ret = -1; 
   program = clCreateProgramWithSource(Caffe::Get().context, 1, (const char **)&kernelSource, (const size_t *)&kernel_size, &ret); 

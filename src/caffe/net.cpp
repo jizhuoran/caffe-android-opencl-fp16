@@ -48,8 +48,6 @@ Net<Dtype>::Net(const string& param_file, Phase phase,
   }
   param.mutable_state()->set_level(level);
 
-  LOG(INFO) << "come to here 1";
-
   Init(param);
 }
 
@@ -60,13 +58,8 @@ void Net<Dtype>::Init(const NetParameter& in_param) {
   // Filter layers based on their include/exclude rules and
   // the current NetState.
   NetParameter filtered_param;
-  
-  LOG(INFO) << "come to here 2";
-
 
   FilterNet(in_param, &filtered_param);
-
-  LOG(INFO) << "come to here 3";
 
 
   LOG_IF(INFO, Caffe::root_solver())
@@ -105,12 +98,9 @@ void Net<Dtype>::Init(const NetParameter& in_param) {
           << "either 0 or bottom_size times ";
     }
 
-    LOG(INFO) << "come to here 4";
 
     layers_.push_back(LayerRegistry<Dtype>::CreateLayer(layer_param));
     
-    LOG(INFO) << "come to here 5";
-
 
     layer_names_.push_back(layer_param.name());
     LOG_IF(INFO, Caffe::root_solver())
@@ -575,9 +565,6 @@ Dtype Net<Dtype>::ForwardFromTo(int start, int end) {
 
 #endif
 
-    LOG(INFO) << "From here 0??";
-
-
   for (int i = start; i <= end; ++i) {
 
 #ifdef FORWARD_LESS_MEM
@@ -588,24 +575,15 @@ Dtype Net<Dtype>::ForwardFromTo(int start, int end) {
       before_forward_[c]->run(i);
     }
 
-    LOG(INFO) << "Now we are going to forward layer " << i;
-
     Dtype layer_loss = layers_[i]->Forward(bottom_vecs_[i], top_vecs_[i]);
     loss += layer_loss;
     
-    LOG(INFO) << "From here 1??";
-
-
     if (debug_info_) { ForwardDebugInfo(i); }
-
-    LOG(INFO) << "From here 2??";
-
 
     for (int c = 0; c < after_forward_.size(); ++c) {
       after_forward_[c]->run(i);
     }
 
-    LOG(INFO) << "From here 3??";
 
 #ifdef FORWARD_LESS_MEM
     layers_[i]->Qiaoge_free(bottom_vecs_[i], top_vecs_[i]);

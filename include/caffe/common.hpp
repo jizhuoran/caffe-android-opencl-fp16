@@ -15,6 +15,10 @@
 #include "caffe/glog_wrapper.hpp"
 #endif
 
+#ifdef USE_OPENCL
+#define CL_TARGET_OPENCL_VERSION 120
+#endif
+
 #include <climits>
 #include <cmath>
 #include <fstream>  // NOLINT(readability/streams)
@@ -29,6 +33,10 @@
 
 
 #include "caffe/util/device_alternate.hpp"
+
+
+
+
 
 // Convert macro to string
 #define STRINGIFY(m) #m
