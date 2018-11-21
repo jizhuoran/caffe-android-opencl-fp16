@@ -160,7 +160,6 @@ src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_jni.cpp.o: /home/zrji/android_caffe/
 src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_jni.cpp.o: /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
 src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_jni.cpp.o: /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
 src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_jni.cpp.o: ../src/jni/caffe_jni.cpp
-src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_jni.cpp.o: ../src/jni/caffe_mobile.hpp
 src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_jni.cpp.o: /home/zrji/android_caffe/huawei_opencl/CL/cl.h
 src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_jni.cpp.o: /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
 src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_jni.cpp.o: /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h

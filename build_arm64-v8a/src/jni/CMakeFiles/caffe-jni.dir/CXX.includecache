@@ -1639,18 +1639,6 @@ __cxxabi_config.h
 /home/zrji/android_caffe/caffe-android-opencl/src/jni/caffe_jni.cpp
 jni.h
 -
-caffe_mobile.hpp
-/home/zrji/android_caffe/caffe-android-opencl/src/jni/caffe_mobile.hpp
-
-/home/zrji/android_caffe/caffe-android-opencl/src/jni/caffe_mobile.cpp
-caffe_mobile.hpp
-/home/zrji/android_caffe/caffe-android-opencl/src/jni/caffe_mobile.hpp
-
-/home/zrji/android_caffe/caffe-android-opencl/src/jni/caffe_mobile.hpp
-string
--
-vector
--
 caffe/caffe.hpp
 /home/zrji/android_caffe/caffe-android-opencl/src/jni/caffe/caffe.hpp
 

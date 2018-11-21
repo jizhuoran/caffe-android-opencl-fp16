@@ -6,11 +6,15 @@
 
 #include <jni.h>
 
-#include "caffe_mobile.hpp"
+// #include "caffe_mobile.hpp"
+#include "caffe/caffe.hpp"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+
+static caffe::Net<float> *net_;
 
 JNIEXPORT void JNICALL
 Java_com_example_gsq_caffe_1android_1project_CaffeMobile_setBlasThreadNum(JNIEnv *env, jobject instance,
@@ -21,28 +25,38 @@ Java_com_example_gsq_caffe_1android_1project_CaffeMobile_setBlasThreadNum(JNIEnv
 JNIEXPORT jboolean JNICALL
 Java_com_example_gsq_caffe_1android_1project_CaffeMobile_loadModel(JNIEnv *env, jobject instance,
                                                      jstring modelPath_, jstring weightPath_) {
+
+    
+
     jboolean ret = true;
 
     const char *modelPath = env->GetStringUTFChars(modelPath_, 0);
     const char *weightPath = env->GetStringUTFChars(weightPath_, 0);
 
-    LOG(INFO) << "debug twice1 1";
 
-    caffe::Caffe::Get();
-    LOG(INFO) << "debug twice1 1.1";
-
-    caffe::Caffe::Get();
-    LOG(INFO) << "debug twice1 1.2";
-    caffe::Caffe::Get();
-
-    if (caffe::CaffeMobile::get(modelPath, weightPath) == NULL) {
-        ret = false;
-    }
-    LOG(INFO) << "debug twice1 2";
+    net_ = new caffe::Net<float>(modelPath, caffe::TEST);
+    net_->CopyTrainedLayersFrom(weightPath);
 
     env->ReleaseStringUTFChars(modelPath_, modelPath);
     env->ReleaseStringUTFChars(weightPath_, weightPath);
     return ret;
+
+
+    // LOG(INFO) << "debug twice1 1";
+
+    // caffe::Caffe::Get();
+    // LOG(INFO) << "debug twice1 1.1";
+
+    // caffe::Caffe::Get();
+    // LOG(INFO) << "debug twice1 1.2";
+    // caffe::Caffe::Get();
+
+    // if (caffe::CaffeMobile::get(modelPath, weightPath) == NULL) {
+    //     ret = false;
+    // }
+    // LOG(INFO) << "debug twice1 2";
+
+    
 }
 
 
@@ -81,27 +95,82 @@ Java_com_example_gsq_caffe_1android_1project_CaffeMobile_predict(JNIEnv *env, jo
   // Predict
   
 
-  caffe::CaffeMobile *caffe_mobile = caffe::CaffeMobile::get();
+  // caffe::CaffeMobile *caffe_mobile = caffe::CaffeMobile::get();
     
 
   
-  if (NULL == caffe_mobile) {
-    LOG(ERROR) << "caffe-jni predict(): CaffeMobile failed to initialize";
-    return NULL;  // not initialized
-  }
+  // if (NULL == caffe_mobile) {
+  //   LOG(ERROR) << "caffe-jni predict(): CaffeMobile failed to initialize";
+  //   return NULL;  // not initialized
+  // }
   int rgba_len = env->GetArrayLength(jrgba);
-  if (rgba_len != jchannels * caffe_mobile->input_width() * caffe_mobile->input_height()) {
-    LOG(WARNING) << "caffe-jni predict(): invalid rgba length(" << rgba_len << ") expect(" <<
-                    jchannels * caffe_mobile->input_width() * caffe_mobile->input_height() << ")";
-    return NULL;  // not initialized
-  }
+  // if (rgba_len != jchannels * caffe_mobile->input_width() * caffe_mobile->input_height()) {
+  //   LOG(WARNING) << "caffe-jni predict(): invalid rgba length(" << rgba_len << ") expect(" <<
+  //                   jchannels * caffe_mobile->input_width() * caffe_mobile->input_height() << ")";
+  //   return NULL;  // not initialized
+  // }
   std::vector<float> predict;
 
 
-  if (!caffe_mobile->predictImage(rgba, jchannels, mean, predict)) {
-    LOG(WARNING) << "caffe-jni predict(): CaffeMobile failed to predict";
-    return NULL; // predict error
+
+  caffe::Blob<float> *input_layer = net_->input_blobs()[0];
+  float *input_data = input_layer->mutable_cpu_data();
+  size_t plane_size = input_layer->height() * input_layer->width();
+
+  int input_channels_ = input_layer->channels();
+
+
+  if (input_channels_ == 1 && jchannels == 1) {
+    for (size_t i = 0; i < plane_size; i++) {
+      input_data[i] = static_cast<float>(rgba[i]);  // Gray
+      if (mean.size() == 1) {
+        input_data[i] -= mean[0];
+      }
+    }
+  } else if (input_channels_ == 1 && jchannels == 4) {
+    for (size_t i = 0; i < plane_size; i++) {
+      input_data[i] = 0.2126 * rgba[i * 4] + 0.7152 * rgba[i * 4 + 1] + 0.0722 * rgba[i * 4 + 2]; // RGB2Gray
+      if (mean.size() == 1) {
+        input_data[i] -= mean[0];
+      }
+    }
+  } else if (input_channels_ == 3 && jchannels == 4) {
+    for (size_t i = 0; i < plane_size; i++) {
+      input_data[i] = static_cast<float>(rgba[i * 4 + 2]);                   // B
+      input_data[plane_size + i] = static_cast<float>(rgba[i * 4 + 1]);      // G
+      input_data[2 * plane_size + i] = static_cast<float>(rgba[i * 4]);      // R
+      // Alpha is discarded
+      if (mean.size() == 3) {
+        input_data[i] -= mean[0];
+        input_data[plane_size + i] -= mean[1];
+        input_data[2 * plane_size + i] -= mean[2];
+      }
+    }
+  } else {
+    LOG(ERROR) << "image_channels input_channels not match.";
+    // return false;
   }
+  // Do Inference
+
+
+  net_->Forward();
+
+  
+
+  // timer.Stop();
+  // LOG(INFO) << "Inference use " << timer.MilliSeconds() << " ms.";
+  caffe::Blob<float> *output_layer = net_->output_blobs()[0];
+  const float *begin = output_layer->cpu_data();
+  const float *end = begin + output_layer->count();
+  predict.assign(begin, end);
+
+
+
+
+  // if (!caffe_mobile->predictImage(rgba, jchannels, mean, predict)) {
+  //   LOG(WARNING) << "caffe-jni predict(): CaffeMobile failed to predict";
+  //   return NULL; // predict error
+  // }
 
 
   // Handle result
@@ -117,31 +186,31 @@ Java_com_example_gsq_caffe_1android_1project_CaffeMobile_predict(JNIEnv *env, jo
 JNIEXPORT jint JNICALL
 Java_com_example_gsq_caffe_1android_1project_CaffeMobile_inputChannels(JNIEnv *env, jobject instance) {
   // Predict
-  caffe::CaffeMobile *caffe_mobile = caffe::CaffeMobile::get();
-  if (NULL == caffe_mobile) {
-      return -1;  // not initialized
-  }
-  return caffe_mobile->input_channels();
+  // caffe::CaffeMobile *caffe_mobile = caffe::CaffeMobile::get();
+  // if (NULL == caffe_mobile) {
+  //     return -1;  // not initialized
+  // }
+  // return caffe_mobile->input_channels();
 }
 
 JNIEXPORT jint JNICALL
 Java_com_example_gsq_caffe_1android_1project_CaffeMobile_inputWidth(JNIEnv *env, jobject instance) {
   // Predict
-  caffe::CaffeMobile *caffe_mobile = caffe::CaffeMobile::get();
-  if (NULL == caffe_mobile) {
-      return -1;  // not initialized
-  }
-  return caffe_mobile->input_width();
+  // caffe::CaffeMobile *caffe_mobile = caffe::CaffeMobile::get();
+  // if (NULL == caffe_mobile) {
+  //     return -1;  // not initialized
+  // }
+  // return caffe_mobile->input_width();
 }
 
 JNIEXPORT jint JNICALL
 Java_com_example_gsq_caffe_1android_1project_CaffeMobile_inputHeight(JNIEnv *env, jobject instance) {
   // Predict
-  caffe::CaffeMobile *caffe_mobile = caffe::CaffeMobile::get();
-  if (NULL == caffe_mobile) {
-    return -1;  // not initialized
-  }
-  return caffe_mobile->input_height();
+  // caffe::CaffeMobile *caffe_mobile = caffe::CaffeMobile::get();
+  // if (NULL == caffe_mobile) {
+  //   return -1;  // not initialized
+  // }
+  // return caffe_mobile->input_height();
 }
 
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {

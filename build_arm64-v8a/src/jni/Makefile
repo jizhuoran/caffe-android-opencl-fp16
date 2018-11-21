@@ -198,33 +198,6 @@ caffe_jni.cpp.s:
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/jni/CMakeFiles/caffe-jni.dir/build.make src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.s
 .PHONY : caffe_jni.cpp.s
 
-caffe_mobile.o: caffe_mobile.cpp.o
-
-.PHONY : caffe_mobile.o
-
-# target to build an object file
-caffe_mobile.cpp.o:
-	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/jni/CMakeFiles/caffe-jni.dir/build.make src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o
-.PHONY : caffe_mobile.cpp.o
-
-caffe_mobile.i: caffe_mobile.cpp.i
-
-.PHONY : caffe_mobile.i
-
-# target to preprocess a source file
-caffe_mobile.cpp.i:
-	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/jni/CMakeFiles/caffe-jni.dir/build.make src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.i
-.PHONY : caffe_mobile.cpp.i
-
-caffe_mobile.s: caffe_mobile.cpp.s
-
-.PHONY : caffe_mobile.s
-
-# target to generate assembly for a file
-caffe_mobile.cpp.s:
-	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/jni/CMakeFiles/caffe-jni.dir/build.make src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.s
-.PHONY : caffe_mobile.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -241,9 +214,6 @@ help:
 	@echo "... caffe_jni.o"
 	@echo "... caffe_jni.i"
 	@echo "... caffe_jni.s"
-	@echo "... caffe_mobile.o"
-	@echo "... caffe_mobile.i"
-	@echo "... caffe_mobile.s"
 .PHONY : help
 
 

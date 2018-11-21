@@ -5,7 +5,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/zrji/android_caffe/caffe-android-opencl/src/jni/caffe_jni.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o"
-  "/home/zrji/android_caffe/caffe-android-opencl/src/jni/caffe_mobile.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 

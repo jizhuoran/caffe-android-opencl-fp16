@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 if(ANDROID)
-  add_library(caffe-jni SHARED caffe_jni.cpp caffe_mobile.cpp)
+  add_library(caffe-jni SHARED caffe_jni.cpp) # caffe_mobile.cpp
   message(INFO, ${Caffe_LINK})
   target_link_libraries(caffe-jni ${Caffe_LINK})
   target_link_libraries(caffe-jni log)
