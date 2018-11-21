@@ -26,7 +26,7 @@ namespace caffe {
 // Make sure each thread can have different values.
 static boost::thread_specific_ptr<Caffe> thread_instance_;
 #else
-thread_local static Caffe *thread_instance_ = NULL;
+static Caffe *thread_instance_ = NULL;
 #endif
 
 Caffe& Caffe::Get() {
