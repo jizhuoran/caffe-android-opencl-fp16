@@ -1,9 +1,28 @@
 #ifndef CAFFE_UTIL_DEVICE_ALTERNATE_H_
 #define CAFFE_UTIL_DEVICE_ALTERNATE_H_
 #include <cxxabi.h>
-#include <execinfo.h>
 
 #ifdef USE_OPENCL
+
+
+#ifdef __ANDROID__
+
+
+
+#define OPENCL_CHECK(condition) \
+  /* Code block avoids redefinition of cudaError_t error */ \
+  do { \
+    cl_int error = condition; \
+    if(error != CL_SUCCESS) { \
+      std::cerr << "This is a error for OpenCL " << error << std::endl; \
+      exit(0); \
+    } \
+  } while (0)
+
+
+
+#else
+#include <execinfo.h>
 
 #define OPENCL_CHECK(condition) \
   /* Code block avoids redefinition of cudaError_t error */ \
@@ -20,7 +39,7 @@
   } while (0)
 #endif
 
-
+#endif
 
 
 #ifdef CPU_ONLY  // CPU-only Caffe.

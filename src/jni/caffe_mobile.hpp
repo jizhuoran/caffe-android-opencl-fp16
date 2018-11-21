@@ -68,7 +68,8 @@ private:
   /// @brief
   static CaffeMobile *caffe_mobile_;
   /// @brief
-  shared_ptr<Net<float>> net_;
+  Net<float> *net_;
+  // shared_ptr<Net<float>> net_;
   /// @brief
   int input_channels_;
   int input_width_;

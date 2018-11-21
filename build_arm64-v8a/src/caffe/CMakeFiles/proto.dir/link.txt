@@ -1,0 +1,2 @@
+/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-ar qc ../../lib/libproto.a  CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o
+/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-ranlib ../../lib/libproto.a

@@ -7,17 +7,20 @@ OPENBLAS_VERSION=0.3.2
 MAKE_FLAGS="$MAKE_FLAGS -j 4"
 BUILD_DIR=".cbuild"
 
+
+echo $MAKE_FLAGS
+
 # Options for Android
 # Caffe-Mobile Tested ANDROID_ABI: arm64-v8a, armeabi, armeabi-v7a with NEON
 if [ "$ANDROID_ABI" = "" ]; then
     ANDROID_ABI="arm64-v8a"
 fi
 if [ "$ANDROID_NATIVE_API_LEVEL" = "" ]; then
-    ANDROID_NATIVE_API_LEVEL=21
+    ANDROID_NATIVE_API_LEVEL=23
 fi
 
-if [ $ANDROID_NATIVE_API_LEVEL -lt 21 -a "$ANDROID_ABI" = "arm64-v8a" ]; then
-    echo "ERROR: This ANDROID_ABI($ANDROID_ABI) requires ANDROID_NATIVE_API_LEVEL($ANDROID_NATIVE_API_LEVEL) >= 21"
+if [ $ANDROID_NATIVE_API_LEVEL -lt 23 -a "$ANDROID_ABI" = "arm64-v8a" ]; then
+    echo "ERROR: This ANDROID_ABI($ANDROID_ABI) requires ANDROID_NATIVE_API_LEVEL($ANDROID_NATIVE_API_LEVEL) >= 23"
     exit 1
 fi
 
@@ -98,19 +101,22 @@ function build-Android {
 
     if [ "${ANDROID_ABI}" = "armeabi-v7a with NEON" ]; then
         CROSS_SUFFIX=$NDK_HOME/toolchains/arm-linux-androideabi-4.9/prebuilt/${OS}-${BIT}/bin/arm-linux-androideabi-
-        SYSROOT=$NDK_HOME/platforms/android-$ANDROID_NATIVE_API_LEVEL/arch-arm
+        SYSROOT=$NDK_HOME/sysroot
+        # SYSROOT=$NDK_HOME/platforms/android-$ANDROID_NATIVE_API_LEVEL/arch-arm
         TARGET=ARMV7
         BINARY=32
         ARM_SOFTFP_ABI=1
     elif [ "${ANDROID_ABI}" = "arm64-v8a" ]; then
         CROSS_SUFFIX=$NDK_HOME/toolchains/aarch64-linux-android-4.9/prebuilt/${OS}-${BIT}/bin/aarch64-linux-android-
-        SYSROOT=$NDK_HOME/platforms/android-$ANDROID_NATIVE_API_LEVEL/arch-arm64
+        #SYSROOT=$NDK_HOME/platforms/android-$ANDROID_NATIVE_API_LEVEL/arch-arm64
+        SYSROOT=$NDK_HOME/sysroot
         TARGET=ARMV8
         BINARY=64
         ARM_SOFTFP_ABI=0
     elif [ "${ANDROID_ABI}" = "armeabi" ]; then
         CROSS_SUFFIX=$NDK_HOME/toolchains/arm-linux-androideabi-4.9/prebuilt/${OS}-${BIT}/bin/arm-linux-androideabi-
-        SYSROOT=$NDK_HOME/platforms/android-$ANDROID_NATIVE_API_LEVEL/arch-arm
+        SYSROOT=$NDK_HOME/sysroot
+        # SYSROOT=$NDK_HOME/platforms/android-$ANDROID_NATIVE_API_LEVEL/arch-arm
         TARGET=ARMV5
         BINARY=32
         ARM_SOFTFP_ABI=1
@@ -137,6 +143,7 @@ function build-Android {
             HOSTCC=gcc \
             TARGET=$TARGET \
             ARM_SOFTFP_ABI=$ARM_SOFTFP_ABI \
+            # "-I/home/zrji/android_caffe/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android/" \
             BINARY=$BINARY || exit 1
         make \
             SMP=1 \

@@ -28,13 +28,33 @@ CaffeMobile *CaffeMobile::get(const string &param_file,
 
 CaffeMobile::CaffeMobile(const string &param_file, const string &trained_file) {
   // Load Caffe model
+  
+  LOG(INFO) << "Throw something0?";
+
+
   Caffe::set_mode(Caffe::CPU);
+
+  LOG(INFO) << "Throw something1.5?";
+
+
+
   CPUTimer timer;
   timer.Start();
-  net_.reset(new Net<float>(param_file, caffe::TEST));
-  if (net_.get() == NULL) {
+  
+  LOG(INFO) << "Throw something1?";
+
+  net_ = new Net<float>(param_file, caffe::TEST);
+
+  LOG(INFO) << "Throw something2?";
+
+
+  if (net_ == NULL) {
     throw std::invalid_argument("Invalid arg: param_file=" + param_file);
   }
+
+  LOG(INFO) << "Throw something3?";
+
+
   net_->CopyTrainedLayersFrom(trained_file);
   timer.Stop();
   LOG(INFO) << "Load (" << param_file << "," << trained_file << "), time:"
@@ -53,24 +73,33 @@ CaffeMobile::CaffeMobile(const string &param_file, const string &trained_file) {
 }
 
 CaffeMobile::~CaffeMobile() {
-  net_.reset();
+  delete net_;
+  // net_.reset();
 }
 
 bool CaffeMobile::predictImage(const uint8_t* rgba,
                                int channels,
                                const std::vector<float> &mean,
                                std::vector<float> &result) {
-  if ((rgba == NULL) || net_.get() == NULL) {
+
+
+
+  if ((rgba == NULL) || net_ == NULL) {
     LOG(ERROR) << "Invalid arguments: rgba=" << rgba
-        << ",net_=" << net_.get();
+        << ",net_=" << net_;
     return false;
   }
-  CPUTimer timer;
-  timer.Start();
+
+
+  // CPUTimer timer;
+  // timer.Start();
+
   // Write input
   Blob<float> *input_layer = net_->input_blobs()[0];
   float *input_data = input_layer->mutable_cpu_data();
   size_t plane_size = input_height() * input_width();
+
+
   if (input_channels() == 1 && channels == 1) {
     for (size_t i = 0; i < plane_size; i++) {
       input_data[i] = static_cast<float>(rgba[i]);  // Gray
@@ -102,12 +131,17 @@ bool CaffeMobile::predictImage(const uint8_t* rgba,
     return false;
   }
   // Do Inference
+
+
   net_->Forward();
-  timer.Stop();
-  LOG(INFO) << "Inference use " << timer.MilliSeconds() << " ms.";
+
+  
+
+  // timer.Stop();
+  // LOG(INFO) << "Inference use " << timer.MilliSeconds() << " ms.";
   Blob<float> *output_layer = net_->output_blobs()[0];
   const float *begin = output_layer->cpu_data();
-  const float *end = begin + output_layer->shape(1);
+  const float *end = begin + output_layer->count();
   result.assign(begin, end);
   return true;
 }

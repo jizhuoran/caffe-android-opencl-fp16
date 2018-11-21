@@ -38,6 +38,7 @@ template <typename Dtype>
 void BaseConvolutionLayer<Dtype>::LayerSetUp(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top) {
   // Configure the kernel size, padding, stride, and inputs.
+
   ConvolutionParameter conv_param = this->layer_param_.convolution_param();
   force_nd_im2col_ = conv_param.force_nd_im2col();
   channel_axis_ = bottom[0]->CanonicalAxisIndex(conv_param.axis());
@@ -206,7 +207,6 @@ void BaseConvolutionLayer<Dtype>::LayerSetUp(const vector<Blob<Dtype>*>& bottom,
   // Propagate gradients to the parameters (as directed by backward pass).
   this->param_propagate_down_.resize(this->blobs_.size(), true);
 
-  
 }
 
 template<typename Dtype>
@@ -269,8 +269,8 @@ std::string BaseConvolutionLayer<Dtype>::generate_gemm_core(bool dterm) {
   std::stringstream ss;
   int vwm = 4;
   int vwn = 4;
-  int rtsn = 16;
-  int rtsm = 16;
+  int rtsn = 8;
+  int rtsm = 8;
   bool unroll = true;
 
   // Temporary registers for A and B
@@ -481,6 +481,22 @@ void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
         bias_multiplier_.mutable_cpu_data());
   }
 
+  
+
+
+  LOG(INFO) << "Are you kidding me??";
+  LOG(INFO) << "The name of the layer is" << this->layer_param_.name() + "_forward";
+  LOG(INFO) << "The count is " << Caffe::Get().built_kernels.count(this->layer_param_.name() + "_forward");
+
+
+  if (Caffe::Get().built_kernels.count(this->layer_param_.name() + "_forward") != 0) {
+    LOG(INFO) << "Does it come to here???";
+
+    return;
+  }
+
+
+
   std::stringstream ss;
 
   ss << this->generate_header(); 
@@ -489,12 +505,19 @@ void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
 
   std::string conv_kernel = ss.str();
 
-  // std::cout << conv_kernel << std::endl;
+  std::cout << conv_kernel << std::endl;
 
   size_t kernel_size = conv_kernel.size();
 
+  char* kernelSource = (char*)malloc(kernel_size);
+
+  strcpy(kernelSource, conv_kernel.c_str());
+
+  LOG(INFO) << kernel_size;
+  LOG(INFO) << conv_kernel;
+
   cl_int ret = -1; 
-  program = clCreateProgramWithSource(Caffe::Get().context, 1, (const char **)&conv_kernel, (const size_t *)&kernel_size, &ret); 
+  program = clCreateProgramWithSource(Caffe::Get().context, 1, (const char **)&kernelSource, (const size_t *)&kernel_size, &ret); 
   OPENCL_CHECK(ret);
   
   // fprintf(stderr, "Come to Here!!! 2\n");
@@ -530,6 +553,7 @@ void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
 
   }
 
+  Caffe::Get().built_kernels.insert(this->layer_param_.name() + "_forward");
 }
 
 template <typename Dtype>
@@ -669,6 +693,27 @@ void BaseConvolutionLayer<Dtype>::backward_gpu_bias(Dtype* bias,
 }
 
 #endif  // !CPU_ONLY
+
+
+
+#ifdef FORWARD_LESS_MEM
+template <typename Dtype>
+void BaseConvolutionLayer<Dtype>::Qiaoge_alloc(const vector<Blob<Dtype>*>& bottom,
+                                               const vector<Blob<Dtype>*>& top) {
+    if (bias_term_) {
+        caffe_set(bias_multiplier_.count(), Dtype(1), bias_multiplier_.mutable_cpu_data());
+    }
+}
+
+template <typename Dtype>
+void BaseConvolutionLayer<Dtype>::Qiaoge_free(const vector<Blob<Dtype>*>& bottom,
+                                              const vector<Blob<Dtype>*>& top) {
+    if (bias_term_) {
+        bias_multiplier_.force_delete();
+    }
+    col_buffer_.force_delete();
+}
+#endif
 
 INSTANTIATE_CLASS(BaseConvolutionLayer);
 

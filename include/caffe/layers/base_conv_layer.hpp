@@ -191,6 +191,16 @@ class BaseConvolutionLayer : public Layer<Dtype> {
   }
 #endif
 
+#ifdef FORWARD_LESS_MEM
+  void Qiaoge_alloc(const vector<Blob<Dtype>*>& bottom,
+                      const vector<Blob<Dtype>*>& top);
+    
+  void Qiaoge_free(const vector<Blob<Dtype>*>& bottom,
+                     const vector<Blob<Dtype>*>& top);
+#endif
+
+  bool inited;
+
   int num_kernels_im2col_;
   int num_kernels_col2im_;
   int conv_out_channels_;

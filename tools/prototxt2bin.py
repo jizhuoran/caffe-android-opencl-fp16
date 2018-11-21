@@ -5,7 +5,7 @@ from google.protobuf import text_format
 
 # Search path for caffe_pb2.py
 sys.path.append(path.abspath("../build/include/caffe/proto/"))
-sys.path.append(path.abspath("../build_armeabi/include/caffe/proto/"))
+# sys.path.append(path.abspath("../build_armeabi/include/caffe/proto/"))
 
 try:
   import caffe_pb2
@@ -24,5 +24,5 @@ for filename in sys.argv[1:]:
     with open(filename, 'r') as f:
       text_format.Merge(f.read(), params)
     print("Write Caffe net binary to: " + basename + '.protobin')
-    with open(basename + '.protobin', 'w') as f:
+    with open(basename + '.protobin', 'wb') as f:
       f.write(params.SerializeToString())

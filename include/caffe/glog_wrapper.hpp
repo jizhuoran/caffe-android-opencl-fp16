@@ -31,7 +31,7 @@ public:
   inline void print() {
     cont_ = false;
 #ifdef __ANDROID__
-    __android_log_print(ANDROID_LOG_INFO, "caffe", log_stream_.str().c_str());
+    __android_log_print(ANDROID_LOG_INFO, "easy found: ", "%s", log_stream_.str().c_str());
 #else
     std::cout << log_stream_.str() << std::endl;
 #endif

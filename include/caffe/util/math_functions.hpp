@@ -191,7 +191,7 @@ void caffe_gpu_set(const int N, const Dtype alpha, Dtype *X);
 
 inline void caffe_gpu_memset(const size_t N, const int alpha, void* X) {
 #ifdef USE_OPENCL
-  clEnqueueFillBuffer(Caffe::Get().commandQueue, (cl_mem) X, &alpha, sizeof(cl_uint), 0, N*sizeof(cl_uint), 0, NULL, NULL);
+  // clEnqueueFillBuffer(Caffe::Get().commandQueue, (cl_mem) X, &alpha, sizeof(cl_uint), 0, N*sizeof(cl_uint), 0, NULL, NULL);
   // CUDA_CHECK(cudaMemset(X, alpha, N));  // NOLINT(caffe/alt_fn)
 #else
   NO_GPU;

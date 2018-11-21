@@ -12,7 +12,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 add_definitions(-DCPU_ONLY)
 add_definitions(-DUSE_OPENCL)
-add_definitions(-DFORWARD_LESS_MEM)
+#add_definitions(-DFORWARD_LESS_MEM)
 add_definitions(-DUSE_NEON_MATH)
 
 include(./cmake/Utils.cmake)
@@ -28,6 +28,10 @@ if(NOT MSVC)
     if(IOS)
         set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fembed-bitcode")
         set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fembed-bitcode")
+    elseif(ANDROID)
+        set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fembed-bitcode")
+        set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fembed-bitcode")
+        
     endif()
 endif()
 
@@ -45,9 +49,7 @@ include(./cmake/ProtoBuf.cmake)
 include(./cmake/Modules/FindOpenBLAS.cmake)
 include(./cmake/Modules/FindvecLib.cmake)
 include(./cmake/Modules/FindAtlas.cmake)
-include(./cmake/Modules/FindOpenCL.cmake)
 
-message(STATUS ${OPENCL_INCLUDE_DIRS})
 
 # Select blas lib for different platform
 # APPLE only, 1st
@@ -64,9 +66,16 @@ else()
     MESSAGE(FATAL_ERROR "BLAS (VecLib/OpenBLAS/Atlas) library not found.")
 endif()
 
+if(ANDROID)
+    include_directories("/home/zrji/android_caffe/huawei_opencl")
+    list(APPEND Caffe_LINKER_LIBS "/home/zrji/android_caffe/huawei_opencl/libOpenCL.so")
+else()
+    include(./cmake/Modules/FindOpenCL.cmake)
+    message(STATUS ${OPENCL_INCLUDE_DIRS})
+    include_directories(${OPENCL_INCLUDE_DIRS})
+    list(APPEND Caffe_LINKER_LIBS ${OPENCL_LIBRARIES})  
+endif()
 
-include_directories(${OPENCL_INCLUDE_DIRS})
-list(APPEND Caffe_LINKER_LIBS ${OPENCL_LIBRARIES})
 
 
 caffe_set_caffe_link()
@@ -75,7 +84,7 @@ add_subdirectory(src/caffe)
 
 if(ANDROID)
     add_subdirectory(src/jni)
+else()
+    add_subdirectory(tools)
 endif()
-
-add_subdirectory(tools)
 

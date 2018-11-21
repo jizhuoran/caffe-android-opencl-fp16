@@ -1,0 +1,929 @@
+name: "Mohaicheng"
+layer {
+  name: "data"
+  type: "Input"
+  top: "data"
+  input_param { shape: { dim: 1 dim: 3 dim: 512 dim: 512 } }
+}
+
+layer {
+  bottom: "data"
+  top: "conv1"
+  name: "conv1"
+  type: "Convolution"
+  convolution_param {
+    num_output: 32
+    kernel_size: 9
+    pad: 4
+    stride: 1
+    bias_term: true
+  }
+}
+
+
+layer {
+  name: "ELU1"
+  type: "ELU"
+  bottom: "conv1"
+  top: "conv1"
+}
+
+layer {
+  name: "bn1"
+  type: "BatchNorm"
+  bottom: "conv1"
+  top: "conv1"
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  batch_norm_param {
+    use_global_stats: false
+  }
+}
+
+layer {
+    bottom: "conv1"
+    top: "conv1"
+    name: "scale1"
+    type: "Scale"
+    scale_param {
+        bias_term: true
+    }
+}
+
+
+############# second conv ##################33
+
+layer {
+  bottom: "conv1"
+  top: "conv2"
+  name: "conv2"
+  type: "Convolution"
+  convolution_param {
+    num_output: 64
+    kernel_size: 4
+    pad: 1
+    stride: 2
+    bias_term: true
+  }
+}
+
+
+layer {
+  name: "ELU2"
+  type: "ELU"
+  bottom: "conv2"
+  top: "conv2"
+}
+
+layer {
+  name: "bn2"
+  type: "BatchNorm"
+  bottom: "conv2"
+  top: "conv2"
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  batch_norm_param {
+    use_global_stats: false
+  }
+}
+
+
+layer {
+    bottom: "conv2"
+    top: "conv2"
+    name: "scale2"
+    type: "Scale"
+    scale_param {
+        bias_term: true
+    }
+}
+
+
+
+############## third conv ########################33
+layer {
+  bottom: "conv2"
+  top: "conv3"
+  name: "conv3"
+  type: "Convolution"
+  convolution_param {
+    num_output: 128
+    kernel_size: 4
+    pad: 1
+    stride: 2
+    bias_term: true
+  }
+}
+
+layer {
+  name: "ELU3"
+  type: "ELU"
+  bottom: "conv3"
+  top: "conv3"
+}
+
+layer {
+  name: "bn3"
+  type: "BatchNorm"
+  bottom: "conv3"
+  top: "conv3"
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  batch_norm_param {
+    use_global_stats: false
+  }
+}
+
+
+
+layer {
+    bottom: "conv3"
+    top: "conv3"
+    name: "scale3"
+    type: "Scale"
+    scale_param {
+        bias_term: true
+    }
+}
+
+
+################ start of residual block ###################
+
+layer {
+  bottom: "conv3"
+  top: "res1_conv1"
+  name: "res1_conv1"
+  type: "Convolution"
+  convolution_param {
+    num_output: 128
+    kernel_size: 3
+    pad: 1
+    stride: 1
+    bias_term: false
+  }
+}
+
+layer {
+  name: "res1_bn1"
+  type: "BatchNorm"
+  bottom: "res1_conv1"
+  top: "res1_conv1"
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  batch_norm_param {
+    use_global_stats: false
+  }
+}
+
+layer {
+    bottom: "res1_conv1"
+    top: "res1_conv1"
+    name: "res1_scale1"
+    type: "Scale"
+    scale_param {
+        bias_term: true
+    }
+}
+
+
+layer {
+  name: "res1_ReLU1"
+  type: "ReLU"
+  bottom: "res1_conv1"
+  top: "res1_conv1"
+}
+
+
+layer {
+  bottom: "res1_conv1"
+  top: "res1_conv2"
+  name: "res1_conv2"
+  type: "Convolution"
+  convolution_param {
+    num_output: 128
+    kernel_size: 3
+    pad: 1
+    stride: 1
+    bias_term: false
+  }
+}
+
+layer {
+  name: "res1_bn2"
+  type: "BatchNorm"
+  bottom: "res1_conv2"
+  top: "res1_conv2"
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  batch_norm_param {
+    use_global_stats: false
+  }
+}
+
+
+layer {
+    bottom: "res1_conv2"
+    top: "res1_conv2"
+    name: "res1_scale2"
+    type: "Scale"
+    scale_param {
+        bias_term: true
+    }
+}
+
+
+
+
+layer {
+  name: "res1_elewise"
+  type: "Eltwise"
+  bottom: "res1_conv2"
+  bottom: "conv3"
+  top: "res1_output"
+}
+
+
+
+
+################ second residual block #####################
+
+layer {
+  bottom: "res1_output"
+  top: "res2_conv1"
+  name: "res2_conv1"
+  type: "Convolution"
+  convolution_param {
+    num_output: 128
+    kernel_size: 3
+    pad: 1
+    stride: 1
+    bias_term: false
+  }
+}
+
+layer {
+  name: "res2_bn1"
+  type: "BatchNorm"
+  bottom: "res2_conv1"
+  top: "res2_conv1"
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  batch_norm_param {
+    use_global_stats: false
+  }
+}
+
+
+layer {
+    bottom: "res2_conv1"
+    top: "res2_conv1"
+    name: "res2_scale1"
+    type: "Scale"
+    scale_param {
+        bias_term: true
+    }
+}
+
+layer {
+  name: "res2_ReLU1"
+  type: "ReLU"
+  bottom: "res2_conv1"
+  top: "res2_conv1"
+}
+
+
+layer {
+  bottom: "res2_conv1"
+  top: "res2_conv2"
+  name: "res2_conv2"
+  type: "Convolution"
+  convolution_param {
+    num_output: 128
+    kernel_size: 3
+    pad: 1
+    stride: 1
+    bias_term: false
+  }
+}
+
+layer {
+  name: "res2_bn2"
+  type: "BatchNorm"
+  bottom: "res2_conv2"
+  top: "res2_conv2"
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  batch_norm_param {
+    use_global_stats: false
+  }
+}
+
+
+layer {
+    bottom: "res2_conv2"
+    top: "res2_conv2"
+    name: "res2_scale2"
+    type: "Scale"
+    scale_param {
+        bias_term: true
+    }
+}
+
+
+
+
+layer {
+  name: "res2_elewise"
+  type: "Eltwise"
+  bottom: "res2_conv2"
+  bottom: "res1_output"
+  top: "res2_output"
+}
+
+
+
+
+
+
+
+
+################## third residual block ####################
+
+layer {
+  bottom: "res2_output"
+  top: "res3_conv1"
+  name: "res3_conv1"
+  type: "Convolution"
+  convolution_param {
+    num_output: 128
+    kernel_size: 3
+    pad: 1
+    stride: 1
+    bias_term: false
+  }
+}
+
+
+layer {
+  name: "res3_bn1"
+  type: "BatchNorm"
+  bottom: "res3_conv1"
+  top: "res3_conv1"
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  batch_norm_param {
+    use_global_stats: false
+  }
+}
+
+layer {
+    bottom: "res3_conv1"
+    top: "res3_conv1"
+    name: "res3_scale1"
+    type: "Scale"
+    scale_param {
+        bias_term: true
+    }
+}
+
+layer {
+  name: "res3_ReLU1"
+  type: "ReLU"
+  bottom: "res3_conv1"
+  top: "res3_conv1"
+}
+
+
+layer {
+  bottom: "res3_conv1"
+  top: "res3_conv2"
+  name: "res3_conv2"
+  type: "Convolution"
+  convolution_param {
+    num_output: 128
+    kernel_size: 3
+    pad: 1
+    stride: 1
+    bias_term: false
+  }
+}
+
+layer {
+  name: "res3_bn2"
+  type: "BatchNorm"
+  bottom: "res3_conv2"
+  top: "res3_conv2"
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  batch_norm_param {
+    use_global_stats: false
+  }
+}
+
+layer {
+    bottom: "res3_conv2"
+    top: "res3_conv2"
+    name: "res3_scale2"
+    type: "Scale"
+    scale_param {
+        bias_term: true
+    }
+}
+
+layer {
+  name: "res3_elewise"
+  type: "Eltwise"
+  bottom: "res3_conv2"
+  bottom: "res2_output"
+  top: "res3_output"
+}
+
+
+################# fourth residual block #############
+
+
+layer {
+  bottom: "res3_output"
+  top: "res4_conv1"
+  name: "res4_conv1"
+  type: "Convolution"
+  convolution_param {
+    num_output: 128
+    kernel_size: 3
+    pad: 1
+    stride: 1
+    bias_term: false
+  }
+}
+
+layer {
+  name: "res4_bn1"
+  type: "BatchNorm"
+  bottom: "res4_conv1"
+  top: "res4_conv1"
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  batch_norm_param {
+    use_global_stats: false
+  }
+}
+
+layer {
+    bottom: "res4_conv1"
+    top: "res4_conv1"
+    name: "res4_scale1"
+    type: "Scale"
+    scale_param {
+        bias_term: true
+    }
+}
+
+layer {
+  name: "res4_ReLU1"
+  type: "ReLU"
+  bottom: "res4_conv1"
+  top: "res4_conv1"
+}
+
+
+layer {
+  bottom: "res4_conv1"
+  top: "res4_conv2"
+  name: "res4_conv2"
+  type: "Convolution"
+  convolution_param {
+    num_output: 128
+    kernel_size: 3
+    pad: 1
+    stride: 1
+    bias_term: false
+  }
+}
+
+layer {
+  name: "res4_bn2"
+  type: "BatchNorm"
+  bottom: "res4_conv2"
+  top: "res4_conv2"
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  batch_norm_param {
+    use_global_stats: false
+  }
+}
+
+layer {
+    bottom: "res4_conv2"
+    top: "res4_conv2"
+    name: "res4_scale2"
+    type: "Scale"
+    scale_param {
+        bias_term: true
+    }
+}
+
+layer {
+  name: "res4_elewise"
+  type: "Eltwise"
+  bottom: "res4_conv2"
+  bottom: "res3_output"
+  top: "res4_output"
+}
+
+
+
+
+################## fifth residual block #################3
+
+layer {
+  bottom: "res4_output"
+  top: "res5_conv1"
+  name: "res5_conv1"
+  type: "Convolution"
+  convolution_param {
+    num_output: 128
+    kernel_size: 3
+    pad: 1
+    stride: 1
+    bias_term: false
+  }
+}
+
+layer {
+  name: "res5_bn1"
+  type: "BatchNorm"
+  bottom: "res5_conv1"
+  top: "res5_conv1"
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  batch_norm_param {
+    use_global_stats: false
+  }
+}
+
+layer {
+    bottom: "res5_conv1"
+    top: "res5_conv1"
+    name: "res5_scale1"
+    type: "Scale"
+    scale_param {
+        bias_term: true
+    }
+}
+
+layer {
+  name: "res5_ReLU1"
+  type: "ReLU"
+  bottom: "res5_conv1"
+  top: "res5_conv1"
+}
+
+
+layer {
+  bottom: "res5_conv1"
+  top: "res5_conv2"
+  name: "res5_conv2"
+  type: "Convolution"
+  convolution_param {
+    num_output: 128
+    kernel_size: 3
+    pad: 1
+    stride: 1
+    bias_term: false
+  }
+}
+
+
+
+layer {
+  name: "res5_bn2"
+  type: "BatchNorm"
+  bottom: "res5_conv2"
+  top: "res5_conv2"
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  batch_norm_param {
+    use_global_stats: false
+  }
+}
+
+
+layer {
+    bottom: "res5_conv2"
+    top: "res5_conv2"
+    name: "res5_scale2"
+    type: "Scale"
+    scale_param {
+        bias_term: true
+    }
+}
+
+layer {
+  name: "res5_elewise"
+  type: "Eltwise"
+  bottom: "res5_conv2"
+  bottom: "res4_output"
+  top: "res5_output"
+}
+
+
+################## deconv5_1 ###########################
+
+layer {
+  name: "deconv5_1"
+  type: "Deconvolution"
+  bottom: "res5_output"
+  top: "deconv5_1"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 64
+    pad: 1 
+    stride: 2
+    kernel_size: 4 
+    weight_filler {
+      type: "xavier"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+
+
+layer {
+  name: "deconv5_1_ELU"
+  type: "ELU"
+  bottom: "deconv5_1"
+  top: "deconv5_1"
+}
+
+layer {
+  name: "deconv5_1_bn"
+  type: "BatchNorm"
+  bottom: "deconv5_1"
+  top: "deconv5_1"
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  batch_norm_param {
+    use_global_stats: false
+  }
+}
+
+
+layer {
+    bottom: "deconv5_1"
+    top: "deconv5_1"
+    name: "deconv5_1_bn_sc"
+    type: "Scale"
+    scale_param {
+        bias_term: true
+    }
+}
+
+################## deconv5_2 ###########################
+
+
+layer {
+  name: "deconv5_2"
+  type: "Deconvolution"
+  bottom: "deconv5_1"
+  top: "deconv5_2"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 32
+    pad: 1 
+    stride: 2
+    kernel_size: 4 
+    weight_filler {
+      type: "xavier"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+
+
+layer {
+  name: "deconv5_2_ELU"
+  type: "ELU"
+  bottom: "deconv5_2"
+  top: "deconv5_2"
+}
+
+layer {
+  name: "deconv5_2_bn"
+  type: "BatchNorm"
+  bottom: "deconv5_2"
+  top: "deconv5_2"
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  param {
+    lr_mult: 0
+  }
+  batch_norm_param {
+    use_global_stats: false
+  }
+}
+
+
+layer {
+    bottom: "deconv5_2"
+    top: "deconv5_2"
+    name: "deconv5_2_bn_sc"
+    type: "Scale"
+    scale_param {
+        bias_term: true
+    }
+}
+
+################## deconv5_3 ###########################
+
+
+
+layer {
+  name: "deconv5_3"
+  type: "Deconvolution"
+  bottom: "deconv5_2"
+  top: "deconv5_3"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 3
+    pad: 4
+    stride: 1
+    kernel_size: 9
+    weight_filler {
+      type: "xavier"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+
+
+
+####################### final part #########################
+
+layer {
+  name: "tanh"
+  bottom: "deconv5_3"
+  top: "deconv5_3"
+  type: "TanH"
+}
+
+
+
+# note that we use the scale layer
+# to do the transforamtion
+# first scale layer:
+# scaling paramenter = 1
+# shifting parameter = 1
+layer {
+  bottom: "deconv5_3"
+  top: "deconv5_3"
+  name: "image_scale1"
+  type: "Scale"
+  scale_param {
+      bias_term: true
+  }
+}
+
+# second scale layer:
+# scaling paramenter = 127.5
+# no shifting parameter
+layer {
+  bottom: "deconv5_3"
+  top: "deconv5_3"
+  name: "image_scale2"
+  type: "Scale"
+  scale_param {
+      bias_term: false
+  }
+}

@@ -46,13 +46,13 @@ void ConvolutionLayer<Dtype>::Forward_cpu(const vector<Blob<Dtype>*>& bottom,
     }
 
     size_t* local_size = new size_t[3];
-    local_size[0] = static_cast<size_t>(16);
-    local_size[1] = static_cast<size_t>(16);
+    local_size[0] = static_cast<size_t>(8);
+    local_size[1] = static_cast<size_t>(8);
     local_size[2] = static_cast<size_t>(1);
 
     size_t* global_size = new size_t[3];
-    global_size[0] = static_cast<size_t>((((top[i]->shape(2) * top[i]->shape(3)) - 1) / 64 + 1)*16);
-    global_size[1] = static_cast<size_t>((((top[i]->shape(1) / this->group_) - 1) / 64 + 1)*16);
+    global_size[0] = static_cast<size_t>((((top[i]->shape(2) * top[i]->shape(3)) - 1) / 32 + 1)*8);
+    global_size[1] = static_cast<size_t>((((top[i]->shape(1) / this->group_) - 1) / 32 + 1)*8);
     global_size[2] = static_cast<size_t>(bottom[i]->shape()[0] * 1);
 
     OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 3, NULL, global_size, local_size, 0, NULL, NULL));  
@@ -231,9 +231,9 @@ std::string ConvolutionLayer<Dtype>::generate_fw_defs() {
   this->add_def(ss, "v_pad_B", 1);
 
   // The tile-size in dimension M
-  this->add_def(ss, "TSM", 64);
+  this->add_def(ss, "TSM", 32);
   // The tile-size in dimension N
-  this->add_def(ss, "TSN", 64);
+  this->add_def(ss, "TSN", 32);
   // The tile-size in dimension K
   this->add_def(ss, "TSK", 8);
   // TSK unrolling
@@ -245,9 +245,9 @@ std::string ConvolutionLayer<Dtype>::generate_fw_defs() {
   this->add_def(ss, "WPTN", 4);
   this->add_def(ss, "VWN", 4);
   // The reduced tile-size in dimension M
-  this->add_def(ss, "RTSM", 16);
+  this->add_def(ss, "RTSM", 8);
   // The reduced tile-size in dimension N
-  this->add_def(ss, "RTSN", 16);
+  this->add_def(ss, "RTSN", 8);
   // Loads-per-thread for A
   this->add_def(ss, "LPTA", "((TSK*TSM)/(RTSM*RTSN))");
   // Loads-per-thread for B
@@ -270,8 +270,8 @@ std::string ConvolutionLayer<Dtype>::generate_fw_kernels(std::string name) {
   int wptn = 4;
   int wptm = 4;
   int tsk = 8;
-  int rtsn = 16;
-  int rtsm = 16;
+  int rtsn = 8;
+  int rtsm = 8;
   int tsm = wptm * rtsm;
   int tsn = wptn * rtsn;
   int vwm = 4;
@@ -467,47 +467,6 @@ std::string ConvolutionLayer<Dtype>::generate_fw_kernels(std::string name) {
   ss << "}" << std::endl;
   ss << "}" << std::endl;  // Scoping for load & compute block
 
-
-  // Store the final results in C
-  /*ss << "#pragma unroll 1" << std::endl;
-  ss << "for (int wn=0; wn<WPTN/VWN; ++wn) {" << std::endl;
-  ss << "#pragma unroll" << std::endl;
-  ss << "for (int wm=0; wm<WPTM/VWM; ++wm) {" << std::endl;
-  for (int j = 0; j < vwn; ++j) {
-    for (int i = 0; i < vwm; ++i) {
-      ss << "Asub[(tidn+wn*RTSN)*VWN + " << j << "][(tidm + wn*RTSN)*VWM + " << i << "] = VEC_" << vwm << "_" << i << "(Creg[wn + " << j << "][wm]);" << std::endl;
-    }
-  }
-  ss << "}" << std::endl;
-  ss << "}" << std::endl;
-  ss << "}" << std::endl;  // Scoping for C registers
-
-  ss << "barrier(CLK_LOCAL_MEM_FENCE);" << std::endl;
-
-  // Store the final results in C
-  ss << "{" << std::endl; // Scoping for storing C
-  ss << "Dtype" << vwm << " Creg;" << std::endl;
-  ss << "#pragma unroll 1" << std::endl;
-  ss << "for (int lc = 0; lc < ((TSM*TSN-1)/(RTSM*RTSN))/VWM+1; ++lc) {" << std::endl;
-  ss << "int tid = tidm * RTSN + tidn;" << std::endl;
-  ss << "int id = lc * RTSN * RTSM + tid;" << std::endl;
-  ss << "int row = (id / TSN) * VWM;" << std::endl;
-  ss << "int col = id % TSN;" << std::endl;
-  ss << "int globalRow = offM + row;" << std::endl;
-  ss << "int globalCol = offN + col;" << std::endl;
-  for (int i = 0; i < vwm; ++i) {
-    ss << "VEC_" << vwm << "_" << i << "(Creg) = Asub[col][row + " << i << "];" << std::endl;
-    ss << "if ((globalRow +" << i << ") < M && globalCol < N) {" << std::endl;
-    if (bias_term_) {
-      ss << "Cptr[(globalRow +" << i << ") * N + globalCol] = VEC_" << vwm << "_" << i << "(Creg) + Dptr[globalRow +" << i << "];" << std::endl;
-    } else {
-      ss << "Cptr[(globalRow +" << i << ") * N + globalCol] = VEC_" << vwm << "_" << i << "(Creg);" << std::endl;
-    }
-    ss << "}" << std::endl;
-  }
-  ss << "}" << std::endl;
-  ss << "}" << std::endl; // Scoping for storing C*/
-
   // Store the final results in C
   ss << "#pragma unroll" << std::endl;
   ss << "for (int wm=0; wm<WPTM; ++wm) {" << std::endl;
@@ -520,7 +479,8 @@ std::string ConvolutionLayer<Dtype>::generate_fw_kernels(std::string name) {
   ss << "for (int wn=0; wn<WPTN; ++wn) {" << std::endl;
   ss << "int globalCol = offN + tidn + wn * RTSN;"
      << std::endl;
-  ss << "if (globalRow < M && globalCol < N) {" << std::endl;
+  // ss << "if (globalRow < M && globalCol < N) {" << std::endl;
+  // ss << "if (wn * RTSN < N) " << std::endl;
   if (this->bias_term_) {
     ss << "Cptr[globalRow * N + globalCol] = "
        << "((Dtype*)(&(Creg[wm][wn/VWN])))[wn%VWN] + biasval;"
@@ -529,7 +489,7 @@ std::string ConvolutionLayer<Dtype>::generate_fw_kernels(std::string name) {
     ss << "Cptr[globalRow * N + globalCol] = "
        << "((Dtype*)(&(Creg[wm][wn/VWN])))[wn%VWN];" << std::endl;
   }
-  ss << "}" << std::endl;   // M-N-Guard
+  // ss << "}" << std::endl;   // M-N-Guard
   ss << "}" << std::endl;   // For (N)
   ss << "}" << std::endl;   // For (M)
   ss << "}" << std::endl;   // Scoping for C registers

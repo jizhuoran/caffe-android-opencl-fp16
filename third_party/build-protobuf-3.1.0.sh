@@ -20,8 +20,8 @@ else
 fi
 
 # Options for All
-PB_VERSION=3.1.0
-MAKE_FLAGS="$MAKE_FLAGS -j 4"
+PB_VERSION="3.1.0"
+MAKE_FLAGS="$MAKE_FLAGS -j 40"
 BUILD_DIR=".cbuild"
 
 # Options for Android
@@ -51,11 +51,11 @@ fi
 #        "x86_64" - Intel64 instruction set (r1)
 #        "mips64" - MIPS64 instruction set (r6)
 if [ "$ANDROID_NATIVE_API_LEVEL" = "" ]; then
-  ANDROID_NATIVE_API_LEVEL=21
+  ANDROID_NATIVE_API_LEVEL=23
 fi
 
-if [ $ANDROID_NATIVE_API_LEVEL -lt 21 -a "$ANDROID_ABI" = "arm64-v8a" ]; then
-    echo "ERROR: This ANDROID_ABI($ANDROID_ABI) requires ANDROID_NATIVE_API_LEVEL($ANDROID_NATIVE_API_LEVEL) >= 21"
+if [ $ANDROID_NATIVE_API_LEVEL -lt 23 -a "$ANDROID_ABI" = "arm64-v8a" ]; then
+    echo "ERROR: This ANDROID_ABI($ANDROID_ABI) requires ANDROID_NATIVE_API_LEVEL($ANDROID_NATIVE_API_LEVEL) >= 23"
     exit 1
 fi
 BUILD_PROTOC=OFF
@@ -73,13 +73,14 @@ function fetch-protobuf {
     echo "##########################################"
     echo "$(tput sgr0)"
 
-    if [ ! -f protobuf-${PB_VERSION}.tar.gz ]; then
-        curl -L https://github.com/google/protobuf/archive/v${PB_VERSION}.tar.gz --output protobuf-${PB_VERSION}.tar.gz
+
+    if [ ! -f protobuf-$PB_VERSION.zip ]; then
+        curl -L https://github.com/protocolbuffers/protobuf/archive/v$PB_VERSION.zip --output protobuf-$PB_VERSION.zip
     fi
-    if [ -d protobuf-${PB_VERSION} ]; then
-        rm -rf protobuf-${PB_VERSION}
+    if [ -d protobuf-$PB_VERSION ]; then
+        rm -rf protobuf-$PB_VERSION
     fi
-    tar -xzf protobuf-${PB_VERSION}.tar.gz
+    unzip protobuf-$PB_VERSION.zip
 }
 
 function build-Windows {
@@ -158,13 +159,14 @@ function build-Android {
         rm -rf protobuf-$PB_VERSION/$BUILD_DIR/*
         cd protobuf-$PB_VERSION/$BUILD_DIR
         cmake ../cmake -DCMAKE_INSTALL_PREFIX=../../${TARGET}-protobuf \
-            -DCMAKE_TOOLCHAIN_FILE="../../android-cmake/android.toolchain.cmake" \
+            -DCMAKE_TOOLCHAIN_FILE="/home/zrji/android_caffe/android-ndk-r18b/build/cmake/android.toolchain.cmake" \
             -DANDROID_NDK="$NDK_HOME" \
             -DANDROID_ABI="$ANDROID_ABI" \
             -DANDROID_NATIVE_API_LEVEL="$ANDROID_NATIVE_API_LEVEL" \
             -Dprotobuf_BUILD_TESTS=OFF \
             -Dprotobuf_BUILD_SHARED_LIBS=OFF \
             -Dprotobuf_WITH_ZLIB=OFF \
+            -DLDFLAGS="-llog" \
             -G "Unix Makefiles"
         make ${MAKE_FLAGS}
         make install

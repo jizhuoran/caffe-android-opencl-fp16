@@ -84,14 +84,25 @@ Caffe::Caffe()
       solver_count_(1), solver_rank_(0), multiprocess_(false) {
 
 
+
+
   FILE *kernelFile;
   char *kernelSource;
   size_t kernelSize;
 
+
+  LOG(INFO) << "success come to here!";
+  LOG(INFO) << "success come to here!";
+  LOG(INFO) << "success come to here!";
+
+#ifdef __ANDROID__
+  kernelFile = fopen("/storage/emulated/0/caffe/kernel_code.cl", "r");
+#else
   kernelFile = fopen("/home/zrji/android_caffe/caffe-android-opencl/src/caffe/opencl/kernel_code.cl", "r");
+#endif
   if (!kernelFile) {
 
-    fprintf(stderr, "No file named vecAddKernel.cl was found\n");
+    LOG(ERROR) << "No file named vecAddKernel.cl was found";
 
     exit(-1);
 
@@ -116,16 +127,20 @@ Caffe::Caffe()
   commandQueue = clCreateCommandQueue(context, deviceID, 0, &ret);
   OPENCL_CHECK(ret);
 
-  
-  // fprintf(stderr, "Come to Here!!! 1\n");
+    
+  LOG(ERROR) << "this success 111";
 
   program = clCreateProgramWithSource(context, 1, (const char **)&kernelSource, (const size_t *)&kernelSize, &ret); 
   OPENCL_CHECK(ret);
+  LOG(ERROR) << "this success 222";
   
-  // fprintf(stderr, "Come to Here!!! 2\n");
 
 
   ret = clBuildProgram(program, 1, &deviceID, NULL, NULL, NULL);
+
+
+  LOG(ERROR) << "this success 333";
+
 
   if (ret != CL_SUCCESS) {
     char *buff_erro;
@@ -133,7 +148,7 @@ Caffe::Caffe()
     size_t build_log_len;
     errcode = clGetProgramBuildInfo(program, deviceID, CL_PROGRAM_BUILD_LOG, 0, NULL, &build_log_len);
     if (errcode) {
-      printf("clGetProgramBuildInfo failed at line %d\n", __LINE__);
+      LOG(ERROR) << "clGetProgramBuildInfo failed at line " << __LINE__;
       exit(-1);
     }
 
@@ -145,13 +160,18 @@ Caffe::Caffe()
 
     errcode = clGetProgramBuildInfo(program, deviceID, CL_PROGRAM_BUILD_LOG, build_log_len, buff_erro, NULL);
     if (errcode) {
-        printf("clGetProgramBuildInfo failed at line %d\n", __LINE__);
+        LOG(ERROR) << "clGetProgramBuildInfo failed at line " << __LINE__;
         exit(-3);
     }
 
-    fprintf(stderr,"Build log: \n%s\n", buff_erro); //Be careful with  the fprint
+    
+    LOG(ERROR) << "Build log: " << buff_erro;
+
+
     free(buff_erro);
-    fprintf(stderr,"clBuildProgram failed\n");
+
+    LOG(ERROR) << "clBuildProgram failed";
+
     exit(EXIT_FAILURE);
 
   }
@@ -159,9 +179,6 @@ Caffe::Caffe()
   
 
 
-  // fprintf(stderr, "Come to Here!!! 3\n");
-
-  // std::cout << deviceID << std::endl;
 
 }
 

@@ -194,7 +194,9 @@ class Caffe {
   cl_context context;
   cl_command_queue commandQueue;
   cl_program program;
+  std::set<std::string> built_kernels;
 
+  
  protected:
 #ifndef CPU_ONLY
   cublasHandle_t cublas_handle_;

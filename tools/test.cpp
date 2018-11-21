@@ -17,7 +17,7 @@
 
 #define RGB_COMPONENT_COLOR 255
 
-
+ 
 typedef struct {
      unsigned char red,green,blue;
 } PPMPixel; 
@@ -282,7 +282,7 @@ int main(int argc, char** argv) {
     
     
     // //  code for style transfer
-    caffe::Blob<float> *output_layer = _net->output_blobs()[0];
+    caffe::Blob<float> *output_layer = _net->output_blobs()[0]; 
     FILE *f = fopen("/home/zrji/android_caffe/caffe-android-opencl/examples/style_transfer/input.ppm", "wb");
     fprintf(f, "P6\n%i %i 255\n", input_layer->width(), input_layer->width());
     for (int y = 0; y < input_layer->width(); y++) {
