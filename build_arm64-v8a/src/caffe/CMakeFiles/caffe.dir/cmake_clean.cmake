@@ -60,6 +60,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/caffe.dir/util/io.cpp.o"
   "CMakeFiles/caffe.dir/util/math_functions.cpp.o"
   "CMakeFiles/caffe.dir/util/math_functions_cl.cpp.o"
+  "CMakeFiles/caffe.dir/util/opencl_kernel.cpp.o"
   "CMakeFiles/caffe.dir/util/upgrade_proto.cpp.o"
   "CMakeFiles/caffe.dir/__/jni/caffe_jni.cpp.o"
   "CMakeFiles/caffe.dir/__/jni/caffe_mobile.cpp.o"

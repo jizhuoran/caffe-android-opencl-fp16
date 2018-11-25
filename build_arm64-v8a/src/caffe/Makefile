@@ -1914,6 +1914,33 @@ util/math_functions_cl.cpp.s:
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/util/math_functions_cl.cpp.s
 .PHONY : util/math_functions_cl.cpp.s
 
+util/opencl_kernel.o: util/opencl_kernel.cpp.o
+
+.PHONY : util/opencl_kernel.o
+
+# target to build an object file
+util/opencl_kernel.cpp.o:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/util/opencl_kernel.cpp.o
+.PHONY : util/opencl_kernel.cpp.o
+
+util/opencl_kernel.i: util/opencl_kernel.cpp.i
+
+.PHONY : util/opencl_kernel.i
+
+# target to preprocess a source file
+util/opencl_kernel.cpp.i:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/util/opencl_kernel.cpp.i
+.PHONY : util/opencl_kernel.cpp.i
+
+util/opencl_kernel.s: util/opencl_kernel.cpp.s
+
+.PHONY : util/opencl_kernel.s
+
+# target to generate assembly for a file
+util/opencl_kernel.cpp.s:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/util/opencl_kernel.cpp.s
+.PHONY : util/opencl_kernel.cpp.s
+
 util/upgrade_proto.o: util/upgrade_proto.cpp.o
 
 .PHONY : util/upgrade_proto.o
@@ -2147,6 +2174,9 @@ help:
 	@echo "... util/math_functions_cl.o"
 	@echo "... util/math_functions_cl.i"
 	@echo "... util/math_functions_cl.s"
+	@echo "... util/opencl_kernel.o"
+	@echo "... util/opencl_kernel.i"
+	@echo "... util/opencl_kernel.s"
 	@echo "... util/upgrade_proto.o"
 	@echo "... util/upgrade_proto.i"
 	@echo "... util/upgrade_proto.s"

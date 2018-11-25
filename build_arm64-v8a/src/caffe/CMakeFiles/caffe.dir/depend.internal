@@ -487,6 +487,7 @@ src/caffe/CMakeFiles/caffe.dir/common.cpp.o
  ../include/caffe/glog_wrapper.hpp
  ../include/caffe/util/cudnn.hpp
  ../include/caffe/util/device_alternate.hpp
+ ../include/caffe/util/opencl_kernel.hpp
  ../include/caffe/util/rng.hpp
  ../third_party/OpenCL/CL/cl.h
  ../third_party/OpenCL/CL/cl_platform.h
@@ -9765,6 +9766,93 @@ src/caffe/CMakeFiles/caffe.dir/util/math_functions_cl.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/math_functions_cl.cpp
  include/caffe/proto/caffe.pb.h
+src/caffe/CMakeFiles/caffe.dir/util/opencl_kernel.cpp.o
+ ../include/caffe/util/opencl_kernel.hpp
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/__bit_reference
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/__bsd_locale_defaults.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/__bsd_locale_fallbacks.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/__config
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/__debug
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/__functional_03
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/__functional_base
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/__functional_base_03
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/__locale
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/__mutex_base
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/__nullptr
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/__string
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/__threading_support
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/__tuple
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/__undef_macros
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/algorithm
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/atomic
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/bitset
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/cassert
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/cctype
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/cerrno
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/chrono
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/climits
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/clocale
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/cstdarg
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/cstddef
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/cstdint
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/cstdio
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/cstdlib
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/cstring
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/ctime
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/ctype.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/cwchar
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/cwctype
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/errno.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/exception
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/float.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/functional
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/initializer_list
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/ios
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/iosfwd
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/iostream
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/istream
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/iterator
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/limits
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/limits.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/locale
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/locale.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/math.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/memory
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/mutex
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/new
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/ostream
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/ratio
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/sstream
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/stdexcept
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/stdint.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/stdio.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/stdlib.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/streambuf
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/string
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/string.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/string_view
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/support/android/locale_bionic.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/support/fuchsia/xlocale.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/support/ibm/limits.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/support/ibm/locale_mgmt_aix.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/support/ibm/support.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/support/ibm/xlocale.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/support/musl/xlocale.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/support/newlib/xlocale.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/support/solaris/xlocale.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/support/win32/limits_msvc_win32.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/support/win32/locale_win32.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/support/xlocale/__nop_locale_mgmt.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/support/xlocale/__posix_l_fallback.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/support/xlocale/__strtonum_fallback.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/system_error
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/tuple
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/type_traits
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/typeinfo
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/utility
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/wchar.h
+ /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/wctype.h
+ /home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/opencl_kernel.cpp
 src/caffe/CMakeFiles/caffe.dir/util/upgrade_proto.cpp.o
  ../include/caffe/common.hpp
  ../include/caffe/glog_wrapper.hpp

@@ -67,6 +67,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/io.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/util/io.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/math_functions.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/util/math_functions.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/math_functions_cl.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/util/math_functions_cl.cpp.o"
+  "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/opencl_kernel.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/util/opencl_kernel.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/upgrade_proto.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/util/upgrade_proto.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")

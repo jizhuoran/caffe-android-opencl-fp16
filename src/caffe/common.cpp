@@ -10,6 +10,8 @@
 
 #include "caffe/common.hpp"
 #include "caffe/util/rng.hpp"
+#include "caffe/util/opencl_kernel.hpp"
+
 
 #define MAX_SOURCE_SIZE (0x1000000)
 
@@ -86,31 +88,6 @@ Caffe::Caffe()
 
 
 
-  FILE *kernelFile;
-  char *kernelSource;
-  size_t kernelSize;
-
-
-#ifdef __ANDROID__
-  kernelFile = fopen("/storage/emulated/0/caffe/kernel_code.cl", "r");
-#else
-  kernelFile = fopen("/home/zrji/android_caffe/caffe-android-opencl/src/caffe/opencl/kernel_code.cl", "r");
-#endif
-  if (!kernelFile) {
-
-    LOG(ERROR) << "No file named vecAddKernel.cl was found";
-
-    exit(-1);
-
-  }
-
-
-
-  kernelSource = (char*)malloc(MAX_SOURCE_SIZE);
-  kernelSize = fread(kernelSource, 1, MAX_SOURCE_SIZE, kernelFile);
-  fclose(kernelFile);
-
-
 
   OPENCL_CHECK(clGetPlatformIDs(1, &platformId, &retNumPlatforms));
   OPENCL_CHECK(clGetDeviceIDs(platformId, CL_DEVICE_TYPE_DEFAULT, 1, &deviceID, &retNumDevices));
@@ -127,8 +104,16 @@ Caffe::Caffe()
   commandQueue = clCreateCommandQueue(context, deviceID, 0, &ret);
   OPENCL_CHECK(ret);
 
-    
-  program = clCreateProgramWithSource(context, 1, (const char **)&kernelSource, (const size_t *)&kernelSize, &ret); 
+  
+  std::string math_kernels = generate_opencl_math();
+
+  size_t kernel_size = math_kernels.size();
+
+  char* kernelSource = (char*)malloc(kernel_size);
+
+  strcpy(kernelSource, math_kernels.c_str());
+
+  program = clCreateProgramWithSource(context, 1, (const char **)&kernelSource, (const size_t *)&kernel_size, &ret); 
   OPENCL_CHECK(ret);
 
   ret = clBuildProgram(program, 1, &deviceID, NULL, NULL, NULL);
