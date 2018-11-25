@@ -82,6 +82,12 @@ void BasePrefetchingDataLayer<Dtype>::LayerSetUp(
 
 template <typename Dtype>
 void BasePrefetchingDataLayer<Dtype>::InternalThreadEntry() {
+
+  std::cout << "we come to this function" << std::endl;
+  std::cout << "we come to this function" << std::endl;
+  std::cout << "we come to this function" << std::endl;
+
+
 #ifdef USE_OPENCL
   cudaStream_t stream;
   if (Caffe::mode() == Caffe::GPU) {

@@ -159,7 +159,7 @@ function build-Android {
         rm -rf protobuf-$PB_VERSION/$BUILD_DIR/*
         cd protobuf-$PB_VERSION/$BUILD_DIR
         cmake ../cmake -DCMAKE_INSTALL_PREFIX=../../${TARGET}-protobuf \
-            -DCMAKE_TOOLCHAIN_FILE="/home/zrji/android_caffe/android-ndk-r18b/build/cmake/android.toolchain.cmake" \
+            -DCMAKE_TOOLCHAIN_FILE=$NDK_HOME/build/cmake/android.toolchain.cmake \
             -DANDROID_NDK="$NDK_HOME" \
             -DANDROID_ABI="$ANDROID_ABI" \
             -DANDROID_NATIVE_API_LEVEL="$ANDROID_NATIVE_API_LEVEL" \

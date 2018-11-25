@@ -8,7 +8,6 @@
 
 #include <iostream>
 #include "caffe/caffe.hpp"
-// #include <CL/cl.h>
 #include <stdio.h>
 #include <stdlib.h>
 

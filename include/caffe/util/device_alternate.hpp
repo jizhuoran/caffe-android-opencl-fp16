@@ -72,14 +72,14 @@ void classname<Dtype>::funcname##_##gpu(const vector<Blob<Dtype>*>& top, \
 
 #else  // Normal GPU + CPU Caffe.
 
-#include <cublas_v2.h>
-#include <cuda.h>
-#include <cuda_runtime.h>
-#include <curand.h>
-#include <driver_types.h>  // cuda driver types
-#ifdef USE_CUDNN  // cuDNN acceleration library.
-#include "caffe/util/cudnn.hpp"
-#endif
+// #include <cublas_v2.h>
+// #include <cuda.h>
+// #include <cuda_runtime.h>
+// #include <curand.h>
+// #include <driver_types.h>  // cuda driver types
+// #ifdef USE_CUDNN  // cuDNN acceleration library.
+// #include "caffe/util/cudnn.hpp"
+// #endif
 
 //
 // CUDA macros
@@ -108,10 +108,9 @@ void classname<Dtype>::funcname##_##gpu(const vector<Blob<Dtype>*>& top, \
     const vector<Blob<Dtype>*>& bottom) { funcname##_##cpu(top, propagate_down, bottom); } \
 
 
-
+/*
 // CUDA: various checks for different function calls.
 #define CUDA_CHECK(condition) \
-  /* Code block avoids redefinition of cudaError_t error */ \
   do { \
     cudaError_t error = condition; \
     CHECK_EQ(error, cudaSuccess) << " " << cudaGetErrorString(error); \
@@ -139,12 +138,12 @@ void classname<Dtype>::funcname##_##gpu(const vector<Blob<Dtype>*>& top, \
 
 // CUDA: check for error after kernel execution and exit loudly if there is one.
 #define CUDA_POST_KERNEL_CHECK CUDA_CHECK(cudaPeekAtLastError())
-
+*/
 namespace caffe {
 
 // CUDA: library error reporting.
-const char* cublasGetErrorString(cublasStatus_t error);
-const char* curandGetErrorString(curandStatus_t error);
+// const char* cublasGetErrorString(cublasStatus_t error);
+// const char* curandGetErrorString(curandStatus_t error);
 
 // CUDA: use 512 threads per block
 const size_t CAFFE_CUDA_NUM_THREADS = 512;

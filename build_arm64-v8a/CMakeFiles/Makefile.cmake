@@ -7,8 +7,6 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/home/zrji/android_caffe/android-ndk-r18b/build/cmake/android.toolchain.cmake"
-  "/home/zrji/android_caffe/android-ndk-r18b/build/cmake/platforms.cmake"
   "../CMakeLists.txt"
   "CMakeFiles/3.12.4/CMakeCCompiler.cmake"
   "CMakeFiles/3.12.4/CMakeCXXCompiler.cmake"
@@ -23,7 +21,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../cmake/Targets.cmake"
   "../cmake/Utils.cmake"
   "../src/caffe/CMakeLists.txt"
-  "../src/jni/CMakeLists.txt"
+  "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/build/cmake/android.toolchain.cmake"
+  "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/build/cmake/platforms.cmake"
   "/usr/share/cmake-3.12/Modules/CMakeCCompiler.cmake.in"
   "/usr/share/cmake-3.12/Modules/CMakeCCompilerABI.c"
   "/usr/share/cmake-3.12/Modules/CMakeCInformation.cmake"
@@ -97,13 +96,11 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/3.12.4/CMakeCXXCompiler.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/caffe/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "src/jni/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/symlink_to_build.dir/DependInfo.cmake"
-  "src/caffe/CMakeFiles/proto.dir/DependInfo.cmake"
   "src/caffe/CMakeFiles/caffe.dir/DependInfo.cmake"
-  "src/jni/CMakeFiles/caffe-jni.dir/DependInfo.cmake"
+  "src/caffe/CMakeFiles/proto.dir/DependInfo.cmake"
   )

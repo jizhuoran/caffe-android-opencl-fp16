@@ -4,7 +4,7 @@ PLATFORM=Android
 
 # Options for All
 OPENBLAS_VERSION=0.3.2
-MAKE_FLAGS="$MAKE_FLAGS -j 4"
+MAKE_FLAGS="$MAKE_FLAGS -j 40"
 BUILD_DIR=".cbuild"
 
 
@@ -102,21 +102,21 @@ function build-Android {
     if [ "${ANDROID_ABI}" = "armeabi-v7a with NEON" ]; then
         CROSS_SUFFIX=$NDK_HOME/toolchains/arm-linux-androideabi-4.9/prebuilt/${OS}-${BIT}/bin/arm-linux-androideabi-
         SYSROOT=$NDK_HOME/sysroot
-        # SYSROOT=$NDK_HOME/platforms/android-$ANDROID_NATIVE_API_LEVEL/arch-arm
+        ARCHINCLUDE="$NDK_HOME/sysroot/usr/include/arm-linux-androideabi"
         TARGET=ARMV7
         BINARY=32
         ARM_SOFTFP_ABI=1
     elif [ "${ANDROID_ABI}" = "arm64-v8a" ]; then
         CROSS_SUFFIX=$NDK_HOME/toolchains/aarch64-linux-android-4.9/prebuilt/${OS}-${BIT}/bin/aarch64-linux-android-
-        #SYSROOT=$NDK_HOME/platforms/android-$ANDROID_NATIVE_API_LEVEL/arch-arm64
-        SYSROOT=$NDK_HOME/sysroot
+        SYSROOT="$NDK_HOME/sysroot"
+        ARCHINCLUDE="$NDK_HOME/sysroot/usr/include/aarch64-linux-android"
         TARGET=ARMV8
         BINARY=64
         ARM_SOFTFP_ABI=0
     elif [ "${ANDROID_ABI}" = "armeabi" ]; then
         CROSS_SUFFIX=$NDK_HOME/toolchains/arm-linux-androideabi-4.9/prebuilt/${OS}-${BIT}/bin/arm-linux-androideabi-
         SYSROOT=$NDK_HOME/sysroot
-        # SYSROOT=$NDK_HOME/platforms/android-$ANDROID_NATIVE_API_LEVEL/arch-arm
+        ARCHINCLUDE="$NDK_HOME/sysroot/usr/include/arm-linux-androideabi"
         TARGET=ARMV5
         BINARY=32
         ARM_SOFTFP_ABI=1
@@ -125,6 +125,7 @@ function build-Android {
         echo "Error: not support OpenBLAS for ABI: ${ANDROID_ABI}"
         exit 1
     fi
+
 
     PREFIX=${ANDROID_ABI%% *}-$ANDROID_NATIVE_API_LEVEL-OpenBLAS
     mkdir -p $PREFIX
@@ -139,11 +140,10 @@ function build-Android {
             USE_THREAD=1 \
             NUM_THREAD=4 \
             CROSS_SUFFIX="$CROSS_SUFFIX" \
-            CC="${CROSS_SUFFIX}gcc --sysroot=$SYSROOT" \
+            CC="${CROSS_SUFFIX}gcc --sysroot=$SYSROOT -I${ARCHINCLUDE}" \
             HOSTCC=gcc \
             TARGET=$TARGET \
             ARM_SOFTFP_ABI=$ARM_SOFTFP_ABI \
-            # "-I/home/zrji/android_caffe/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android/" \
             BINARY=$BINARY || exit 1
         make \
             SMP=1 \

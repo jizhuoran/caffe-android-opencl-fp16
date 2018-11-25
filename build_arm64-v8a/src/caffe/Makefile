@@ -56,51 +56,16 @@ CMAKE_BINARY_DIR = /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
 
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
+.PHONY : edit_cache/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -112,17 +77,6 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -157,21 +111,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/caffe/CMakeFiles/proto.dir/rule:
-	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f CMakeFiles/Makefile2 src/caffe/CMakeFiles/proto.dir/rule
-.PHONY : src/caffe/CMakeFiles/proto.dir/rule
-
-# Convenience name for target.
-proto: src/caffe/CMakeFiles/proto.dir/rule
-
-.PHONY : proto
-
-# fast build rule for target.
-proto/fast:
-	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/proto.dir/build.make src/caffe/CMakeFiles/proto.dir/build
-.PHONY : proto/fast
-
-# Convenience name for target.
 src/caffe/CMakeFiles/caffe.dir/rule:
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f CMakeFiles/Makefile2 src/caffe/CMakeFiles/caffe.dir/rule
 .PHONY : src/caffe/CMakeFiles/caffe.dir/rule
@@ -185,6 +124,21 @@ caffe: src/caffe/CMakeFiles/caffe.dir/rule
 caffe/fast:
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/build
 .PHONY : caffe/fast
+
+# Convenience name for target.
+src/caffe/CMakeFiles/proto.dir/rule:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f CMakeFiles/Makefile2 src/caffe/CMakeFiles/proto.dir/rule
+.PHONY : src/caffe/CMakeFiles/proto.dir/rule
+
+# Convenience name for target.
+proto: src/caffe/CMakeFiles/proto.dir/rule
+
+.PHONY : proto
+
+# fast build rule for target.
+proto/fast:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/proto.dir/build.make src/caffe/CMakeFiles/proto.dir/build
+.PHONY : proto/fast
 
 __/__/include/caffe/proto/caffe.pb.o: __/__/include/caffe/proto/caffe.pb.cc.o
 
@@ -1806,6 +1760,33 @@ util/im2col.cpp.s:
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/util/im2col.cpp.s
 .PHONY : util/im2col.cpp.s
 
+util/im2col_cl.o: util/im2col_cl.cpp.o
+
+.PHONY : util/im2col_cl.o
+
+# target to build an object file
+util/im2col_cl.cpp.o:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/util/im2col_cl.cpp.o
+.PHONY : util/im2col_cl.cpp.o
+
+util/im2col_cl.i: util/im2col_cl.cpp.i
+
+.PHONY : util/im2col_cl.i
+
+# target to preprocess a source file
+util/im2col_cl.cpp.i:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/util/im2col_cl.cpp.i
+.PHONY : util/im2col_cl.cpp.i
+
+util/im2col_cl.s: util/im2col_cl.cpp.s
+
+.PHONY : util/im2col_cl.s
+
+# target to generate assembly for a file
+util/im2col_cl.cpp.s:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/util/im2col_cl.cpp.s
+.PHONY : util/im2col_cl.cpp.s
+
 util/insert_splits.o: util/insert_splits.cpp.o
 
 .PHONY : util/insert_splits.o
@@ -1974,14 +1955,10 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/strip"
-	@echo "... install/local"
-	@echo "... install"
-	@echo "... list_install_components"
-	@echo "... proto"
-	@echo "... rebuild_cache"
-	@echo "... caffe"
 	@echo "... edit_cache"
+	@echo "... caffe"
+	@echo "... rebuild_cache"
+	@echo "... proto"
 	@echo "... __/__/include/caffe/proto/caffe.pb.o"
 	@echo "... __/__/include/caffe/proto/caffe.pb.i"
 	@echo "... __/__/include/caffe/proto/caffe.pb.s"
@@ -2162,6 +2139,9 @@ help:
 	@echo "... util/im2col.o"
 	@echo "... util/im2col.i"
 	@echo "... util/im2col.s"
+	@echo "... util/im2col_cl.o"
+	@echo "... util/im2col_cl.i"
+	@echo "... util/im2col_cl.s"
 	@echo "... util/insert_splits.o"
 	@echo "... util/insert_splits.i"
 	@echo "... util/insert_splits.s"

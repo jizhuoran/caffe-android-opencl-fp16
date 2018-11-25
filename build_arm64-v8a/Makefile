@@ -56,41 +56,6 @@ CMAKE_BINARY_DIR = /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -102,27 +67,16 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
 
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -170,19 +124,6 @@ symlink_to_build/fast:
 .PHONY : symlink_to_build/fast
 
 #=============================================================================
-# Target rules for targets named proto
-
-# Build rule for target.
-proto: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 proto
-.PHONY : proto
-
-# fast build rule for target.
-proto/fast:
-	$(MAKE) -f src/caffe/CMakeFiles/proto.dir/build.make src/caffe/CMakeFiles/proto.dir/build
-.PHONY : proto/fast
-
-#=============================================================================
 # Target rules for targets named caffe
 
 # Build rule for target.
@@ -196,17 +137,17 @@ caffe/fast:
 .PHONY : caffe/fast
 
 #=============================================================================
-# Target rules for targets named caffe-jni
+# Target rules for targets named proto
 
 # Build rule for target.
-caffe-jni: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 caffe-jni
-.PHONY : caffe-jni
+proto: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 proto
+.PHONY : proto
 
 # fast build rule for target.
-caffe-jni/fast:
-	$(MAKE) -f src/jni/CMakeFiles/caffe-jni.dir/build.make src/jni/CMakeFiles/caffe-jni.dir/build
-.PHONY : caffe-jni/fast
+proto/fast:
+	$(MAKE) -f src/caffe/CMakeFiles/proto.dir/build.make src/caffe/CMakeFiles/proto.dir/build
+.PHONY : proto/fast
 
 # Help Target
 help:
@@ -214,16 +155,11 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/strip"
-	@echo "... install/local"
-	@echo "... symlink_to_build"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... install"
-	@echo "... list_install_components"
-	@echo "... proto"
+	@echo "... rebuild_cache"
+	@echo "... symlink_to_build"
 	@echo "... caffe"
-	@echo "... caffe-jni"
+	@echo "... proto"
 .PHONY : help
 
 

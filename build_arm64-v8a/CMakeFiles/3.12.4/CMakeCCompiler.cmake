@@ -1,4 +1,4 @@
-set(CMAKE_C_COMPILER "/home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang")
+set(CMAKE_C_COMPILER "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang")
 set(CMAKE_C_COMPILER_ARG1 "")
 set(CMAKE_C_COMPILER_ID "Clang")
 set(CMAKE_C_COMPILER_VERSION "7.0")
@@ -16,11 +16,11 @@ set(CMAKE_C_SIMULATE_VERSION "")
 
 
 
-set(CMAKE_AR "/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-ar")
+set(CMAKE_AR "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-ar")
 set(CMAKE_C_COMPILER_AR "CMAKE_C_COMPILER_AR-NOTFOUND")
-set(CMAKE_RANLIB "/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-ranlib")
+set(CMAKE_RANLIB "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-ranlib")
 set(CMAKE_C_COMPILER_RANLIB "CMAKE_C_COMPILER_RANLIB-NOTFOUND")
-set(CMAKE_LINKER "/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-ld")
+set(CMAKE_LINKER "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-ld")
 set(CMAKE_COMPILER_IS_GNUCC )
 set(CMAKE_C_COMPILER_LOADED 1)
 set(CMAKE_C_COMPILER_WORKS TRUE)
@@ -69,5 +69,5 @@ endif()
 
 
 set(CMAKE_C_IMPLICIT_LINK_LIBRARIES "gcc;dl;c;gcc;dl")
-set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a;/home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64;/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x;/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib64;/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib;/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib")
+set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a;/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64;/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x;/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib64;/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib;/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib")
 set(CMAKE_C_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")

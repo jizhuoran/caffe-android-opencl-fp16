@@ -71,7 +71,7 @@ CMAKE_BINARY_DIR = /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a
 CMakeFiles/symlink_to_build.dir/all:
 	$(MAKE) -f CMakeFiles/symlink_to_build.dir/build.make CMakeFiles/symlink_to_build.dir/depend
 	$(MAKE) -f CMakeFiles/symlink_to_build.dir/build.make CMakeFiles/symlink_to_build.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=73 "Built target symlink_to_build"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=71 "Built target symlink_to_build"
 .PHONY : CMakeFiles/symlink_to_build.dir/all
 
 # Build rule for subdir invocation for target.
@@ -100,14 +100,14 @@ clean: CMakeFiles/symlink_to_build.dir/clean
 # Directory level rules for directory src/caffe
 
 # Convenience name for "all" pass in the directory.
-src/caffe/all: src/caffe/CMakeFiles/proto.dir/all
 src/caffe/all: src/caffe/CMakeFiles/caffe.dir/all
+src/caffe/all: src/caffe/CMakeFiles/proto.dir/all
 
 .PHONY : src/caffe/all
 
 # Convenience name for "clean" pass in the directory.
-src/caffe/clean: src/caffe/CMakeFiles/proto.dir/clean
 src/caffe/clean: src/caffe/CMakeFiles/caffe.dir/clean
+src/caffe/clean: src/caffe/CMakeFiles/proto.dir/clean
 
 .PHONY : src/caffe/clean
 
@@ -117,13 +117,50 @@ src/caffe/preinstall:
 .PHONY : src/caffe/preinstall
 
 #=============================================================================
+# Target rules for target src/caffe/CMakeFiles/caffe.dir
+
+# All Build rule for target.
+src/caffe/CMakeFiles/caffe.dir/all: src/caffe/CMakeFiles/proto.dir/all
+	$(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/depend
+	$(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67 "Built target caffe"
+.PHONY : src/caffe/CMakeFiles/caffe.dir/all
+
+# Include target in all.
+all: src/caffe/CMakeFiles/caffe.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+src/caffe/CMakeFiles/caffe.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles 70
+	$(MAKE) -f CMakeFiles/Makefile2 src/caffe/CMakeFiles/caffe.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles 0
+.PHONY : src/caffe/CMakeFiles/caffe.dir/rule
+
+# Convenience name for target.
+caffe: src/caffe/CMakeFiles/caffe.dir/rule
+
+.PHONY : caffe
+
+# clean rule for target.
+src/caffe/CMakeFiles/caffe.dir/clean:
+	$(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/clean
+.PHONY : src/caffe/CMakeFiles/caffe.dir/clean
+
+# clean rule for target.
+clean: src/caffe/CMakeFiles/caffe.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target src/caffe/CMakeFiles/proto.dir
 
 # All Build rule for target.
 src/caffe/CMakeFiles/proto.dir/all:
 	$(MAKE) -f src/caffe/CMakeFiles/proto.dir/build.make src/caffe/CMakeFiles/proto.dir/depend
 	$(MAKE) -f src/caffe/CMakeFiles/proto.dir/build.make src/caffe/CMakeFiles/proto.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=70,71,72 "Built target proto"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=68,69,70 "Built target proto"
 .PHONY : src/caffe/CMakeFiles/proto.dir/all
 
 # Include target in all.
@@ -150,99 +187,6 @@ src/caffe/CMakeFiles/proto.dir/clean:
 
 # clean rule for target.
 clean: src/caffe/CMakeFiles/proto.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target src/caffe/CMakeFiles/caffe.dir
-
-# All Build rule for target.
-src/caffe/CMakeFiles/caffe.dir/all: src/caffe/CMakeFiles/proto.dir/all
-	$(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/depend
-	$(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66 "Built target caffe"
-.PHONY : src/caffe/CMakeFiles/caffe.dir/all
-
-# Include target in all.
-all: src/caffe/CMakeFiles/caffe.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-src/caffe/CMakeFiles/caffe.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles 69
-	$(MAKE) -f CMakeFiles/Makefile2 src/caffe/CMakeFiles/caffe.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles 0
-.PHONY : src/caffe/CMakeFiles/caffe.dir/rule
-
-# Convenience name for target.
-caffe: src/caffe/CMakeFiles/caffe.dir/rule
-
-.PHONY : caffe
-
-# clean rule for target.
-src/caffe/CMakeFiles/caffe.dir/clean:
-	$(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/clean
-.PHONY : src/caffe/CMakeFiles/caffe.dir/clean
-
-# clean rule for target.
-clean: src/caffe/CMakeFiles/caffe.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Directory level rules for directory src/jni
-
-# Convenience name for "all" pass in the directory.
-src/jni/all: src/jni/CMakeFiles/caffe-jni.dir/all
-
-.PHONY : src/jni/all
-
-# Convenience name for "clean" pass in the directory.
-src/jni/clean: src/jni/CMakeFiles/caffe-jni.dir/clean
-
-.PHONY : src/jni/clean
-
-# Convenience name for "preinstall" pass in the directory.
-src/jni/preinstall:
-
-.PHONY : src/jni/preinstall
-
-#=============================================================================
-# Target rules for target src/jni/CMakeFiles/caffe-jni.dir
-
-# All Build rule for target.
-src/jni/CMakeFiles/caffe-jni.dir/all: src/caffe/CMakeFiles/proto.dir/all
-src/jni/CMakeFiles/caffe-jni.dir/all: src/caffe/CMakeFiles/caffe.dir/all
-	$(MAKE) -f src/jni/CMakeFiles/caffe-jni.dir/build.make src/jni/CMakeFiles/caffe-jni.dir/depend
-	$(MAKE) -f src/jni/CMakeFiles/caffe-jni.dir/build.make src/jni/CMakeFiles/caffe-jni.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=67,68,69 "Built target caffe-jni"
-.PHONY : src/jni/CMakeFiles/caffe-jni.dir/all
-
-# Include target in all.
-all: src/jni/CMakeFiles/caffe-jni.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-src/jni/CMakeFiles/caffe-jni.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles 72
-	$(MAKE) -f CMakeFiles/Makefile2 src/jni/CMakeFiles/caffe-jni.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles 0
-.PHONY : src/jni/CMakeFiles/caffe-jni.dir/rule
-
-# Convenience name for target.
-caffe-jni: src/jni/CMakeFiles/caffe-jni.dir/rule
-
-.PHONY : caffe-jni
-
-# clean rule for target.
-src/jni/CMakeFiles/caffe-jni.dir/clean:
-	$(MAKE) -f src/jni/CMakeFiles/caffe-jni.dir/build.make src/jni/CMakeFiles/caffe-jni.dir/clean
-.PHONY : src/jni/CMakeFiles/caffe-jni.dir/clean
-
-# clean rule for target.
-clean: src/jni/CMakeFiles/caffe-jni.dir/clean
 
 .PHONY : clean
 

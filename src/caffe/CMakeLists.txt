@@ -13,11 +13,9 @@ caffe_default_properties(proto)
 file(GLOB_RECURSE srcs ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 
 if(ANDROID)
-
 file(GLOB_RECURSE jni-srcs ${CMAKE_CURRENT_SOURCE_DIR}/../jni/*.cpp)
 add_library(caffe SHARED ${srcs} ${jni-srcs})
 target_link_libraries(caffe proto ${Caffe_LINKER_LIBS} log)
-
 else()
 add_library(caffe STATIC ${srcs})
 target_link_libraries(caffe proto ${Caffe_LINKER_LIBS})

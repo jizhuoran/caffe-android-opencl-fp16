@@ -1,5 +1,5 @@
 #!/bin/bash
-export NDK_HOME="/home/zrji/android_caffe/android-ndk-r18b"
+export NDK_HOME="/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b"
 
 if [ ! -d "$NDK_HOME" ]; then
     echo "$(tput setaf 2)"
@@ -21,7 +21,7 @@ function build-abi {
     mkdir ../build_${ANDROID_ABI%% *}
     cd ../build_${ANDROID_ABI%% *} || exit 1
     rm -rf *
-    cmake .. -DCMAKE_TOOLCHAIN_FILE="/home/zrji/android_caffe/android-ndk-r18b/build/cmake/android.toolchain.cmake" \
+    cmake .. -DCMAKE_TOOLCHAIN_FILE=$NDK_HOME/build/cmake/android.toolchain.cmake \
         -DANDROID_NDK=$NDK_HOME \
         -DANDROID_ABI="$ANDROID_ABI" \
         -DANDROID_NATIVE_API_LEVEL=$ANDROID_NATIVE_API_LEVEL \

@@ -32,8 +32,8 @@ class Timer {
   bool running_;
   bool has_run_at_least_once_;
 #ifndef CPU_ONLY
-  cudaEvent_t start_gpu_;
-  cudaEvent_t stop_gpu_;
+  // cudaEvent_t start_gpu_;
+  // cudaEvent_t stop_gpu_;
 #endif
 #ifdef USE_BOOST
   boost::posix_time::ptime start_cpu_;

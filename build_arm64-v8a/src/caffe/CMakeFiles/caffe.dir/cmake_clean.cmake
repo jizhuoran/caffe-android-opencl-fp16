@@ -56,6 +56,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/caffe.dir/syncedmem.cpp.o"
   "CMakeFiles/caffe.dir/util/benchmark.cpp.o"
   "CMakeFiles/caffe.dir/util/im2col.cpp.o"
+  "CMakeFiles/caffe.dir/util/im2col_cl.cpp.o"
   "CMakeFiles/caffe.dir/util/insert_splits.cpp.o"
   "CMakeFiles/caffe.dir/util/io.cpp.o"
   "CMakeFiles/caffe.dir/util/math_functions.cpp.o"

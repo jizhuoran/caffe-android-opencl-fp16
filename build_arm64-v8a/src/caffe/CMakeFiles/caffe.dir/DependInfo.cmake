@@ -63,6 +63,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/syncedmem.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/syncedmem.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/benchmark.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/util/benchmark.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/im2col.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/util/im2col.cpp.o"
+  "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/im2col_cl.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/util/im2col_cl.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/insert_splits.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/util/insert_splits.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/io.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/util/io.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/math_functions.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/util/math_functions.cpp.o"
@@ -74,7 +75,7 @@ set(CMAKE_CXX_COMPILER_ID "Clang")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
-  "CPU_ONLY"
+  "FORWARD_ONLY"
   "USE_NEON_MATH"
   "USE_OPENCL"
   )
@@ -87,8 +88,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../third_party/arm64-v8a-23-OpenBLAS/include"
   "../third_party/OpenCL"
   "../third_party/arm64-v8a-23-protobuf/include"
-  "/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include"
-  "/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include"
+  "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include"
+  "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include"
   )
 
 # Targets to which this target links.
