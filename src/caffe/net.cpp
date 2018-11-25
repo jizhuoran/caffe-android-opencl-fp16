@@ -1006,7 +1006,7 @@ void Net<Dtype>::ClearParamDiffs() {
                 blob->mutable_cpu_diff());
       break;
     case Caffe::GPU:
-#ifndef CPU_ONLY
+#ifdef USE_OPENCL
       caffe_gpu_set(blob->count(), static_cast<Dtype>(0),
                     blob->mutable_gpu_diff());
 #else

@@ -133,6 +133,8 @@ void PReLULayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 
 #ifdef CPU_ONLY
 STUB_GPU(PReLULayer);
+#elif USE_OPENCL
+TEMP_GPU(PReLULayer);
 #endif
 
 INSTANTIATE_CLASS(PReLULayer);

@@ -290,6 +290,8 @@ void RecurrentLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 
 #ifdef CPU_ONLY
 STUB_GPU_FORWARD(RecurrentLayer, Forward);
+#elif USE_OPENCL
+TEMP_GPU_FORWARD(RecurrentLayer, Forward);
 #endif
 
 INSTANTIATE_CLASS(RecurrentLayer);

@@ -133,6 +133,8 @@ void ReductionLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 
 #ifdef CPU_ONLY
 STUB_GPU(ReductionLayer);
+#elif USE_OPENCL
+TEMP_GPU(ReductionLayer);
 #endif
 
 INSTANTIATE_CLASS(ReductionLayer);

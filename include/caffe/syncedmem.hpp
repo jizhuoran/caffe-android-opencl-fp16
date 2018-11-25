@@ -35,9 +35,11 @@ inline void CaffeMallocHost(void** ptr, size_t size, bool* use_cuda) {
 }
 
 inline void CaffeFreeHost(void* ptr, bool use_cuda) {
-#ifndef CPU_ONLY
+#ifdef USE_OPENCL
   if (use_cuda) {
-    CUDA_CHECK(cudaFreeHost(ptr));
+    free(ptr);
+
+    // CUDA_CHECK(cudaFreeHost(ptr));
     return;
   }
 #endif
@@ -77,9 +79,9 @@ class SyncedMemory {
   void zhihan_release();
 #endif
 
-#ifndef CPU_ONLY
-  void async_gpu_push(const cudaStream_t& stream);
-#endif
+// #ifndef CPU_ONLY
+//   void async_gpu_push(const cudaStream_t& stream);
+// #endif
 
  private:
   void check_device();

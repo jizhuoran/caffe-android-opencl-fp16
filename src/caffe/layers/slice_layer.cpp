@@ -116,6 +116,8 @@ void SliceLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 
 #ifdef CPU_ONLY
 STUB_GPU(SliceLayer);
+#elif USE_OPENCL
+TEMP_GPU(SliceLayer);
 #endif
 
 INSTANTIATE_CLASS(SliceLayer);

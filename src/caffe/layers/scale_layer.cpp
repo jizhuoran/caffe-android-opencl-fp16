@@ -219,6 +219,8 @@ void ScaleLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 
 #ifdef CPU_ONLY
 STUB_GPU(ScaleLayer);
+#elif USE_OPENCL
+TEMP_GPU(ScaleLayer);
 #endif
 
 INSTANTIATE_CLASS(ScaleLayer);

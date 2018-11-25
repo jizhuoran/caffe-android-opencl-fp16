@@ -111,6 +111,8 @@ void EmbedLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 
 #ifdef CPU_ONLY
 STUB_GPU(EmbedLayer);
+#elif USE_OPENCL
+TEMP_GPU(EmbedLayer);
 #endif
 
 INSTANTIATE_CLASS(EmbedLayer);

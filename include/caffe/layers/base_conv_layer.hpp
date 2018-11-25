@@ -158,7 +158,7 @@ class BaseConvolutionLayer : public Layer<Dtype> {
           pad_.cpu_data(), stride_.cpu_data(), dilation_.cpu_data(), data);
     }
   }
-#ifndef CPU_ONLY
+#ifdef USE_OPENCL
   inline void conv_im2col_gpu(const Dtype* data, Dtype* col_buff) {
     if (!force_nd_im2col_ && num_spatial_axes_ == 2) {
       im2col_gpu(data, conv_in_channels_,

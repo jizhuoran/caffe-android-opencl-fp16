@@ -126,6 +126,8 @@ void MVNLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 
 #ifdef CPU_ONLY
 STUB_GPU(MVNLayer);
+#elif USE_OPENCL
+TEMP_GPU(MVNLayer);
 #endif
 
 INSTANTIATE_CLASS(MVNLayer);

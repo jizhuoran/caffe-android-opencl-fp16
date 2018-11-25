@@ -237,7 +237,7 @@ int main(int argc, char** argv) {
     caffe::CPUTimer timer;
     
     // Caffe::mode() = Caffe::GPU;
-    // caffe::Caffe::Get().set_mode(caffe::Caffe::GPU);
+    caffe::Caffe::Get().set_mode(caffe::Caffe::GPU);
     
     timer.Start();
     // NSString *modle_path = @"style.protobin"; //FilePathForResourceName(@"style", @"protobin");

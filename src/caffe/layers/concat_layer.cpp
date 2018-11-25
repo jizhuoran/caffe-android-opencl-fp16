@@ -96,6 +96,8 @@ void ConcatLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 
 #ifdef CPU_ONLY
 STUB_GPU(ConcatLayer);
+#elif USE_OPENCL
+TEMP_GPU(ConcatLayer);
 #endif
 
 INSTANTIATE_CLASS(ConcatLayer);

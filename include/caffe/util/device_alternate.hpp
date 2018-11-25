@@ -85,6 +85,29 @@ void classname<Dtype>::funcname##_##gpu(const vector<Blob<Dtype>*>& top, \
 // CUDA macros
 //
 
+#define NOT_IMPLEMENT LOG(FATAL) << "This function has not been implemented yet!"
+
+#define TEMP_GPU(classname) \
+template <typename Dtype> \
+void classname<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom, \
+    const vector<Blob<Dtype>*>& top) { Forward_cpu(bottom, top); } \
+template <typename Dtype> \
+void classname<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top, \
+    const vector<bool>& propagate_down, \
+    const vector<Blob<Dtype>*>& bottom) { Backward_cpu(top, propagate_down, bottom); } \
+
+#define TEMP_GPU_FORWARD(classname, funcname) \
+template <typename Dtype> \
+void classname<Dtype>::funcname##_##gpu(const vector<Blob<Dtype>*>& bottom, \
+    const vector<Blob<Dtype>*>& top) { funcname##_##cpu(bottom, top); } \
+
+#define TEMP_GPU_BACKWARD(classname, funcname) \
+template <typename Dtype> \
+void classname<Dtype>::funcname##_##gpu(const vector<Blob<Dtype>*>& top, \
+    const vector<bool>& propagate_down, \
+    const vector<Blob<Dtype>*>& bottom) { funcname##_##cpu(top, propagate_down, bottom); } \
+
+
 
 // CUDA: various checks for different function calls.
 #define CUDA_CHECK(condition) \
@@ -124,7 +147,7 @@ const char* cublasGetErrorString(cublasStatus_t error);
 const char* curandGetErrorString(curandStatus_t error);
 
 // CUDA: use 512 threads per block
-const int CAFFE_CUDA_NUM_THREADS = 512;
+const size_t CAFFE_CUDA_NUM_THREADS = 512;
 
 // CUDA: number of blocks for threads.
 inline int CAFFE_GET_BLOCKS(const int N) {

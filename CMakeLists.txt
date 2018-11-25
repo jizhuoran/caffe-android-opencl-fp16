@@ -10,10 +10,11 @@ set(CAFFE_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${CAFFE_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-add_definitions(-DCPU_ONLY)
+#add_definitions(-DCPU_ONLY)
 add_definitions(-DUSE_OPENCL)
 #add_definitions(-DFORWARD_LESS_MEM)
 add_definitions(-DUSE_NEON_MATH)
+add_definitions(-DFORWARD_ONLY)
 
 include(./cmake/Utils.cmake)
 include(./cmake/Misc.cmake)
