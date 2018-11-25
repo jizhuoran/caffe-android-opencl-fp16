@@ -21,7 +21,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../src"
   "include"
   "../third_party/arm64-v8a-23-OpenBLAS/include"
-  "/home/zrji/android_caffe/huawei_opencl"
+  "../third_party/OpenCL"
   "../third_party/arm64-v8a-23-protobuf/include"
   "/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include"
   "/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include"

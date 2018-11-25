@@ -19,6 +19,9 @@ src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_jni.cpp.o
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
  ../include/caffe/util/upgrade_proto.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -162,9 +165,6 @@ src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_jni.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/jni/caffe_jni.cpp
  /home/zrji/android_caffe/caffe-android-opencl/src/jni/caffe_mobile.hpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_mobile.cpp.o
  ../include/caffe/blob.hpp
@@ -184,6 +184,9 @@ src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_mobile.cpp.o
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
  ../include/caffe/util/upgrade_proto.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -327,9 +330,6 @@ src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_mobile.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/jni/caffe_mobile.cpp
  /home/zrji/android_caffe/caffe-android-opencl/src/jni/caffe_mobile.hpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/blob.cpp.o
  ../include/caffe/blob.hpp
@@ -340,6 +340,9 @@ src/caffe/CMakeFiles/caffe.dir/blob.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -478,9 +481,6 @@ src/caffe/CMakeFiles/caffe.dir/blob.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/blob.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/common.cpp.o
  ../include/caffe/common.hpp
@@ -488,6 +488,9 @@ src/caffe/CMakeFiles/caffe.dir/common.cpp.o
  ../include/caffe/util/cudnn.hpp
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/rng.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arenastring.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/extension_set.h
@@ -623,9 +626,6 @@ src/caffe/CMakeFiles/caffe.dir/common.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/common.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/data_transformer.cpp.o
  ../include/caffe/blob.hpp
@@ -640,6 +640,9 @@ src/caffe/CMakeFiles/caffe.dir/data_transformer.cpp.o
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
  ../include/caffe/util/rng.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -784,9 +787,6 @@ src/caffe/CMakeFiles/caffe.dir/data_transformer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/data_transformer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layer.cpp.o
  ../include/caffe/blob.hpp
@@ -799,6 +799,9 @@ src/caffe/CMakeFiles/caffe.dir/layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -937,9 +940,6 @@ src/caffe/CMakeFiles/caffe.dir/layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layer_factory.cpp.o
  ../include/caffe/blob.hpp
@@ -966,6 +966,9 @@ src/caffe/CMakeFiles/caffe.dir/layer_factory.cpp.o
  ../include/caffe/util/im2col.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -1105,9 +1108,6 @@ src/caffe/CMakeFiles/caffe.dir/layer_factory.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layer_factory.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/absval_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -1122,6 +1122,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/absval_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -1260,9 +1263,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/absval_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/absval_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/argmax_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -1276,6 +1276,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/argmax_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -1414,9 +1417,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/argmax_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/argmax_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/base_conv_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -1432,6 +1432,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/base_conv_layer.cpp.o
  ../include/caffe/util/im2col.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -1571,9 +1574,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/base_conv_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/base_conv_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/base_data_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -1589,6 +1589,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/base_data_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -1729,9 +1732,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/base_data_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/base_data_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/batch_norm_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -1745,6 +1745,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/batch_norm_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -1883,9 +1886,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/batch_norm_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/batch_norm_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/batch_reindex_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -1899,6 +1899,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/batch_reindex_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -2037,9 +2040,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/batch_reindex_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/batch_reindex_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/bias_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -2054,6 +2054,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/bias_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -2192,9 +2195,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/bias_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/bias_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/bnll_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -2209,6 +2209,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/bnll_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -2347,9 +2350,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/bnll_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/bnll_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/concat_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -2363,6 +2363,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/concat_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -2501,9 +2504,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/concat_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/concat_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/conv_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -2519,6 +2519,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/conv_layer.cpp.o
  ../include/caffe/util/im2col.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -2658,9 +2661,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/conv_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/conv_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/crop_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -2675,6 +2675,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/crop_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -2813,9 +2816,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/crop_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/crop_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/deconv_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -2831,6 +2831,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/deconv_layer.cpp.o
  ../include/caffe/util/im2col.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -2970,9 +2973,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/deconv_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/deconv_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/dropout_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -2987,6 +2987,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/dropout_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -3125,9 +3128,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/dropout_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/dropout_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/dummy_data_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -3142,6 +3142,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/dummy_data_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -3280,9 +3283,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/dummy_data_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/dummy_data_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/eltwise_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -3296,6 +3296,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/eltwise_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -3435,9 +3438,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/eltwise_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/eltwise_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/elu_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -3452,6 +3452,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/elu_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -3590,9 +3593,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/elu_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/elu_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/embed_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -3607,6 +3607,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/embed_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -3745,9 +3748,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/embed_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/embed_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/exp_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -3762,6 +3762,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/exp_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -3900,9 +3903,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/exp_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/exp_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/filter_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -3916,6 +3916,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/filter_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -4054,9 +4057,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/filter_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/filter_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/flatten_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -4070,6 +4070,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/flatten_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -4208,9 +4211,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/flatten_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/flatten_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/im2col_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -4225,6 +4225,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/im2col_layer.cpp.o
  ../include/caffe/util/im2col.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -4363,9 +4366,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/im2col_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/im2col_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/inner_product_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -4380,6 +4380,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/inner_product_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -4518,9 +4521,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/inner_product_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/inner_product_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/input_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -4534,6 +4534,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/input_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -4672,9 +4675,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/input_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/input_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/log_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -4689,6 +4689,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/log_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -4827,9 +4830,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/log_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/log_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/lrn_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -4848,6 +4848,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/lrn_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -4986,9 +4989,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/lrn_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/lrn_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/lstm_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -5006,6 +5006,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/lstm_layer.cpp.o
  ../include/caffe/util/format.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -5145,9 +5148,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/lstm_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/lstm_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/memory_data_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -5164,6 +5164,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/memory_data_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -5304,9 +5307,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/memory_data_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/memory_data_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/mvn_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -5320,6 +5320,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/mvn_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -5458,9 +5461,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/mvn_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/mvn_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/neuron_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -5474,6 +5474,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/neuron_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -5612,9 +5615,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/neuron_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/neuron_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/parameter_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -5628,6 +5628,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/parameter_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -5766,9 +5769,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/parameter_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/parameter_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/pooling_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -5782,6 +5782,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/pooling_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -5921,9 +5924,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/pooling_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/pooling_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/power_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -5938,6 +5938,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/power_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -6076,9 +6079,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/power_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/power_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/prelu_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -6094,6 +6094,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/prelu_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -6232,9 +6235,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/prelu_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/prelu_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/recurrent_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -6251,6 +6251,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/recurrent_layer.cpp.o
  ../include/caffe/util/format.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -6390,9 +6393,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/recurrent_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/recurrent_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/reduction_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -6406,6 +6406,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/reduction_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -6544,9 +6547,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/reduction_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/reduction_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/relu_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -6561,6 +6561,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/relu_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -6699,9 +6702,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/relu_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/relu_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/reshape_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -6715,6 +6715,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/reshape_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -6853,9 +6856,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/reshape_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/reshape_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/rnn_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -6873,6 +6873,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/rnn_layer.cpp.o
  ../include/caffe/util/format.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -7012,9 +7015,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/rnn_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/rnn_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/scale_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -7030,6 +7030,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/scale_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -7168,9 +7171,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/scale_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/scale_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/sigmoid_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -7185,6 +7185,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/sigmoid_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -7323,9 +7326,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/sigmoid_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/sigmoid_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/silence_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -7339,6 +7339,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/silence_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -7477,9 +7480,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/silence_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/silence_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/slice_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -7493,6 +7493,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/slice_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -7631,9 +7634,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/slice_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/slice_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/softmax_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -7647,6 +7647,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/softmax_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -7785,9 +7788,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/softmax_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/softmax_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/split_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -7801,6 +7801,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/split_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -7939,9 +7942,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/split_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/split_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/spp_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -7959,6 +7959,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/spp_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -8097,9 +8100,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/spp_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/spp_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/tanh_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -8114,6 +8114,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/tanh_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -8252,9 +8255,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/tanh_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/tanh_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/threshold_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -8269,6 +8269,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/threshold_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -8407,9 +8410,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/threshold_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/threshold_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/layers/tile_layer.cpp.o
  ../include/caffe/blob.hpp
@@ -8423,6 +8423,9 @@ src/caffe/CMakeFiles/caffe.dir/layers/tile_layer.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -8561,9 +8564,6 @@ src/caffe/CMakeFiles/caffe.dir/layers/tile_layer.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/tile_layer.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/net.cpp.o
  ../include/caffe/blob.hpp
@@ -8579,6 +8579,9 @@ src/caffe/CMakeFiles/caffe.dir/net.cpp.o
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
  ../include/caffe/util/upgrade_proto.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -8717,9 +8720,6 @@ src/caffe/CMakeFiles/caffe.dir/net.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/net.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/syncedmem.cpp.o
  ../include/caffe/common.hpp
@@ -8729,6 +8729,9 @@ src/caffe/CMakeFiles/caffe.dir/syncedmem.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -8867,9 +8870,6 @@ src/caffe/CMakeFiles/caffe.dir/syncedmem.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/syncedmem.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/util/benchmark.cpp.o
  ../include/caffe/common.hpp
@@ -8877,6 +8877,9 @@ src/caffe/CMakeFiles/caffe.dir/util/benchmark.cpp.o
  ../include/caffe/util/benchmark.hpp
  ../include/caffe/util/cudnn.hpp
  ../include/caffe/util/device_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arenastring.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/extension_set.h
@@ -9010,9 +9013,6 @@ src/caffe/CMakeFiles/caffe.dir/util/benchmark.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/benchmark.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/util/im2col.cpp.o
  ../include/caffe/common.hpp
@@ -9022,6 +9022,9 @@ src/caffe/CMakeFiles/caffe.dir/util/im2col.cpp.o
  ../include/caffe/util/im2col.hpp
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -9160,9 +9163,6 @@ src/caffe/CMakeFiles/caffe.dir/util/im2col.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/im2col.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/util/insert_splits.cpp.o
  ../include/caffe/common.hpp
@@ -9170,6 +9170,9 @@ src/caffe/CMakeFiles/caffe.dir/util/insert_splits.cpp.o
  ../include/caffe/util/cudnn.hpp
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/insert_splits.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arenastring.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/extension_set.h
@@ -9303,9 +9306,6 @@ src/caffe/CMakeFiles/caffe.dir/util/insert_splits.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/insert_splits.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/util/io.cpp.o
  ../include/caffe/common.hpp
@@ -9314,6 +9314,9 @@ src/caffe/CMakeFiles/caffe.dir/util/io.cpp.o
  ../include/caffe/util/device_alternate.hpp
  ../include/caffe/util/format.hpp
  ../include/caffe/util/io.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arenastring.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/descriptor.h
@@ -9457,9 +9460,6 @@ src/caffe/CMakeFiles/caffe.dir/util/io.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/io.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/util/math_functions.cpp.o
  ../include/caffe/common.hpp
@@ -9469,6 +9469,9 @@ src/caffe/CMakeFiles/caffe.dir/util/math_functions.cpp.o
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
  ../include/caffe/util/rng.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -9609,9 +9612,6 @@ src/caffe/CMakeFiles/caffe.dir/util/math_functions.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/math_functions.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/util/math_functions_cl.cpp.o
  ../include/caffe/common.hpp
@@ -9621,6 +9621,9 @@ src/caffe/CMakeFiles/caffe.dir/util/math_functions_cl.cpp.o
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
  ../include/caffe/util/rng.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -9761,9 +9764,6 @@ src/caffe/CMakeFiles/caffe.dir/util/math_functions_cl.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/math_functions_cl.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/caffe/CMakeFiles/caffe.dir/util/upgrade_proto.cpp.o
  ../include/caffe/common.hpp
@@ -9773,6 +9773,9 @@ src/caffe/CMakeFiles/caffe.dir/util/upgrade_proto.cpp.o
  ../include/caffe/util/format.hpp
  ../include/caffe/util/io.hpp
  ../include/caffe/util/upgrade_proto.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arenastring.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/descriptor.h
@@ -9916,7 +9919,4 @@ src/caffe/CMakeFiles/caffe.dir/util/upgrade_proto.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/__cxxabi_config.h
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/upgrade_proto.cpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h

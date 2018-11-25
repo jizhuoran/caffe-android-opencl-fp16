@@ -504,7 +504,7 @@ std::string DeconvolutionLayer<Dtype>::generate_fw_kernels(std::string name) {
   ss << "for (int wn=0; wn<WPTN; ++wn) {" << std::endl;
   ss << "int globalCol = offN + tidn + wn * RTSN;" << std::endl;
 
-    // ss << "if (globalRow < M && globalCol < N) {" << std::endl;
+    ss << "if (globalRow < M && globalCol < N) {" << std::endl;
     ss << "Cptr[globalRow * N + globalCol] = ";
     if (this->bias_term_) {
       ss << "((Dtype*)(&(Creg[wm][wn/VWN])))[wn%VWN]"
@@ -512,7 +512,7 @@ std::string DeconvolutionLayer<Dtype>::generate_fw_kernels(std::string name) {
     } else {
       ss << "((Dtype*)(&(Creg[wm][wn/VWN])))[wn%VWN];" << std::endl;
     }
-    // ss << "}" << std::endl;
+    ss << "}" << std::endl;
   
 
 

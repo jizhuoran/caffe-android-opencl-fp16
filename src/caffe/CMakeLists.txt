@@ -7,20 +7,10 @@ add_library(proto STATIC ${proto_hdrs} ${proto_srcs} ${proto_python})
 set(Caffe_LINKER_LIBS proto ${Caffe_LINKER_LIBS}) # note, crucial to prepend!
 caffe_default_properties(proto)
 
-message(INFO, "Caffe_LINKER_LIBS")
-message(INFO, "Caffe_LINKER_LIBS")
-message(INFO, "Caffe_LINKER_LIBS")
-message(INFO, ${Caffe_LINKER_LIBS})
-message(INFO, "Caffe_LINKER_LIBS")
-message(INFO, "Caffe_LINKER_LIBS")
-message(INFO, "Caffe_LINKER_LIBS")
-message(INFO, "Caffe_LINKER_LIBS")
-
 # --[ Caffe library
 
 
 file(GLOB_RECURSE srcs ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
-
 
 if(ANDROID)
 

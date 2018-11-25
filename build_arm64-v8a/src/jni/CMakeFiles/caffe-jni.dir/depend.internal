@@ -19,6 +19,9 @@ src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
  ../include/caffe/util/upgrade_proto.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -162,9 +165,6 @@ src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/jni/caffe_jni.cpp
  /home/zrji/android_caffe/caffe-android-opencl/src/jni/caffe_mobile.hpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h
 src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o
  ../include/caffe/blob.hpp
@@ -184,6 +184,9 @@ src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o
  ../include/caffe/util/math_functions.hpp
  ../include/caffe/util/mkl_alternate.hpp
  ../include/caffe/util/upgrade_proto.hpp
+ ../third_party/OpenCL/CL/cl.h
+ ../third_party/OpenCL/CL/cl_platform.h
+ ../third_party/OpenCL/CL/cl_version.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
  ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
  ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -327,7 +330,4 @@ src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o
  /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
  /home/zrji/android_caffe/caffe-android-opencl/src/jni/caffe_mobile.cpp
  /home/zrji/android_caffe/caffe-android-opencl/src/jni/caffe_mobile.hpp
- /home/zrji/android_caffe/huawei_opencl/CL/cl.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
- /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
  include/caffe/proto/caffe.pb.h

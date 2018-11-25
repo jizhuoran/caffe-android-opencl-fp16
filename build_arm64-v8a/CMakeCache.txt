@@ -273,7 +273,7 @@ USE_PROJECT_FOLDERS:BOOL=OFF
 caffe-jni_LIB_DEPENDS:STATIC=general;-Wl,-force_load;general;caffe;general;log;
 
 //Dependencies for the target
-caffe_LIB_DEPENDS:STATIC=general;proto;general;proto;general;/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-23-protobuf/lib/libprotobuf.a;general;/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-23-OpenBLAS/lib/libopenblas.a;general;/home/zrji/android_caffe/huawei_opencl/libOpenCL.so;general;log;
+caffe_LIB_DEPENDS:STATIC=general;proto;general;proto;general;/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-23-protobuf/lib/libprotobuf.a;general;/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-23-OpenBLAS/lib/libopenblas.a;general;/home/zrji/android_caffe/caffe-android-opencl/third_party/OpenCL/libOpenCL.so;general;log;
 
 
 ########################

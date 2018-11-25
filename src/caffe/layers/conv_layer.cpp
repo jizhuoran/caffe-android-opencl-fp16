@@ -479,7 +479,7 @@ std::string ConvolutionLayer<Dtype>::generate_fw_kernels(std::string name) {
   ss << "for (int wn=0; wn<WPTN; ++wn) {" << std::endl;
   ss << "int globalCol = offN + tidn + wn * RTSN;"
      << std::endl;
-  // ss << "if (globalRow < M && globalCol < N) {" << std::endl;
+  ss << "if (globalRow < M && globalCol < N) {" << std::endl;
   // ss << "if (wn * RTSN < N) " << std::endl;
   if (this->bias_term_) {
     ss << "Cptr[globalRow * N + globalCol] = "
@@ -489,7 +489,7 @@ std::string ConvolutionLayer<Dtype>::generate_fw_kernels(std::string name) {
     ss << "Cptr[globalRow * N + globalCol] = "
        << "((Dtype*)(&(Creg[wm][wn/VWN])))[wn%VWN];" << std::endl;
   }
-  // ss << "}" << std::endl;   // M-N-Guard
+  ss << "}" << std::endl;   // M-N-Guard
   ss << "}" << std::endl;   // For (N)
   ss << "}" << std::endl;   // For (M)
   ss << "}" << std::endl;   // Scoping for C registers

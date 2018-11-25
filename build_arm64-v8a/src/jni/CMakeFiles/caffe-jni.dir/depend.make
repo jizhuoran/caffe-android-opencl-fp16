@@ -18,6 +18,9 @@ src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o: ../include/caffe/util/io.hpp
 src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o: ../include/caffe/util/math_functions.hpp
 src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o: ../include/caffe/util/mkl_alternate.hpp
 src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o: ../include/caffe/util/upgrade_proto.hpp
+src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o: ../third_party/OpenCL/CL/cl.h
+src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o: ../third_party/OpenCL/CL/cl_platform.h
+src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o: ../third_party/OpenCL/CL/cl_version.h
 src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o: ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
 src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o: ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
 src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o: ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -161,9 +164,6 @@ src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o: /home/zrji/android_caffe/andro
 src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o: /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
 src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o: ../src/jni/caffe_jni.cpp
 src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o: ../src/jni/caffe_mobile.hpp
-src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o: /home/zrji/android_caffe/huawei_opencl/CL/cl.h
-src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o: /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
-src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o: /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
 src/jni/CMakeFiles/caffe-jni.dir/caffe_jni.cpp.o: include/caffe/proto/caffe.pb.h
 
 src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: ../include/caffe/blob.hpp
@@ -183,6 +183,9 @@ src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: ../include/caffe/util/io.hp
 src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: ../include/caffe/util/math_functions.hpp
 src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: ../include/caffe/util/mkl_alternate.hpp
 src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: ../include/caffe/util/upgrade_proto.hpp
+src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: ../third_party/OpenCL/CL/cl.h
+src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: ../third_party/OpenCL/CL/cl_platform.h
+src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: ../third_party/OpenCL/CL/cl_version.h
 src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: ../third_party/arm64-v8a-23-OpenBLAS/include/cblas.h
 src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: ../third_party/arm64-v8a-23-OpenBLAS/include/openblas_config.h
 src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: ../third_party/arm64-v8a-23-protobuf/include/google/protobuf/arena.h
@@ -326,8 +329,5 @@ src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: /home/zrji/android_caffe/an
 src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: /home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include/cxxabi.h
 src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: ../src/jni/caffe_mobile.cpp
 src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: ../src/jni/caffe_mobile.hpp
-src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: /home/zrji/android_caffe/huawei_opencl/CL/cl.h
-src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: /home/zrji/android_caffe/huawei_opencl/CL/cl_platform.h
-src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: /home/zrji/android_caffe/huawei_opencl/CL/cl_version.h
 src/jni/CMakeFiles/caffe-jni.dir/caffe_mobile.cpp.o: include/caffe/proto/caffe.pb.h
 
