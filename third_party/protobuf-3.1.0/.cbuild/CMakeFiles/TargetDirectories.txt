@@ -1,0 +1,10 @@
+/home/zrji/android_caffe/caffe-android-opencl/third_party/protobuf-3.1.0/.cbuild/CMakeFiles/install/strip.dir
+/home/zrji/android_caffe/caffe-android-opencl/third_party/protobuf-3.1.0/.cbuild/CMakeFiles/install/local.dir
+/home/zrji/android_caffe/caffe-android-opencl/third_party/protobuf-3.1.0/.cbuild/CMakeFiles/install.dir
+/home/zrji/android_caffe/caffe-android-opencl/third_party/protobuf-3.1.0/.cbuild/CMakeFiles/list_install_components.dir
+/home/zrji/android_caffe/caffe-android-opencl/third_party/protobuf-3.1.0/.cbuild/CMakeFiles/rebuild_cache.dir
+/home/zrji/android_caffe/caffe-android-opencl/third_party/protobuf-3.1.0/.cbuild/CMakeFiles/edit_cache.dir
+/home/zrji/android_caffe/caffe-android-opencl/third_party/protobuf-3.1.0/.cbuild/CMakeFiles/libprotobuf-lite.dir
+/home/zrji/android_caffe/caffe-android-opencl/third_party/protobuf-3.1.0/.cbuild/CMakeFiles/libprotoc.dir
+/home/zrji/android_caffe/caffe-android-opencl/third_party/protobuf-3.1.0/.cbuild/CMakeFiles/libprotobuf.dir
+/home/zrji/android_caffe/caffe-android-opencl/third_party/protobuf-3.1.0/.cbuild/CMakeFiles/protoc.dir
