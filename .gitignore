@@ -73,6 +73,7 @@ models/*
 
 # build, distribute, and bins (+ python proto bindings)
 build
+build_arm64-v8a
 .build_debug/*
 .build_release/*
 distribute/*
