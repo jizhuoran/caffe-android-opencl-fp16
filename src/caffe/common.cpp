@@ -35,8 +35,6 @@ static Caffe *thread_instance_ = NULL;
 
 Caffe& Caffe::Get() {
 
-  LOG(INFO) << "we are going to get" << thread_instance_;
-
 #ifdef USE_BOOST
   if (!thread_instance_.get()) {
     thread_instance_.reset(new Caffe());

@@ -71,22 +71,29 @@ inline void SyncedMemory::to_cpu() {
   check_device();
   switch (head_) {
   case UNINITIALIZED:
-    CaffeMallocHost(&cpu_ptr_, size_, &cpu_malloc_use_cuda_);
+    CaffeMallocHost(&cpu_ptr_, size_, &cpu_malloc_use_cuda_, &gpu_ptr_);
     caffe_memset(size_, 0, cpu_ptr_);
     head_ = HEAD_AT_CPU;
     own_cpu_data_ = true;
     break;
   case HEAD_AT_GPU:
 #ifdef USE_OPENCL
+
+#ifdef ZERO_COPY
+    cpu_ptr_ = clEnqueueMapBuffer(Caffe::Get().commandQueue, gpu_ptr_, CL_TRUE, CL_MAP_READ | CL_MAP_WRITE, 0, size_, 0, NULL, NULL, &ret);
+    OPENCL_CHECK(ret);
+    head_ = HEAD_AT_CPU;
+#else  
     if (cpu_ptr_ == NULL) {
-      CaffeMallocHost(&cpu_ptr_, size_, &cpu_malloc_use_cuda_);
+      CaffeMallocHost(&cpu_ptr_, size_, &cpu_malloc_use_cuda_, &gpu_ptr_);
       own_cpu_data_ = true;
     }
     
     OPENCL_CHECK(clEnqueueReadBuffer(Caffe::Get().commandQueue, gpu_ptr_, CL_TRUE, 0, size_, cpu_ptr_, 0, NULL, NULL));
+    head_ = SYNCED;
+#endif
 
     // caffe_gpu_memcpy(size_, gpu_ptr_, cpu_ptr_);
-    head_ = SYNCED;
 #else
     NO_GPU;
 #endif
@@ -100,31 +107,16 @@ inline void SyncedMemory::to_cpu() {
 inline void SyncedMemory::to_gpu() {
   check_device();
 
-// #ifndef CPU_ONLY
 #ifdef USE_OPENCL
-
-  /*std::cout << "memory come to" << head_ << std::endl;
-
-  std::cout << "------------------"<< std::endl;
-  std::cout << "------------------"<< std::endl;
-  std::cout << "------------------"<< std::endl;
-  std::cout << "------------------"<< std::endl;
-
-  to_print_callstack();
-  std::cout << "------------------"<< std::endl;
-  std::cout << "------------------"<< std::endl;
-  std::cout << "------------------"<< std::endl;
-  std::cout << "------------------"<< std::endl;
-  std::cout << "------------------"<< std::endl;
-
-
-    float* tmp = (float*)malloc(size_);*/
-
 
   switch (head_) {
   case UNINITIALIZED:
-    
+
+#ifdef ZERO_COPY
+    gpu_ptr_ = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE| CL_MEM_ALLOC_HOST_PTR, size_, NULL, NULL);
+#else
     gpu_ptr_ = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, size_, NULL, NULL);
+#endif    
     caffe_gpu_memset(size_, 0, (void *)gpu_ptr_);
     head_ = HEAD_AT_GPU;
     own_gpu_data_ = true;
@@ -132,30 +124,22 @@ inline void SyncedMemory::to_gpu() {
 
   case HEAD_AT_CPU:
 
-    // std::cout << "HEAD_AT_CPU is " << head_ << std::endl;
+#ifdef ZERO_COPY
 
+    OPENCL_CHECK(clEnqueueUnmapMemObject(Caffe::Get().commandQueue, gpu_ptr_, cpu_ptr_, 0, NULL, NULL));
+    head_ = HEAD_AT_GPU;
 
+#else
     if (gpu_ptr_ == NULL) {
       gpu_ptr_ = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, size_, NULL, NULL);
       own_gpu_data_ = true;
     }
     
-    // std::cout << "very very interesting, the size is is " << size_ << std::endl;
-
-
-
     OPENCL_CHECK(clEnqueueWriteBuffer(Caffe::Get().commandQueue, gpu_ptr_, CL_TRUE, 0, size_, cpu_ptr_, 0, NULL, NULL));
-    // caffe_gpu_memcpy(size_, cpu_ptr_, (void *)gpu_ptr_);
-    
-
-    // clEnqueueReadBuffer(Caffe::Get().commandQueue, gpu_ptr_, CL_TRUE, 0, size_, tmp, 0, NULL, NULL);
-
-    // for (int i = 0; i < 100; ++i) {
-    //   std::cout << tmp[i] << " ";
-    // }
-
 
     head_ = SYNCED;
+#endif
+
     break;
   case HEAD_AT_GPU:
   case SYNCED:
