@@ -24,15 +24,16 @@ Optimized (for memory usage, speed and enegry efficiency) Caffe with OpenCL supp
  - [x] Deconvolution Layer (libdnn)
  - [x] ReLU Layer
  - [ ] Matrix Multiplication
+ - [ ] Others
  
 
 # For Android
 
 **The project is test on:**. 
 
-1. Snapdragon 835 development board
-2. HUAWEI P9
-3. Hikey 970 (Waitting the device)
+- [x] Snapdragon 820 development board
+- [x] HUAWEI P9
+- [ ] Hikey 970 (Waitting the device)
 
 
 ## Build libcaffe.so
