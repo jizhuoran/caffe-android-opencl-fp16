@@ -33,9 +33,9 @@ Java_com_example_gsq_caffe_1android_1project_CaffeMobile_loadModel(JNIEnv *env, 
     const char *modelPath = env->GetStringUTFChars(modelPath_, 0);
     const char *weightPath = env->GetStringUTFChars(weightPath_, 0);
 
-
-    net_ = new caffe::Net<float>(modelPath, caffe::TEST);
-    net_->CopyTrainedLayersFrom(weightPath);
+    if (caffe::CaffeMobile::get(modelPath, weightPath) == NULL) {
+        ret = false;
+    }
 
     env->ReleaseStringUTFChars(modelPath_, modelPath);
     env->ReleaseStringUTFChars(weightPath_, weightPath);

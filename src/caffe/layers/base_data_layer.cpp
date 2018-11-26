@@ -64,7 +64,7 @@ void BasePrefetchingDataLayer<Dtype>::LayerSetUp(
       prefetch_[i]->label_.mutable_cpu_data();
     }
   }
-#ifndef CPU_ONLY
+#ifdef USE_OPENCL
   if (Caffe::mode() == Caffe::GPU) {
     for (int i = 0; i < prefetch_.size(); ++i) {
       prefetch_[i]->data_.mutable_gpu_data();
@@ -82,7 +82,13 @@ void BasePrefetchingDataLayer<Dtype>::LayerSetUp(
 
 template <typename Dtype>
 void BasePrefetchingDataLayer<Dtype>::InternalThreadEntry() {
-#ifndef CPU_ONLY
+
+  std::cout << "we come to this function" << std::endl;
+  std::cout << "we come to this function" << std::endl;
+  std::cout << "we come to this function" << std::endl;
+
+
+#ifdef USE_OPENCL
   cudaStream_t stream;
   if (Caffe::mode() == Caffe::GPU) {
     CUDA_CHECK(cudaStreamCreateWithFlags(&stream, cudaStreamNonBlocking));
@@ -93,7 +99,7 @@ void BasePrefetchingDataLayer<Dtype>::InternalThreadEntry() {
     while (!must_stop()) {
       Batch<Dtype>* batch = prefetch_free_.pop();
       load_batch(batch);
-#ifndef CPU_ONLY
+#ifdef USE_OPENCL
       if (Caffe::mode() == Caffe::GPU) {
         batch->data_.data().get()->async_gpu_push(stream);
         if (this->output_labels_) {
@@ -107,7 +113,7 @@ void BasePrefetchingDataLayer<Dtype>::InternalThreadEntry() {
   } catch (boost::thread_interrupted&) {
     // Interrupted exception is expected on shutdown
   }
-#ifndef CPU_ONLY
+#ifdef USE_OPENCL
   if (Caffe::mode() == Caffe::GPU) {
     CUDA_CHECK(cudaStreamDestroy(stream));
   }

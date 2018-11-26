@@ -141,22 +141,34 @@ void caffe_add_scalar(const int N, const double alpha, double* Y) {
 template <typename Dtype>
 void caffe_copy(const int N, const Dtype* X, Dtype* Y) {
   if (X != Y) {
-    if (Caffe::mode() == Caffe::GPU) {
-#ifndef CPU_ONLY
-      // NOLINT_NEXT_LINE(caffe/alt_fn)
-      CUDA_CHECK(cudaMemcpy(Y, X, sizeof(Dtype) * N, cudaMemcpyDefault));
-#else
-      NO_GPU;
-#endif
-    } else {
-      memcpy(Y, X, sizeof(Dtype) * N);  // NOLINT(caffe/alt_fn)
-    }
+    //Different with CAFFE
+    
+    memcpy(Y, X, sizeof(Dtype) * N);
   }
 }
+
+
+template <typename Dtype>
+void caffe_cl_copy(const int N, const Dtype* X, Dtype* Y) {
+  if (X != Y) {
+
+    OPENCL_CHECK(clEnqueueCopyBuffer(Caffe::Get().commandQueue, (cl_mem) X, (cl_mem) Y, 0, 0, sizeof(Dtype) * N, 0, NULL, NULL));
+  
+  }
+}
+
+
 
 template void caffe_copy<int>(const int N, const int* X, int* Y);
 template void caffe_copy<unsigned int>(const int N, const unsigned int* X,
     unsigned int* Y);
+
+template void caffe_cl_copy<int>(const int N, const int* X, int* Y);
+template void caffe_cl_copy<unsigned int>(const int N, const unsigned int* X,
+    unsigned int* Y);
+template void caffe_cl_copy<float>(const int N, const float* X, float* Y);
+template void caffe_cl_copy<double>(const int N, const double* X, double* Y);
+
 #if defined(__ARM_NEON_H)
 template <>
 void caffe_copy<float>(const int N, const float* X, float* Y) {

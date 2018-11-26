@@ -94,27 +94,34 @@ static BrewFunction GetBrewFunction(const caffe::string& name) {
 
 // Parse GPU ids or use all available devices
 static void get_gpus(vector<int>* gpus) {
-#ifndef CPU_ONLY
-  if (FLAGS_gpu == "all") {
-    int count = 0;
-#ifndef CPU_ONLY
-    CUDA_CHECK(cudaGetDeviceCount(&count));
+
+#ifdef CPU_ONLY
+  NO_GPU;
 #else
-    NO_GPU;
+  NOT_IMPLEMENT;
 #endif
-    for (int i = 0; i < count; ++i) {
-      gpus->push_back(i);
-    }
-  } else if (FLAGS_gpu.size()) {
-    vector<string> strings;
-    boost::split(strings, FLAGS_gpu, boost::is_any_of(","));
-    for (int i = 0; i < strings.size(); ++i) {
-      gpus->push_back(boost::lexical_cast<int>(strings[i]));
-    }
-  } else {
-    CHECK_EQ(gpus->size(), 0);
-  }
-#endif
+
+// #ifndef CPU_ONLY
+//   if (FLAGS_gpu == "all") {
+//     int count = 0;
+// #ifndef CPU_ONLY
+//     CUDA_CHECK(cudaGetDeviceCount(&count));
+// #else
+//     NO_GPU;
+// #endif
+//     for (int i = 0; i < count; ++i) {
+//       gpus->push_back(i);
+//     }
+//   } else if (FLAGS_gpu.size()) {
+//     vector<string> strings;
+//     boost::split(strings, FLAGS_gpu, boost::is_any_of(","));
+//     for (int i = 0; i < strings.size(); ++i) {
+//       gpus->push_back(boost::lexical_cast<int>(strings[i]));
+//     }
+//   } else {
+//     CHECK_EQ(gpus->size(), 0);
+//   }
+// #endif TODOTODOO
 }
 
 // Parse phase from flags
@@ -236,11 +243,11 @@ int train() {
     }
     LOG(INFO) << "Using GPUs " << s.str();
 #ifndef CPU_ONLY
-    cudaDeviceProp device_prop;
-    for (int i = 0; i < gpus.size(); ++i) {
-      cudaGetDeviceProperties(&device_prop, gpus[i]);
-      LOG(INFO) << "GPU " << gpus[i] << ": " << device_prop.name;
-    }
+    // cudaDeviceProp device_prop;
+    // for (int i = 0; i < gpus.size(); ++i) {
+    //   cudaGetDeviceProperties(&device_prop, gpus[i]);
+    //   LOG(INFO) << "GPU " << gpus[i] << ": " << device_prop.name;
+    // }
 #endif
     solver_param.set_device_id(gpus[0]);
     Caffe::SetDevice(gpus[0]);
@@ -294,9 +301,9 @@ int test() {
   if (gpus.size() != 0) {
     LOG(INFO) << "Use GPU with device ID " << gpus[0];
 #ifndef CPU_ONLY
-    cudaDeviceProp device_prop;
-    cudaGetDeviceProperties(&device_prop, gpus[0]);
-    LOG(INFO) << "GPU device name: " << device_prop.name;
+    // cudaDeviceProp device_prop;
+    // cudaGetDeviceProperties(&device_prop, gpus[0]);
+    // LOG(INFO) << "GPU device name: " << device_prop.name;
 #endif
     Caffe::SetDevice(gpus[0]);
     Caffe::set_mode(Caffe::GPU);

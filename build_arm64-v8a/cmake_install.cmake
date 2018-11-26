@@ -40,7 +40,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/cmake_install.cmake")
-  include("/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/jni/cmake_install.cmake")
 
 endif()
 

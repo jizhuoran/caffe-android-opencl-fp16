@@ -10,10 +10,11 @@ set(CAFFE_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${CAFFE_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-add_definitions(-DCPU_ONLY)
+#add_definitions(-DCPU_ONLY)
 add_definitions(-DUSE_OPENCL)
 #add_definitions(-DFORWARD_LESS_MEM)
 add_definitions(-DUSE_NEON_MATH)
+add_definitions(-DFORWARD_ONLY)
 
 include(./cmake/Utils.cmake)
 include(./cmake/Misc.cmake)
@@ -67,8 +68,8 @@ else()
 endif()
 
 if(ANDROID)
-    include_directories("/home/zrji/android_caffe/huawei_opencl")
-    list(APPEND Caffe_LINKER_LIBS "/home/zrji/android_caffe/huawei_opencl/libOpenCL.so")
+    include_directories(${CMAKE_SOURCE_DIR}/third_party/OpenCL)
+    list(APPEND Caffe_LINKER_LIBS ${CMAKE_SOURCE_DIR}/third_party/OpenCL/libOpenCL.so)
 else()
     include(./cmake/Modules/FindOpenCL.cmake)
     message(STATUS ${OPENCL_INCLUDE_DIRS})
@@ -77,14 +78,11 @@ else()
 endif()
 
 
-
 caffe_set_caffe_link()
 
 add_subdirectory(src/caffe)
 
-if(ANDROID)
-    add_subdirectory(src/jni)
-else()
+if(NOT ANDROID)
     add_subdirectory(tools)
 endif()
 

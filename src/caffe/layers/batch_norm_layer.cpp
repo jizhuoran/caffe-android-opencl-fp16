@@ -244,6 +244,8 @@ void BatchNormLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 
 #ifdef CPU_ONLY
 STUB_GPU(BatchNormLayer);
+#elif USE_OPENCL
+TEMP_GPU(BatchNormLayer);
 #endif
 
 INSTANTIATE_CLASS(BatchNormLayer);

@@ -24,55 +24,19 @@ void DeconvolutionLayer<Dtype>::compute_output_shape() {
 template <typename Dtype>
 void DeconvolutionLayer<Dtype>::Forward_cpu(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top) {
-  // const Dtype* weight = this->blobs_[0]->cpu_data();
-  // for (int i = 0; i < bottom.size(); ++i) {
-  //   const Dtype* bottom_data = bottom[i]->cpu_data();
-  //   Dtype* top_data = top[i]->mutable_cpu_data();
-  //   for (int n = 0; n < this->num_; ++n) {
-  //     this->backward_cpu_gemm(bottom_data + n * this->bottom_dim_, weight,
-  //         top_data + n * this->top_dim_);
-  //     if (this->bias_term_) {
-  //       const Dtype* bias = this->blobs_[1]->cpu_data();
-  //       this->forward_cpu_bias(top_data + n * this->top_dim_, bias);
-  //     }
-  //   }
-  // }
-
-  cl_int ret = -1;
-
-  cl_kernel kernel = clCreateKernel(this->program, (this->layer_param_.name() + "_forward").c_str(), &ret);
-
+  const Dtype* weight = this->blobs_[0]->cpu_data();
   for (int i = 0; i < bottom.size(); ++i) {
-
-    const Dtype* weight = this->blobs_[0]->gpu_data();
-    const Dtype* bottom_data = bottom[i]->gpu_data();
-    Dtype* top_data = top[i]->mutable_gpu_data();
-
-
-    OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&bottom_data));  
-    OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&weight));  
-    OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&top_data));
-
-    if (this->bias_term_) {
-      const Dtype* bias = this->blobs_[1]->gpu_data();
-      OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_mem), (void *)&bias));
+    const Dtype* bottom_data = bottom[i]->cpu_data();
+    Dtype* top_data = top[i]->mutable_cpu_data();
+    for (int n = 0; n < this->num_; ++n) {
+      this->backward_cpu_gemm(bottom_data + n * this->bottom_dim_, weight,
+          top_data + n * this->top_dim_);
+      if (this->bias_term_) {
+        const Dtype* bias = this->blobs_[1]->cpu_data();
+        this->forward_cpu_bias(top_data + n * this->top_dim_, bias);
+      }
     }
-
-    size_t* local_size = new size_t[3];
-    local_size[0] = static_cast<size_t>(8);
-    local_size[1] = static_cast<size_t>(8);
-    local_size[2] = static_cast<size_t>(1);
-
-    size_t* global_size = new size_t[3];
-    global_size[0] = static_cast<size_t>((((top[i]->shape(2) * top[i]->shape(3)) - 1) / 32 + 1)*8);
-    global_size[1] = static_cast<size_t>((((top[i]->shape(1) / this->group_) - 1) / 32 + 1)*8);
-    global_size[2] = static_cast<size_t>(bottom[i]->shape()[0] * 1);
-
-    OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 3, NULL, global_size, local_size, 0, NULL, NULL));  
-
   }
-
-
 }
 
 template <typename Dtype>
@@ -111,22 +75,46 @@ void DeconvolutionLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 }
 
 
+
+
 template <typename Dtype>
 void DeconvolutionLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top) {
-  const Dtype* weight = this->blobs_[0]->cpu_data();
+
+  cl_int ret = -1;
+
+  cl_kernel kernel = clCreateKernel(this->program, (this->layer_param_.name() + "_forward").c_str(), &ret);
+
   for (int i = 0; i < bottom.size(); ++i) {
-    const Dtype* bottom_data = bottom[i]->cpu_data();
-    Dtype* top_data = top[i]->mutable_cpu_data();
-    for (int n = 0; n < this->num_; ++n) {
-      this->backward_cpu_gemm(bottom_data + n * this->bottom_dim_, weight,
-          top_data + n * this->top_dim_);
-      if (this->bias_term_) {
-        const Dtype* bias = this->blobs_[1]->cpu_data();
-        this->forward_cpu_bias(top_data + n * this->top_dim_, bias);
-      }
+
+    const Dtype* weight = this->blobs_[0]->gpu_data();
+    const Dtype* bottom_data = bottom[i]->gpu_data();
+    Dtype* top_data = top[i]->mutable_gpu_data();
+
+
+    OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&bottom_data));  
+    OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&weight));  
+    OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&top_data));
+
+    if (this->bias_term_) {
+      const Dtype* bias = this->blobs_[1]->gpu_data();
+      OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_mem), (void *)&bias));
     }
+
+    size_t* local_size = new size_t[3];
+    local_size[0] = static_cast<size_t>(8);
+    local_size[1] = static_cast<size_t>(8);
+    local_size[2] = static_cast<size_t>(1);
+
+    size_t* global_size = new size_t[3];
+    global_size[0] = static_cast<size_t>((((top[i]->shape(2) * top[i]->shape(3)) - 1) / 32 + 1)*8);
+    global_size[1] = static_cast<size_t>((((top[i]->shape(1) / this->group_) - 1) / 32 + 1)*8);
+    global_size[2] = static_cast<size_t>(bottom[i]->shape()[0] * 1);
+
+    OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 3, NULL, global_size, local_size, 0, NULL, NULL));  
+
   }
+
 }
 
 template <typename Dtype>
@@ -504,7 +492,7 @@ std::string DeconvolutionLayer<Dtype>::generate_fw_kernels(std::string name) {
   ss << "for (int wn=0; wn<WPTN; ++wn) {" << std::endl;
   ss << "int globalCol = offN + tidn + wn * RTSN;" << std::endl;
 
-    // ss << "if (globalRow < M && globalCol < N) {" << std::endl;
+    ss << "if (globalRow < M && globalCol < N) {" << std::endl;
     ss << "Cptr[globalRow * N + globalCol] = ";
     if (this->bias_term_) {
       ss << "((Dtype*)(&(Creg[wm][wn/VWN])))[wn%VWN]"
@@ -512,7 +500,7 @@ std::string DeconvolutionLayer<Dtype>::generate_fw_kernels(std::string name) {
     } else {
       ss << "((Dtype*)(&(Creg[wm][wn/VWN])))[wn%VWN];" << std::endl;
     }
-    // ss << "}" << std::endl;
+    ss << "}" << std::endl;
   
 
 

@@ -250,6 +250,10 @@ void LRNLayer<Dtype>::WithinChannelBackward(
 STUB_GPU(LRNLayer);
 STUB_GPU_FORWARD(LRNLayer, CrossChannelForward);
 STUB_GPU_BACKWARD(LRNLayer, CrossChannelBackward);
+#elif USE_OPENCL
+TEMP_GPU(LRNLayer);
+TEMP_GPU_FORWARD(LRNLayer, CrossChannelForward);
+TEMP_GPU_BACKWARD(LRNLayer, CrossChannelBackward);
 #endif
 
 INSTANTIATE_CLASS(LRNLayer);

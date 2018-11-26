@@ -3,6 +3,7 @@ The host system is: Linux - 4.4.0-119-generic - x86_64
 Determining if the C compiler works passed with the following output:
 Change Dir: /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/make" "cmTC_6239e/fast"
 /usr/bin/make -f CMakeFiles/cmTC_6239e.dir/build.make CMakeFiles/cmTC_6239e.dir/build
 make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
@@ -11,12 +12,23 @@ Building C object CMakeFiles/cmTC_6239e.dir/testCCompiler.c.o
 Linking C executable cmTC_6239e
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6239e.dir/link.txt --verbose=1
 /home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/android-ndk-r18b/sysroot -isystem /home/zrji/android_caffe/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_6239e.dir/testCCompiler.c.o  -o cmTC_6239e -latomic -lm 
+=======
+Run Build Command:"/usr/bin/make" "cmTC_9e4f0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9e4f0.dir/build.make CMakeFiles/cmTC_9e4f0.dir/build
+make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9e4f0.dir/testCCompiler.c.o
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot   -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security   -fPIE   -o CMakeFiles/cmTC_9e4f0.dir/testCCompiler.c.o   -c /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_9e4f0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9e4f0.dir/link.txt --verbose=1
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_9e4f0.dir/testCCompiler.c.o  -o cmTC_9e4f0 -latomic -lm 
+>>>>>>> refactor
 make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/make" "cmTC_93dde/fast"
 /usr/bin/make -f CMakeFiles/cmTC_93dde.dir/build.make CMakeFiles/cmTC_93dde.dir/build
 make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
@@ -25,16 +37,30 @@ Building C object CMakeFiles/cmTC_93dde.dir/CMakeCCompilerABI.c.o
 Linking C executable cmTC_93dde
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_93dde.dir/link.txt --verbose=1
 /home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/android-ndk-r18b/sysroot -isystem /home/zrji/android_caffe/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie  -v CMakeFiles/cmTC_93dde.dir/CMakeCCompilerABI.c.o  -o cmTC_93dde 
+=======
+Run Build Command:"/usr/bin/make" "cmTC_8a9b6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8a9b6.dir/build.make CMakeFiles/cmTC_8a9b6.dir/build
+make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8a9b6.dir/CMakeCCompilerABI.c.o
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot   -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security   -fPIE   -o CMakeFiles/cmTC_8a9b6.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.12/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_8a9b6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8a9b6.dir/link.txt --verbose=1
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie  -v CMakeFiles/cmTC_8a9b6.dir/CMakeCCompilerABI.c.o  -o cmTC_8a9b6 
+>>>>>>> refactor
 Android (4751641 based on r328903) clang version 7.0.2 (https://android.googlesource.com/toolchain/clang 003100370607242ddd5815e4a043907ea9004281) (https://android.googlesource.com/toolchain/llvm 1d739ffb0366421d383e04ff80ec2ee591315116) (based on LLVM 7.0.2svn)
 Target: aarch64-none-linux-android23
 Thread model: posix
-InstalledDir: /home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin
-Found candidate GCC installation: /home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x
-Selected GCC installation: /home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x
+InstalledDir: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin
+Found candidate GCC installation: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x
+Selected GCC installation: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x
 Candidate multilib: .;@m64
 Selected multilib: .;@m64
 Found CUDA installation: /usr/local/cuda-9.0, version 9.0
+<<<<<<< HEAD
  "/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin/ld" --sysroot=/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -pie --fix-cortex-a53-843419 -z relro --enable-new-dtags --eh-frame-hdr -m aarch64linux -dynamic-linker /system/bin/linker64 -o cmTC_93dde /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtbegin_dynamic.o -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -L/home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64 -L/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x -L/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -L/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -L/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_93dde.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtend_android.o
+=======
+ "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin/ld" --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -pie --fix-cortex-a53-843419 -z relro --enable-new-dtags --eh-frame-hdr -m aarch64linux -dynamic-linker /system/bin/linker64 -o cmTC_8a9b6 /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtbegin_dynamic.o -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64 -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_8a9b6.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtend_android.o
+>>>>>>> refactor
 make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
 
 
@@ -42,6 +68,7 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(aarch64-linux-android-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp]
   ignore line: []
+<<<<<<< HEAD
   ignore line: [Run Build Command:"/usr/bin/make" "cmTC_93dde/fast"]
   ignore line: [/usr/bin/make -f CMakeFiles/cmTC_93dde.dir/build.make CMakeFiles/cmTC_93dde.dir/build]
   ignore line: [make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp']
@@ -50,20 +77,36 @@ Parsed C implicit link information from above output:
   ignore line: [Linking C executable cmTC_93dde]
   ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_93dde.dir/link.txt --verbose=1]
   ignore line: [/home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/android-ndk-r18b/sysroot -isystem /home/zrji/android_caffe/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie  -v CMakeFiles/cmTC_93dde.dir/CMakeCCompilerABI.c.o  -o cmTC_93dde ]
+=======
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_8a9b6/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_8a9b6.dir/build.make CMakeFiles/cmTC_8a9b6.dir/build]
+  ignore line: [make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_8a9b6.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot   -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security   -fPIE   -o CMakeFiles/cmTC_8a9b6.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.12/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_8a9b6]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8a9b6.dir/link.txt --verbose=1]
+  ignore line: [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie  -v CMakeFiles/cmTC_8a9b6.dir/CMakeCCompilerABI.c.o  -o cmTC_8a9b6 ]
+>>>>>>> refactor
   ignore line: [Android (4751641 based on r328903) clang version 7.0.2 (https://android.googlesource.com/toolchain/clang 003100370607242ddd5815e4a043907ea9004281) (https://android.googlesource.com/toolchain/llvm 1d739ffb0366421d383e04ff80ec2ee591315116) (based on LLVM 7.0.2svn)]
   ignore line: [Target: aarch64-none-linux-android23]
   ignore line: [Thread model: posix]
-  ignore line: [InstalledDir: /home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin]
-  ignore line: [Found candidate GCC installation: /home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x]
-  ignore line: [Selected GCC installation: /home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x]
+  ignore line: [InstalledDir: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin]
+  ignore line: [Found candidate GCC installation: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x]
+  ignore line: [Selected GCC installation: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x]
   ignore line: [Candidate multilib: .]
   ignore line: [@m64]
   ignore line: [Selected multilib: .]
   ignore line: [@m64]
   ignore line: [Found CUDA installation: /usr/local/cuda-9.0, version 9.0]
+<<<<<<< HEAD
   link line: [ "/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin/ld" --sysroot=/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -pie --fix-cortex-a53-843419 -z relro --enable-new-dtags --eh-frame-hdr -m aarch64linux -dynamic-linker /system/bin/linker64 -o cmTC_93dde /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtbegin_dynamic.o -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -L/home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64 -L/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x -L/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -L/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -L/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_93dde.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtend_android.o]
     arg [/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin/ld] ==> ignore
     arg [--sysroot=/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64] ==> ignore
+=======
+  link line: [ "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin/ld" --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -pie --fix-cortex-a53-843419 -z relro --enable-new-dtags --eh-frame-hdr -m aarch64linux -dynamic-linker /system/bin/linker64 -o cmTC_8a9b6 /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtbegin_dynamic.o -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64 -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_8a9b6.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtend_android.o]
+    arg [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin/ld] ==> ignore
+    arg [--sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64] ==> ignore
+>>>>>>> refactor
     arg [-pie] ==> ignore
     arg [--fix-cortex-a53-843419] ==> ignore
     arg [-zrelro] ==> ignore
@@ -74,6 +117,7 @@ Parsed C implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/system/bin/linker64] ==> ignore
     arg [-o] ==> ignore
+<<<<<<< HEAD
     arg [cmTC_93dde] ==> ignore
     arg [/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtbegin_dynamic.o] ==> ignore
     arg [-L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a] ==> dir [/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a]
@@ -82,6 +126,16 @@ Parsed C implicit link information from above output:
     arg [-L/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64] ==> dir [/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64]
     arg [-L/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib] ==> dir [/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib]
     arg [-L/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib] ==> dir [/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib]
+=======
+    arg [cmTC_8a9b6] ==> ignore
+    arg [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtbegin_dynamic.o] ==> ignore
+    arg [-L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a] ==> dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a]
+    arg [-L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64] ==> dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64]
+    arg [-L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x] ==> dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x]
+    arg [-L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64] ==> dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64]
+    arg [-L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib] ==> dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib]
+    arg [-L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib] ==> dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib]
+>>>>>>> refactor
     arg [--exclude-libs] ==> ignore
     arg [libgcc.a] ==> ignore
     arg [--exclude-libs] ==> ignore
@@ -95,21 +149,25 @@ Parsed C implicit link information from above output:
     arg [-znow] ==> ignore
     arg [--gc-sections] ==> ignore
     arg [-znocopyreloc] ==> ignore
+<<<<<<< HEAD
     arg [CMakeFiles/cmTC_93dde.dir/CMakeCCompilerABI.c.o] ==> ignore
+=======
+    arg [CMakeFiles/cmTC_8a9b6.dir/CMakeCCompilerABI.c.o] ==> ignore
+>>>>>>> refactor
     arg [-lgcc] ==> lib [gcc]
     arg [-ldl] ==> lib [dl]
     arg [-lc] ==> lib [c]
     arg [-lgcc] ==> lib [gcc]
     arg [-ldl] ==> lib [dl]
-    arg [/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtend_android.o] ==> ignore
-  collapse library dir [/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a] ==> [/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a]
-  collapse library dir [/home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64] ==> [/home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64]
-  collapse library dir [/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x] ==> [/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x]
-  collapse library dir [/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64] ==> [/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib64]
-  collapse library dir [/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib] ==> [/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib]
-  collapse library dir [/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib] ==> [/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib]
+    arg [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtend_android.o] ==> ignore
+  collapse library dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a] ==> [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a]
+  collapse library dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64] ==> [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64]
+  collapse library dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x] ==> [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x]
+  collapse library dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64] ==> [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib64]
+  collapse library dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib] ==> [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib]
+  collapse library dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib] ==> [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib]
   implicit libs: [gcc;dl;c;gcc;dl]
-  implicit dirs: [/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a;/home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64;/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x;/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib64;/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib;/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib]
+  implicit dirs: [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a;/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64;/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x;/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib64;/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib;/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib]
   implicit fwks: []
 
 
@@ -118,6 +176,7 @@ Parsed C implicit link information from above output:
 Detecting C [-std=c11] compiler features compiled with the following output:
 Change Dir: /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/make" "cmTC_2e87e/fast"
 /usr/bin/make -f CMakeFiles/cmTC_2e87e.dir/build.make CMakeFiles/cmTC_2e87e.dir/build
 make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
@@ -126,6 +185,16 @@ Building C object CMakeFiles/cmTC_2e87e.dir/feature_tests.c.o
 Linking C executable cmTC_2e87e
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2e87e.dir/link.txt --verbose=1
 /home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/android-ndk-r18b/sysroot -isystem /home/zrji/android_caffe/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_2e87e.dir/feature_tests.c.o  -o cmTC_2e87e -latomic -lm 
+=======
+Run Build Command:"/usr/bin/make" "cmTC_e9d93/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e9d93.dir/build.make CMakeFiles/cmTC_e9d93.dir/build
+make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e9d93.dir/feature_tests.c.o
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot   -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security   -fPIE   -std=c11 -o CMakeFiles/cmTC_e9d93.dir/feature_tests.c.o   -c /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/feature_tests.c
+Linking C executable cmTC_e9d93
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e9d93.dir/link.txt --verbose=1
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_e9d93.dir/feature_tests.c.o  -o cmTC_e9d93 -latomic -lm 
+>>>>>>> refactor
 make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
 
 
@@ -138,6 +207,7 @@ make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_
 Detecting C [-std=c99] compiler features compiled with the following output:
 Change Dir: /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/make" "cmTC_66832/fast"
 /usr/bin/make -f CMakeFiles/cmTC_66832.dir/build.make CMakeFiles/cmTC_66832.dir/build
 make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
@@ -146,6 +216,16 @@ Building C object CMakeFiles/cmTC_66832.dir/feature_tests.c.o
 Linking C executable cmTC_66832
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_66832.dir/link.txt --verbose=1
 /home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/android-ndk-r18b/sysroot -isystem /home/zrji/android_caffe/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_66832.dir/feature_tests.c.o  -o cmTC_66832 -latomic -lm 
+=======
+Run Build Command:"/usr/bin/make" "cmTC_add94/fast"
+/usr/bin/make -f CMakeFiles/cmTC_add94.dir/build.make CMakeFiles/cmTC_add94.dir/build
+make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_add94.dir/feature_tests.c.o
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot   -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security   -fPIE   -std=c99 -o CMakeFiles/cmTC_add94.dir/feature_tests.c.o   -c /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/feature_tests.c
+Linking C executable cmTC_add94
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_add94.dir/link.txt --verbose=1
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_add94.dir/feature_tests.c.o  -o cmTC_add94 -latomic -lm 
+>>>>>>> refactor
 make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
 
 
@@ -158,6 +238,7 @@ make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_
 Detecting C [-std=c90] compiler features compiled with the following output:
 Change Dir: /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/make" "cmTC_cd9aa/fast"
 /usr/bin/make -f CMakeFiles/cmTC_cd9aa.dir/build.make CMakeFiles/cmTC_cd9aa.dir/build
 make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
@@ -166,6 +247,16 @@ Building C object CMakeFiles/cmTC_cd9aa.dir/feature_tests.c.o
 Linking C executable cmTC_cd9aa
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cd9aa.dir/link.txt --verbose=1
 /home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/android-ndk-r18b/sysroot -isystem /home/zrji/android_caffe/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_cd9aa.dir/feature_tests.c.o  -o cmTC_cd9aa -latomic -lm 
+=======
+Run Build Command:"/usr/bin/make" "cmTC_da5d8/fast"
+/usr/bin/make -f CMakeFiles/cmTC_da5d8.dir/build.make CMakeFiles/cmTC_da5d8.dir/build
+make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_da5d8.dir/feature_tests.c.o
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot   -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security   -fPIE   -std=c90 -o CMakeFiles/cmTC_da5d8.dir/feature_tests.c.o   -c /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/feature_tests.c
+Linking C executable cmTC_da5d8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_da5d8.dir/link.txt --verbose=1
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_da5d8.dir/feature_tests.c.o  -o cmTC_da5d8 -latomic -lm 
+>>>>>>> refactor
 make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
 
 
@@ -176,6 +267,7 @@ make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_
 Determining if the CXX compiler works passed with the following output:
 Change Dir: /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/make" "cmTC_54c14/fast"
 /usr/bin/make -f CMakeFiles/cmTC_54c14.dir/build.make CMakeFiles/cmTC_54c14.dir/build
 make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
@@ -184,12 +276,23 @@ Building CXX object CMakeFiles/cmTC_54c14.dir/testCXXCompiler.cxx.o
 Linking CXX executable cmTC_54c14
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_54c14.dir/link.txt --verbose=1
 /home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/android-ndk-r18b/sysroot  -isystem /home/zrji/android_caffe/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_54c14.dir/testCXXCompiler.cxx.o  -o cmTC_54c14 -latomic -lm "/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_static.a" "/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++abi.a" 
+=======
+Run Build Command:"/usr/bin/make" "cmTC_49874/fast"
+/usr/bin/make -f CMakeFiles/cmTC_49874.dir/build.make CMakeFiles/cmTC_49874.dir/build
+make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_49874.dir/testCXXCompiler.cxx.o
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot   -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include  -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11   -fPIE   -o CMakeFiles/cmTC_49874.dir/testCXXCompiler.cxx.o -c /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_49874
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_49874.dir/link.txt --verbose=1
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_49874.dir/testCXXCompiler.cxx.o  -o cmTC_49874 -latomic -lm "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_static.a" "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++abi.a" 
+>>>>>>> refactor
 make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/make" "cmTC_416c1/fast"
 /usr/bin/make -f CMakeFiles/cmTC_416c1.dir/build.make CMakeFiles/cmTC_416c1.dir/build
 make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
@@ -198,16 +301,30 @@ Building CXX object CMakeFiles/cmTC_416c1.dir/CMakeCXXCompilerABI.cpp.o
 Linking CXX executable cmTC_416c1
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_416c1.dir/link.txt --verbose=1
 /home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/android-ndk-r18b/sysroot  -isystem /home/zrji/android_caffe/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie  -v CMakeFiles/cmTC_416c1.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_416c1 
+=======
+Run Build Command:"/usr/bin/make" "cmTC_cb4d3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_cb4d3.dir/build.make CMakeFiles/cmTC_cb4d3.dir/build
+make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_cb4d3.dir/CMakeCXXCompilerABI.cpp.o
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot   -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include  -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11   -fPIE   -o CMakeFiles/cmTC_cb4d3.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.12/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_cb4d3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cb4d3.dir/link.txt --verbose=1
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie  -v CMakeFiles/cmTC_cb4d3.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_cb4d3 
+>>>>>>> refactor
 Android (4751641 based on r328903) clang version 7.0.2 (https://android.googlesource.com/toolchain/clang 003100370607242ddd5815e4a043907ea9004281) (https://android.googlesource.com/toolchain/llvm 1d739ffb0366421d383e04ff80ec2ee591315116) (based on LLVM 7.0.2svn)
 Target: aarch64-none-linux-android23
 Thread model: posix
-InstalledDir: /home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin
-Found candidate GCC installation: /home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x
-Selected GCC installation: /home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x
+InstalledDir: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin
+Found candidate GCC installation: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x
+Selected GCC installation: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x
 Candidate multilib: .;@m64
 Selected multilib: .;@m64
 Found CUDA installation: /usr/local/cuda-9.0, version 9.0
+<<<<<<< HEAD
  "/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin/ld" --sysroot=/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -pie --fix-cortex-a53-843419 -z relro --enable-new-dtags --eh-frame-hdr -m aarch64linux -dynamic-linker /system/bin/linker64 -o cmTC_416c1 /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtbegin_dynamic.o -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -L/home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64 -L/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x -L/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -L/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -L/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_416c1.dir/CMakeCXXCompilerABI.cpp.o -lm -lgcc -lgcc -ldl -lc -lgcc -lgcc -ldl /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtend_android.o
+=======
+ "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin/ld" --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -pie --fix-cortex-a53-843419 -z relro --enable-new-dtags --eh-frame-hdr -m aarch64linux -dynamic-linker /system/bin/linker64 -o cmTC_cb4d3 /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtbegin_dynamic.o -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64 -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_cb4d3.dir/CMakeCXXCompilerABI.cpp.o -lm -lgcc -lgcc -ldl -lc -lgcc -lgcc -ldl /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtend_android.o
+>>>>>>> refactor
 make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
 
 
@@ -215,6 +332,7 @@ Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(aarch64-linux-android-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp]
   ignore line: []
+<<<<<<< HEAD
   ignore line: [Run Build Command:"/usr/bin/make" "cmTC_416c1/fast"]
   ignore line: [/usr/bin/make -f CMakeFiles/cmTC_416c1.dir/build.make CMakeFiles/cmTC_416c1.dir/build]
   ignore line: [make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp']
@@ -223,20 +341,36 @@ Parsed CXX implicit link information from above output:
   ignore line: [Linking CXX executable cmTC_416c1]
   ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_416c1.dir/link.txt --verbose=1]
   ignore line: [/home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/android-ndk-r18b/sysroot  -isystem /home/zrji/android_caffe/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie  -v CMakeFiles/cmTC_416c1.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_416c1 ]
+=======
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_cb4d3/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_cb4d3.dir/build.make CMakeFiles/cmTC_cb4d3.dir/build]
+  ignore line: [make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_cb4d3.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot   -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include  -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11   -fPIE   -o CMakeFiles/cmTC_cb4d3.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.12/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_cb4d3]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cb4d3.dir/link.txt --verbose=1]
+  ignore line: [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie  -v CMakeFiles/cmTC_cb4d3.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_cb4d3 ]
+>>>>>>> refactor
   ignore line: [Android (4751641 based on r328903) clang version 7.0.2 (https://android.googlesource.com/toolchain/clang 003100370607242ddd5815e4a043907ea9004281) (https://android.googlesource.com/toolchain/llvm 1d739ffb0366421d383e04ff80ec2ee591315116) (based on LLVM 7.0.2svn)]
   ignore line: [Target: aarch64-none-linux-android23]
   ignore line: [Thread model: posix]
-  ignore line: [InstalledDir: /home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin]
-  ignore line: [Found candidate GCC installation: /home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x]
-  ignore line: [Selected GCC installation: /home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x]
+  ignore line: [InstalledDir: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin]
+  ignore line: [Found candidate GCC installation: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x]
+  ignore line: [Selected GCC installation: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x]
   ignore line: [Candidate multilib: .]
   ignore line: [@m64]
   ignore line: [Selected multilib: .]
   ignore line: [@m64]
   ignore line: [Found CUDA installation: /usr/local/cuda-9.0, version 9.0]
+<<<<<<< HEAD
   link line: [ "/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin/ld" --sysroot=/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -pie --fix-cortex-a53-843419 -z relro --enable-new-dtags --eh-frame-hdr -m aarch64linux -dynamic-linker /system/bin/linker64 -o cmTC_416c1 /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtbegin_dynamic.o -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -L/home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64 -L/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x -L/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -L/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -L/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_416c1.dir/CMakeCXXCompilerABI.cpp.o -lm -lgcc -lgcc -ldl -lc -lgcc -lgcc -ldl /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtend_android.o]
     arg [/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin/ld] ==> ignore
     arg [--sysroot=/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64] ==> ignore
+=======
+  link line: [ "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin/ld" --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -pie --fix-cortex-a53-843419 -z relro --enable-new-dtags --eh-frame-hdr -m aarch64linux -dynamic-linker /system/bin/linker64 -o cmTC_cb4d3 /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtbegin_dynamic.o -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64 -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_cb4d3.dir/CMakeCXXCompilerABI.cpp.o -lm -lgcc -lgcc -ldl -lc -lgcc -lgcc -ldl /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtend_android.o]
+    arg [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin/ld] ==> ignore
+    arg [--sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64] ==> ignore
+>>>>>>> refactor
     arg [-pie] ==> ignore
     arg [--fix-cortex-a53-843419] ==> ignore
     arg [-zrelro] ==> ignore
@@ -247,6 +381,7 @@ Parsed CXX implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/system/bin/linker64] ==> ignore
     arg [-o] ==> ignore
+<<<<<<< HEAD
     arg [cmTC_416c1] ==> ignore
     arg [/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtbegin_dynamic.o] ==> ignore
     arg [-L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a] ==> dir [/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a]
@@ -255,6 +390,16 @@ Parsed CXX implicit link information from above output:
     arg [-L/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64] ==> dir [/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64]
     arg [-L/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib] ==> dir [/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib]
     arg [-L/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib] ==> dir [/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib]
+=======
+    arg [cmTC_cb4d3] ==> ignore
+    arg [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtbegin_dynamic.o] ==> ignore
+    arg [-L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a] ==> dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a]
+    arg [-L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64] ==> dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64]
+    arg [-L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x] ==> dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x]
+    arg [-L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64] ==> dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64]
+    arg [-L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib] ==> dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib]
+    arg [-L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib] ==> dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib]
+>>>>>>> refactor
     arg [--exclude-libs] ==> ignore
     arg [libgcc.a] ==> ignore
     arg [--exclude-libs] ==> ignore
@@ -268,7 +413,11 @@ Parsed CXX implicit link information from above output:
     arg [-znow] ==> ignore
     arg [--gc-sections] ==> ignore
     arg [-znocopyreloc] ==> ignore
+<<<<<<< HEAD
     arg [CMakeFiles/cmTC_416c1.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+=======
+    arg [CMakeFiles/cmTC_cb4d3.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+>>>>>>> refactor
     arg [-lm] ==> lib [m]
     arg [-lgcc] ==> lib [gcc]
     arg [-lgcc] ==> lib [gcc]
@@ -277,15 +426,15 @@ Parsed CXX implicit link information from above output:
     arg [-lgcc] ==> lib [gcc]
     arg [-lgcc] ==> lib [gcc]
     arg [-ldl] ==> lib [dl]
-    arg [/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtend_android.o] ==> ignore
-  collapse library dir [/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a] ==> [/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a]
-  collapse library dir [/home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64] ==> [/home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64]
-  collapse library dir [/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x] ==> [/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x]
-  collapse library dir [/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64] ==> [/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib64]
-  collapse library dir [/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib] ==> [/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib]
-  collapse library dir [/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib] ==> [/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib]
+    arg [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib/crtend_android.o] ==> ignore
+  collapse library dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a] ==> [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a]
+  collapse library dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64] ==> [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64]
+  collapse library dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x] ==> [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x]
+  collapse library dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64] ==> [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib64]
+  collapse library dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib] ==> [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib]
+  collapse library dir [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib] ==> [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib]
   implicit libs: [m;gcc;gcc;dl;c;gcc;gcc;dl]
-  implicit dirs: [/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a;/home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64;/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x;/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib64;/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib;/home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib]
+  implicit dirs: [/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a;/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/7.0.2/lib/linux/aarch64;/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/lib/gcc/aarch64-linux-android/4.9.x;/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib64;/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/lib;/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64/usr/lib]
   implicit fwks: []
 
 
@@ -294,6 +443,7 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++2a] compiler features compiled with the following output:
 Change Dir: /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/make" "cmTC_953a7/fast"
 /usr/bin/make -f CMakeFiles/cmTC_953a7.dir/build.make CMakeFiles/cmTC_953a7.dir/build
 make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
@@ -302,6 +452,16 @@ Building CXX object CMakeFiles/cmTC_953a7.dir/feature_tests.cxx.o
 Linking CXX executable cmTC_953a7
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_953a7.dir/link.txt --verbose=1
 /home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/android-ndk-r18b/sysroot  -isystem /home/zrji/android_caffe/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_953a7.dir/feature_tests.cxx.o  -o cmTC_953a7 -latomic -lm "/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_static.a" "/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++abi.a" 
+=======
+Run Build Command:"/usr/bin/make" "cmTC_f5858/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f5858.dir/build.make CMakeFiles/cmTC_f5858.dir/build
+make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f5858.dir/feature_tests.cxx.o
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot   -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include  -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11   -fPIE   -std=c++2a -o CMakeFiles/cmTC_f5858.dir/feature_tests.cxx.o -c /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_f5858
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f5858.dir/link.txt --verbose=1
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_f5858.dir/feature_tests.cxx.o  -o cmTC_f5858 -latomic -lm "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_static.a" "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++abi.a" 
+>>>>>>> refactor
 make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
 
 
@@ -367,6 +527,7 @@ make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_
 Detecting CXX [-std=c++17] compiler features compiled with the following output:
 Change Dir: /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/make" "cmTC_bfcd1/fast"
 /usr/bin/make -f CMakeFiles/cmTC_bfcd1.dir/build.make CMakeFiles/cmTC_bfcd1.dir/build
 make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
@@ -375,6 +536,16 @@ Building CXX object CMakeFiles/cmTC_bfcd1.dir/feature_tests.cxx.o
 Linking CXX executable cmTC_bfcd1
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bfcd1.dir/link.txt --verbose=1
 /home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/android-ndk-r18b/sysroot  -isystem /home/zrji/android_caffe/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_bfcd1.dir/feature_tests.cxx.o  -o cmTC_bfcd1 -latomic -lm "/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_static.a" "/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++abi.a" 
+=======
+Run Build Command:"/usr/bin/make" "cmTC_756db/fast"
+/usr/bin/make -f CMakeFiles/cmTC_756db.dir/build.make CMakeFiles/cmTC_756db.dir/build
+make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_756db.dir/feature_tests.cxx.o
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot   -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include  -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11   -fPIE   -std=c++17 -o CMakeFiles/cmTC_756db.dir/feature_tests.cxx.o -c /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_756db
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_756db.dir/link.txt --verbose=1
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_756db.dir/feature_tests.cxx.o  -o cmTC_756db -latomic -lm "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_static.a" "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++abi.a" 
+>>>>>>> refactor
 make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
 
 
@@ -440,6 +611,7 @@ make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
 Change Dir: /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/make" "cmTC_dd770/fast"
 /usr/bin/make -f CMakeFiles/cmTC_dd770.dir/build.make CMakeFiles/cmTC_dd770.dir/build
 make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
@@ -448,6 +620,16 @@ Building CXX object CMakeFiles/cmTC_dd770.dir/feature_tests.cxx.o
 Linking CXX executable cmTC_dd770
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dd770.dir/link.txt --verbose=1
 /home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/android-ndk-r18b/sysroot  -isystem /home/zrji/android_caffe/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_dd770.dir/feature_tests.cxx.o  -o cmTC_dd770 -latomic -lm "/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_static.a" "/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++abi.a" 
+=======
+Run Build Command:"/usr/bin/make" "cmTC_91b59/fast"
+/usr/bin/make -f CMakeFiles/cmTC_91b59.dir/build.make CMakeFiles/cmTC_91b59.dir/build
+make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_91b59.dir/feature_tests.cxx.o
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot   -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include  -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11   -fPIE   -std=c++14 -o CMakeFiles/cmTC_91b59.dir/feature_tests.cxx.o -c /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_91b59
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_91b59.dir/link.txt --verbose=1
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_91b59.dir/feature_tests.cxx.o  -o cmTC_91b59 -latomic -lm "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_static.a" "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++abi.a" 
+>>>>>>> refactor
 make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
 
 
@@ -513,6 +695,7 @@ make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
 Change Dir: /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/make" "cmTC_30317/fast"
 /usr/bin/make -f CMakeFiles/cmTC_30317.dir/build.make CMakeFiles/cmTC_30317.dir/build
 make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
@@ -521,6 +704,16 @@ Building CXX object CMakeFiles/cmTC_30317.dir/feature_tests.cxx.o
 Linking CXX executable cmTC_30317
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_30317.dir/link.txt --verbose=1
 /home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/android-ndk-r18b/sysroot  -isystem /home/zrji/android_caffe/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_30317.dir/feature_tests.cxx.o  -o cmTC_30317 -latomic -lm "/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_static.a" "/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++abi.a" 
+=======
+Run Build Command:"/usr/bin/make" "cmTC_94122/fast"
+/usr/bin/make -f CMakeFiles/cmTC_94122.dir/build.make CMakeFiles/cmTC_94122.dir/build
+make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_94122.dir/feature_tests.cxx.o
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot   -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include  -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11   -fPIE   -std=c++11 -o CMakeFiles/cmTC_94122.dir/feature_tests.cxx.o -c /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_94122
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_94122.dir/link.txt --verbose=1
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_94122.dir/feature_tests.cxx.o  -o cmTC_94122 -latomic -lm "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_static.a" "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++abi.a" 
+>>>>>>> refactor
 make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
 
 
@@ -586,6 +779,7 @@ make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
 Change Dir: /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/make" "cmTC_9cc7e/fast"
 /usr/bin/make -f CMakeFiles/cmTC_9cc7e.dir/build.make CMakeFiles/cmTC_9cc7e.dir/build
 make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
@@ -594,6 +788,16 @@ Building CXX object CMakeFiles/cmTC_9cc7e.dir/feature_tests.cxx.o
 Linking CXX executable cmTC_9cc7e
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9cc7e.dir/link.txt --verbose=1
 /home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/android-ndk-r18b/sysroot  -isystem /home/zrji/android_caffe/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_9cc7e.dir/feature_tests.cxx.o  -o cmTC_9cc7e -latomic -lm "/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_static.a" "/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++abi.a" 
+=======
+Run Build Command:"/usr/bin/make" "cmTC_8d413/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8d413.dir/build.make CMakeFiles/cmTC_8d413.dir/build
+make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_8d413.dir/feature_tests.cxx.o
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot   -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include  -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11   -fPIE   -std=c++98 -o CMakeFiles/cmTC_8d413.dir/feature_tests.cxx.o -c /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_8d413
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8d413.dir/link.txt --verbose=1
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_8d413.dir/feature_tests.cxx.o  -o cmTC_8d413 -latomic -lm "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_static.a" "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++abi.a" 
+>>>>>>> refactor
 make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
 
 
@@ -657,6 +861,7 @@ make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_
 Determining if the include file pthread.h exists passed with the following output:
 Change Dir: /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/make" "cmTC_7bfb3/fast"
 /usr/bin/make -f CMakeFiles/cmTC_7bfb3.dir/build.make CMakeFiles/cmTC_7bfb3.dir/build
 make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
@@ -665,12 +870,23 @@ Building C object CMakeFiles/cmTC_7bfb3.dir/CheckIncludeFile.c.o
 Linking C executable cmTC_7bfb3
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7bfb3.dir/link.txt --verbose=1
 /home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/android-ndk-r18b/sysroot -isystem /home/zrji/android_caffe/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_7bfb3.dir/CheckIncludeFile.c.o  -o cmTC_7bfb3 -latomic -lm 
+=======
+Run Build Command:"/usr/bin/make" "cmTC_908e6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_908e6.dir/build.make CMakeFiles/cmTC_908e6.dir/build
+make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_908e6.dir/CheckIncludeFile.c.o
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot   -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security   -fPIE   -o CMakeFiles/cmTC_908e6.dir/CheckIncludeFile.c.o   -c /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_908e6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_908e6.dir/link.txt --verbose=1
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_908e6.dir/CheckIncludeFile.c.o  -o cmTC_908e6 -latomic -lm 
+>>>>>>> refactor
 make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
 
 
 Determining if the pthread_create exist passed with the following output:
 Change Dir: /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/make" "cmTC_24601/fast"
 /usr/bin/make -f CMakeFiles/cmTC_24601.dir/build.make CMakeFiles/cmTC_24601.dir/build
 make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
@@ -679,6 +895,16 @@ Building C object CMakeFiles/cmTC_24601.dir/CheckSymbolExists.c.o
 Linking C executable cmTC_24601
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_24601.dir/link.txt --verbose=1
 /home/zrji/android_caffe/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/android-ndk-r18b/sysroot -isystem /home/zrji/android_caffe/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_24601.dir/CheckSymbolExists.c.o  -o cmTC_24601 -latomic -lm 
+=======
+Run Build Command:"/usr/bin/make" "cmTC_c0e2d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c0e2d.dir/build.make CMakeFiles/cmTC_c0e2d.dir/build
+make[1]: Entering directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c0e2d.dir/CheckSymbolExists.c.o
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot   -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security   -fPIE   -o CMakeFiles/cmTC_c0e2d.dir/CheckSymbolExists.c.o   -c /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_c0e2d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c0e2d.dir/link.txt --verbose=1
+/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-none-linux-android23 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot -isystem /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security    -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/platforms/android-23/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now -Wl,--gc-sections -Wl,-z,nocopyreloc -pie -fpie   CMakeFiles/cmTC_c0e2d.dir/CheckSymbolExists.c.o  -o cmTC_c0e2d -latomic -lm 
+>>>>>>> refactor
 make[1]: Leaving directory '/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp'
 
 File /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/CMakeTmp/CheckSymbolExists.c:

@@ -24,6 +24,8 @@ void ThresholdLayer<Dtype>::Forward_cpu(const vector<Blob<Dtype>*>& bottom,
 
 #ifdef CPU_ONLY
 STUB_GPU_FORWARD(ThresholdLayer, Forward);
+#elif USE_OPENCL
+TEMP_GPU_FORWARD(ThresholdLayer, Forward);
 #endif
 
 INSTANTIATE_CLASS(ThresholdLayer);

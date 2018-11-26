@@ -219,6 +219,84 @@ void ScaleLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 
 #ifdef CPU_ONLY
 STUB_GPU(ScaleLayer);
+#elif USE_OPENCL
+
+
+template <typename Dtype>
+void ScaleLayer<Dtype>::Forward_gpu(
+    const vector<Blob<Dtype>*>& bottom, const vector<Blob<Dtype>*>& top) {
+
+
+  
+  const int count = top[0]->count();
+  const Dtype* bottom_data = bottom[0]->gpu_data();
+  if (bottom[0] == top[0]) {
+    // in-place computation; need to store bottom data before overwriting it.
+    // Note that this is only necessary for Backward; we could skip this if not
+    // doing Backward, but Caffe currently provides no way of knowing whether
+    // we'll need to do Backward at the time of the Forward call.
+    // caffe_copy(bottom[0]->count(), bottom[0]->gpu_data(),
+    caffe_cl_copy(bottom[0]->count(), bottom[0]->gpu_data(),
+               temp_.mutable_gpu_data());
+  }
+  const Dtype* scale_data =
+      ((bottom.size() > 1) ? bottom[1] : this->blobs_[0].get())->gpu_data();
+  Dtype* top_data = top[0]->mutable_gpu_data();
+  if (bias_layer_) {
+    const Dtype* bias_data = this->blobs_[bias_param_id_]->gpu_data();
+    
+    cl_int ret;
+
+    cl_kernel kernel = clCreateKernel(Caffe::Get().program, "ScaleBiasForward", &ret);
+    OPENCL_CHECK(ret);
+
+    // Set arguments for kernel
+    OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&bottom_data));  
+    OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&top_data));  
+    OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&count));  
+    OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_mem), (void *)&scale_data)); 
+    OPENCL_CHECK(clSetKernelArg(kernel, 4, sizeof(cl_mem), (void *)&bias_data));   
+    OPENCL_CHECK(clSetKernelArg(kernel, 5, sizeof(cl_int), (void *)&scale_dim_));  
+    OPENCL_CHECK(clSetKernelArg(kernel, 6, sizeof(cl_int), (void *)&inner_dim_));  
+
+    size_t global_size = CAFFE_GET_BLOCKS(count);
+    
+    OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+
+
+  } else {
+
+
+    cl_int ret;
+
+    cl_kernel kernel = clCreateKernel(Caffe::Get().program, "ScaleForward", &ret);
+    OPENCL_CHECK(ret);
+
+    // Set arguments for kernel
+    OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&bottom_data));  
+    OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&top_data));  
+    OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&count));  
+    OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_mem), (void *)&scale_data)); 
+    OPENCL_CHECK(clSetKernelArg(kernel, 4, sizeof(cl_int), (void *)&scale_dim_));  
+    OPENCL_CHECK(clSetKernelArg(kernel, 5, sizeof(cl_int), (void *)&inner_dim_));  
+
+    size_t global_size = CAFFE_GET_BLOCKS(count);
+    
+    OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+
+
+  }
+}
+
+template <typename Dtype>
+void ScaleLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
+    const vector<bool>& propagate_down,
+    const vector<Blob<Dtype>*>& bottom) {
+
+  Backward_cpu(top, propagate_down, bottom);
+}
+
+
 #endif
 
 INSTANTIATE_CLASS(ScaleLayer);

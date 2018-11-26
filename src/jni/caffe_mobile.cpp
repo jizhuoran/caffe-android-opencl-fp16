@@ -29,30 +29,18 @@ CaffeMobile *CaffeMobile::get(const string &param_file,
 CaffeMobile::CaffeMobile(const string &param_file, const string &trained_file) {
   // Load Caffe model
   
-  LOG(INFO) << "Throw something0?";
-
 
   Caffe::set_mode(Caffe::CPU);
-
-  LOG(INFO) << "Throw something1.5?";
-
-
 
   CPUTimer timer;
   timer.Start();
   
-  LOG(INFO) << "Throw something1?";
-
   net_ = new Net<float>(param_file, caffe::TEST);
-
-  LOG(INFO) << "Throw something2?";
 
 
   if (net_ == NULL) {
     throw std::invalid_argument("Invalid arg: param_file=" + param_file);
   }
-
-  LOG(INFO) << "Throw something3?";
 
 
   net_->CopyTrainedLayersFrom(trained_file);

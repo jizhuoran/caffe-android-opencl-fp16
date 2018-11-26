@@ -77,6 +77,8 @@ void LogLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 
 #ifdef CPU_ONLY
 STUB_GPU(LogLayer);
+#elif USE_OPENCL
+TEMP_GPU(LogLayer);
 #endif
 
 INSTANTIATE_CLASS(LogLayer);

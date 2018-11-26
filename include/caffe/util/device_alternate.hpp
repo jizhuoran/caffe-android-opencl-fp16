@@ -72,23 +72,45 @@ void classname<Dtype>::funcname##_##gpu(const vector<Blob<Dtype>*>& top, \
 
 #else  // Normal GPU + CPU Caffe.
 
-#include <cublas_v2.h>
-#include <cuda.h>
-#include <cuda_runtime.h>
-#include <curand.h>
-#include <driver_types.h>  // cuda driver types
-#ifdef USE_CUDNN  // cuDNN acceleration library.
-#include "caffe/util/cudnn.hpp"
-#endif
+// #include <cublas_v2.h>
+// #include <cuda.h>
+// #include <cuda_runtime.h>
+// #include <curand.h>
+// #include <driver_types.h>  // cuda driver types
+// #ifdef USE_CUDNN  // cuDNN acceleration library.
+// #include "caffe/util/cudnn.hpp"
+// #endif
 
 //
 // CUDA macros
 //
 
+#define NOT_IMPLEMENT LOG(FATAL) << "This function has not been implemented yet!"
 
+#define TEMP_GPU(classname) \
+template <typename Dtype> \
+void classname<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom, \
+    const vector<Blob<Dtype>*>& top) { Forward_cpu(bottom, top); } \
+template <typename Dtype> \
+void classname<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top, \
+    const vector<bool>& propagate_down, \
+    const vector<Blob<Dtype>*>& bottom) { Backward_cpu(top, propagate_down, bottom); } \
+
+#define TEMP_GPU_FORWARD(classname, funcname) \
+template <typename Dtype> \
+void classname<Dtype>::funcname##_##gpu(const vector<Blob<Dtype>*>& bottom, \
+    const vector<Blob<Dtype>*>& top) { funcname##_##cpu(bottom, top); } \
+
+#define TEMP_GPU_BACKWARD(classname, funcname) \
+template <typename Dtype> \
+void classname<Dtype>::funcname##_##gpu(const vector<Blob<Dtype>*>& top, \
+    const vector<bool>& propagate_down, \
+    const vector<Blob<Dtype>*>& bottom) { funcname##_##cpu(top, propagate_down, bottom); } \
+
+
+/*
 // CUDA: various checks for different function calls.
 #define CUDA_CHECK(condition) \
-  /* Code block avoids redefinition of cudaError_t error */ \
   do { \
     cudaError_t error = condition; \
     CHECK_EQ(error, cudaSuccess) << " " << cudaGetErrorString(error); \
@@ -116,15 +138,15 @@ void classname<Dtype>::funcname##_##gpu(const vector<Blob<Dtype>*>& top, \
 
 // CUDA: check for error after kernel execution and exit loudly if there is one.
 #define CUDA_POST_KERNEL_CHECK CUDA_CHECK(cudaPeekAtLastError())
-
+*/
 namespace caffe {
 
 // CUDA: library error reporting.
-const char* cublasGetErrorString(cublasStatus_t error);
-const char* curandGetErrorString(curandStatus_t error);
+// const char* cublasGetErrorString(cublasStatus_t error);
+// const char* curandGetErrorString(curandStatus_t error);
 
 // CUDA: use 512 threads per block
-const int CAFFE_CUDA_NUM_THREADS = 512;
+const size_t CAFFE_CUDA_NUM_THREADS = 512;
 
 // CUDA: number of blocks for threads.
 inline int CAFFE_GET_BLOCKS(const int N) {

@@ -15,6 +15,10 @@
 #include "caffe/glog_wrapper.hpp"
 #endif
 
+#ifdef USE_OPENCL
+#define CL_TARGET_OPENCL_VERSION 120
+#endif
+
 #include <climits>
 #include <cmath>
 #include <fstream>  // NOLINT(readability/streams)
@@ -29,6 +33,10 @@
 
 
 #include "caffe/util/device_alternate.hpp"
+
+
+
+
 
 // Convert macro to string
 #define STRINGIFY(m) #m
@@ -149,11 +157,12 @@ class Caffe {
     }
     return *(Get().random_generator_);
   }
+
 #ifndef CPU_ONLY
-  inline static cublasHandle_t cublas_handle() { return Get().cublas_handle_; }
-  inline static curandGenerator_t curand_generator() {
-    return Get().curand_generator_;
-  }
+  // inline static cublasHandle_t cublas_handle() { return Get().cublas_handle_; }
+  // inline static curandGenerator_t curand_generator() {
+  //   return Get().curand_generator_;
+  // }
 #endif
 
   // Returns the mode: running on CPU or GPU.
@@ -199,8 +208,8 @@ class Caffe {
   
  protected:
 #ifndef CPU_ONLY
-  cublasHandle_t cublas_handle_;
-  curandGenerator_t curand_generator_;
+  // cublasHandle_t cublas_handle_;
+  // curandGenerator_t curand_generator_;
 #endif
   shared_ptr<RNG> random_generator_;
 

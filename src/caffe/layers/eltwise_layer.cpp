@@ -154,6 +154,97 @@ void EltwiseLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 
 #ifdef CPU_ONLY
 STUB_GPU(EltwiseLayer);
+#elif USE_OPENCL
+template <typename Dtype>
+void EltwiseLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
+    const vector<Blob<Dtype>*>& top) {
+
+
+
+  int* mask = NULL;
+
+
+  const Dtype* bottom_data_a = NULL;
+  const Dtype* bottom_data_b = NULL;
+  int blob_idx = 0;
+  size_t global_size = 0;
+  cl_int ret;
+  cl_kernel kernel;
+
+  const int count = top[0]->count();
+  Dtype* top_data = top[0]->mutable_gpu_data();
+  switch (op_) {
+  case EltwiseParameter_EltwiseOp_PROD:
+    caffe_gpu_mul(count, bottom[0]->gpu_data(), bottom[1]->gpu_data(),
+        top_data);
+    for (int i = 2; i < bottom.size(); ++i) {
+      caffe_gpu_mul(count, top_data, bottom[i]->gpu_data(), top_data);
+    }
+    break;
+  case EltwiseParameter_EltwiseOp_SUM:
+    caffe_gpu_set(count, Dtype(0.), top_data);
+    // TODO(shelhamer) does cuBLAS optimize to sum for coeff = 1?
+    for (int i = 0; i < bottom.size(); ++i) {
+      caffe_gpu_axpy(count, coeffs_[i], bottom[i]->gpu_data(), top_data);
+    }
+    break;
+  case EltwiseParameter_EltwiseOp_MAX:
+    mask = max_idx_.mutable_gpu_data();
+    // NOLINT_NEXT_LINE(whitespace/operators)
+
+    bottom_data_a = bottom[0]->gpu_data();
+    bottom_data_b = bottom[1]->gpu_data();
+    blob_idx = 0;
+
+    ret;
+
+    kernel = clCreateKernel(Caffe::Get().program, "MaxForward", &ret);
+    OPENCL_CHECK(ret);
+
+    // Set arguments for kernel
+    OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&bottom_data_a));  
+    OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&bottom_data_b));  
+    OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&top_data));  
+    OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_mem), (void *)&mask));  
+    OPENCL_CHECK(clSetKernelArg(kernel, 4, sizeof(cl_int), (void *)&count));  
+    OPENCL_CHECK(clSetKernelArg(kernel, 5, sizeof(cl_int), (void *)&blob_idx));  
+
+    global_size = CAFFE_GET_BLOCKS(count);
+    
+    OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+
+    for (int i = 2; i < bottom.size(); ++i) {
+      // NOLINT_NEXT_LINE(whitespace/operators)
+
+      bottom_data_b = bottom[i]->gpu_data();
+      blob_idx = i-1;
+
+      OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&top_data));  
+      OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&bottom_data_b));  
+      OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&top_data));  
+      OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_mem), (void *)&mask));  
+      OPENCL_CHECK(clSetKernelArg(kernel, 4, sizeof(cl_int), (void *)&count));  
+      OPENCL_CHECK(clSetKernelArg(kernel, 5, sizeof(cl_int), (void *)&blob_idx));  
+
+    
+      OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+
+
+    }
+    break;
+  default:
+    LOG(FATAL) << "Unknown elementwise operation.";
+  }
+
+}
+
+template <typename Dtype>
+void EltwiseLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
+    const vector<bool>& propagate_down,
+    const vector<Blob<Dtype>*>& bottom) {
+
+  Backward_cpu(top, propagate_down, bottom);
+}
 #endif
 
 INSTANTIATE_CLASS(EltwiseLayer);

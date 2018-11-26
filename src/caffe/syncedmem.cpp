@@ -9,7 +9,7 @@ SyncedMemory::SyncedMemory()
     own_cpu_data_(false), cpu_malloc_use_cuda_(false), own_gpu_data_(false) {
 #ifndef CPU_ONLY
 #ifdef DEBUG
-  CUDA_CHECK(cudaGetDevice(&device_));
+  // CUDA_CHECK(cudaGetDevice(&device_)); TODOTODOO
 #endif
 #endif
 }
@@ -19,7 +19,7 @@ SyncedMemory::SyncedMemory(size_t size)
     own_cpu_data_(false), cpu_malloc_use_cuda_(false), own_gpu_data_(false) {
 #ifndef CPU_ONLY
 #ifdef DEBUG
-  CUDA_CHECK(cudaGetDevice(&device_));
+  // CUDA_CHECK(cudaGetDevice(&device_)); TODOTODOO
 #endif
 #endif
 }
@@ -230,31 +230,31 @@ void* SyncedMemory::mutable_gpu_data() {
 }
 
 #ifndef CPU_ONLY
-void SyncedMemory::async_gpu_push(const cudaStream_t& stream) {
-  check_device();
-  CHECK(head_ == HEAD_AT_CPU);
-  if (gpu_ptr_ == NULL) {
-    CUDA_CHECK(cudaMalloc(&gpu_ptr_, size_));
-    own_gpu_data_ = true;
-  }
-  const cudaMemcpyKind put = cudaMemcpyHostToDevice;
-  CUDA_CHECK(cudaMemcpyAsync(gpu_ptr_, cpu_ptr_, size_, put, stream));
-  // Assume caller will synchronize on the stream before use
-  head_ = SYNCED;
-}
+// void SyncedMemory::async_gpu_push(const cudaStream_t& stream) {
+//   check_device();
+//   CHECK(head_ == HEAD_AT_CPU);
+//   if (gpu_ptr_ == NULL) {
+//     CUDA_CHECK(cudaMalloc(&gpu_ptr_, size_));
+//     own_gpu_data_ = true;
+//   }
+//   const cudaMemcpyKind put = cudaMemcpyHostToDevice;
+//   CUDA_CHECK(cudaMemcpyAsync(gpu_ptr_, cpu_ptr_, size_, put, stream));
+//   // Assume caller will synchronize on the stream before use
+//   head_ = SYNCED;
+// } TODOTODOO
 #endif
 
 void SyncedMemory::check_device() {
 #ifndef CPU_ONLY
 #ifdef DEBUG
-  int device;
-  cudaGetDevice(&device);
-  CHECK(device == device_);
-  if (gpu_ptr_ && own_gpu_data_) {
-    cudaPointerAttributes attributes;
-    CUDA_CHECK(cudaPointerGetAttributes(&attributes, gpu_ptr_));
-    CHECK(attributes.device == device_);
-  }
+  // int device;
+  // cudaGetDevice(&device);
+  // CHECK(device == device_);
+  // if (gpu_ptr_ && own_gpu_data_) {
+  //   cudaPointerAttributes attributes;
+  //   CUDA_CHECK(cudaPointerGetAttributes(&attributes, gpu_ptr_));
+  //   CHECK(attributes.device == device_);
+  // } TODOTODOO
 #endif
 #endif
 }

@@ -39,6 +39,8 @@ void BNLLLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 
 #ifdef CPU_ONLY
 STUB_GPU(BNLLLayer);
+#elif USE_OPENCL
+TEMP_GPU(BNLLLayer);
 #endif
 
 INSTANTIATE_CLASS(BNLLLayer);

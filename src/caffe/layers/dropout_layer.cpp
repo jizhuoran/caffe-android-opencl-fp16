@@ -67,6 +67,8 @@ void DropoutLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 
 #ifdef CPU_ONLY
 STUB_GPU(DropoutLayer);
+#elif USE_OPENCL
+TEMP_GPU(DropoutLayer);
 #endif
 
 INSTANTIATE_CLASS(DropoutLayer);

@@ -142,6 +142,8 @@ void InnerProductLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 
 #ifdef CPU_ONLY
 STUB_GPU(InnerProductLayer);
+#elif USE_OPENCL
+TEMP_GPU(InnerProductLayer);
 #endif
 
 INSTANTIATE_CLASS(InnerProductLayer);
