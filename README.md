@@ -7,19 +7,63 @@ Optimized (for memory usage, speed and enegry efficiency) Caffe with OpenCL supp
 
 # Features
 
-1. **OpenCL supporting (mobile GPU)**
-2. As few dependencies as possible
-3. Optimized memory usage (under developing)
-4. Forward Only (backward will be added later)
+- [x] **OpenCL supporting (mobile GPU)** (Partially finished)
+- [x] As few dependencies as possible
+- [x] Optimized memory usage
+- [x] Forward Only 
+- [ ] Backward
+
+
+## Peak Memory Usage Reduction
+
+### Testing on going, I am waitting for a device with large enough memory to get the peak memory usage with the memory usage optimization.
 
 ## Layers with OpenCL:
-1. Convolution Layer (libdnn)
-2. Deconvolution Layer (libdnn)
-3. ReLU Layer
+
+ - [x] Convolution Layer (libdnn)
+ - [x] Deconvolution Layer (libdnn)
+ - [x] ReLU Layer
+ - [ ] Matrix Multiplication
+ 
 
 # For Android
-Release Soon! Actually, I do not have a android phone now. LoL
 
+**The project is test on:**. 
+
+1. Snapdragon 835 development board
+2. HUAWEI P9
+3. Hikey 970 (Waitting the device)
+
+
+## Build libcaffe.so
+
+```
+$ modify the NDK_HOME path in ./tools/build_android.sh to your NDK_HOME
+$ ./tools/build_android.sh
+$ (You may want to choose your own make -j)
+
+```
+## Build Android App with Android Studio
+
+
+
+### Make a directory in your devices.
+
+```
+$ adb shell
+$ cd /sdcard/caffe
+
+```
+
+### Similar as Caffe, you need the proto-file and weights. Follow the below instructions to push the needed file to your devices
+
+```
+$ adb push $CAFFE/examples/style_transfer/style.protobin
+$ adb push $CAFFE/examples/style_transfer/a1.caffemodel
+$ adb push $CAFFE/examples/style_transfer/HKU.jpg
+
+```
+### Load the Android studio project inside the $CAFFE_MOBILE/examples/android/android-caffe/ folder, and run it on your connected device.
 
 # For Ubuntu
 
@@ -55,7 +99,7 @@ $ make -j 16
 
 ```
 $ brew install gflags
-$ cmake .. -DTOOLS
+$ cmake ..
 $ make -j 4
 ```
 
