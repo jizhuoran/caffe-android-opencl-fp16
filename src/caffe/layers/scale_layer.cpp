@@ -228,7 +228,6 @@ void ScaleLayer<Dtype>::Forward_gpu(
 
 
   
-  
   const int count = top[0]->count();
   const Dtype* bottom_data = bottom[0]->gpu_data();
   if (bottom[0] == top[0]) {
