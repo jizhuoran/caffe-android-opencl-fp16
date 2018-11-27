@@ -37,7 +37,7 @@ IFS=""
 for abi in ${ANDROID_ABIs[@]}; do
     export ANDROID_ABI="$abi"
     if [ "$ANDROID_ABI" = "arm64-v8a" ]; then
-        export ANDROID_NATIVE_API_LEVEL=23
+        export ANDROID_NATIVE_API_LEVEL=28
     else
         export ANDROID_NATIVE_API_LEVEL=16
     fi

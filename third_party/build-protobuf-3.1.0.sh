@@ -51,11 +51,11 @@ fi
 #        "x86_64" - Intel64 instruction set (r1)
 #        "mips64" - MIPS64 instruction set (r6)
 if [ "$ANDROID_NATIVE_API_LEVEL" = "" ]; then
-  ANDROID_NATIVE_API_LEVEL=23
+  ANDROID_NATIVE_API_LEVEL=28
 fi
 
-if [ $ANDROID_NATIVE_API_LEVEL -lt 23 -a "$ANDROID_ABI" = "arm64-v8a" ]; then
-    echo "ERROR: This ANDROID_ABI($ANDROID_ABI) requires ANDROID_NATIVE_API_LEVEL($ANDROID_NATIVE_API_LEVEL) >= 23"
+if [ $ANDROID_NATIVE_API_LEVEL -lt 28 -a "$ANDROID_ABI" = "arm64-v8a" ]; then
+    echo "ERROR: This ANDROID_ABI($ANDROID_ABI) requires ANDROID_NATIVE_API_LEVEL($ANDROID_NATIVE_API_LEVEL) >= 28"
     exit 1
 fi
 BUILD_PROTOC=OFF
