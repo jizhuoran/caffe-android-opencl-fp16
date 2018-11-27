@@ -15,10 +15,10 @@ CaffeMobile *CaffeMobile::get() {
 }
 
 CaffeMobile *CaffeMobile::get(const string &param_file,
-                              const string &trained_file) {
+                              const string &trained_file, int engine) {
   if (!caffe_mobile_) {
     try {
-      caffe_mobile_ = new CaffeMobile(param_file, trained_file);
+      caffe_mobile_ = new CaffeMobile(param_file, trained_file, engine);
     } catch (std::invalid_argument &e) {
       // TODO
     }
@@ -26,11 +26,14 @@ CaffeMobile *CaffeMobile::get(const string &param_file,
   return caffe_mobile_;
 }
 
-CaffeMobile::CaffeMobile(const string &param_file, const string &trained_file) {
+CaffeMobile::CaffeMobile(const string &param_file, const string &trained_file, int engine) {
   // Load Caffe model
   
-
-  Caffe::set_mode(Caffe::CPU);
+  if (engine == 0) {
+    Caffe::set_mode(Caffe::CPU);
+  } else {
+    Caffe::set_mode(Caffe::GPU);
+  }
 
   CPUTimer timer;
   timer.Start();
@@ -120,8 +123,12 @@ bool CaffeMobile::predictImage(const uint8_t* rgba,
   }
   // Do Inference
 
+    
+  LOG(ERROR) << "Before this";
 
   net_->Forward();
+
+  LOG(ERROR) << "After this";
 
   
 

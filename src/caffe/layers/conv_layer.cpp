@@ -79,6 +79,9 @@ template <typename Dtype>
 void ConvolutionLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top) {
 
+  LOG(INFO) << "Before conv forward";
+
+
   cl_int ret = -1;
 
   cl_kernel kernel = clCreateKernel(this->program, (this->layer_param_.name() + "_forward").c_str(), &ret);
@@ -112,6 +115,9 @@ void ConvolutionLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
     OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 3, NULL, global_size, local_size, 0, NULL, NULL));  
 
   }
+
+  LOG(INFO) << "After conv forward";
+
 
 }
 

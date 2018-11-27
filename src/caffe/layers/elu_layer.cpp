@@ -44,12 +44,19 @@ STUB_GPU(ELULayer);
 template <typename Dtype>
 void ELULayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
     const vector<Blob<Dtype>*>& top) {
+
+  LOG(INFO) << "Before elu forward";
+
+
   const Dtype* bottom_data = bottom[0]->gpu_data();
   Dtype* top_data = top[0]->mutable_gpu_data();
   const int count = bottom[0]->count();
   Dtype alpha = this->layer_param_.elu_param().alpha();
 
   cl_int ret;
+
+  LOG(INFO) << "after elu create kernel";
+
 
   cl_kernel kernel = clCreateKernel(Caffe::Get().program, "ELUForward", &ret);
   OPENCL_CHECK(ret);
@@ -62,7 +69,13 @@ void ELULayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
 
   size_t global_size = CAFFE_GET_BLOCKS(count);
   
+  LOG(INFO) << "after elu enque kernel";
+
+
   OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+
+  LOG(INFO) << "after elu forward";
+
 
 }
 

@@ -20,13 +20,13 @@ Java_com_example_gsq_caffe_1android_1project_CaffeMobile_setBlasThreadNum(JNIEnv
 
 JNIEXPORT jboolean JNICALL
 Java_com_example_gsq_caffe_1android_1project_CaffeMobile_loadModel(JNIEnv *env, jobject instance,
-                                                     jstring modelPath_, jstring weightPath_) {
+                                                     jstring modelPath_, jstring weightPath_, int engine) {
     jboolean ret = true;
 
     const char *modelPath = env->GetStringUTFChars(modelPath_, 0);
     const char *weightPath = env->GetStringUTFChars(weightPath_, 0);
 
-    if (caffe::CaffeMobile::get(modelPath, weightPath) == NULL) {
+    if (caffe::CaffeMobile::get(modelPath, weightPath, engine) == NULL) {
         ret = false;
     }
 

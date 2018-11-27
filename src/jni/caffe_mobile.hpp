@@ -29,7 +29,7 @@ public:
    * @return NULL: failed; not NULL: succeeded
    */
   static CaffeMobile *get(const std::string &param_file,
-                          const std::string &trained_file);
+                          const std::string &trained_file, int engine);
 
   /**
    * @brief Get the exist CaffeMobile singleton pointer
@@ -62,7 +62,7 @@ private:
    * @brief Construct a caffe net from the param file (*.prototxt)
    * and the tained file (*.caffemodel)
    */
-  CaffeMobile(const string &param_file, const string &trained_file);
+  CaffeMobile(const string &param_file, const string &trained_file, int engine);
 
 
   /// @brief
