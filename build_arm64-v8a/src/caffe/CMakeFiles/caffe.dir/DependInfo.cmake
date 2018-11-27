@@ -85,9 +85,9 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include"
   "../src"
   "include"
-  "../third_party/arm64-v8a-23-OpenBLAS/include"
+  "../third_party/arm64-v8a-28-OpenBLAS/include"
   "../third_party/OpenCL"
-  "../third_party/arm64-v8a-23-protobuf/include"
+  "../third_party/arm64-v8a-28-protobuf/include"
   "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include"
   "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++abi/include"
   )

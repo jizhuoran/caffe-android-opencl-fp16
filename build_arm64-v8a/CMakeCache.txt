@@ -18,7 +18,7 @@
 ANDROID_ABI:UNINITIALIZED=arm64-v8a
 
 //No help, variable specified on the command line.
-ANDROID_NATIVE_API_LEVEL:UNINITIALIZED=23
+ANDROID_NATIVE_API_LEVEL:UNINITIALIZED=28
 
 //No help, variable specified on the command line.
 ANDROID_NDK:UNINITIALIZED=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b
@@ -27,7 +27,7 @@ ANDROID_NDK:UNINITIALIZED=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b
 Atlas_BLAS_LIBRARY:FILEPATH=Atlas_BLAS_LIBRARY-NOTFOUND
 
 //Path to a file.
-Atlas_CBLAS_INCLUDE_DIR:PATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-23-OpenBLAS/include
+Atlas_CBLAS_INCLUDE_DIR:PATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-OpenBLAS/include
 
 //Path to a library.
 Atlas_CBLAS_LIBRARY:FILEPATH=Atlas_CBLAS_LIBRARY-NOTFOUND
@@ -231,10 +231,10 @@ CMAKE_TOOLCHAIN_FILE:FILEPATH=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Path to a file.
-OpenBLAS_INCLUDE_DIR:PATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-23-OpenBLAS/include
+OpenBLAS_INCLUDE_DIR:PATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-OpenBLAS/include
 
 //Path to a library.
-OpenBLAS_LIB:FILEPATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-23-OpenBLAS/lib/libopenblas.a
+OpenBLAS_LIB:FILEPATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-OpenBLAS/lib/libopenblas.a
 
 //Value Computed by CMake
 Project_BINARY_DIR:STATIC=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a
@@ -243,34 +243,34 @@ Project_BINARY_DIR:STATIC=/home/zrji/android_caffe/caffe-android-opencl/build_ar
 Project_SOURCE_DIR:STATIC=/home/zrji/android_caffe/caffe-android-opencl
 
 //Path to a file.
-Protobuf_INCLUDE_DIR:PATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-23-protobuf/include
+Protobuf_INCLUDE_DIR:PATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-protobuf/include
 
 //Path to a library.
-Protobuf_LIBRARY_DEBUG:FILEPATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-23-protobuf/lib/libprotobuf.a
+Protobuf_LIBRARY_DEBUG:FILEPATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-protobuf/lib/libprotobuf.a
 
 //Path to a library.
-Protobuf_LIBRARY_RELEASE:FILEPATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-23-protobuf/lib/libprotobuf.a
+Protobuf_LIBRARY_RELEASE:FILEPATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-protobuf/lib/libprotobuf.a
 
 //Path to a library.
-Protobuf_LITE_LIBRARY_DEBUG:FILEPATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-23-protobuf/lib/libprotobuf-lite.a
+Protobuf_LITE_LIBRARY_DEBUG:FILEPATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-protobuf/lib/libprotobuf-lite.a
 
 //Path to a library.
-Protobuf_LITE_LIBRARY_RELEASE:FILEPATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-23-protobuf/lib/libprotobuf-lite.a
+Protobuf_LITE_LIBRARY_RELEASE:FILEPATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-protobuf/lib/libprotobuf-lite.a
 
 //The Google Protocol Buffers Compiler
 Protobuf_PROTOC_EXECUTABLE:FILEPATH=/usr/local/bin/protoc
 
 //Path to a library.
-Protobuf_PROTOC_LIBRARY_DEBUG:FILEPATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-23-protobuf/lib/libprotoc.a
+Protobuf_PROTOC_LIBRARY_DEBUG:FILEPATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-protobuf/lib/libprotoc.a
 
 //Path to a library.
-Protobuf_PROTOC_LIBRARY_RELEASE:FILEPATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-23-protobuf/lib/libprotoc.a
+Protobuf_PROTOC_LIBRARY_RELEASE:FILEPATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-protobuf/lib/libprotoc.a
 
 //IDE Solution folders
 USE_PROJECT_FOLDERS:BOOL=OFF
 
 //Dependencies for the target
-caffe_LIB_DEPENDS:STATIC=general;proto;general;proto;general;/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-23-protobuf/lib/libprotobuf.a;general;/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-23-OpenBLAS/lib/libopenblas.a;general;/home/zrji/android_caffe/caffe-android-opencl/third_party/OpenCL/libOpenCL.so;general;log;
+caffe_LIB_DEPENDS:STATIC=general;proto;general;proto;general;/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-protobuf/lib/libprotobuf.a;general;/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-OpenBLAS/lib/libopenblas.a;general;/home/zrji/android_caffe/caffe-android-opencl/third_party/OpenCL/libOpenCL.so;general;log;
 
 
 ########################
@@ -423,7 +423,7 @@ CMAKE_UNAME:INTERNAL=/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Protobuf
-FIND_PACKAGE_MESSAGE_DETAILS_Protobuf:INTERNAL=[/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-23-protobuf/lib/libprotobuf.a][/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-23-protobuf/include][v3.1.0()]
+FIND_PACKAGE_MESSAGE_DETAILS_Protobuf:INTERNAL=[/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-protobuf/lib/libprotobuf.a][/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-protobuf/include][v3.1.0()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //ADVANCED property for variable: OpenBLAS_INCLUDE_DIR
