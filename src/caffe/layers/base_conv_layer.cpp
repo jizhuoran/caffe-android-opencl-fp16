@@ -211,12 +211,12 @@ void BaseConvolutionLayer<Dtype>::LayerSetUp(const vector<Blob<Dtype>*>& bottom,
 }
 
 template<typename Dtype>
-std::string BaseConvolutionLayer<Dtype>::generate_fw_defs() {
+std::string BaseConvolutionLayer<Dtype>::generate_fw_defs(int TSK, int WPTM, int WPTN, int RTSM, int RTSN) {
   return "aaa";
 }
 
 template<typename Dtype>
-std::string BaseConvolutionLayer<Dtype>::generate_fw_kernels(std::string name) {
+std::string BaseConvolutionLayer<Dtype>::generate_fw_kernels(std::string name, int TSK, int WPTM, int WPTN, int RTSM, int RTSN) {
   return "aaa";
 }
 
@@ -266,12 +266,12 @@ std::string BaseConvolutionLayer<Dtype>::generate_header() {
 
 
 template<typename Dtype>
-std::string BaseConvolutionLayer<Dtype>::generate_gemm_core(bool dterm) {
+std::string BaseConvolutionLayer<Dtype>::generate_gemm_core(bool dterm, int RTSM, int RTSN) {
   std::stringstream ss;
   int vwm = 4;
   int vwn = 4;
-  int rtsn = 8;
-  int rtsm = 8;
+  int rtsn = RTSN;
+  int rtsm = RTSM;
   bool unroll = true;
 
   // Temporary registers for A and B
@@ -492,8 +492,8 @@ void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
   std::stringstream ss;
 
   ss << this->generate_header(); 
-  ss << this->generate_fw_defs();
-  ss << this->generate_fw_kernels(this->layer_param_.name() + "_forward");
+  ss << this->generate_fw_defs(8, 4, 32, 4, 16); //TSK, WPTM, WPTN, RTSM, RTSN
+  ss << this->generate_fw_kernels(this->layer_param_.name() + "_forward", 8, 4, 32, 4, 16);
 
   std::string conv_kernel = ss.str();
 
@@ -507,7 +507,9 @@ void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
   program = clCreateProgramWithSource(Caffe::Get().context, 1, (const char **)&kernelSource, (const size_t *)&kernel_size, &ret); 
   OPENCL_CHECK(ret);
   
-  // fprintf(stderr, "Come to Here!!! 2\n");
+  // fprintf(stderr, "We are going to build the code!!!\n");
+
+  LOG(INFO) << conv_kernel;
 
   ret = clBuildProgram(program, 1, &Caffe::Get().deviceID, NULL, NULL, NULL);
 

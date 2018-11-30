@@ -16,15 +16,33 @@ namespace caffe {
 // The improvement in performance seems negligible in the single GPU case,
 // but might be more significant for parallel training. Most importantly,
 // it improved stability for large models on many GPUs.
-inline void CaffeMallocHost(void** ptr, size_t size, bool* use_cuda) {
+inline void CaffeMallocHost(void** ptr, size_t size, bool* use_cuda, cl_mem *gpu_ptr) {
 #ifdef USE_OPENCL
-  // if (Caffe::mode() == Caffe::GPU) {
+
+  if (Caffe::mode() == Caffe::GPU) {
+
+#ifdef ZERO_COPY
+
+    cl_int ret;
+
+    *gpu_ptr = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE | CL_MEM_ALLOC_HOST_PTR, size, NULL, &ret);
+    OPENCL_CHECK(ret);
+
+    *ptr = clEnqueueMapBuffer(Caffe::Get().commandQueue, *gpu_ptr, CL_TRUE, CL_MAP_READ | CL_MAP_WRITE, 0, size, 0, NULL, NULL, &ret);
+    OPENCL_CHECK(ret);
+
+#else
     *ptr = malloc(size);
-    // CUDA_CHECK(cudaMallocHost(ptr, size));
+    
+#endif
+
     *use_cuda = true;
     return;
-  // }
+  }
+
 #endif
+
+
 #ifdef USE_MKL
   *ptr = mkl_malloc(size ? size:1, 64);
 #else
@@ -98,6 +116,10 @@ class SyncedMemory {
   bool cpu_malloc_use_cuda_;
   bool own_gpu_data_;
   int device_;
+
+#ifdef USE_OPENCL
+  cl_int ret;
+#endif 
 
   DISABLE_COPY_AND_ASSIGN(SyncedMemory);
 };  // class SyncedMemory

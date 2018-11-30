@@ -16,7 +16,7 @@
 #endif
 
 #ifdef USE_OPENCL
-#define CL_TARGET_OPENCL_VERSION 120
+#define CL_TARGET_OPENCL_VERSION 220
 #endif
 
 #include <climits>

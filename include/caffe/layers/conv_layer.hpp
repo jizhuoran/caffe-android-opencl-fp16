@@ -76,8 +76,8 @@ class ConvolutionLayer : public BaseConvolutionLayer<Dtype> {
   virtual void Backward_gpu(const vector<Blob<Dtype>*>& top,
       const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom);
 
-  virtual std::string generate_fw_defs();
-  virtual std::string generate_fw_kernels(std::string name);
+  virtual std::string generate_fw_defs(int TSK, int WPTM, int WPTN, int RTSM, int RTSN);
+  virtual std::string generate_fw_kernels(std::string name, int TSK, int WPTM, int WPTN, int RTSM, int RTSN);
 
   
   virtual inline bool reverse_dimensions() { return false; }

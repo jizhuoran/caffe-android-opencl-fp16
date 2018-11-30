@@ -68,9 +68,9 @@ class BaseConvolutionLayer : public Layer<Dtype> {
 
 
   std::string generate_header();
-  virtual std::string generate_fw_defs();
-  virtual std::string generate_fw_kernels(std::string name);
-  virtual std::string generate_gemm_core(bool dterm);
+  virtual std::string generate_fw_defs(int TSK, int WPTM, int WPTN, int RTSM, int RTSN);
+  virtual std::string generate_fw_kernels(std::string name, int TSK, int WPTM, int WPTN, int RTSM, int RTSN);
+  virtual std::string generate_gemm_core(bool dterm, int RTSM, int RTSN);
   virtual std::string generate_accreg_init(bool dterm, bool load);
 
   cl_program program;

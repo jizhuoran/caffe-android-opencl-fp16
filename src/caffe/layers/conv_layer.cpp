@@ -79,9 +79,6 @@ template <typename Dtype>
 void ConvolutionLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top) {
 
-  LOG(INFO) << "Before conv forward";
-
-
   cl_int ret = -1;
 
   cl_kernel kernel = clCreateKernel(this->program, (this->layer_param_.name() + "_forward").c_str(), &ret);
@@ -103,21 +100,18 @@ void ConvolutionLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
     }
 
     size_t* local_size = new size_t[3];
-    local_size[0] = static_cast<size_t>(8);
-    local_size[1] = static_cast<size_t>(8);
+    local_size[0] = static_cast<size_t>(16);
+    local_size[1] = static_cast<size_t>(4);
     local_size[2] = static_cast<size_t>(1);
 
     size_t* global_size = new size_t[3];
-    global_size[0] = static_cast<size_t>((((top[i]->shape(2) * top[i]->shape(3)) - 1) / 32 + 1)*8);
-    global_size[1] = static_cast<size_t>((((top[i]->shape(1) / this->group_) - 1) / 32 + 1)*8);
+    global_size[0] = static_cast<size_t>((((top[i]->shape(2) * top[i]->shape(3)) - 1) / (16*16) + 1)*16);
+    global_size[1] = static_cast<size_t>((((top[i]->shape(1) / this->group_) - 1) / 16 + 1)*4);
     global_size[2] = static_cast<size_t>(bottom[i]->shape()[0] * 1);
 
     OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 3, NULL, global_size, local_size, 0, NULL, NULL));  
 
   }
-
-  LOG(INFO) << "After conv forward";
-
 
 }
 
@@ -162,7 +156,7 @@ void ConvolutionLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
 
 
 template<typename Dtype>
-std::string ConvolutionLayer<Dtype>::generate_fw_defs() {
+std::string ConvolutionLayer<Dtype>::generate_fw_defs(int TSK, int WPTM, int WPTN, int RTSM, int RTSN) {
   
   std::stringstream ss;
 
@@ -244,23 +238,23 @@ std::string ConvolutionLayer<Dtype>::generate_fw_defs() {
   this->add_def(ss, "v_pad_B", 1);
 
   // The tile-size in dimension M
-  this->add_def(ss, "TSM", 32);
+  this->add_def(ss, "TSM", WPTM * RTSM);
   // The tile-size in dimension N
-  this->add_def(ss, "TSN", 32);
+  this->add_def(ss, "TSN", WPTN * RTSN);
   // The tile-size in dimension K
-  this->add_def(ss, "TSK", 8);
+  this->add_def(ss, "TSK", TSK);
   // TSK unrolling
   this->add_def(ss, "TSK_UNROLL", 1);
   // The work-per-thread in dimension M
-  this->add_def(ss, "WPTM", 4);
+  this->add_def(ss, "WPTM", WPTM);
   this->add_def(ss, "VWM", 4);
   // The work-per-thread in dimension N
-  this->add_def(ss, "WPTN", 4);
+  this->add_def(ss, "WPTN", WPTN);
   this->add_def(ss, "VWN", 4);
   // The reduced tile-size in dimension M
-  this->add_def(ss, "RTSM", 8);
+  this->add_def(ss, "RTSM", RTSM);
   // The reduced tile-size in dimension N
-  this->add_def(ss, "RTSN", 8);
+  this->add_def(ss, "RTSN", RTSN);
   // Loads-per-thread for A
   this->add_def(ss, "LPTA", "((TSK*TSM)/(RTSM*RTSN))");
   // Loads-per-thread for B
@@ -277,14 +271,14 @@ std::string ConvolutionLayer<Dtype>::generate_fw_defs() {
 
 
 template <typename Dtype>
-std::string ConvolutionLayer<Dtype>::generate_fw_kernels(std::string name) {
+std::string ConvolutionLayer<Dtype>::generate_fw_kernels(std::string name, int TSK, int WPTM, int WPTN, int RTSM, int RTSN) {
   std::stringstream ss;
 
-  int wptn = 4;
-  int wptm = 4;
-  int tsk = 8;
-  int rtsn = 8;
-  int rtsm = 8;
+  int wptn = WPTN;
+  int wptm = WPTM;
+  int tsk = TSK;
+  int rtsn = RTSN;
+  int rtsm = RTSM;
   int tsm = wptm * rtsm;
   int tsn = wptn * rtsn;
   int vwm = 4;
@@ -471,7 +465,7 @@ std::string ConvolutionLayer<Dtype>::generate_fw_kernels(std::string name) {
   // Synchronize to make sure the tile is loaded
   ss << "barrier(CLK_LOCAL_MEM_FENCE);" << std::endl;
 
-  ss << this->generate_gemm_core(false) << std::endl;
+  ss << this->generate_gemm_core(false, rtsm, rtsn) << std::endl;
 
   // Synchronize before loading the next tile
   ss << "barrier(CLK_LOCAL_MEM_FENCE);" << std::endl;
@@ -492,7 +486,9 @@ std::string ConvolutionLayer<Dtype>::generate_fw_kernels(std::string name) {
   ss << "for (int wn=0; wn<WPTN; ++wn) {" << std::endl;
   ss << "int globalCol = offN + tidn + wn * RTSN;"
      << std::endl;
+#ifndef SNAPDRAGON
   ss << "if (globalRow < M && globalCol < N) {" << std::endl;
+#endif
   // ss << "if (wn * RTSN < N) " << std::endl;
   if (this->bias_term_) {
     ss << "Cptr[globalRow * N + globalCol] = "
@@ -502,7 +498,9 @@ std::string ConvolutionLayer<Dtype>::generate_fw_kernels(std::string name) {
     ss << "Cptr[globalRow * N + globalCol] = "
        << "((Dtype*)(&(Creg[wm][wn/VWN])))[wn%VWN];" << std::endl;
   }
+#ifndef SNAPDRAGON
   ss << "}" << std::endl;   // M-N-Guard
+#endif
   ss << "}" << std::endl;   // For (N)
   ss << "}" << std::endl;   // For (M)
   ss << "}" << std::endl;   // Scoping for C registers

@@ -146,7 +146,7 @@ namespace caffe {
 // const char* curandGetErrorString(curandStatus_t error);
 
 // CUDA: use 512 threads per block
-const size_t CAFFE_CUDA_NUM_THREADS = 32;
+const size_t CAFFE_CUDA_NUM_THREADS = 128;
 
 // CUDA: number of blocks for threads.
 inline int CAFFE_GET_BLOCKS(const int N) {

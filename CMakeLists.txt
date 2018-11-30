@@ -15,6 +15,7 @@ add_definitions(-DUSE_OPENCL)
 #add_definitions(-DFORWARD_LESS_MEM)
 add_definitions(-DUSE_NEON_MATH)
 add_definitions(-DFORWARD_ONLY)
+add_definitions(-DZERO_COPY)
 
 include(./cmake/Utils.cmake)
 include(./cmake/Misc.cmake)
