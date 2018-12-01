@@ -3,6 +3,10 @@
 
 #include "caffe/layers/elu_layer.hpp"
 
+#ifdef WITH_HALF
+#include "caffe/util/half.hpp"
+#endif
+
 namespace caffe {
 
 template <typename Dtype>
@@ -58,8 +62,15 @@ void ELULayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   // Set arguments for kernel
   OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&bottom_data));  
   OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&top_data));  
-  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&count));  
-  OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_float), (void *)&alpha));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&count));
+
+#ifdef WITH_HALF
+  half_b alpha_half = float2half_impl(alpha);
+  OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_half), (void *)&alpha_half));
+#else
+  OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_float), (void *)&alpha));
+#endif
+
 
   size_t global_size = CAFFE_GET_BLOCKS(count);
   

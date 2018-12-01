@@ -233,12 +233,25 @@ std::string BaseConvolutionLayer<Dtype>::generate_header() {
       ss << "#define Dtype" << i << " double" << i << std::endl;
     }
   } else {
+
+#ifdef WITH_HALF
+    ss << "#pragma OPENCL EXTENSION cl_khr_fp16 : enable" << std::endl;
+    ss << "#define Dtype half" << std::endl;
+    ss << "#define Dtype1 half" << std::endl;
+    // half2, half4, half8, half16
+    for (int i = 2; i <= 16; i *= 2) {
+      ss << "#define Dtype" << i << " half" << i << std::endl;
+    }
+
+#else
     ss << "#define Dtype float" << std::endl;
     ss << "#define Dtype1 float" << std::endl;
     // float2, float4, float8, float16
     for (int i = 2; i <= 16; i *= 2) {
       ss << "#define Dtype" << i << " float" << i << std::endl;
     }
+#endif
+
   }
 
   std::vector<std::string> elems4({

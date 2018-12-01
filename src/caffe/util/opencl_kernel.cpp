@@ -6,6 +6,33 @@ std::string generate_opencl_math() {
 	
 	std::stringstream ss;
 
+	bool use_half = false;
+
+	if(use_half) {
+		
+		ss << "#pragma OPENCL EXTENSION cl_khr_fp16 : enable" << std::endl;
+		ss << std::endl;
+		ss << "#define Dtype half" << std::endl;
+		ss << "#define Dtype1 half" << std::endl;
+		ss << "#define Dtype2 half2" << std::endl;
+		ss << "#define Dtype4 half4" << std::endl;
+		ss << "#define Dtype8 half8" << std::endl;
+		ss << "#define Dtype16 half16" << std::endl;
+	} else {
+		ss << "#define Dtype float" << std::endl;
+		ss << "#define Dtype1 float" << std::endl;
+		ss << "#define Dtype2 float2" << std::endl;
+		ss << "#define Dtype4 float4" << std::endl;
+		ss << "#define Dtype8 float8" << std::endl;
+		ss << "#define Dtype16 float16" << std::endl;
+	}
+
+	
+
+	ss << std::endl;
+	ss << std::endl;
+	ss << std::endl;
+
 	ss << "#define OPENCL_KERNEL_LOOP(i, n) \\" << std::endl;
 	ss << "for (int i = get_group_id(0) * get_local_size(0) + get_local_id(0); \\" << std::endl;
 	ss << "i < (n); \\" << std::endl;
@@ -15,26 +42,26 @@ std::string generate_opencl_math() {
 	ss << std::endl;
 	ss << std::endl;
 
-	ss << "__kernel void ReLUForward(__global float *in," << std::endl;
-	ss << "__global float *out," << std::endl;
-	ss << "int N, float negative_slope) {" << std::endl;
+	ss << "__kernel void ReLUForward(__global Dtype *in," << std::endl;
+	ss << "__global Dtype *out," << std::endl;
+	ss << "int N, Dtype negative_slope) {" << std::endl;
 	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
 	ss << "out[index] = in[index] > 0 ? in[index] : in[index] * negative_slope;" << std::endl;
 	ss << "}" << std::endl;
 	ss << "}" << std::endl;
 
 
-	ss << "__kernel void ELUForward(__global float *in," << std::endl;
-	ss << "__global float *out," << std::endl;
-	ss << "int N, float alpha) {" << std::endl;
+	ss << "__kernel void ELUForward(__global Dtype *in," << std::endl;
+	ss << "__global Dtype *out," << std::endl;
+	ss << "int N, Dtype alpha) {" << std::endl;
 	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
 	ss << "out[index] = in[index] > 0 ? in[index] : alpha * (exp(in[index]) - 1);" << std::endl;
 	ss << "}" << std::endl;
 	ss << "}" << std::endl;
 
-	ss << "__kernel void ScaleForward(__global float *in," << std::endl;
-	ss << "__global float *out," << std::endl;
-	ss << "int N, __global float *scale, int scale_dim, int inner_dim) {" << std::endl;
+	ss << "__kernel void ScaleForward(__global Dtype *in," << std::endl;
+	ss << "__global Dtype *out," << std::endl;
+	ss << "int N, __global Dtype *scale, int scale_dim, int inner_dim) {" << std::endl;
 	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
 	ss << "const int scale_index = (index / inner_dim) % scale_dim;" << std::endl;
 	ss << "out[index] = in[index] * scale[scale_index];" << std::endl;
@@ -42,9 +69,9 @@ std::string generate_opencl_math() {
 	ss << "}" << std::endl;
 
 
-	ss << "__kernel void ScaleBiasForward(__global float *in," << std::endl;
-	ss << "__global float *out," << std::endl;
-	ss << "int N, __global float *scale, __global float *bias, int scale_dim, int inner_dim) {" << std::endl;
+	ss << "__kernel void ScaleBiasForward(__global Dtype *in," << std::endl;
+	ss << "__global Dtype *out," << std::endl;
+	ss << "int N, __global Dtype *scale, __global Dtype *bias, int scale_dim, int inner_dim) {" << std::endl;
 	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
 	ss << "const int scale_index = (index / inner_dim) % scale_dim;" << std::endl;
 	ss << "out[index] = in[index] * scale[scale_index] + bias[scale_index];" << std::endl;
@@ -52,40 +79,40 @@ std::string generate_opencl_math() {
 	ss << "}" << std::endl;
 
 
-	ss << "__kernel void TanHForward(__global float *in," << std::endl;
-	ss << "__global float *out," << std::endl;
+	ss << "__kernel void TanHForward(__global Dtype *in," << std::endl;
+	ss << "__global Dtype *out," << std::endl;
 	ss << "int N) {" << std::endl;
 	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
 	ss << "out[index] = tanh(in[index]);" << std::endl;
 	ss << "}" << std::endl;
 	ss << "}" << std::endl;
 
-	ss << "__kernel void mul_kernel(__global float *a, __global float *b," << std::endl;
-	ss << "__global float *y," << std::endl;
+	ss << "__kernel void mul_kernel(__global Dtype *a, __global Dtype *b," << std::endl;
+	ss << "__global Dtype *y," << std::endl;
 	ss << "int N) {" << std::endl;
 	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
 	ss << " y[index] = a[index] * b[index];" << std::endl;
 	ss << "}" << std::endl;
 	ss << "}" << std::endl;
 
-	ss << "__kernel void div_kernel(__global float *a, __global float *b," << std::endl;
-	ss << "__global float *y," << std::endl;
+	ss << "__kernel void div_kernel(__global Dtype *a, __global Dtype *b," << std::endl;
+	ss << "__global Dtype *y," << std::endl;
 	ss << "int N) {" << std::endl;
 	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
 	ss << " y[index] = a[index] / b[index];" << std::endl;
 	ss << "}" << std::endl;
 	ss << "}" << std::endl;
 
-	ss << "__kernel void sub_kernel(__global float *a, __global float *b," << std::endl;
-	ss << "__global float *y," << std::endl;
+	ss << "__kernel void sub_kernel(__global Dtype *a, __global Dtype *b," << std::endl;
+	ss << "__global Dtype *y," << std::endl;
 	ss << "int N) {" << std::endl;
 	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
 	ss << " y[index] = a[index] - b[index];" << std::endl;
 	ss << "}" << std::endl;
 	ss << "}" << std::endl;
 
-	ss << "__kernel void add_kernel(__global float *a, __global float *b," << std::endl;
-	ss << "__global float *y," << std::endl;
+	ss << "__kernel void add_kernel(__global Dtype *a, __global Dtype *b," << std::endl;
+	ss << "__global Dtype *y," << std::endl;
 	ss << "int N) {" << std::endl;
 	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
 	ss << " y[index] = a[index] + b[index];" << std::endl;
@@ -94,11 +121,11 @@ std::string generate_opencl_math() {
 
 
 
-	ss << "__kernel void MaxForward(__global float *bottom_data_a, __global float *bottom_data_b," << std::endl;
-	ss << "__global float *top_data, __global int *mask," << std::endl;
+	ss << "__kernel void MaxForward(__global Dtype *bottom_data_a, __global Dtype *bottom_data_b," << std::endl;
+	ss << "__global Dtype *top_data, __global int *mask," << std::endl;
 	ss << "int nthreads, int blob_idx) {" << std::endl;
 	ss << "OPENCL_KERNEL_LOOP(index, nthreads) {" << std::endl;
-	ss << "float maxval = -FLT_MAX;" << std::endl;
+	ss << "Dtype maxval = -FLT_MAX;" << std::endl;
 	ss << "int maxidx = -1;" << std::endl;
 	ss << "if (bottom_data_a[index] > bottom_data_b[index]) {" << std::endl;
 	ss << "if (blob_idx == 0) {" << std::endl;
@@ -117,9 +144,9 @@ std::string generate_opencl_math() {
 	ss << "}" << std::endl;
 
 
-	ss << "__kernel void axpy_kernel(__global float *X," << std::endl;
-	ss << "__global float *Y," << std::endl;
-	ss << "float alpha, int N) {" << std::endl;
+	ss << "__kernel void axpy_kernel(__global Dtype *X," << std::endl;
+	ss << "__global Dtype *Y," << std::endl;
+	ss << "Dtype alpha, int N) {" << std::endl;
 	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
 	ss << "Y[index] = X[index] * alpha + Y[index];" << std::endl;
 	ss << "}" << std::endl;

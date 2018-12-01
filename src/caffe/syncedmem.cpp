@@ -2,6 +2,9 @@
 #include "caffe/syncedmem.hpp"
 #include "caffe/util/math_functions.hpp"
 
+#ifdef WITH_HALF
+#include "caffe/util/half.hpp"
+#endif
 
 namespace caffe {
 SyncedMemory::SyncedMemory()
@@ -69,6 +72,15 @@ void SyncedMemory::zhihan_release() {
 
 inline void SyncedMemory::to_cpu() {
   check_device();
+
+#ifdef USE_OPENCL
+#ifdef WITH_HALF
+#ifndef ZERO_COPY
+  half_b* converter;
+#endif
+#endif
+#endif
+
   switch (head_) {
   case UNINITIALIZED:
     CaffeMallocHost(&cpu_ptr_, size_, &cpu_malloc_use_cuda_, &gpu_ptr_);
@@ -92,8 +104,18 @@ inline void SyncedMemory::to_cpu() {
       own_cpu_data_ = true;
     }
     
+#ifdef WITH_HALF
+    converter = (half_b*)malloc(size_/2);
+    OPENCL_CHECK(clEnqueueReadBuffer(Caffe::Get().commandQueue, gpu_ptr_, CL_TRUE, 0, size_/2, converter, 0, NULL, NULL));
+    half2float(size_/4, converter, (float*)cpu_ptr_);
+    free(converter);
+#else
     OPENCL_CHECK(clEnqueueReadBuffer(Caffe::Get().commandQueue, gpu_ptr_, CL_TRUE, 0, size_, cpu_ptr_, 0, NULL, NULL));
+#endif
+
     head_ = SYNCED;
+
+
 #endif
 
     // caffe_gpu_memcpy(size_, gpu_ptr_, cpu_ptr_);
@@ -107,8 +129,24 @@ inline void SyncedMemory::to_cpu() {
   }
 }
 
+
+
+    
+
+
 inline void SyncedMemory::to_gpu() {
   check_device();
+
+
+#ifdef USE_OPENCL
+#ifdef WITH_HALF
+#ifndef ZERO_COPY
+  half_b* converter;
+#endif
+#endif
+#endif
+
+
 
 #ifdef USE_OPENCL
 
@@ -118,7 +156,13 @@ inline void SyncedMemory::to_gpu() {
 #ifdef ZERO_COPY
     gpu_ptr_ = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE| CL_MEM_ALLOC_HOST_PTR, size_, NULL, NULL);
 #else
+
+#ifdef WITH_HALF
+    gpu_ptr_ = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, size_/2, NULL, NULL);
+#else
     gpu_ptr_ = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, size_, NULL, NULL);
+#endif
+
 #endif    
     caffe_gpu_memset(size_, 0, (void *)gpu_ptr_);
     head_ = HEAD_AT_GPU;
@@ -137,11 +181,26 @@ inline void SyncedMemory::to_gpu() {
 
 #else
     if (gpu_ptr_ == NULL) {
+
+#ifdef WITH_HALF
+      gpu_ptr_ = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, size_/2, NULL, NULL);
+#else
       gpu_ptr_ = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, size_, NULL, NULL);
+#endif
       own_gpu_data_ = true;
     }
     
-    OPENCL_CHECK(clEnqueueWriteBuffer(Caffe::Get().commandQueue, gpu_ptr_, CL_TRUE, 0, size_, cpu_ptr_, 0, NULL, NULL));
+#ifdef WITH_HALF
+    
+      converter = (half_b*)malloc(size_/2);
+      float2half(size_/4, (float*)cpu_ptr_, converter);
+      OPENCL_CHECK(clEnqueueWriteBuffer(Caffe::Get().commandQueue, gpu_ptr_, CL_TRUE, 0, size_/2, converter, 0, NULL, NULL));
+      free(converter);
+#else
+      OPENCL_CHECK(clEnqueueWriteBuffer(Caffe::Get().commandQueue, gpu_ptr_, CL_TRUE, 0, size_, cpu_ptr_, 0, NULL, NULL));
+#endif
+
+
 
     head_ = SYNCED;
 #endif

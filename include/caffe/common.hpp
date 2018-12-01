@@ -29,7 +29,13 @@
 #include <string>
 #include <utility>  // pair
 #include <vector>
+
+
+#ifdef USE_OPENCL
 #include <CL/cl.h>
+#endif
+
+
 
 
 #include "caffe/util/device_alternate.hpp"
