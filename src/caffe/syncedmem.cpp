@@ -159,12 +159,13 @@ inline void SyncedMemory::to_gpu() {
 
 #ifdef WITH_HALF
     gpu_ptr_ = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, size_/2, NULL, NULL);
+    caffe_gpu_memset(size_/2, 0, (void *)gpu_ptr_);
 #else
     gpu_ptr_ = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, size_, NULL, NULL);
+    caffe_gpu_memset(size_, 0, (void *)gpu_ptr_);
 #endif
 
 #endif    
-    caffe_gpu_memset(size_, 0, (void *)gpu_ptr_);
     head_ = HEAD_AT_GPU;
     own_gpu_data_ = true;
     break;

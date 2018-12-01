@@ -6,7 +6,7 @@ std::string generate_opencl_math() {
 	
 	std::stringstream ss;
 
-	bool use_half = false;
+	bool use_half = true;
 
 	if(use_half) {
 		

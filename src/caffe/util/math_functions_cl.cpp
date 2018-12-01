@@ -11,6 +11,12 @@
 #include "caffe/util/math_functions.hpp"
 #include "caffe/util/rng.hpp"
 
+
+#ifdef WITH_HALF
+#include "caffe/util/half.hpp"
+#endif
+
+
 #if defined(__APPLE__) && defined(__MACH__)
 #include <vecLib.h>
 #elif defined(USE_NEON_MATH) && defined(__ARM_NEON)
@@ -45,8 +51,15 @@ void caffe_gpu_axpy<float>(const int N, const float alpha, const float* X,
 
   // Set arguments for kernel
   OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&X));  
-  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&Y));  
-  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_float), (void *)&alpha));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&Y));
+
+#ifdef WITH_HALF
+  half_b alpha_half = float2half_impl(alpha);
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_half), (void *)&alpha_half));
+#else
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_float), (void *)&alpha));
+#endif
+
   OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_int), (void *)&N));  
 
   size_t global_size = CAFFE_GET_BLOCKS(N);
@@ -64,7 +77,13 @@ void caffe_gpu_axpby<float>(const int N, const float alpha, const float* X,
 
 template <typename Dtype>
 void caffe_gpu_set(const int N, const Dtype alpha, Dtype* Y) {
+
+#ifdef WITH_HALF
+  OPENCL_CHECK(clEnqueueFillBuffer(Caffe::Get().commandQueue, (cl_mem) Y, &alpha, 2, 0, N * 2, 0, NULL, NULL));
+#else
   OPENCL_CHECK(clEnqueueFillBuffer(Caffe::Get().commandQueue, (cl_mem) Y, &alpha, sizeof(Dtype), 0, N * sizeof(Dtype), 0, NULL, NULL));
+#endif
+
 }
 
 
