@@ -17,6 +17,7 @@ add_definitions(-DUSE_NEON_MATH)
 add_definitions(-DFORWARD_ONLY)
 #add_definitions(-DZERO_COPY)
 add_definitions(-DWITH_HALF)
+#add_definitions(-DSNAPDRAGON)
 
 
 include(./cmake/Utils.cmake)

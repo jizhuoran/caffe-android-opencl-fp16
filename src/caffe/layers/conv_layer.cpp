@@ -100,13 +100,13 @@ void ConvolutionLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
     }
 
     size_t* local_size = new size_t[3];
-    local_size[0] = static_cast<size_t>(16);
-    local_size[1] = static_cast<size_t>(4);
+    local_size[0] = static_cast<size_t>(8);
+    local_size[1] = static_cast<size_t>(8);
     local_size[2] = static_cast<size_t>(1);
 
     size_t* global_size = new size_t[3];
-    global_size[0] = static_cast<size_t>((((top[i]->shape(2) * top[i]->shape(3)) - 1) / (16*16) + 1)*16);
-    global_size[1] = static_cast<size_t>((((top[i]->shape(1) / this->group_) - 1) / 16 + 1)*4);
+    global_size[0] = static_cast<size_t>((((top[i]->shape(2) * top[i]->shape(3)) - 1) / 32 + 1)*8);
+    global_size[1] = static_cast<size_t>((((top[i]->shape(1) / this->group_) - 1) / 32 + 1)*8);
     global_size[2] = static_cast<size_t>(bottom[i]->shape()[0] * 1);
 
     OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 3, NULL, global_size, local_size, 0, NULL, NULL));  

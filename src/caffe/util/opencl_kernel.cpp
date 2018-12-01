@@ -6,26 +6,23 @@ std::string generate_opencl_math() {
 	
 	std::stringstream ss;
 
-	bool use_half = true;
-
-	if(use_half) {
-		
-		ss << "#pragma OPENCL EXTENSION cl_khr_fp16 : enable" << std::endl;
-		ss << std::endl;
-		ss << "#define Dtype half" << std::endl;
-		ss << "#define Dtype1 half" << std::endl;
-		ss << "#define Dtype2 half2" << std::endl;
-		ss << "#define Dtype4 half4" << std::endl;
-		ss << "#define Dtype8 half8" << std::endl;
-		ss << "#define Dtype16 half16" << std::endl;
-	} else {
-		ss << "#define Dtype float" << std::endl;
-		ss << "#define Dtype1 float" << std::endl;
-		ss << "#define Dtype2 float2" << std::endl;
-		ss << "#define Dtype4 float4" << std::endl;
-		ss << "#define Dtype8 float8" << std::endl;
-		ss << "#define Dtype16 float16" << std::endl;
-	}
+#ifdef WITH_HALF		
+	ss << "#pragma OPENCL EXTENSION cl_khr_fp16 : enable" << std::endl;
+	ss << std::endl;
+	ss << "#define Dtype half" << std::endl;
+	ss << "#define Dtype1 half" << std::endl;
+	ss << "#define Dtype2 half2" << std::endl;
+	ss << "#define Dtype4 half4" << std::endl;
+	ss << "#define Dtype8 half8" << std::endl;
+	ss << "#define Dtype16 half16" << std::endl;
+#else
+	ss << "#define Dtype float" << std::endl;
+	ss << "#define Dtype1 float" << std::endl;
+	ss << "#define Dtype2 float2" << std::endl;
+	ss << "#define Dtype4 float4" << std::endl;
+	ss << "#define Dtype8 float8" << std::endl;
+	ss << "#define Dtype16 float16" << std::endl;
+#endif
 
 	
 

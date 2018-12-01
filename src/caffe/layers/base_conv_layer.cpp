@@ -505,8 +505,8 @@ void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
   std::stringstream ss;
 
   ss << this->generate_header(); 
-  ss << this->generate_fw_defs(8, 4, 32, 4, 16); //TSK, WPTM, WPTN, RTSM, RTSN
-  ss << this->generate_fw_kernels(this->layer_param_.name() + "_forward", 8, 4, 32, 4, 16);
+  ss << this->generate_fw_defs(8, 4, 4, 8, 8); //TSK, WPTM, WPTN, RTSM, RTSN
+  ss << this->generate_fw_kernels(this->layer_param_.name() + "_forward", 8, 4, 4, 8, 8);
 
   std::string conv_kernel = ss.str();
 
