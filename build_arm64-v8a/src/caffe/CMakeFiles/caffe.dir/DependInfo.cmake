@@ -78,7 +78,6 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
   "FORWARD_ONLY"
   "USE_NEON_MATH"
   "USE_OPENCL"
-  "WITH_HALF"
   )
 
 # The include file search paths:

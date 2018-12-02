@@ -291,8 +291,14 @@ Caffe::Caffe()
   commandQueue = clCreateCommandQueue(context, deviceID, 0, &ret);
   OPENCL_CHECK(ret);
 
-  
-  std::string math_kernels = generate_opencl_math();
+
+
+  std::stringstream ss;
+
+  ss << generate_opencl_math();
+  ss << general_gemm_kernel();
+
+  std::string math_kernels = ss.str();
 
   size_t kernel_size = math_kernels.size();
 
