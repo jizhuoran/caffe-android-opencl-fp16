@@ -151,7 +151,6 @@ void caffe_copy(const int N, const Dtype* X, Dtype* Y) {
 template <typename Dtype>
 void caffe_cl_copy(const int N, const Dtype* X, Dtype* Y) {
   if (X != Y) {
-
     
 #ifdef WITH_HALF
   OPENCL_CHECK(clEnqueueCopyBuffer(Caffe::Get().commandQueue, (cl_mem) X, (cl_mem) Y, 0, 0, 2 * N, 0, NULL, NULL));

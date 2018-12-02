@@ -43,12 +43,26 @@ void caffe_gpu_gemm<float>(const CBLAS_TRANSPOSE TransA,
   CLBlastTranspose_ blastTransB =
       (TransB == CblasNoTrans) ? CLBlastTransposeNo : CLBlastTransposeYes;
 
+#ifdef WITH_HALF
 
-  // CUBLAS_CHECK(cublasSgemm(Caffe::cublas_handle(), cuTransB, cuTransA,
-  //     N, M, K, &alpha, B, ldb, A, lda, &beta, C, N));
+    half_b alpha_half = float2half_impl(alpha);
+    half_b beta_half = float2half_impl(beta);
+
+    CLBLAST_CHECK(CLBlastHgemm(CLBlastLayoutRowMajor,
+                                        blastTransA, blastTransB,
+                                        M, N, K,
+                                        alpha_half,
+                                        (cl_mem) A, 0, lda,
+                                        (cl_mem) B, 0, ldb,
+                                        beta_half,
+                                        (cl_mem) C, 0, ldc,
+                                        &Caffe::Get().commandQueue, NULL));
 
 
-  CLBlastStatusCode status = CLBlastSgemm(CLBlastLayoutRowMajor,
+#else
+
+
+  CLBLAST_CHECK(CLBlastSgemm(CLBlastLayoutRowMajor,
                                           blastTransA, blastTransB,
                                           M, N, K,
                                           alpha,
@@ -56,10 +70,9 @@ void caffe_gpu_gemm<float>(const CBLAS_TRANSPOSE TransA,
                                           (cl_mem) B, 0, ldb,
                                           beta,
                                           (cl_mem) C, 0, ldc,
-                                          &Caffe::Get().commandQueue, NULL);
+                                          &Caffe::Get().commandQueue, NULL));
 
-  printf("Completed SGEMM with status %d\n", status);
-
+#endif
 
 }
 
@@ -72,7 +85,24 @@ void caffe_gpu_gemv<float>(const CBLAS_TRANSPOSE TransA, const int M, const int 
       (TransA != CblasNoTrans) ? CLBlastTransposeNo : CLBlastTransposeYes;
 
 
-    CLBlastStatusCode status = CLBlastSgemv(CLBlastLayoutColMajor, 
+#ifdef WITH_HALF
+
+    half_b alpha_half = float2half_impl(alpha);
+    half_b beta_half = float2half_impl(beta);
+
+    CLBLAST_CHECK(CLBlastHgemv(CLBlastLayoutColMajor, 
+                                            blastTransA, 
+                                            N, M,
+                                            alpha_half,
+                                            (cl_mem) A, 0, N,
+                                            (cl_mem) x, 0, 1,
+                                            beta_half,
+                                            (cl_mem) y, 0, 1,
+                                            &Caffe::Get().commandQueue, NULL));
+
+#else
+
+    CLBLAST_CHECK(CLBlastSgemv(CLBlastLayoutColMajor, 
                                             blastTransA, 
                                             N, M,
                                             alpha,
@@ -80,11 +110,8 @@ void caffe_gpu_gemv<float>(const CBLAS_TRANSPOSE TransA, const int M, const int 
                                             (cl_mem) x, 0, 1,
                                             beta,
                                             (cl_mem) y, 0, 1,
-                                            &Caffe::Get().commandQueue, NULL);
-
-  printf("Completed SGEMN with status %d\n", status);
-
-
+                                            &Caffe::Get().commandQueue, NULL));
+#endif
 }
 
 template <>

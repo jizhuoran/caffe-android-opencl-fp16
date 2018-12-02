@@ -10,22 +10,28 @@
 
 
 #define OPENCL_CHECK(condition) \
-  /* Code block avoids redefinition of cudaError_t error */ \
   do { \
     cl_int error = condition; \
     if(error != CL_SUCCESS) { \
-      std::cerr << "This is a error for OpenCL " << error << std::endl; \
+      LOG(ERROR) << "This is a error for OpenCL " << error; \
       exit(0); \
     } \
   } while (0)
 
 
+#define CLBLAST_CHECK(condition) \
+  do { \
+    CLBlastStatusCode status = condition; \
+    if(status != CLBlastSuccess) { \
+      LOG(ERROR) << "This is a error for CLBlast " << status; \
+      exit(0); \
+    } \
+  } while (0)
 
 #else
 #include <execinfo.h>
 
 #define OPENCL_CHECK(condition) \
-  /* Code block avoids redefinition of cudaError_t error */ \
   do { \
     cl_int error = condition; \
     if(error != CL_SUCCESS) { \
@@ -37,7 +43,24 @@
       exit(0); \
     } \
   } while (0)
+
+
+
+
+#define CLBLAST_CHECK(condition) \
+  do { \
+    CLBlastStatusCode status = condition; \
+    if(status != CL_SUCCESS) { \
+      std::cerr << "This is a error for CLBlast "<< status << " in " << __LINE__ << " in " << __FILE__ << std::endl;\
+      void *buffer[100];\
+      int n = backtrace(buffer,10);\
+      char **str = backtrace_symbols(buffer, n);\
+      for (int i = 0; i < n; i++) {printf("%d:  %s\n", i, str[i]);}\
+      exit(0); \
+    } \
+  } while (0)
 #endif
+
 
 #endif
 
@@ -150,7 +173,6 @@ const size_t CAFFE_CUDA_NUM_THREADS = 128;
 
 // CUDA: number of blocks for threads.
 inline int CAFFE_GET_BLOCKS(const int N) {
-  LOG(INFO) << "Come to Here with " << (N + CAFFE_CUDA_NUM_THREADS - 1) / CAFFE_CUDA_NUM_THREADS;
   return (N + CAFFE_CUDA_NUM_THREADS - 1) / CAFFE_CUDA_NUM_THREADS * CAFFE_CUDA_NUM_THREADS;
 }
 
