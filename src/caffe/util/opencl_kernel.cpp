@@ -100,6 +100,16 @@ std::string generate_opencl_math() {
 	ss << "}" << std::endl;
 	ss << "}" << std::endl;
 
+
+	ss << "__kernel void sqrt_kernel(__global Dtype *x," << std::endl;
+	ss << "__global Dtype *y," << std::endl;
+	ss << "int N) {" << std::endl;
+	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
+	ss << " y[index] = sqrt(x[index]);" << std::endl;
+	ss << "}" << std::endl;
+	ss << "}" << std::endl;
+
+
 	ss << "__kernel void sub_kernel(__global Dtype *a, __global Dtype *b," << std::endl;
 	ss << "__global Dtype *y," << std::endl;
 	ss << "int N) {" << std::endl;
@@ -148,6 +158,23 @@ std::string generate_opencl_math() {
 	ss << "Y[index] = X[index] * alpha + Y[index];" << std::endl;
 	ss << "}" << std::endl;
 	ss << "}" << std::endl;
+
+
+	ss << "__kernel void scal_kernel(__global Dtype *X," << std::endl;
+	ss << "Dtype alpha, int N) {" << std::endl;
+	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
+	ss << "X[index] *= alpha;" << std::endl;
+	ss << "}" << std::endl;
+	ss << "}" << std::endl;
+
+
+	ss << "__kernel void add_scalar_kernel(__global Dtype *y," << std::endl;
+	ss << "Dtype alpha, int N) {" << std::endl;
+	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
+	ss << "y[index] += alpha;" << std::endl;
+	ss << "}" << std::endl;
+	ss << "}" << std::endl;
+
 
 
   	return ss.str();

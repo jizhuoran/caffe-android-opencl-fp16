@@ -202,11 +202,6 @@ void caffe_gpu_add_scalar(const int N, const Dtype alpha, Dtype *X);
 template <typename Dtype>
 void caffe_gpu_scal(const int N, const Dtype alpha, Dtype *X);
 
-#ifdef USE_OPENCL
-template <typename Dtype>
-void caffe_gpu_scal(const int N, const Dtype alpha, Dtype* X);
-#endif
-
 template <typename Dtype>
 void caffe_gpu_add(const int N, const Dtype* a, const Dtype* b, Dtype* y);
 

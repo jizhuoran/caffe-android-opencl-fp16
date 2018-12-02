@@ -11,6 +11,7 @@
 #include "caffe/util/math_functions.hpp"
 #include "caffe/util/rng.hpp"
 
+#include <clblast_c.h>
 
 #ifdef WITH_HALF
 #include "caffe/util/half.hpp"
@@ -30,14 +31,60 @@ void caffe_gpu_gemm<float>(const CBLAS_TRANSPOSE TransA,
     const CBLAS_TRANSPOSE TransB, const int M, const int N, const int K,
     const float alpha, const float* A, const float* B, const float beta,
     float* C) {
-  NOT_IMPLEMENT;
+  
+
+
+  size_t lda = (TransA == CblasNoTrans) ? K : M;
+  size_t ldb = (TransB == CblasNoTrans) ? N : K;
+  size_t ldc = N;
+
+  CLBlastTranspose_ blastTransA =
+      (TransA == CblasNoTrans) ? CLBlastTransposeNo : CLBlastTransposeYes;
+  CLBlastTranspose_ blastTransB =
+      (TransB == CblasNoTrans) ? CLBlastTransposeNo : CLBlastTransposeYes;
+
+
+  // CUBLAS_CHECK(cublasSgemm(Caffe::cublas_handle(), cuTransB, cuTransA,
+  //     N, M, K, &alpha, B, ldb, A, lda, &beta, C, N));
+
+
+  CLBlastStatusCode status = CLBlastSgemm(CLBlastLayoutRowMajor,
+                                          blastTransA, blastTransB,
+                                          M, N, K,
+                                          alpha,
+                                          (cl_mem) A, 0, lda,
+                                          (cl_mem) B, 0, ldb,
+                                          beta,
+                                          (cl_mem) C, 0, ldc,
+                                          &Caffe::Get().commandQueue, NULL);
+
+  printf("Completed SGEMM with status %d\n", status);
+
+
 }
 
 template <>
 void caffe_gpu_gemv<float>(const CBLAS_TRANSPOSE TransA, const int M, const int N,
     const float alpha, const float* A, const float* x, const float beta,
     float* y) {
-  NOT_IMPLEMENT;
+
+    CLBlastTranspose_ blastTransA =
+      (TransA != CblasNoTrans) ? CLBlastTransposeNo : CLBlastTransposeYes;
+
+
+    CLBlastStatusCode status = CLBlastSgemv(CLBlastLayoutColMajor, 
+                                            blastTransA, 
+                                            N, M,
+                                            alpha,
+                                            (cl_mem) A, 0, N,
+                                            (cl_mem) x, 0, 1,
+                                            beta,
+                                            (cl_mem) y, 0, 1,
+                                            &Caffe::Get().commandQueue, NULL);
+
+  printf("Completed SGEMN with status %d\n", status);
+
+
 }
 
 template <>
@@ -68,11 +115,7 @@ void caffe_gpu_axpy<float>(const int N, const float alpha, const float* X,
   
 }
 
-template <>
-void caffe_gpu_axpby<float>(const int N, const float alpha, const float* X,
-    const float beta, float* Y) {
-  NOT_IMPLEMENT;
-}
+
 
 
 template <typename Dtype>
@@ -93,9 +136,68 @@ template void caffe_gpu_set<int>(const int N, const int alpha, int* Y);
 
 
 template <>
-void caffe_gpu_scal<float>(const int N, const float alpha, float* X){
-  NOT_IMPLEMENT;
+void caffe_gpu_add_scalar<float>(const int N, const float alpha, float *X) {
+  
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "add_scalar_kernel", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&X));  
+
+#ifdef WITH_HALF
+  half_b alpha_half = float2half_impl(alpha);
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_half), (void *)&alpha_half));
+#else
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_float), (void *)&alpha));
+#endif
+
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&N));  
+
+  size_t global_size = CAFFE_GET_BLOCKS(N);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+  
 }
+
+template <>
+void caffe_gpu_scal<float>(const int N, const float alpha, float* X){
+  
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "scal_kernel", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&X));  
+
+#ifdef WITH_HALF
+  half_b alpha_half = float2half_impl(alpha);
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_half), (void *)&alpha_half));
+#else
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_float), (void *)&alpha));
+#endif
+
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&N));  
+
+  size_t global_size = CAFFE_GET_BLOCKS(N);
+
+  std::cout << "The N size is " << N << std::endl;
+  std::cout << "The global size is " << global_size << std::endl;
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+ 
+}
+
+
+template <>
+void caffe_gpu_axpby<float>(const int N, const float alpha, const float* X,
+    const float beta, float* Y) {
+  caffe_gpu_scal<float>(N, beta, Y);
+  caffe_gpu_axpy<float>(N, alpha, X, Y);
+}
+
 
 template <>
 void caffe_gpu_add<float>(const int N, const float* a, const float* b, float* y){
@@ -199,7 +301,21 @@ void caffe_gpu_powx<float>(const int n, const float* a, const float b, float* y)
 
 template <>
 void caffe_gpu_sqrt<float>(const int n, const float* a, float* y){
-  NOT_IMPLEMENT;
+      
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "sqrt_kernel", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&a));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&y));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&n));  
+
+  size_t global_size = CAFFE_GET_BLOCKS(n);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+  
 }
 
 // caffe_gpu_rng_uniform with two arguments generates integers in the range
@@ -281,8 +397,10 @@ void caffe_gpu_axpby<double>(const int N, const double alpha, const double* X,
   NOT_IMPLEMENT;
 }
 
-
-
+template <>
+void caffe_gpu_add_scalar<double>(const int N, const double alpha, double *X) {
+  NOT_IMPLEMENT;
+}
 
 template <>
 void caffe_gpu_scal<double>(const int N, const double alpha, double* X){

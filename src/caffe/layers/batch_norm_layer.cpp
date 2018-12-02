@@ -260,6 +260,8 @@ template <typename Dtype>
 void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
     const vector<Blob<Dtype>*>& top) {
 
+  // Forward_cpu(bottom, top);
+  // return;
 
   const Dtype* bottom_data = bottom[0]->gpu_data();
   Dtype* top_data = top[0]->mutable_gpu_data();
@@ -267,7 +269,7 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   int spatial_dim = bottom[0]->count()/(channels_*bottom[0]->shape(0));
 
   if (bottom[0] != top[0]) {
-    caffe_copy(bottom[0]->count(), bottom_data, top_data);
+    caffe_cl_copy(bottom[0]->count(), bottom_data, top_data);
   }
 
 
@@ -313,19 +315,19 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
     // compute and save moving average
     this->blobs_[2]->mutable_cpu_data()[0] *= moving_average_fraction_;
     this->blobs_[2]->mutable_cpu_data()[0] += 1;
-    caffe_gpu_axpby(mean_.count(), Dtype(1), mean_.gpu_data(),
-        moving_average_fraction_, this->blobs_[0]->mutable_gpu_data());
+    caffe_cpu_axpby(mean_.count(), Dtype(1), mean_.cpu_data(),
+        moving_average_fraction_, this->blobs_[0]->mutable_cpu_data());
     int m = bottom[0]->count()/channels_;
     Dtype bias_correction_factor = m > 1 ? Dtype(m)/(m-1) : 1;
-    caffe_gpu_axpby(variance_.count(), bias_correction_factor,
-        variance_.gpu_data(), moving_average_fraction_,
-        this->blobs_[1]->mutable_gpu_data());
+    caffe_cpu_axpby(variance_.count(), bias_correction_factor,
+        variance_.cpu_data(), moving_average_fraction_,
+        this->blobs_[1]->mutable_cpu_data());
   }
 
   // normalize variance
-  caffe_gpu_add_scalar(variance_.count(), eps_, variance_.mutable_gpu_data());
-  caffe_gpu_sqrt(variance_.count(), variance_.gpu_data(),
-      variance_.mutable_gpu_data());
+  caffe_add_scalar(variance_.count(), eps_, variance_.mutable_cpu_data());
+  caffe_sqrt(variance_.count(), variance_.cpu_data(),
+      variance_.mutable_cpu_data());
 
   // replicate variance to input size
   caffe_gpu_gemm<Dtype>(CblasNoTrans, CblasNoTrans, num, channels_, 1, 1,
@@ -337,7 +339,7 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   caffe_gpu_div(temp_.count(), top_data, temp_.gpu_data(), top_data);
   // TODO(cdoersch): The caching is only needed because later in-place layers
   //                 might clobber the data.  Can we skip this if they won't?
-  caffe_copy(x_norm_.count(), top_data,
+  caffe_cl_copy(x_norm_.count(), top_data,
       x_norm_.mutable_gpu_data());
 
 
