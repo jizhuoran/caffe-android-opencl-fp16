@@ -93,10 +93,10 @@ void caffe_gpu_gemv<float>(const CBLAS_TRANSPOSE TransA, const int M, const int 
     CLBLAST_CHECK(CLBlastHgemv(CLBlastLayoutColMajor, 
                                             blastTransA, 
                                             N, M,
-                                            alpha_half,
+                                            (cl_half) alpha_half,
                                             (cl_mem) A, 0, N,
                                             (cl_mem) x, 0, 1,
-                                            beta_half,
+                                            (cl_half) beta_half,
                                             (cl_mem) y, 0, 1,
                                             &Caffe::Get().commandQueue, NULL));
 
