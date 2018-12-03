@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <vector>
+#include <math.h>
 
 #include "caffe/layers/batch_norm_layer.hpp"
 #include "caffe/util/math_functions.hpp"
@@ -260,8 +261,7 @@ template <typename Dtype>
 void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
     const vector<Blob<Dtype>*>& top) {
 
-  // Forward_cpu(bottom, top);
-  // return;
+
 
 
   const Dtype* bottom_data = bottom[0]->gpu_data();
@@ -269,11 +269,21 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   int num = bottom[0]->shape(0);
   int spatial_dim = bottom[0]->count()/(channels_*bottom[0]->shape(0));
 
-    Dtype shift_num1 = (256 * 128);//(num * spatial_dim) / 512;
+
+  int sample_size = sqrt(spatial_dim) / 128;
+
+  sample_size = sample_size > 0 ? sample_size : 1;
+
+  sample_size = 1;
+
+  LOG(INFO) << "The sample_size is " << sample_size;
+
+#ifdef BEFORE_DEBUG
+  Dtype shift_num1 = (256 * 128);//(num * spatial_dim) / 512;
   Dtype shift_num2 = 512.0;
 
   std::cout << "The shift_num1 is " << shift_num1 << std::endl;
-
+#endif
 
   if (bottom[0] != top[0]) {
     caffe_cl_copy(bottom[0]->count(), bottom_data, top_data);
@@ -286,6 +296,7 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   // }
 
 
+#ifdef BEFORE_DEBUG
 
   const Dtype* tmp2 = batch_sum_multiplier_.cpu_data();
   std::cout << "batch_sum_multiplier_.cpu_data() is " << std::endl;
@@ -296,6 +307,7 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   std::cout << "The channels_ is " << channels_ << std::endl;
   std::cout << "The num is " << num << std::endl;
   std::cout << "The spatial_dim is " << spatial_dim << std::endl;
+#endif
 
 
   if (use_global_stats_) {
@@ -308,6 +320,7 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
         this->blobs_[1]->gpu_data(), variance_.mutable_gpu_data());
   } else {
     // compute mean
+#ifdef BEFORE_DEBUG
       
       caffe_gpu_scal(bottom[0]->count(), 1 / Dtype(shift_num1), bottom[0]->mutable_gpu_data());
 
@@ -330,17 +343,29 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
 
       std::cout << "The max value for bottom is " << max_tmp << "while the min value is "<< min_tmp << std::endl;
 
+#endif
+
+
+    caffe_gpu_bsum<Dtype>(channels_ * num, spatial_dim, bottom[0]->gpu_data(), Dtype(128) / (num * spatial_dim), num_by_chans_.mutable_gpu_data(), 1);
+    // caffe_gpu_scal(num_by_chans_.count(), Dtype(1. / (num * spatial_dim)), num_by_chans_.mutable_gpu_data());
 
 
 
+// #ifdef BEFORE_DEBUG
 
-    caffe_cpu_gemv<Dtype>(CblasNoTrans, channels_ * num, spatial_dim,
-        shift_num1 / (num * spatial_dim), bottom[0]->cpu_data(),
-        spatial_sum_multiplier_.cpu_data(), 0.,
-        num_by_chans_.mutable_cpu_data());
+// #endif
+
+  LOG(INFO) << "Are you kidding me 1???";
+
+
+    // caffe_cpu_gemv<Dtype>(CblasNoTrans, channels_ * num, spatial_dim,
+    //     1. / (num * spatial_dim), bottom[0]->cpu_data(),
+    //     spatial_sum_multiplier_.cpu_data(), 0.,
+    //     num_by_chans_.mutable_cpu_data());
 
     // caffe_gpu_scal(num_by_chans_.count(), Dtype(1/shift_num1), num_by_chans_.mutable_gpu_data());
 
+#ifdef BEFORE_DEBUG
 
     std::cout << "The num_by_chans_ is " << num_by_chans_.count() << std::endl;
 
@@ -367,11 +392,13 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
 
       exit(0);
 
+#endif
 
     caffe_gpu_gemv<Dtype>(CblasTrans, num, channels_, 1.,
         num_by_chans_.gpu_data(), batch_sum_multiplier_.gpu_data(), 0.,
         mean_.mutable_gpu_data());
   }
+  LOG(INFO) << "Are you kidding me 2???";
 
 
   // caffe_gpu_scal(bottom[0]->count(), Dtype(160), bottom[0]->mutable_gpu_data());
@@ -387,6 +414,7 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
       spatial_dim, 1, -1, num_by_chans_.gpu_data(),
       spatial_sum_multiplier_.gpu_data(), 1., top[0]->mutable_gpu_data());
 
+#ifdef BEFORE_DEBUG
 
 
   const Dtype* tmp = top[0]->cpu_data();
@@ -410,7 +438,7 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   
   std::cout << "The max value for top is " << max_tmp << " while the min value is " << min_tmp << std::endl;
 
-
+#endif
 
   if (!use_global_stats_) {
 
@@ -422,6 +450,7 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
         temp_.mutable_cpu_data());  // (X-EX)^2
 
 
+#ifdef BEFORE_DEBUG
 
 
     const Dtype* tmp = temp_.cpu_data();
@@ -443,13 +472,40 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
 
     std::cout << "The max value for temp_ is " << max_tmp << " while the min value is " << min_tmp << std::endl;
 
+#endif
+
+    caffe_gpu_bsum<Dtype>(channels_ * num, spatial_dim, temp_.gpu_data(), Dtype(128) / (num * spatial_dim), num_by_chans_.mutable_gpu_data(), 1);
+
+
+    // const Dtype* temp_cpu_data = temp_.cpu_data();
+    // Dtype* num_by_chans_cpu = num_by_chans_.mutable_cpu_data();
+
+    // for (int i = 0; i < channels_ * num; ++i) {
+    //   Dtype acc = 0;
+    //   for (int j = 0; j < bottom[0]->shape(2); j+=sample_size) {
+    //     for (int k = 0; k < bottom[0]->shape(3); k+=sample_size) {
+    //       acc += temp_cpu_data[i * spatial_dim + j * bottom[0]->shape(3) + k];
+    //     }
+    //   }
+    //   num_by_chans_cpu[i] = acc * (Dtype(1.0 * sample_size * sample_size) / (num * spatial_dim));
+    // }
 
 
 
-    caffe_cpu_gemv<Dtype>(CblasNoTrans, channels_ * num, spatial_dim,
-        1. / (num * spatial_dim), temp_.cpu_data(),
-        spatial_sum_multiplier_.cpu_data(), 0.,
-        num_by_chans_.mutable_cpu_data());
+    // std::cout << "The num_by_chans_ is " << num_by_chans_.count() << std::endl;
+    
+    // const Dtype* tmp109 = num_by_chans_.cpu_data();
+    // for (int i = 0; i < num_by_chans_.count(); ++i) {
+    //   std::cout << tmp109[i] << " ";
+    // }
+
+    // std::cout << " " << std::endl;
+
+
+    // caffe_cpu_gemv<Dtype>(CblasNoTrans, channels_ * num, spatial_dim,
+    //     1. / (num * spatial_dim), temp_.cpu_data(),
+    //     spatial_sum_multiplier_.cpu_data(), 0.,
+    //     num_by_chans_.mutable_cpu_data());
     caffe_gpu_gemv<Dtype>(CblasTrans, num, channels_, 1.0,
         num_by_chans_.gpu_data(), batch_sum_multiplier_.gpu_data(), Dtype(0.),
         variance_.mutable_gpu_data());  // E((X_EX)^2)

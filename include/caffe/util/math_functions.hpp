@@ -41,8 +41,8 @@ void caffe_cpu_gemv(const CBLAS_TRANSPOSE TransA, const int M, const int N,
 
 
 template <typename Dtype>
-void caffe_gpu_bsum(const size_t m, const size_t n, const Dtype* X,
-                            Dtype* y, const size_t x_inc);
+void caffe_gpu_bsum(const int m, const int n, const Dtype* X, const Dtype alpha,
+                            Dtype* y, const int x_inc);
 
 template <typename Dtype>
 void caffe_axpy(const int N, const Dtype alpha, const Dtype* X,

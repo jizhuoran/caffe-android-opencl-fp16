@@ -200,7 +200,7 @@ std::string generate_opencl_math() {
 
 	ss << "  int id = wgid*WGS1 + lid;" << std::endl;
 
-	ss << "  while (id < n) {" << std::endl;
+	ss << "  while (id*x_inc < n) {" << std::endl;
 	ss << "    Dtype x = xgm[id*x_inc + get_group_id(1) * n];" << std::endl;
 	ss << "    acc += x;" << std::endl;
 	ss << "    id += WGS1*num_groups;" << std::endl;
@@ -218,14 +218,14 @@ std::string generate_opencl_math() {
 
 	ss << "  // Stores the per-workgroup result" << std::endl;
 	ss << "  if (lid == 0) {" << std::endl;
-	ss << "    output[wgid + get_group_id(1) * num_groups] = lm[0];" << std::endl;
+	ss << "    output[wgid + get_group_id(1) * num_groups] = lm[0] / (2*WGS1);" << std::endl;
 	ss << "  }" << std::endl;
 	ss << "}" << std::endl;
 
 
 	ss << "__kernel __attribute__((reqd_work_group_size(WGS2, 1, 1)))" << std::endl;
 	ss << "void XasumEpilogue(const __global Dtype* restrict input," << std::endl;
-	ss << "                   __global Dtype* asum) {" << std::endl;
+	ss << "                   __global Dtype* asum, Dtype alpha) {" << std::endl;
 	      
 	ss << "  __local Dtype lm[WGS2];" << std::endl;
 	ss << "  const int lid = get_local_id(0);" << std::endl;
@@ -244,7 +244,7 @@ std::string generate_opencl_math() {
 
 	ss << "  // Computes the absolute value and stores the final result" << std::endl;
 	ss << "  if (lid == 0) {" << std::endl;
-	ss << "    asum[get_group_id(1)] = lm[0];" << std::endl;
+	ss << "    asum[get_group_id(1)] = alpha * lm[0];" << std::endl;
 	ss << "  }" << std::endl;
 	ss << "}" << std::endl;
 
