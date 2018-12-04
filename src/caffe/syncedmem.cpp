@@ -137,6 +137,7 @@ inline void SyncedMemory::to_cpu() {
 inline void SyncedMemory::to_gpu() {
   check_device();
 
+  // LOG(INFO) << "expensive thing happen with size " << size_;
 
 #ifdef USE_OPENCL
 #ifdef WITH_HALF

@@ -114,6 +114,57 @@ void caffe_gpu_gemv<float>(const CBLAS_TRANSPOSE TransA, const int M, const int 
 #endif
 }
 
+
+
+template <>
+void caffe_gpu_bsum<double>(const size_t m, const size_t n, const double* X,
+                            double* y, const size_t x_inc) {
+
+
+  cl_kernel kernel1 = clCreateKernel(Caffe::Get().program, "Xasum", &ret);
+  OPENCL_CHECK(ret);
+  cl_kernel kernel2 = clCreateKernel(Caffe::Get().program, "XasumEpilogue", &ret);
+  OPENCL_CHECK(ret);
+
+
+  size_t temp_size = 2*64;
+
+
+  cl_mem temp_buffer = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, temp_size * 4, NULL, NULL);
+
+  OPENCL_CHECK(clSetKernelArg(kernel1, 0, sizeof(cl_int), (void *)&n));  
+  OPENCL_CHECK(clSetKernelArg(kernel1, 1, sizeof(cl_mem), (void *)&X));  
+  OPENCL_CHECK(clSetKernelArg(kernel1, 2, sizeof(cl_int), (void *)&x_inc));  
+  OPENCL_CHECK(clSetKernelArg(kernel1, 3, sizeof(cl_mem), (void *)&temp_size));  
+
+  size_t* local_size = new size_t[2];
+  local_size[0] = static_cast<size_t>(64);
+  local_size[1] = static_cast<size_t>(1);
+
+  size_t* global_size = new size_t[2];
+  global_size[0] = static_cast<size_t>(temp_size * 64);
+  global_size[1] = static_cast<size_t>(m);
+
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel1, 2, NULL, global_size, local_size, 0, NULL, NULL));  
+
+
+  OPENCL_CHECK(clSetKernelArg(kernel2, 0, sizeof(cl_mem), (void *)&temp_buffer));  
+  OPENCL_CHECK(clSetKernelArg(kernel2, 1, sizeof(cl_mem), (void *)&y));  
+
+  kernel2.SetArgument(0, temp_buffer());
+  kernel2.SetArgument(1, asum_buffer());
+  kernel2.SetArgument(2, static_cast<int>(asum_offset));
+
+  // Launches the epilogue kernel
+
+  global_size[0] = static_cast<size_t>(64);
+
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel2, 2, NULL, global_size, local_size, 0, NULL, NULL));  
+
+}
+
+
+
 template <>
 void caffe_gpu_axpy<float>(const int N, const float alpha, const float* X,
     float* Y) {
@@ -210,9 +261,6 @@ void caffe_gpu_scal<float>(const int N, const float alpha, float* X){
 
   size_t global_size = CAFFE_GET_BLOCKS(N);
 
-  std::cout << "The N size is " << N << std::endl;
-  std::cout << "The global size is " << global_size << std::endl;
-  
   OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
  
 }
@@ -410,6 +458,14 @@ void caffe_gpu_gemv<double>(const CBLAS_TRANSPOSE TransA, const int M, const int
     const double alpha, const double* A, const double* x, const double beta,
     double* y) {
   NOT_IMPLEMENT;
+}
+
+
+template <>
+void caffe_gpu_bsum<float>(const size_t m, const size_t n, const float* X,
+                            float* y, const size_t x_inc) {
+  NOT_IMPLEMENT;
+
 }
 
 template <>

@@ -263,15 +263,17 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   // Forward_cpu(bottom, top);
   // return;
 
-  Dtype shift_num = 256.0;
-
-  caffe_gpu_scal(bottom[0]->count(), 1 / Dtype(shift_num), bottom[0]->mutable_gpu_data());
-
 
   const Dtype* bottom_data = bottom[0]->gpu_data();
   Dtype* top_data = top[0]->mutable_gpu_data();
   int num = bottom[0]->shape(0);
   int spatial_dim = bottom[0]->count()/(channels_*bottom[0]->shape(0));
+
+    Dtype shift_num1 = (256 * 128);//(num * spatial_dim) / 512;
+  Dtype shift_num2 = 512.0;
+
+  std::cout << "The shift_num1 is " << shift_num1 << std::endl;
+
 
   if (bottom[0] != top[0]) {
     caffe_cl_copy(bottom[0]->count(), bottom_data, top_data);
@@ -306,7 +308,9 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
         this->blobs_[1]->gpu_data(), variance_.mutable_gpu_data());
   } else {
     // compute mean
-    
+      
+      caffe_gpu_scal(bottom[0]->count(), 1 / Dtype(shift_num1), bottom[0]->mutable_gpu_data());
+
       const Dtype* tmp = bottom[0]->cpu_data();
 
       Dtype max_tmp = -10000000;
@@ -331,11 +335,37 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
 
 
     caffe_cpu_gemv<Dtype>(CblasNoTrans, channels_ * num, spatial_dim,
-        1. / (num * spatial_dim), bottom[0]->cpu_data(),
+        shift_num1 / (num * spatial_dim), bottom[0]->cpu_data(),
         spatial_sum_multiplier_.cpu_data(), 0.,
         num_by_chans_.mutable_cpu_data());
 
+    // caffe_gpu_scal(num_by_chans_.count(), Dtype(1/shift_num1), num_by_chans_.mutable_gpu_data());
+
+
     std::cout << "The num_by_chans_ is " << num_by_chans_.count() << std::endl;
+
+
+      tmp = num_by_chans_.cpu_data();
+
+      max_tmp = -10000000;
+      min_tmp = 10000000;
+
+      for (int i = 0; i < num_by_chans_.count(); ++i) {
+
+        if (tmp[i] > max_tmp) {
+          max_tmp = tmp[i];
+        }
+
+        if (tmp[i] < min_tmp) {
+          min_tmp = tmp[i];
+        }
+
+      }
+
+      std::cout << "The max value for num_by_chans_ is " << max_tmp << "while the min value is "<< min_tmp << std::endl;
+
+
+      exit(0);
 
 
     caffe_gpu_gemv<Dtype>(CblasTrans, num, channels_, 1.,
@@ -385,12 +415,12 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   if (!use_global_stats_) {
 
 
+    // caffe_gpu_scal(top[0]->count(), Dtype(1 / (shift_num1)), top[0]->mutable_gpu_data());
 
     // compute variance using var(X) = E((X-EX)^2)
-    caffe_gpu_mul(top[0]->count(), top[0]->gpu_data(), top[0]->gpu_data(),
-        temp_.mutable_gpu_data());  // (X-EX)^2
+    caffe_mul(top[0]->count(), top[0]->cpu_data(), top[0]->cpu_data(),
+        temp_.mutable_cpu_data());  // (X-EX)^2
 
-    caffe_gpu_scal(temp_.count(), Dtype(0.25), temp_.mutable_gpu_data());
 
 
 
@@ -416,10 +446,10 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
 
 
 
-    caffe_gpu_gemv<Dtype>(CblasNoTrans, channels_ * num, spatial_dim,
-        1. / (num * spatial_dim), temp_.gpu_data(),
-        spatial_sum_multiplier_.gpu_data(), 0.,
-        num_by_chans_.mutable_gpu_data());
+    caffe_cpu_gemv<Dtype>(CblasNoTrans, channels_ * num, spatial_dim,
+        1. / (num * spatial_dim), temp_.cpu_data(),
+        spatial_sum_multiplier_.cpu_data(), 0.,
+        num_by_chans_.mutable_cpu_data());
     caffe_gpu_gemv<Dtype>(CblasTrans, num, channels_, 1.0,
         num_by_chans_.gpu_data(), batch_sum_multiplier_.gpu_data(), Dtype(0.),
         variance_.mutable_gpu_data());  // E((X_EX)^2)
@@ -450,8 +480,8 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   caffe_gpu_sqrt(variance_.count(), variance_.gpu_data(),
       variance_.mutable_gpu_data());
 
-  caffe_gpu_scal(top[0]->count(), Dtype(shift_num), top_data);
-  caffe_gpu_scal(variance_.count(), Dtype(shift_num * 2), variance_.mutable_gpu_data());
+  // caffe_gpu_scal(top[0]->count(), Dtype(shift_num1), top_data);
+  // caffe_gpu_scal(variance_.count(), Dtype(shift_num1), variance_.mutable_gpu_data());
 
 
 
