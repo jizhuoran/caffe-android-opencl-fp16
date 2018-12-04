@@ -122,35 +122,24 @@ void caffe_gpu_bsum<float>(const int m, const int n, const float* X, const float
 
   cl_int ret;
 
-  // LOG(INFO) << "wan ner1 ???";
-
-
   cl_kernel kernel1 = clCreateKernel(Caffe::Get().program, "Xasum", &ret);
   OPENCL_CHECK(ret);
-  
-  // LOG(INFO) << "wan ner2 ???";
-
   cl_kernel kernel2 = clCreateKernel(Caffe::Get().program, "XasumEpilogue", &ret);
   OPENCL_CHECK(ret);
 
 
-  // LOG(INFO) << "wan ner3 ???";
-
   size_t temp_size = 2*64;
 
-
+#ifdef WITH_HALF
+  cl_mem temp_buffer = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, temp_size * 2, NULL, NULL);
+#else
   cl_mem temp_buffer = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, temp_size * 4, NULL, NULL);
-
-  LOG(INFO) << "wan ner3.5 ???";
-
+#endif
 
   OPENCL_CHECK(clSetKernelArg(kernel1, 0, sizeof(cl_int), (void *)&n));  
   OPENCL_CHECK(clSetKernelArg(kernel1, 1, sizeof(cl_mem), (void *)&X));  
   OPENCL_CHECK(clSetKernelArg(kernel1, 2, sizeof(cl_int), (void *)&x_inc));  
   OPENCL_CHECK(clSetKernelArg(kernel1, 3, sizeof(cl_mem), (void *)&temp_buffer));  
-
-
-  LOG(INFO) << "wan ner4 ???";
 
 
   size_t* local_size = new size_t[2];
@@ -162,25 +151,26 @@ void caffe_gpu_bsum<float>(const int m, const int n, const float* X, const float
   global_size[1] = static_cast<size_t>(m);
 
 
-  LOG(INFO) << "wan ner5 ???";
-
 
   OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel1, 2, NULL, global_size, local_size, 0, NULL, NULL));  
 
 
   OPENCL_CHECK(clSetKernelArg(kernel2, 0, sizeof(cl_mem), (void *)&temp_buffer));  
   OPENCL_CHECK(clSetKernelArg(kernel2, 1, sizeof(cl_mem), (void *)&y));
+
+#ifdef WITH_HALF 
+  half_b alpha_half = float2half_impl(alpha);
+  OPENCL_CHECK(clSetKernelArg(kernel2, 2, sizeof(cl_half), (void *)&alpha_half));
+#else
   OPENCL_CHECK(clSetKernelArg(kernel2, 2, sizeof(cl_float), (void *)&alpha));
-
-  LOG(INFO) << "wan ner6 ???";
-
-  // Launches the epilogue kernel
+#endif
 
   global_size[0] = static_cast<size_t>(64);
 
   OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel2, 2, NULL, global_size, local_size, 0, NULL, NULL));  
+ 
+  OPENCL_CHECK(clReleaseMemObject(temp_buffer));
 
-  LOG(INFO) << "wan ner7 ???";
 
 }
 
