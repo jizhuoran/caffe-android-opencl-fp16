@@ -178,25 +178,25 @@ std::string generate_opencl_math() {
 
 
 
-	ss << "#ifndef WGS1" << std::endl;
+	// ss << "#ifndef WGS1" << std::endl;
 	ss << "  #define WGS1 64" << std::endl;
-	ss << "#endif" << std::endl;
-	ss << "#ifndef WGS2" << std::endl;
+	// ss << "#endif" << std::endl;
+	// ss << "#ifndef WGS2" << std::endl;
 	ss << "  #define WGS2 64" << std::endl;
-	ss << "#endif" << std::endl;
+	// ss << "#endif" << std::endl;
 
 	ss << "__kernel __attribute__((reqd_work_group_size(WGS1, 1, 1)))" << std::endl;
 	ss << "void Xasum(const int n," << std::endl;
 	ss << "           const __global Dtype* restrict xgm, const int x_inc," << std::endl;
-	ss << "           __global Dtype* output) {" << std::endl;
+	ss << "           __global Dtype* output, Dtype alpha) {" << std::endl;
 	      
-	ss << "  __local Dtype lm[WGS1];" << std::endl;
+	ss << "  __local float lm[WGS1];" << std::endl;
 	ss << "  const int lid = get_local_id(0);" << std::endl;
 	ss << "  const int wgid = get_group_id(0);" << std::endl;
 	ss << "  const int num_groups = get_num_groups(0);" << std::endl;
 
 	ss << "  // Performs loading and the first steps of the reduction" << std::endl;
-	ss << "  Dtype acc = 0;" << std::endl;
+	ss << "  float acc = 0;" << std::endl;
 
 	ss << "  int id = wgid*WGS1 + lid;" << std::endl;
 
@@ -205,7 +205,7 @@ std::string generate_opencl_math() {
 	ss << "    acc += x;" << std::endl;
 	ss << "    id += WGS1*num_groups;" << std::endl;
 	ss << "  }" << std::endl;
-	ss << "  lm[lid] = acc;" << std::endl;
+	ss << "  lm[lid] = acc * alpha;" << std::endl;
 	ss << "  barrier(CLK_LOCAL_MEM_FENCE);" << std::endl;
 
 	ss << "  // Performs reduction in local memory" << std::endl;
@@ -218,20 +218,20 @@ std::string generate_opencl_math() {
 
 	ss << "  // Stores the per-workgroup result" << std::endl;
 	ss << "  if (lid == 0) {" << std::endl;
-	ss << "    output[wgid + get_group_id(1) * num_groups] = lm[0] / (2*WGS1);" << std::endl;
+	ss << "    output[wgid + get_group_id(1) * num_groups] = lm[0] * alpha;" << std::endl;
 	ss << "  }" << std::endl;
 	ss << "}" << std::endl;
 
 
 	ss << "__kernel __attribute__((reqd_work_group_size(WGS2, 1, 1)))" << std::endl;
 	ss << "void XasumEpilogue(const __global Dtype* restrict input," << std::endl;
-	ss << "                   __global Dtype* asum, Dtype alpha) {" << std::endl;
+	ss << "                   __global Dtype* asum, Dtype beta) {" << std::endl;
 	      
-	ss << "  __local Dtype lm[WGS2];" << std::endl;
+	ss << "  __local float lm[WGS2];" << std::endl;
 	ss << "  const int lid = get_local_id(0);" << std::endl;
 
 	ss << "  // Performs the first step of the reduction while loading the data" << std::endl;
-	ss << "  lm[lid] = input[get_group_id(1) * WGS2 * 2 + lid] + input[get_group_id(1) * WGS2 * 2 + lid + WGS2];" << std::endl;
+	ss << "  lm[lid] = (input[get_group_id(1) * WGS2 * 2 + lid] + input[get_group_id(1) * WGS2 * 2 + lid + WGS2]) * beta;" << std::endl;
 	ss << "  barrier(CLK_LOCAL_MEM_FENCE);" << std::endl;
 
 	ss << "  // Performs reduction in local memory" << std::endl;
@@ -244,7 +244,7 @@ std::string generate_opencl_math() {
 
 	ss << "  // Computes the absolute value and stores the final result" << std::endl;
 	ss << "  if (lid == 0) {" << std::endl;
-	ss << "    asum[get_group_id(1)] = alpha * lm[0];" << std::endl;
+	ss << "    asum[get_group_id(1)] = lm[0];" << std::endl;
 	ss << "  }" << std::endl;
 	ss << "}" << std::endl;
 

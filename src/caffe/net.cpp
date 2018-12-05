@@ -575,7 +575,7 @@ Dtype Net<Dtype>::ForwardFromTo(int start, int end) {
       before_forward_[c]->run(i);
     }
 
-    LOG(INFO) << "This is layer: " << i;
+    // LOG(INFO) << "This is layer: " << i;
 
     Dtype layer_loss = layers_[i]->Forward(bottom_vecs_[i], top_vecs_[i]);
     loss += layer_loss;
