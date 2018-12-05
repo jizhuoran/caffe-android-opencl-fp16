@@ -190,19 +190,19 @@ std::string generate_opencl_math() {
 	ss << "           const __global Dtype* restrict xgm, const int x_inc," << std::endl;
 	ss << "           __global Dtype* output, Dtype alpha) {" << std::endl;
 	      
-	ss << "  __local float lm[WGS1];" << std::endl;
+	ss << "  __local Dtype lm[WGS1];" << std::endl;
 	ss << "  const int lid = get_local_id(0);" << std::endl;
 	ss << "  const int wgid = get_group_id(0);" << std::endl;
 	ss << "  const int num_groups = get_num_groups(0);" << std::endl;
 
 	ss << "  // Performs loading and the first steps of the reduction" << std::endl;
-	ss << "  float acc = 0;" << std::endl;
+	ss << "  Dtype acc = 0;" << std::endl;
 
 	ss << "  int id = wgid*WGS1 + lid;" << std::endl;
 
 	ss << "  while (id*x_inc < n) {" << std::endl;
 	ss << "    Dtype x = xgm[id*x_inc + get_group_id(1) * n];" << std::endl;
-	ss << "    acc += x;" << std::endl;
+	ss << "    acc += x * alpha;" << std::endl;
 	ss << "    id += WGS1*num_groups;" << std::endl;
 	ss << "  }" << std::endl;
 	ss << "  lm[lid] = acc * alpha;" << std::endl;
@@ -218,7 +218,7 @@ std::string generate_opencl_math() {
 
 	ss << "  // Stores the per-workgroup result" << std::endl;
 	ss << "  if (lid == 0) {" << std::endl;
-	ss << "    output[wgid + get_group_id(1) * num_groups] = lm[0] * alpha;" << std::endl;
+	ss << "    output[wgid + get_group_id(1) * num_groups] = lm[0];" << std::endl;
 	ss << "  }" << std::endl;
 	ss << "}" << std::endl;
 
@@ -227,7 +227,7 @@ std::string generate_opencl_math() {
 	ss << "void XasumEpilogue(const __global Dtype* restrict input," << std::endl;
 	ss << "                   __global Dtype* asum, Dtype beta) {" << std::endl;
 	      
-	ss << "  __local float lm[WGS2];" << std::endl;
+	ss << "  __local Dtype lm[WGS2];" << std::endl;
 	ss << "  const int lid = get_local_id(0);" << std::endl;
 
 	ss << "  // Performs the first step of the reduction while loading the data" << std::endl;

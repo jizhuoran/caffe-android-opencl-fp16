@@ -163,24 +163,6 @@ void caffe_gpu_bsum<float>(const int m, const int n, const float* X, const float
   OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel1, 2, NULL, global_size, local_size, 0, NULL, NULL));  
 
 
-#ifdef WITH_HALF
-  // half_b* converter = (half_b*) malloc(m * temp_size * 2);
-  // float* tmp_prin = (float*) malloc(m * temp_size * 4);
-  // OPENCL_CHECK(clEnqueueReadBuffer(Caffe::Get().commandQueue, temp_buffer, CL_TRUE, 0, m * temp_size * 2, converter, 0, NULL, NULL));
-  // half2float(m * temp_size, converter, (float*)tmp_prin);
-
-  // for (int i = 0; i < m; ++i)
-  // {
-  //   for (int j = 0; j < 10; ++j)
-  //   {
-  //     std::cout << tmp_prin[i * temp_size + j] << "  ";
-
-  //     /* code */
-  //   }
-  // }  
-
-#endif
-
   OPENCL_CHECK(clSetKernelArg(kernel2, 0, sizeof(cl_mem), (void *)&temp_buffer));  
   OPENCL_CHECK(clSetKernelArg(kernel2, 1, sizeof(cl_mem), (void *)&y));
 
