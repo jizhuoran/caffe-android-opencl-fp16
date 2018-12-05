@@ -1058,6 +1058,7 @@ lib/libcaffe.so: lib/libproto.a
 lib/libcaffe.so: lib/libproto.a
 lib/libcaffe.so: ../third_party/arm64-v8a-28-protobuf/lib/libprotobuf.a
 lib/libcaffe.so: ../third_party/arm64-v8a-28-OpenBLAS/lib/libopenblas.a
+lib/libcaffe.so: ../third_party/arm64-v8a-28-CLBlast/lib/libclblast.so
 lib/libcaffe.so: ../third_party/OpenCL/libOpenCL.so
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Linking CXX shared library ../../lib/libcaffe.so"

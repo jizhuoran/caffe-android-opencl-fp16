@@ -70,7 +70,7 @@ function build-Android {
         exit 1
     fi
 
-    if [ ! -s ${TARGET}-CLBlast/lib/libCLBlast.a ]; then
+    if [ ! -s ${TARGET}-CLBlast/lib/libclblast.so ]; then
         mkdir -p CLBlast/$BUILD_DIR
         rm -rf CLBlast/$BUILD_DIR/*
         cd CLBlast/$BUILD_DIR

@@ -38,6 +38,12 @@ Atlas_CLAPACK_INCLUDE_DIR:PATH=Atlas_CLAPACK_INCLUDE_DIR-NOTFOUND
 //Path to a library.
 Atlas_LAPACK_LIBRARY:FILEPATH=Atlas_LAPACK_LIBRARY-NOTFOUND
 
+//Path to a file.
+CLBlast_INCLUDE_DIR:PATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-CLBlast/include
+
+//Path to a library.
+CLBlast_LIB:FILEPATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-CLBlast/lib/libclblast.so
+
 //Archiver
 CMAKE_AR:FILEPATH=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-ar
 
@@ -270,13 +276,17 @@ Protobuf_PROTOC_LIBRARY_RELEASE:FILEPATH=/home/zrji/android_caffe/caffe-android-
 USE_PROJECT_FOLDERS:BOOL=OFF
 
 //Dependencies for the target
-caffe_LIB_DEPENDS:STATIC=general;proto;general;proto;general;/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-protobuf/lib/libprotobuf.a;general;/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-OpenBLAS/lib/libopenblas.a;general;/home/zrji/android_caffe/caffe-android-opencl/third_party/OpenCL/libOpenCL.so;general;log;
+caffe_LIB_DEPENDS:STATIC=general;proto;general;proto;general;/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-protobuf/lib/libprotobuf.a;general;/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-OpenBLAS/lib/libopenblas.a;general;/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-CLBlast/lib/libclblast.so;general;/home/zrji/android_caffe/caffe-android-opencl/third_party/OpenCL/libOpenCL.so;general;log;
 
 
 ########################
 # INTERNAL cache entries
 ########################
 
+//ADVANCED property for variable: CLBlast_INCLUDE_DIR
+CLBlast_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CLBlast_LIB
+CLBlast_LIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
 CMAKE_AR-ADVANCED:INTERNAL=1
 //STRINGS property for variable: CMAKE_BUILD_TYPE

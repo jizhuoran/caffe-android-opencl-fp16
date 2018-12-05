@@ -15,6 +15,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/feature_tests.cxx"
   "../cmake/Misc.cmake"
   "../cmake/Modules/FindAtlas.cmake"
+  "../cmake/Modules/FindCLBlast.cmake"
   "../cmake/Modules/FindOpenBLAS.cmake"
   "../cmake/Modules/FindvecLib.cmake"
   "../cmake/ProtoBuf.cmake"

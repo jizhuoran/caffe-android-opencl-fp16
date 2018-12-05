@@ -4,6 +4,7 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <ctime>
 
 #ifdef USE_HDF5
 #include "hdf5.h"
@@ -575,11 +576,19 @@ Dtype Net<Dtype>::ForwardFromTo(int start, int end) {
       before_forward_[c]->run(i);
     }
 
-    LOG(INFO) << "This is layer: " << i;
+    clock_t begin = std::clock();
 
     Dtype layer_loss = layers_[i]->Forward(bottom_vecs_[i], top_vecs_[i]);
     loss += layer_loss;
     
+    clock_t end = std::clock();
+    double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+
+    clFinish(Caffe::Get().commandQueue);
+
+    LOG(INFO) << "Finish layer: " << i << " with time: " << elapsed_secs << " seconds";
+
+
     if (debug_info_) { ForwardDebugInfo(i); }
 
     for (int c = 0; c < after_forward_.size(); ++c) {

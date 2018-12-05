@@ -18,6 +18,9 @@ function build-abi {
     #exit 1
     ./build-openblas.sh || exit 1
     #exit 1
+    ./build-clblast.sh || exit 1
+
+
     mkdir ../build_${ANDROID_ABI%% *}
     cd ../build_${ANDROID_ABI%% *} || exit 1
     rm -rf *

@@ -105,6 +105,9 @@ inline void SyncedMemory::to_cpu() {
     }
     
 #ifdef WITH_HALF
+
+    LOG(INFO) << "expensive op with size " << size_;
+
     converter = (half_b*)malloc(size_/2);
     OPENCL_CHECK(clEnqueueReadBuffer(Caffe::Get().commandQueue, gpu_ptr_, CL_TRUE, 0, size_/2, converter, 0, NULL, NULL));
     half2float(size_/4, converter, (float*)cpu_ptr_);
@@ -193,7 +196,8 @@ inline void SyncedMemory::to_gpu() {
     }
     
 #ifdef WITH_HALF
-    
+      LOG(INFO) << "expensive op with size " << size_;
+      
       converter = (half_b*)malloc(size_/2);
       float2half(size_/4, (float*)cpu_ptr_, converter);
       OPENCL_CHECK(clEnqueueWriteBuffer(Caffe::Get().commandQueue, gpu_ptr_, CL_TRUE, 0, size_/2, converter, 0, NULL, NULL));

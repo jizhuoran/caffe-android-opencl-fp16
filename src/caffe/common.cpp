@@ -293,12 +293,12 @@ Caffe::Caffe()
 
 
 
-  std::stringstream ss;
+  // std::stringstream ss;
 
-  ss << generate_opencl_math();
-  ss << general_gemm_kernel();
+  // ss << generate_opencl_math();
+  // ss << general_gemm_kernel();
 
-  std::string math_kernels = ss.str();
+  std::string math_kernels = generate_opencl_math();
 
   size_t kernel_size = math_kernels.size();
 

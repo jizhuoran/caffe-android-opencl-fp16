@@ -78,6 +78,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
   "FORWARD_ONLY"
   "USE_NEON_MATH"
   "USE_OPENCL"
+  "WITH_HALF"
   )
 
 # The include file search paths:
@@ -86,6 +87,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../src"
   "include"
   "../third_party/arm64-v8a-28-OpenBLAS/include"
+  "../third_party/arm64-v8a-28-CLBlast/include"
   "../third_party/OpenCL"
   "../third_party/arm64-v8a-28-protobuf/include"
   "/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include"
