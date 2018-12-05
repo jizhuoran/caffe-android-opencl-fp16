@@ -586,7 +586,7 @@ Dtype Net<Dtype>::ForwardFromTo(int start, int end) {
 
     clFinish(Caffe::Get().commandQueue);
 
-    LOG(INFO) << "Finish layer: " << i << " with time: " << elapsed_secs << " seconds";
+    LOG(INFO) << "Finish " << layers_[i]->type() << " layer: " << i << " with time: " << elapsed_secs << " seconds";
 
 
     if (debug_info_) { ForwardDebugInfo(i); }

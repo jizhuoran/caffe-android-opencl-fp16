@@ -70,8 +70,14 @@ void BatchNormLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
       spatial_sum_multiplier_.shape(0) != spatial_dim) {
     sz[0] = spatial_dim;
     spatial_sum_multiplier_.Reshape(sz);
-    Dtype* multiplier_data = spatial_sum_multiplier_.mutable_cpu_data();
-    caffe_set(spatial_sum_multiplier_.count(), Dtype(1), multiplier_data);
+
+    if (Caffe::mode() == Caffe::GPU){
+      caffe_gpu_set(spatial_sum_multiplier_.count(), Dtype(1), spatial_sum_multiplier_.mutable_gpu_data());
+    } else {
+      Dtype* multiplier_data = spatial_sum_multiplier_.mutable_cpu_data();
+      caffe_set(spatial_sum_multiplier_.count(), Dtype(1), multiplier_data);
+    } 
+ 
   }
 
   int numbychans = channels_*bottom[0]->shape(0);
@@ -292,14 +298,16 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
         mean_.mutable_gpu_data());
   }
 
-
   // subtract mean
   caffe_gpu_gemm<Dtype>(CblasNoTrans, CblasNoTrans, num, channels_, 1, 1,
       batch_sum_multiplier_.gpu_data(), mean_.gpu_data(), 0.,
       num_by_chans_.mutable_gpu_data());
+  
+
   caffe_gpu_gemm<Dtype>(CblasNoTrans, CblasNoTrans, channels_ * num,
       spatial_dim, 1, -1, num_by_chans_.gpu_data(),
       spatial_sum_multiplier_.gpu_data(), 1., top[0]->mutable_gpu_data());
+
 
   if (!use_global_stats_) {
 
