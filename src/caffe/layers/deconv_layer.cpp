@@ -111,6 +111,25 @@ void DeconvolutionLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
     global_size[1] = static_cast<size_t>((((top[i]->shape(1) / this->group_) - 1) / 32 + 1)*8);
     global_size[2] = static_cast<size_t>(bottom[i]->shape()[0] * 1);
 
+#ifndef ANDROID
+    int skip_bi = this->bottom_shape_[0].size() - this->output_shape_.size();
+    int fmaps_in_ = this->bottom_shape_[0][skip_bi-1];
+    int fmaps_out_ = this->num_output_;
+    int MG_FW_ = fmaps_out_;
+    int M_FW_ = fmaps_out_ / this->group_;
+    int N_FW_ = 1;
+    int KG_FW_ = fmaps_in_;
+    int K_FW_ = fmaps_in_ / this->group_;
+
+    
+    for (int i = 0; i < this->output_shape_.size(); ++i) {
+      K_FW_ *= this->kernel_shape_.cpu_data()[i];
+      KG_FW_ *= this->kernel_shape_.cpu_data()[i];
+      N_FW_ *= this->output_shape_[i];
+    }
+
+    LOG(INFO) << "The size of deconv are " << M_FW_ << " and "<< N_FW_ << " and " << K_FW_;
+#endif
     OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 3, NULL, global_size, local_size, 0, NULL, NULL));  
 
   }
@@ -249,7 +268,7 @@ std::string DeconvolutionLayer<Dtype>::generate_fw_defs(int TSK, int WPTM, int W
   // The tile-size in dimension N
   this->add_def(ss, "TSN", WPTN * RTSN);
   // The tile-size in dimension K
-  this->add_def(ss, "TSK", 8);
+  this->add_def(ss, "TSK", TSK);
   // TSK unrolling
   this->add_def(ss, "TSK_UNROLL", 1);
   // The work-per-thread in dimension M

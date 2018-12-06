@@ -29,10 +29,25 @@ Timer::~Timer() {
 void Timer::Start() {
   if (!running()) {
     if (Caffe::mode() == Caffe::GPU) {
-#ifndef CPU_ONLY
-      //TODOTODOO
+#ifdef USE_OPENCL
+      clReleaseEvent(start_gpu_cl_);
 
-      // CUDA_CHECK(cudaEventRecord(start_gpu_, 0));
+
+      cl_int ret;
+
+      cl_kernel kernel = clCreateKernel(Caffe::Get().program, "null_kernel_float", &ret);
+      OPENCL_CHECK(ret);
+
+      int arg = 0;
+      OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_int), (void *)&arg));  
+
+      size_t global_size = 1;
+  
+      OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &global_size, 0, NULL, &start_gpu_cl_));  
+      clWaitForEvents(1, &start_gpu_cl_);
+      
+      clFinish(Caffe::Get().commandQueue);
+
 #else
       NO_GPU;
 #endif
@@ -51,10 +66,29 @@ void Timer::Start() {
 void Timer::Stop() {
   if (running()) {
     if (Caffe::mode() == Caffe::GPU) {
-#ifndef CPU_ONLY
-    //TODOTODOO
+#ifdef USE_OPENCL
+        
 
-      // CUDA_CHECK(cudaEventRecord(stop_gpu_, 0));
+      clWaitForEvents(1, &stop_gpu_cl_);
+      clReleaseEvent(stop_gpu_cl_);
+
+
+      cl_int ret;
+
+      cl_kernel kernel = clCreateKernel(Caffe::Get().program, "null_kernel_float", &ret);
+      OPENCL_CHECK(ret);
+
+      int arg = 0;
+      OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_int), (void *)&arg));  
+
+      size_t global_size = 1;
+  
+      OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &global_size, 0, NULL, &stop_gpu_cl_));  
+      
+      clWaitForEvents(1, &stop_gpu_cl_);
+
+      clFinish(Caffe::Get().commandQueue);
+
 #else
       NO_GPU;
 #endif
@@ -79,13 +113,15 @@ float Timer::MicroSeconds() {
     Stop();
   }
   if (Caffe::mode() == Caffe::GPU) {
-#ifndef CPU_ONLY
-    // CUDA_CHECK(cudaEventSynchronize(stop_gpu_));
-    // CUDA_CHECK(cudaEventElapsedTime(&elapsed_milliseconds_, start_gpu_,
-    //                                 stop_gpu_));
-    // // Cuda only measure milliseconds
-    // elapsed_microseconds_ = elapsed_milliseconds_ * 1000;
-    //TODOTODOO
+#ifdef USE_OPENCL
+      
+      cl_ulong startTime = 0, stopTime = 0;
+      OPENCL_CHECK(clGetEventProfilingInfo(start_gpu_cl_, CL_PROFILING_COMMAND_END,
+          sizeof startTime, &startTime, NULL));
+      OPENCL_CHECK(clGetEventProfilingInfo(stop_gpu_cl_, CL_PROFILING_COMMAND_START,
+          sizeof stopTime, &stopTime, NULL));
+      double ms = static_cast<double>(stopTime - startTime) / 1000.0;
+      elapsed_microseconds_ = static_cast<float>(ms);
     
 #else
       NO_GPU;
@@ -110,11 +146,15 @@ float Timer::MilliSeconds() {
     Stop();
   }
   if (Caffe::mode() == Caffe::GPU) {
-#ifndef CPU_ONLY
-    // CUDA_CHECK(cudaEventSynchronize(stop_gpu_));
-    // CUDA_CHECK(cudaEventElapsedTime(&elapsed_milliseconds_, start_gpu_,
-    //                                 stop_gpu_));
-    //TODOTODOO
+#ifdef USE_OPENCL
+      
+      cl_ulong startTime = 0, stopTime = 0;
+      clGetEventProfilingInfo(start_gpu_cl_, CL_PROFILING_COMMAND_END,
+          sizeof startTime, &startTime, NULL);
+      clGetEventProfilingInfo(stop_gpu_cl_, CL_PROFILING_COMMAND_START,
+          sizeof stopTime, &stopTime, NULL);
+      double ms = static_cast<double>(stopTime - startTime) / 1000000.0;
+      elapsed_milliseconds_ = static_cast<float>(ms);
 
 #else
       NO_GPU;
@@ -137,11 +177,9 @@ float Timer::Seconds() {
 void Timer::Init() {
   if (!initted()) {
     if (Caffe::mode() == Caffe::GPU) {
-#ifndef CPU_ONLY
-      // CUDA_CHECK(cudaEventCreate(&start_gpu_));
-      // CUDA_CHECK(cudaEventCreate(&stop_gpu_));
-    //TODOTODOO
-
+#ifdef USE_OPENCL
+    start_gpu_cl_ = 0;
+    stop_gpu_cl_ = 0;
 #else
       NO_GPU;
 #endif

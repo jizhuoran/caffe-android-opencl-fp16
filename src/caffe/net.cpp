@@ -24,6 +24,10 @@
 #include "caffe/util/math_functions.hpp"
 #include "caffe/util/upgrade_proto.hpp"
 
+
+#include "caffe/util/benchmark.hpp"
+
+
 namespace caffe {
 
 template <typename Dtype>
@@ -566,8 +570,15 @@ Dtype Net<Dtype>::ForwardFromTo(int start, int end) {
 
 #endif
 
+  Timer timer;
+
+
   for (int i = start; i <= end; ++i) {
 
+    timer.Start();
+
+    // clock_t begin = std::clock();
+    
 #ifdef FORWARD_LESS_MEM
     layers_[i]->Qiaoge_alloc(bottom_vecs_[i], top_vecs_[i]);
 #endif
@@ -576,17 +587,10 @@ Dtype Net<Dtype>::ForwardFromTo(int start, int end) {
       before_forward_[c]->run(i);
     }
 
-    clock_t begin = std::clock();
 
     Dtype layer_loss = layers_[i]->Forward(bottom_vecs_[i], top_vecs_[i]);
     loss += layer_loss;
     
-    clock_t end = std::clock();
-    double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-
-    clFinish(Caffe::Get().commandQueue);
-
-    LOG(INFO) << "Finish " << layers_[i]->type() << " layer: " << i << " with time: " << elapsed_secs << " seconds";
 
 
     if (debug_info_) { ForwardDebugInfo(i); }
@@ -594,6 +598,17 @@ Dtype Net<Dtype>::ForwardFromTo(int start, int end) {
     for (int c = 0; c < after_forward_.size(); ++c) {
       after_forward_[c]->run(i);
     }
+
+
+    // clock_t end = std::clock();
+    // double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+
+    // clFinish(Caffe::Get().commandQueue);
+
+    timer.Stop();
+
+
+    LOG(INFO) << "Finish " << layers_[i]->type() << " layer: " << i << " with time: " << timer.Seconds() << " seconds";
 
 
 #ifdef FORWARD_LESS_MEM

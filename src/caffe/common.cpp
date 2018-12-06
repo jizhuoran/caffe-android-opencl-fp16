@@ -288,7 +288,7 @@ Caffe::Caffe()
   context = clCreateContext(NULL, 1, &deviceID, NULL, NULL,  &ret);
   OPENCL_CHECK(ret);
 
-  commandQueue = clCreateCommandQueue(context, deviceID, 0, &ret);
+  commandQueue = clCreateCommandQueue(context, deviceID, CL_QUEUE_PROFILING_ENABLE, &ret);
   OPENCL_CHECK(ret);
 
 

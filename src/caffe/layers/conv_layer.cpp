@@ -103,6 +103,25 @@ void ConvolutionLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
     local_size[0] = static_cast<size_t>(8);
     local_size[1] = static_cast<size_t>(8);
     local_size[2] = static_cast<size_t>(1);
+    
+#ifndef ANDROID
+    int skip_bi = this->bottom_shape_[0].size() - this->output_shape_.size();
+    int fmaps_in_ = this->bottom_shape_[0][skip_bi-1];
+    int fmaps_out_ = this->num_output_;
+    int MG_FW_ = fmaps_out_;
+    int M_FW_ = fmaps_out_ / this->group_;
+    int N_FW_ = 1;
+    int KG_FW_ = fmaps_in_;
+    int K_FW_ = fmaps_in_ / this->group_;
+
+    for (int i = 0; i < this->output_shape_.size(); ++i) {
+      K_FW_ *= this->kernel_shape_.cpu_data()[i];
+      KG_FW_ *= this->kernel_shape_.cpu_data()[i];
+      N_FW_ *= this->output_shape_[i];
+    }
+
+    LOG(INFO) << "The size of conv are " << M_FW_ << " and "<< N_FW_ << " and " << K_FW_;
+#endif
 
     size_t* global_size = new size_t[3];
     global_size[0] = static_cast<size_t>((((top[i]->shape(2) * top[i]->shape(3)) - 1) / 32 + 1)*8);

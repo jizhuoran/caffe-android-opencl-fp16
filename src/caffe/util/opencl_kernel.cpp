@@ -39,6 +39,12 @@ std::string generate_opencl_math() {
 	ss << std::endl;
 	ss << std::endl;
 
+
+	ss << "__kernel void null_kernel_float(int alpha) {" << std::endl;
+	ss << "int a = get_local_id(0);" << std::endl;
+	ss << "}" << std::endl;
+
+
 	ss << "__kernel void ReLUForward(__global Dtype *in," << std::endl;
 	ss << "__global Dtype *out," << std::endl;
 	ss << "int N, Dtype negative_slope) {" << std::endl;

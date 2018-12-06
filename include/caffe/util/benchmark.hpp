@@ -11,7 +11,7 @@
 
 namespace caffe {
 
-class Timer {
+class Timer { 
  public:
   Timer();
   virtual ~Timer();
@@ -31,9 +31,9 @@ class Timer {
   bool initted_;
   bool running_;
   bool has_run_at_least_once_;
-#ifndef CPU_ONLY
-  // cudaEvent_t start_gpu_;
-  // cudaEvent_t stop_gpu_;
+#ifdef USE_OPENCL
+  cl_event start_gpu_cl_;
+  cl_event stop_gpu_cl_;
 #endif
 #ifdef USE_BOOST
   boost::posix_time::ptime start_cpu_;
