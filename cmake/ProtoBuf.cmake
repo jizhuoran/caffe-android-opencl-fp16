@@ -9,7 +9,6 @@ list(APPEND Caffe_LINKER_LIBS ${PROTOBUF_LIBRARIES})
 # and should be installed separately as in: sudo apt-get install protobuf-compiler
 
 
-#set(PROTOBUF_PROTOC_EXECUTABLE /home/zrji/android_caffe/caffe-android-opencl/third_party/Linux-protobuf/bin/protoc)
 if(EXISTS ${PROTOBUF_PROTOC_EXECUTABLE})
   message(STATUS "Found PROTOBUF Compiler: ${PROTOBUF_PROTOC_EXECUTABLE}")
 else()

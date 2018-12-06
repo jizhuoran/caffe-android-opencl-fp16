@@ -6,6 +6,10 @@
 #include "caffe/syncedmem.hpp"
 #include "caffe/util/math_functions.hpp"
 
+#ifdef WITH_HALF
+#include "caffe/util/half.hpp"
+#endif
+
 namespace caffe {
 
 template <typename Dtype>
@@ -566,10 +570,30 @@ void Blob<double>::ToProto(BlobProto* proto, bool write_diff) const {
 
 template <>
 void Blob<float>::ToProto(BlobProto* proto, bool write_diff) const {
+
   proto->clear_shape();
   for (int i = 0; i < shape_.size(); ++i) {
     proto->mutable_shape()->add_dim(shape_[i]);
   }
+
+#ifdef WITH_HALF
+  proto->clear_half_data();
+  proto->clear_half_diff();
+
+  half_b* converter = (half_b*)malloc(count_ * 2);
+  half2float(count_ * 2, converter, (float*)cpu_data());
+  proto->set_half_data((void*)converter, count_ * 2);
+  
+  if (write_diff) {
+    half2float(count_ * 2, converter, (float*)cpu_diff());
+    proto->set_half_data((void*)converter, count_ * 2);
+  }
+
+  free(converter);
+
+
+#else
+
   proto->clear_data();
   proto->clear_diff();
   const float* data_vec = cpu_data();
@@ -582,6 +606,12 @@ void Blob<float>::ToProto(BlobProto* proto, bool write_diff) const {
       proto->add_diff(diff_vec[i]);
     }
   }
+
+
+
+#endif
+
+
 }
 
 INSTANTIATE_CLASS(Blob);

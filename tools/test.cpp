@@ -110,13 +110,23 @@ int main(int argc, char** argv) {
 
     caffe::CPUTimer timer;
     
-    caffe::Caffe::Get().set_mode(caffe::Caffe::GPU);
+    caffe::Caffe::Get().set_mode(caffe::Caffe::CPU);
     
     timer.Start();
-    _net = new caffe::Net<float>("./examples/style_transfer/style.protobin", caffe::TEST);
+    _net = new caffe::Net<float>("./examples/style_transfer/style.prototxt", caffe::TEST);
     _net->CopyTrainedLayersFrom("./examples/style_transfer/a1.caffemodel");
     timer.Stop();
     
+
+    // std::string fp16_protofile = "./fp16.caffemodel";
+
+    caffe::NetParameter net_param;
+    _net->ToProto(&net_param);
+    caffe::WriteProtoToBinaryFile(net_param, "./fp16.caffemodel");
+
+
+
+
     PPMImage *image;
     image = readPPM("./examples/style_transfer/HKU.ppm");
 
