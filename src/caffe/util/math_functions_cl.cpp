@@ -219,7 +219,8 @@ template <typename Dtype>
 void caffe_gpu_set(const int N, const Dtype alpha, Dtype* Y) {
 
 #ifdef WITH_HALF
-  OPENCL_CHECK(clEnqueueFillBuffer(Caffe::Get().commandQueue, (cl_mem) Y, &alpha, 2, 0, N * 2, 0, NULL, NULL));
+  half_b alpha_half = float2half_impl(alpha);
+  OPENCL_CHECK(clEnqueueFillBuffer(Caffe::Get().commandQueue, (cl_mem) Y, &alpha_half, 2, 0, N * 2, 0, NULL, NULL));
 #else
   OPENCL_CHECK(clEnqueueFillBuffer(Caffe::Get().commandQueue, (cl_mem) Y, &alpha, sizeof(Dtype), 0, N * sizeof(Dtype), 0, NULL, NULL));
 #endif

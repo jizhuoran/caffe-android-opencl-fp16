@@ -358,6 +358,14 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
       spatial_sum_multiplier_.gpu_data(), 0., temp_.mutable_gpu_data());
 
 
+  // LOG(INFO) << "The count of batch_sum_multiplier_ is " << batch_sum_multiplier_.count();
+  // LOG(INFO) << "The count of variance_ is " << variance_.count();
+  // LOG(INFO) << "The count of num_by_chans_ is " << num_by_chans_.count();
+  // LOG(INFO) << "The count of spatial_sum_multiplier_ is " << spatial_sum_multiplier_.count();
+  // LOG(INFO) << "The count of temp_ is " << temp_.count();
+
+  // exit(0);
+
   caffe_gpu_div(temp_.count(), top_data, temp_.gpu_data(), top_data);
   // TODO(cdoersch): The caching is only needed because later in-place layers
   //                 might clobber the data.  Can we skip this if they won't?
