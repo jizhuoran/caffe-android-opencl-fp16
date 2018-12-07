@@ -114,8 +114,8 @@ int main(int argc, char** argv) {
     
     timer.Start();
     _net = new caffe::Net<float>("./examples/style_transfer/style.prototxt", caffe::TEST);
-    _net->CopyTrainedLayersFrom("./fp16.caffemodel");
-    // _net->CopyTrainedLayersFrom("./examples/style_transfer/a1.caffemodel");
+    // _net->CopyTrainedLayersFrom("./fp16.caffemodel");
+    _net->CopyTrainedLayersFrom("./examples/style_transfer/a1.caffemodel");
     timer.Stop();
     
 

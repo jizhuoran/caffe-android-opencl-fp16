@@ -75,13 +75,13 @@ class PowerLayer : public NeuronLayer<Dtype> {
       const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom);
 
   /// @brief @f$ \gamma @f$ from layer_param_.power_param()
-  Dtype power_;
+  float power_;
   /// @brief @f$ \alpha @f$ from layer_param_.power_param()
-  Dtype scale_;
+  float scale_;
   /// @brief @f$ \beta @f$ from layer_param_.power_param()
-  Dtype shift_;
+  float shift_;
   /// @brief Result of @f$ \alpha \gamma @f$
-  Dtype diff_scale_;
+  float diff_scale_;
 };
 
 }  // namespace caffe
