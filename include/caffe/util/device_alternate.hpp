@@ -64,6 +64,9 @@
 
 #endif
 
+#define NOT_IMPLEMENT LOG(FATAL) << "This function has not been implemented yet!"
+
+
 
 #ifdef CPU_ONLY  // CPU-only Caffe.
 
@@ -108,7 +111,6 @@ void classname<Dtype>::funcname##_##gpu(const vector<Blob<Dtype>*>& top, \
 // CUDA macros
 //
 
-#define NOT_IMPLEMENT LOG(FATAL) << "This function has not been implemented yet!"
 
 #define TEMP_GPU(classname) \
 template <typename Dtype> \

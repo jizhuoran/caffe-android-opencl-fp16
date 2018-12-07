@@ -3,6 +3,8 @@
 
 typedef std::uint_least32_t float_b;
 typedef std::uint_least16_t half_b;
+typedef half_b half;
+
 
 #include <limits>
 #include <cstdint>

@@ -605,19 +605,19 @@ void Blob<Dtype>::FromProto(const BlobProto& proto, bool reshape) {
 }
 
 template <>
-void Blob<double>::ToProto(BlobProto* proto, bool write_diff) const {
+void Blob<half>::ToProto(BlobProto* proto, bool write_diff) const {
   proto->clear_shape();
   for (int i = 0; i < shape_.size(); ++i) {
     proto->mutable_shape()->add_dim(shape_[i]);
   }
   proto->clear_double_data();
   proto->clear_double_diff();
-  const double* data_vec = cpu_data();
+  const half* data_vec = cpu_data();
   for (int i = 0; i < count_; ++i) {
     proto->add_double_data(data_vec[i]);
   }
   if (write_diff) {
-    const double* diff_vec = cpu_diff();
+    const half* diff_vec = cpu_diff();
     for (int i = 0; i < count_; ++i) {
       proto->add_double_diff(diff_vec[i]);
     }
