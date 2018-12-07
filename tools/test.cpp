@@ -110,19 +110,16 @@ int main(int argc, char** argv) {
 
     caffe::CPUTimer timer;
     
-    caffe::Caffe::Get().set_mode(caffe::Caffe::CPU);
+    caffe::Caffe::Get().set_mode(caffe::Caffe::GPU);
     
     timer.Start();
     _net = new caffe::Net<float>("./examples/style_transfer/style.prototxt", caffe::TEST);
-    _net->CopyTrainedLayersFrom("./examples/style_transfer/a1.caffemodel");
+    _net->CopyTrainedLayersFrom("./fp16.caffemodel");
+    // _net->CopyTrainedLayersFrom("./examples/style_transfer/a1.caffemodel");
     timer.Stop();
     
 
     // std::string fp16_protofile = "./fp16.caffemodel";
-
-    caffe::NetParameter net_param;
-    _net->ToProto(&net_param);
-    caffe::WriteProtoToBinaryFile(net_param, "./fp16.caffemodel");
 
 
 
@@ -162,5 +159,13 @@ int main(int argc, char** argv) {
     }
     fclose(f);
     
+
+    exit(0);
+    
+    caffe::NetParameter net_param;
+    _net->ToProto(&net_param);
+    caffe::WriteProtoToBinaryFile(net_param, "./fp16.caffemodel");
+
+    exit(0);
     
 }
