@@ -8,9 +8,15 @@ Optimized (for memory usage, speed and enegry efficiency) Caffe with OpenCL supp
 # Features
 
 - [x] **OpenCL supporting (mobile GPU)** (Partially finished)
-- [x] As few dependencies as possible
+- [x] **FP16 Inference support**
+  - [x] BatchNorm shifting to avoid overflow and underflow
+  - [ ] All Layer support (Only Layers with OpenCL has FP16 support now)
+  - [x] FP16 caffemodel load and save
+  - [ ] model convertor (From FP32 to FP16)
+- [ ] As few dependencies as possible (CLBlast Introduced, try to remove)
 - [x] Optimized memory usage
-- [x] Forward Only 
+- [x] Forward Only
+- [x] Zero Copy (Shared memory between Host and GPU)
 - [ ] Backward
 
 
@@ -22,10 +28,14 @@ Optimized (for memory usage, speed and enegry efficiency) Caffe with OpenCL supp
 
  - [x] Convolution Layer (libdnn)
  - [x] Deconvolution Layer (libdnn)
+ - [x] Batch Norm Layer (with shift)
  - [x] ReLU Layer
+ - [x] ELU Layer
+ - [x] TanH Layer
+ - [x] Scale Layer
  - [ ] Matrix Multiplication
  - [ ] Others
- 
+
 
 # For Android
 
@@ -33,14 +43,14 @@ Optimized (for memory usage, speed and enegry efficiency) Caffe with OpenCL supp
 
 - [x] Snapdragon 820 development board
 - [x] HUAWEI P9
-- [ ] Hikey 970 (Waitting the device)
+- [x] Hikey 970
 
 
 ## Build libcaffe.so
 
 ```
 $ modify the NDK_HOME path in ./tools/build_android.sh to your NDK_HOME
-$ ./tools/build_android.sh
+$ ./tools/build_android.sh (I introduce another dependencies these day, which makes this not work, I will fix it soon)
 $ (You may want to choose your own make -j)
 
 ```
