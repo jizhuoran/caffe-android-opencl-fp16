@@ -6,9 +6,6 @@
 #include "caffe/syncedmem.hpp"
 #include "caffe/util/math_functions.hpp"
 
-#ifdef WITH_HALF
-#include "caffe/util/half.hpp"
-#endif
 
 namespace caffe {
 
@@ -521,63 +518,11 @@ void Blob<Dtype>::FromProto(const BlobProto& proto, bool reshape) {
     CHECK(ShapeEquals(proto)) << "shape mismatch (reshape not set)";
   }
 
-#ifdef WITH_HALF
-
-
-  if(proto.has_half_data()) {
-    
-    Dtype* data_vec = (Dtype*)mutable_cpu_data();
-    const half_b* data_vec_proto = (half_b*)proto.half_data().c_str();
-
-    // memcpy((void*)mutable_cpu_data(), proto.half_data().c_str(), count_*2);
-
-    LOG(INFO) << "The size of the proto is " << proto.half_data().size();
-    LOG(INFO) << "The size of the blob is " << count_;
-
-    for (int i = 0; i < count_; ++i) {
-      data_vec[i] = half2float_impl(data_vec_proto[i]);
-      std::cout << data_vec[i] << " ";
-    }
-  }
-
-
-  if(proto.has_half_diff()) {
-    
-    Dtype* diff_vec = (Dtype*)mutable_cpu_diff();
-    const half_b* diff_vec_proto = (half_b*)proto.half_diff().c_str();
-
-    // memcpy((void*)mutable_cpu_diff(), proto.half_diff().c_str(), count_*2);
-
-    LOG(INFO) << "The size of the proto is " << proto.half_diff().size();
-    LOG(INFO) << "The size of the blob is " << count_;
-
-    for (int i = 0; i < count_; ++i) {
-      diff_vec[i] = half2float_impl(diff_vec_proto[i]);
-      std::cout << diff_vec[i] << " ";
-    }
-  }
-
-
-  // float* converter = (float*) malloc(count_ * 4);
-
-
-
-  // if(proto.has_half_diff()) {
-    
-  //   Dtype* data_vec = (Dtype*)mutable_cpu_diff();
-  //   half_b* diff_vec_proto = (half_b*)proto.half_diff();
-
-  //   for (int i = 0; i < count_; ++i) {
-  //     diff_vec[i] = half2float_impl(diff_vec_proto[i]);
-  //     std::cout << diff_vec[i] << " ";
-  //   }
-  // }
-  
-
-#else 
-  // copy data
   Dtype* data_vec = mutable_cpu_data();
-  if (proto.double_data_size() > 0) {
+
+  if (proto.has_half_data()) {
+    memcpy(data_vec, proto.half_data().c_str(), count_ * sizeof(half));
+  } else if (proto.double_data_size() > 0) {
     CHECK_EQ(count_, proto.double_data_size());
     for (int i = 0; i < count_; ++i) {
       data_vec[i] = proto.double_data(i);
@@ -588,7 +533,11 @@ void Blob<Dtype>::FromProto(const BlobProto& proto, bool reshape) {
       data_vec[i] = proto.data(i);
     }
   }
-  if (proto.double_diff_size() > 0) {
+  
+  if (proto.has_half_diff()) {
+    Dtype* diff_vec = mutable_cpu_diff();
+    memcpy(diff_vec, proto.half_diff().c_str(), count_ * sizeof(half));    
+  } else if (proto.double_diff_size() > 0) {
     CHECK_EQ(count_, proto.double_diff_size());
     Dtype* diff_vec = mutable_cpu_diff();
     for (int i = 0; i < count_; ++i) {
@@ -601,7 +550,7 @@ void Blob<Dtype>::FromProto(const BlobProto& proto, bool reshape) {
       diff_vec[i] = proto.diff(i);
     }
   }
-#endif
+// #endif
 }
 
 template <>
@@ -640,21 +589,6 @@ void Blob<float>::ToProto(BlobProto* proto, bool write_diff) const {
   float2half(count_, (float*)cpu_data(), converter);
   proto->set_half_data((void*)converter, count_ * 2);
   
-
-  for (int i = 0; i < count_; ++i) {
-
-    // if(abs(half2float_impl(converter[i]) - ((float*)cpu_data())[i]) > 0.000001) {
-      // std::cout << half2float_impl(converter[i]) << " and " << ((float*)cpu_data())[i] << std::endl;
-    // }
-      std::cout << ((float*)cpu_data())[i] << " ";//<< std::endl;
-
-    // std::cout << half2float_impl(converter[i]) << " and " << ((float*)cpu_data())[i] << std::endl;
-    /* code */
-  }
-
-  std::cout << "No differene" << std::endl;
-
-
   if (write_diff) {
     float2half(count_, (float*)cpu_diff(), converter);
 
@@ -662,7 +596,6 @@ void Blob<float>::ToProto(BlobProto* proto, bool write_diff) const {
   }
 
   free(converter);
-
 
 #else
 
@@ -678,8 +611,6 @@ void Blob<float>::ToProto(BlobProto* proto, bool write_diff) const {
       proto->add_diff(diff_vec[i]);
     }
   }
-
-
 
 #endif
 

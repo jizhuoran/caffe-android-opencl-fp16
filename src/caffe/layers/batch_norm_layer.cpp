@@ -72,12 +72,11 @@ void BatchNormLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
     spatial_sum_multiplier_.Reshape(sz);
 
     if (Caffe::mode() == Caffe::GPU){
-      caffe_gpu_set(spatial_sum_multiplier_.count(), Dtype(1), spatial_sum_multiplier_.mutable_gpu_data());
+      caffe_gpu_set(spatial_sum_multiplier_.count(), float(1.0), spatial_sum_multiplier_.mutable_gpu_data());
     } else {
-      Dtype* multiplier_data = spatial_sum_multiplier_.mutable_cpu_data();
-      caffe_set(spatial_sum_multiplier_.count(), Dtype(1), multiplier_data);
+      caffe_set(spatial_sum_multiplier_.count(), float(1), 
+        spatial_sum_multiplier_.mutable_cpu_data());
     } 
- 
   }
 
   int numbychans = channels_*bottom[0]->shape(0);
@@ -85,8 +84,13 @@ void BatchNormLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
       num_by_chans_.shape(0) != numbychans) {
     sz[0] = numbychans;
     num_by_chans_.Reshape(sz);
-    caffe_set(batch_sum_multiplier_.count(), Dtype(1),
+
+    if (Caffe::mode() == Caffe::GPU){
+      caffe_gpu_set(batch_sum_multiplier_.count(), float(1.0), batch_sum_multiplier_.mutable_gpu_data());
+    } else {
+      caffe_set(batch_sum_multiplier_.count(), float(1),
         batch_sum_multiplier_.mutable_cpu_data());
+    }
   }
 }
 
@@ -300,20 +304,20 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
                           1/sum_shift_num, (sum_shift_num*sum_shift_num)/(num * spatial_dim), 
                           num_by_chans_.mutable_gpu_data(), 1);
 
-    caffe_gpu_gemv<Dtype>(CblasTrans, num, channels_, 1.,
-        num_by_chans_.gpu_data(), batch_sum_multiplier_.gpu_data(), 0.,
+    caffe_gpu_gemv<Dtype>(CblasTrans, num, channels_, float(1.),
+        num_by_chans_.gpu_data(), batch_sum_multiplier_.gpu_data(), float(0.),
         mean_.mutable_gpu_data());
   }
 
   // subtract mean
-  caffe_gpu_gemm<Dtype>(CblasNoTrans, CblasNoTrans, num, channels_, 1, 1,
-      batch_sum_multiplier_.gpu_data(), mean_.gpu_data(), 0.,
+  caffe_gpu_gemm<Dtype>(CblasNoTrans, CblasNoTrans, num, channels_, 1, float(1),
+      batch_sum_multiplier_.gpu_data(), mean_.gpu_data(), float(0.),
       num_by_chans_.mutable_gpu_data());
   
 
   caffe_gpu_gemm<Dtype>(CblasNoTrans, CblasNoTrans, channels_ * num,
-      spatial_dim, 1, -1, num_by_chans_.gpu_data(),
-      spatial_sum_multiplier_.gpu_data(), 1., top[0]->mutable_gpu_data());
+      spatial_dim, 1, float(-1), num_by_chans_.gpu_data(),
+      spatial_sum_multiplier_.gpu_data(), float(1.), top[0]->mutable_gpu_data());
 
 
   if (!use_global_stats_) {
@@ -329,8 +333,8 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
                           1/sum_shift_num, (sum_shift_num*sum_shift_num) / (num * spatial_dim), 
                           num_by_chans_.mutable_gpu_data(), 1);
 
-    caffe_gpu_gemv<Dtype>(CblasTrans, num, channels_, 1.0,
-        num_by_chans_.gpu_data(), batch_sum_multiplier_.gpu_data(), Dtype(0.),
+    caffe_gpu_gemv<Dtype>(CblasTrans, num, channels_, float(1.0),
+        num_by_chans_.gpu_data(), batch_sum_multiplier_.gpu_data(), float(0.),
         variance_.mutable_gpu_data());  // E((X_EX)^2)
 
 
@@ -359,12 +363,12 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   caffe_gpu_scal(variance_.count(), top_shift_num, variance_.mutable_gpu_data());
 
   // replicate variance to input size
-  caffe_gpu_gemm<Dtype>(CblasNoTrans, CblasNoTrans, num, channels_, 1, 1,
-      batch_sum_multiplier_.gpu_data(), variance_.gpu_data(), 0.,
+  caffe_gpu_gemm<Dtype>(CblasNoTrans, CblasNoTrans, num, channels_, 1, float(1),
+      batch_sum_multiplier_.gpu_data(), variance_.gpu_data(), float(0.),
       num_by_chans_.mutable_gpu_data());
   caffe_gpu_gemm<Dtype>(CblasNoTrans, CblasNoTrans, channels_ * num,
-      spatial_dim, 1, 1., num_by_chans_.gpu_data(),
-      spatial_sum_multiplier_.gpu_data(), 0., temp_.mutable_gpu_data());
+      spatial_dim, 1, float(1.), num_by_chans_.gpu_data(),
+      spatial_sum_multiplier_.gpu_data(), float(0.), temp_.mutable_gpu_data());
 
   caffe_gpu_div(temp_.count(), top_data, temp_.gpu_data(), top_data);
   // TODO(cdoersch): The caching is only needed because later in-place layers

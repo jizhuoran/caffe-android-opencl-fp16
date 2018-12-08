@@ -1,10 +1,6 @@
 #include <algorithm>
 #include <vector>
 
-#ifdef WITH_HALF
-#include "caffe/util/half.hpp"
-#endif
-
 #include "caffe/layers/relu_layer.hpp"
 
 namespace caffe {
@@ -40,14 +36,14 @@ void ReLULayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 }
 
 
-template <typename Dtype>
-void ReLULayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
-    const vector<Blob<Dtype>*>& top) {
+template <>
+void ReLULayer<float>::Forward_gpu(const vector<Blob<float>*>& bottom,
+    const vector<Blob<float>*>& top) {
 
-  const Dtype* bottom_data = bottom[0]->gpu_data();
-  Dtype* top_data = top[0]->mutable_gpu_data();
+  const float* bottom_data = bottom[0]->gpu_data();
+  float* top_data = top[0]->mutable_gpu_data();
   const int count = bottom[0]->count();
-  Dtype negative_slope = this->layer_param_.relu_param().negative_slope();
+  float negative_slope = this->layer_param_.relu_param().negative_slope();
 
   cl_int ret;
 
@@ -58,24 +54,42 @@ void ReLULayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&bottom_data));  
   OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&top_data));  
   OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&count));
-
-
-#ifdef WITH_HALF
-  half_b negative_slope_half = float2half_impl(negative_slope);
-  OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_half), (void *)&negative_slope_half));  
-#else
   OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_float), (void *)&negative_slope));  
-#endif
-
-
-
 
   size_t global_size = CAFFE_GET_BLOCKS(count);
   
   OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
 
+}
+
+template <>
+void ReLULayer<half>::Forward_gpu(const vector<Blob<half>*>& bottom,
+    const vector<Blob<half>*>& top) {
+
+  const half* bottom_data = bottom[0]->gpu_data();
+  half* top_data = top[0]->mutable_gpu_data();
+  const int count = bottom[0]->count();
+  half negative_slope = this->layer_param_.relu_param().negative_slope();
+
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "ReLUForward", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  half_b negative_slope_half = float2half_impl(negative_slope);
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&bottom_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&top_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&count));
+  OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_half), (void *)&negative_slope_half));  
+
+  size_t global_size = CAFFE_GET_BLOCKS(count);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
 
 }
+
+
 
 template <typename Dtype>
 void ReLULayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,

@@ -6,9 +6,8 @@
 #include <sstream>
 
 namespace caffe {
-  
+  	std::string generate_opencl_defs(bool is_half);
   	std::string generate_opencl_math();
-	std::string general_gemm_kernel();
 }  // namespace caffe
 
 #endif   // CAFFE_UTIL_OPENCL_KERNEL_H_

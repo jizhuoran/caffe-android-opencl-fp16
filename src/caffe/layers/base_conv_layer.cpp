@@ -225,16 +225,15 @@ template<typename Dtype>
 std::string BaseConvolutionLayer<Dtype>::generate_header() {
   std::stringstream ss;
 
-  if (std::is_same<Dtype, double>::value) {
-    ss << "#define Dtype double" << std::endl;
-    ss << "#define Dtype1 double" << std::endl;
-    // double2, double4, double8, double16
+  if (std::is_same<Dtype, float>::value) {
+    ss << "#define Dtype float" << std::endl;
+    ss << "#define Dtype1 float" << std::endl;
+    // float2, float4, float8, float16
     for (int i = 2; i <= 16; i *= 2) {
-      ss << "#define Dtype" << i << " double" << i << std::endl;
+      ss << "#define Dtype" << i << " float" << i << std::endl;
     }
-  } else {
+  } else if (std::is_same<Dtype, half>::value){
 
-#ifdef WITH_HALF
     ss << "#pragma OPENCL EXTENSION cl_khr_fp16 : enable" << std::endl;
     ss << "#define Dtype half" << std::endl;
     ss << "#define Dtype1 half" << std::endl;
@@ -242,16 +241,6 @@ std::string BaseConvolutionLayer<Dtype>::generate_header() {
     for (int i = 2; i <= 16; i *= 2) {
       ss << "#define Dtype" << i << " half" << i << std::endl;
     }
-
-#else
-    ss << "#define Dtype float" << std::endl;
-    ss << "#define Dtype1 float" << std::endl;
-    // float2, float4, float8, float16
-    for (int i = 2; i <= 16; i *= 2) {
-      ss << "#define Dtype" << i << " float" << i << std::endl;
-    }
-#endif
-
   }
 
   std::vector<std::string> elems4({
@@ -522,7 +511,7 @@ void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
   
   // fprintf(stderr, "We are going to build the code!!!\n");
 
-  LOG(INFO) << conv_kernel;
+  // LOG(INFO) << conv_kernel;
 
   ret = clBuildProgram(program, 1, &Caffe::Get().deviceID, NULL, NULL, NULL);
 

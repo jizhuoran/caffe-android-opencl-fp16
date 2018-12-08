@@ -65,14 +65,28 @@ void caffe_axpy<float>(const int N, const float alpha, const float* X,
     float* Y) { cblas_saxpy(N, alpha, X, 1, Y, 1); }
 
 
-template <typename Dtype>
-void caffe_set(const int N, const float alpha, Dtype* Y) {
+template <>
+void caffe_set(const int N, const float alpha, float* Y) {
   if (alpha == 0) {
-    memset(Y, 0, sizeof(Dtype) * N);  // NOLINT(caffe/alt_fn)
+    memset(Y, 0, sizeof(float) * N);  // NOLINT(caffe/alt_fn)
     return;
   }
   for (int i = 0; i < N; ++i) {
     Y[i] = alpha;
+  }
+}
+
+template <>
+void caffe_set(const int N, const float alpha, half* Y) {
+
+  half alpha_half = float2half_impl(alpha);
+
+  if (alpha == 0) {
+    memset(Y, 0, sizeof(half) * N);  // NOLINT(caffe/alt_fn)
+    return;
+  }
+  for (int i = 0; i < N; ++i) {
+    Y[i] = alpha_half;
   }
 }
 
@@ -100,8 +114,8 @@ void caffe_set(const int N, const float alpha, float* Y) {
 #endif
 
 
-template void caffe_set<half>(const int N, const float alpha, half* Y);
-template void caffe_set<float>(const int N, const float alpha, float* Y);
+// template void caffe_set<half>(const int N, const float alpha, half* Y);
+// template void caffe_set<float>(const int N, const float alpha, float* Y);
 
 void caffe_set(const int N, const int alpha, int* Y) {
   if (alpha == 0) {

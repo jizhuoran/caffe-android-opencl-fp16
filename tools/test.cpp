@@ -104,18 +104,19 @@ static PPMImage *readPPM(const char *filename) {
     return img;
 }
 
-caffe::Net<float> *_net;
+caffe::Net<half> *_net;
 
 int main(int argc, char** argv) {
 
     caffe::CPUTimer timer;
     
     caffe::Caffe::Get().set_mode(caffe::Caffe::GPU);
-    
+
+
     timer.Start();
-    _net = new caffe::Net<float>("./examples/style_transfer/style.prototxt", caffe::TEST);
-    // _net->CopyTrainedLayersFrom("./fp16.caffemodel");
-    _net->CopyTrainedLayersFrom("./examples/style_transfer/a1.caffemodel");
+    _net = new caffe::Net<half>("./examples/style_transfer/style.prototxt", caffe::TEST);
+    _net->CopyTrainedLayersFrom("./fp16.caffemodel");
+    // _net->CopyTrainedLayersFrom("./examples/style_transfer/a1.caffemodel");
     timer.Stop();
     
 
@@ -127,15 +128,30 @@ int main(int argc, char** argv) {
     PPMImage *image;
     image = readPPM("./examples/style_transfer/HKU.ppm");
 
+    caffe::Blob<half> *input_layer = _net->input_blobs()[0];
     
-    caffe::Blob<float> *input_layer = _net->input_blobs()[0];
+
+    float* converter = (float*) malloc(input_layer->count() * sizeof(float));
+
     for (int y = 0; y < input_layer->width(); y++) {
         for (int x = 0; x < input_layer->width(); x++) {
-          input_layer->mutable_cpu_data()[y * input_layer->width() + x] = image->data[y * input_layer->width() + x].red;
-          input_layer->mutable_cpu_data()[y * input_layer->width() + x + input_layer->width() * input_layer->width()] = image->data[y * input_layer->width() + x].green;
-          input_layer->mutable_cpu_data()[y * input_layer->width() + x + 2 * input_layer->width() * input_layer->width()] = image->data[y * input_layer->width() + x].blue;
+          converter[y * input_layer->width() + x] = image->data[y * input_layer->width() + x].red;
+          converter[y * input_layer->width() + x + input_layer->width() * input_layer->width()] = image->data[y * input_layer->width() + x].green;
+          converter[y * input_layer->width() + x + 2 * input_layer->width() * input_layer->width()] = image->data[y * input_layer->width() + x].blue;
         }
     }
+
+    float2half(input_layer->count(), converter, input_layer->mutable_cpu_data());
+
+
+
+    // for (int y = 0; y < input_layer->width(); y++) {
+    //     for (int x = 0; x < input_layer->width(); x++) {
+    //       input_layer->mutable_cpu_data()[y * input_layer->width() + x] = image->data[y * input_layer->width() + x].red;
+    //       input_layer->mutable_cpu_data()[y * input_layer->width() + x + input_layer->width() * input_layer->width()] = image->data[y * input_layer->width() + x].green;
+    //       input_layer->mutable_cpu_data()[y * input_layer->width() + x + 2 * input_layer->width() * input_layer->width()] = image->data[y * input_layer->width() + x].blue;
+    //     }
+    // }
 
     
     timer.Start();
@@ -147,25 +163,34 @@ int main(int argc, char** argv) {
     
     
     // //  code for style transfer
-    caffe::Blob<float> *output_layer = _net->output_blobs()[0]; 
+    caffe::Blob<half> *output_layer = _net->output_blobs()[0]; 
+
+
+    half2float(output_layer->count(), output_layer->mutable_cpu_data(), converter);
+
+
+
+
+
     FILE *f = fopen("./examples/style_transfer/output.ppm", "wb");
     fprintf(f, "P6\n%i %i 255\n", input_layer->width(), input_layer->width());
     for (int y = 0; y < input_layer->width(); y++) {
         for (int x = 0; x < input_layer->width(); x++) {
-            fputc(output_layer->cpu_data()[y * input_layer->width() + x], f);   // 0 .. 255
-            fputc(output_layer->cpu_data()[y * input_layer->width() + x + input_layer->width() * input_layer->width()], f); // 0 .. 255
-            fputc(output_layer->cpu_data()[y * input_layer->width() + x + 2 * input_layer->width() * input_layer->width()], f);  // 0 .. 255
+            fputc(converter[y * input_layer->width() + x], f);   // 0 .. 255
+            fputc(converter[y * input_layer->width() + x + input_layer->width() * input_layer->width()], f); // 0 .. 255
+            fputc(converter[y * input_layer->width() + x + 2 * input_layer->width() * input_layer->width()], f);  // 0 .. 255
         }
     }
     fclose(f);
     
-
+    caffe::Caffe::Get().DeviceQuery();
+    
     exit(0);
     
-    caffe::NetParameter net_param;
-    _net->ToProto(&net_param);
-    caffe::WriteProtoToBinaryFile(net_param, "./fp16.caffemodel");
+    // caffe::NetParameter net_param;
+    // _net->ToProto(&net_param);
+    // caffe::WriteProtoToBinaryFile(net_param, "./fp16.caffemodel");
 
-    exit(0);
+    // exit(0);
     
 }

@@ -13,10 +13,6 @@
 
 #include <clblast_c.h>
 
-#ifdef WITH_HALF
-#include "caffe/util/half.hpp"
-#endif
-
 
 #if defined(__APPLE__) && defined(__MACH__)
 #include <vecLib.h>
@@ -43,25 +39,6 @@ void caffe_gpu_gemm<float>(const CBLAS_TRANSPOSE TransA,
   CLBlastTranspose_ blastTransB =
       (TransB == CblasNoTrans) ? CLBlastTransposeNo : CLBlastTransposeYes;
 
-#ifdef WITH_HALF
-
-    half_b alpha_half = float2half_impl(alpha);
-    half_b beta_half = float2half_impl(beta);
-
-    CLBLAST_CHECK(CLBlastHgemm(CLBlastLayoutRowMajor,
-                                        blastTransA, blastTransB,
-                                        M, N, K,
-                                        alpha_half,
-                                        (cl_mem) A, 0, lda,
-                                        (cl_mem) B, 0, ldb,
-                                        beta_half,
-                                        (cl_mem) C, 0, ldc,
-                                        &Caffe::Get().commandQueue, NULL));
-
-
-#else
-
-
   CLBLAST_CHECK(CLBlastSgemm(CLBlastLayoutRowMajor,
                                           blastTransA, blastTransB,
                                           M, N, K,
@@ -71,8 +48,6 @@ void caffe_gpu_gemm<float>(const CBLAS_TRANSPOSE TransA,
                                           beta,
                                           (cl_mem) C, 0, ldc,
                                           &Caffe::Get().commandQueue, NULL));
-
-#endif
 
 }
 
@@ -700,7 +675,21 @@ void caffe_gpu_powx<half>(const int n, const half* a, const float b, half* y){
 
 template <>
 void caffe_gpu_sqrt<half>(const int n, const half* a, half* y){
-  NOT_IMPLEMENT;
+  
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "sqrt_kernel", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&a));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&y));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&n));  
+
+  size_t global_size = CAFFE_GET_BLOCKS(n);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+  
 }
 
 // caffe_gpu_rng_uniform with two arguments generates integers in the range
@@ -762,15 +751,8 @@ void caffe_gpu_rng_uniform(const int n, unsigned int* r){
 void caffe_gpu_memcpy(const size_t N, const void* X, void* Y) {
 
   if (X != Y) {
-    /*std::cout << "Copy memory" << std::endl;
-    std::cout << "MEM X: " << x.get_ocl_mem() << std::endl;
-    std::cout << "OFF X: " << x.get_ocl_off() << std::endl;
-    std::cout << "MEM Y: " << y.get_ocl_mem() << std::endl;
-    std::cout << "OFF Y: " << y.get_ocl_off() << std::endl;*/
     cl_int err = clEnqueueCopyBuffer(Caffe::Get().commandQueue, (cl_mem) X, (cl_mem) Y, 0, 0, N, 0,  NULL, NULL);
-    // OCL_CHECK(err);
   }
-
 
 }
 
