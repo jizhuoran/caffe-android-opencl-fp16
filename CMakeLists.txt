@@ -58,6 +58,10 @@ include(./cmake/Modules/FindAtlas.cmake)
 include(./cmake/Modules/FindCLBlast.cmake)
 
 
+#if(NOT ANDROID)
+#    add_subdirectory(src/gtest)
+#endif()
+
 # Select blas lib for different platform
 # APPLE only, 1st
 if(VECLIB_FOUND)

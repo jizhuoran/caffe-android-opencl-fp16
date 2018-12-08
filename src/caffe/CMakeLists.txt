@@ -11,12 +11,22 @@ caffe_default_properties(proto)
 
 
 file(GLOB_RECURSE srcs ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
+file(GLOB test_srcs    ${CMAKE_CURRENT_SOURCE_DIR}/test/test_*.cpp)
+list(REMOVE_ITEM  srcs ${test_srcs})
+
 
 if(ANDROID)
 file(GLOB_RECURSE jni-srcs ${CMAKE_CURRENT_SOURCE_DIR}/../jni/*.cpp)
 add_library(caffe SHARED ${srcs} ${jni-srcs})
 target_link_libraries(caffe proto ${Caffe_LINKER_LIBS} log)
+
+
+
 else()
+
+
+
+add_subdirectory(test)
 add_library(caffe STATIC ${srcs})
 target_link_libraries(caffe proto ${Caffe_LINKER_LIBS})
 endif()
