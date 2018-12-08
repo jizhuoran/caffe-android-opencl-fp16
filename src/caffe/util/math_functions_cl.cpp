@@ -623,13 +623,47 @@ void caffe_gpu_rng_bernoulli<float>(const int n, const float p, int* r){
 
 template <>
 void caffe_gpu_dot<float>(const int n, const float* x, const float* y, float* out){
-  NOT_IMPLEMENT;
+    CLBLAST_CHECK(CLBlastSdot(n,
+         (cl_mem) out, 0,
+         (cl_mem) x, 0, 1,
+         (cl_mem) y, 0, 1,
+         &Caffe::Get().commandQueue, NULL));
 }
+
+
+template <>
+void caffe_gpu_dot<half>(const int n, const half* x, const half* y, half* out){
+  CLBLAST_CHECK(CLBlastHdot(n,
+         (cl_mem) out, 0,
+         (cl_mem) x, 0, 1,
+         (cl_mem) y, 0, 1,
+         &Caffe::Get().commandQueue, NULL));
+}
+
+
+
+
+
 
 template <>
 void caffe_gpu_asum<float>(const int n, const float* x, float* y){
-  NOT_IMPLEMENT;
+
+ CLBLAST_CHECK(CLBlastSasum(n,
+        (cl_mem) y, 0,
+        (cl_mem) x, 0, 1,
+        &Caffe::Get().commandQueue, NULL));
 }
+
+
+template <>
+void caffe_gpu_asum<half>(const int n, const half* x, half* y){
+   CLBLAST_CHECK(CLBlastHasum(n,
+        (cl_mem) y, 0,
+        (cl_mem) x, 0, 1,
+        &Caffe::Get().commandQueue, NULL));
+}
+
+
 
 template<>
 void caffe_gpu_sign<float>(const int n, const float* x, float* y){
@@ -637,12 +671,29 @@ void caffe_gpu_sign<float>(const int n, const float* x, float* y){
 }
 
 template<>
+void caffe_gpu_sign<half>(const int n, const half* x, half* y){
+  NOT_IMPLEMENT;
+}
+
+
+template<>
 void caffe_gpu_sgnbit<float>(const int n, const float* x, float* y){
   NOT_IMPLEMENT;
 }
 
+template<>
+void caffe_gpu_sgnbit<half>(const int n, const half* x, half* y){
+  NOT_IMPLEMENT;
+}
+
+
 template <>
 void caffe_gpu_fabs<float>(const int n, const float* x, float* y){
+  NOT_IMPLEMENT;
+}
+
+template <>
+void caffe_gpu_fabs<half>(const int n, const half* x, half* y){
   NOT_IMPLEMENT;
 }
 
@@ -711,30 +762,7 @@ void caffe_gpu_rng_bernoulli<half>(const int n, const half p, int* r){
   NOT_IMPLEMENT;
 }
 
-template <>
-void caffe_gpu_dot<half>(const int n, const half* x, const half* y, half* out){
-  NOT_IMPLEMENT;
-}
 
-template <>
-void caffe_gpu_asum<half>(const int n, const half* x, half* y){
-  NOT_IMPLEMENT;
-}
-
-template<>
-void caffe_gpu_sign<half>(const int n, const half* x, half* y){
-  NOT_IMPLEMENT;
-}
-
-template<>
-void caffe_gpu_sgnbit<half>(const int n, const half* x, half* y){
-  NOT_IMPLEMENT;
-}
-
-template <>
-void caffe_gpu_fabs<half>(const int n, const half* x, half* y){
-  NOT_IMPLEMENT;
-}
 
 template <>
 void caffe_gpu_scale<half>(const int n, const float alpha, const half *x, half* y){

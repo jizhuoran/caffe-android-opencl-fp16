@@ -277,7 +277,7 @@ CLBlastStatusCode PUBLIC_API CLBlastHaxpy(const size_t n,
                                           cl_command_queue* queue, cl_event* event);
 
 // Dot product of two vectors: SDOT/DDOT/HDOT
-CLBlastStatusCode PUBLIC_API CLBlastSdot(const size_t n,
+CLBlastStatusCode PUBLIC_API CLBlastSdot(const size_t n, 
                                          cl_mem dot_buffer, const size_t dot_offset,
                                          const cl_mem x_buffer, const size_t x_offset, const size_t x_inc,
                                          const cl_mem y_buffer, const size_t y_offset, const size_t y_inc,

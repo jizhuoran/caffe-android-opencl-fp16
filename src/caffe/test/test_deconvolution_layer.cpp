@@ -60,6 +60,7 @@ TYPED_TEST_CASE(DeconvolutionLayerTest, TestDtypesAndDevices);
 TYPED_TEST(DeconvolutionLayerTest, TestSetup) {
   typedef typename TypeParam::Dtype Dtype;
   LayerParameter layer_param;
+  layer_param.set_name("TestSetup");
   ConvolutionParameter* convolution_param =
       layer_param.mutable_convolution_param();
   convolution_param->add_kernel_size(3);
@@ -98,6 +99,7 @@ TYPED_TEST(DeconvolutionLayerTest, TestSimpleDeconvolution) {
   this->blob_bottom_vec_.push_back(this->blob_bottom_2_);
   this->blob_top_vec_.push_back(this->blob_top_2_);
   LayerParameter layer_param;
+  layer_param.set_name("TestSimpleDeconvolution");
   ConvolutionParameter* convolution_param =
       layer_param.mutable_convolution_param();
   convolution_param->add_kernel_size(3);

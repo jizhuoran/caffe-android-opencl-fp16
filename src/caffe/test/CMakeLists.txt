@@ -35,7 +35,7 @@ set(test_args --gtest_shuffle)
 #  caffe_cuda_compile(test_cuda_objs ${test_cuda})
 #  list(APPEND test_srcs ${test_cuda_objs} ${test_cuda})
 #else()
-  list(APPEND test_args --gtest_filter="-*GPU*")
+#  list(APPEND test_args --gtest_filter="-*GPU*")
 #endif()
 
 # ---[ Adding test target

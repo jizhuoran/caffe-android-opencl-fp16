@@ -1,6 +1,6 @@
 #ifndef CAFFE_SYNCEDMEM_HPP_
 #define CAFFE_SYNCEDMEM_HPP_
-
+ 
 #include <cstdlib>
 
 #ifdef USE_MKL
@@ -30,13 +30,12 @@ inline void CaffeMallocHost(void** ptr, size_t size, bool* use_cuda, cl_mem *gpu
 
     *ptr = clEnqueueMapBuffer(Caffe::Get().commandQueue, *gpu_ptr, CL_TRUE, CL_MAP_READ | CL_MAP_WRITE, 0, size, 0, NULL, NULL, &ret);
     OPENCL_CHECK(ret);
-
+    *use_cuda = true;
 #else
     *ptr = malloc(size);
     
 #endif
 
-    *use_cuda = true;
     return;
   }
 

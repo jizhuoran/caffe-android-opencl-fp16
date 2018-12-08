@@ -71,9 +71,9 @@ class GPUDeviceTest : public MultiDeviceTest<GPUDevice<Dtype> > {
 };
 
 typedef ::testing::Types<CPUDevice<float>,
-                         GPUDevice<float>, GPUDevice<half> >
+                         GPUDevice<float> >
                          TestDtypesAndDevices;
-
+//, GPUDevice<half> 
 #endif
 
 }  // namespace caffe

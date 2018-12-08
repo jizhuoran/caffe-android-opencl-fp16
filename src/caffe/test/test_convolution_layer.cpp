@@ -195,6 +195,7 @@ TYPED_TEST_CASE(ConvolutionLayerTest, TestDtypesAndDevices);
 TYPED_TEST(ConvolutionLayerTest, TestSetup) {
   typedef typename TypeParam::Dtype Dtype;
   LayerParameter layer_param;
+  layer_param.set_name("TestSetup");
   ConvolutionParameter* convolution_param =
       layer_param.mutable_convolution_param();
   convolution_param->add_kernel_size(3);
@@ -233,6 +234,7 @@ TYPED_TEST(ConvolutionLayerTest, TestSimpleConvolution) {
   this->blob_bottom_vec_.push_back(this->blob_bottom_2_);
   this->blob_top_vec_.push_back(this->blob_top_2_);
   LayerParameter layer_param;
+  layer_param.set_name("TestSimpleConvolution");
   ConvolutionParameter* convolution_param =
       layer_param.mutable_convolution_param();
   convolution_param->add_kernel_size(3);
@@ -311,6 +313,7 @@ TYPED_TEST(ConvolutionLayerTest, TestDilatedConvolution) {
 TYPED_TEST(ConvolutionLayerTest, Test0DConvolution) {
   typedef typename TypeParam::Dtype Dtype;
   LayerParameter layer_param;
+  layer_param.set_name("Test0DConvolution");
   ConvolutionParameter* convolution_param =
       layer_param.mutable_convolution_param();
   const int kNumOutput = 3;
@@ -363,6 +366,7 @@ TYPED_TEST(ConvolutionLayerTest, TestSimple3DConvolution) {
     filler.Fill(this->blob_bottom_vec_[i]);
   }
   LayerParameter layer_param;
+  layer_param.set_name("TestSimple3DConvolution");
   ConvolutionParameter* convolution_param =
       layer_param.mutable_convolution_param();
   convolution_param->add_kernel_size(3);
@@ -410,6 +414,7 @@ TYPED_TEST(ConvolutionLayerTest, TestDilated3DConvolution) {
     filler.Fill(this->blob_bottom_vec_[i]);
   }
   LayerParameter layer_param;
+  layer_param.set_name("TestDilated3DConvolution");
   ConvolutionParameter* convolution_param =
       layer_param.mutable_convolution_param();
   convolution_param->add_kernel_size(3);
@@ -443,6 +448,7 @@ TYPED_TEST(ConvolutionLayerTest, TestDilated3DConvolution) {
 TYPED_TEST(ConvolutionLayerTest, Test1x1Convolution) {
   typedef typename TypeParam::Dtype Dtype;
   LayerParameter layer_param;
+  layer_param.set_name("Test1x1Convolution");
   ConvolutionParameter* convolution_param =
       layer_param.mutable_convolution_param();
   convolution_param->add_kernel_size(1);
@@ -470,6 +476,7 @@ TYPED_TEST(ConvolutionLayerTest, Test1x1Convolution) {
 TYPED_TEST(ConvolutionLayerTest, TestSimpleConvolutionGroup) {
   typedef typename TypeParam::Dtype Dtype;
   LayerParameter layer_param;
+  layer_param.set_name("TestSimpleConvolutionGroup");
   ConvolutionParameter* convolution_param =
       layer_param.mutable_convolution_param();
   convolution_param->add_kernel_size(3);
@@ -509,6 +516,7 @@ TYPED_TEST(ConvolutionLayerTest, TestSobelConvolution) {
   this->blob_bottom_2_->CopyFrom(*this->blob_bottom_);
   // Compute Sobel G_x operator as 3 x 3 convolution.
   LayerParameter layer_param;
+  layer_param.set_name("TestSobelConvolution");
   ConvolutionParameter* convolution_param =
       layer_param.mutable_convolution_param();
   convolution_param->add_kernel_size(3);
@@ -604,6 +612,7 @@ TYPED_TEST(ConvolutionLayerTest, TestNDAgainst2D) {
     filler.Fill(this->blob_bottom_vec_[i]);
   }
   LayerParameter layer_param;
+  layer_param.set_name("TestNDAgainst2D");
   ConvolutionParameter* convolution_param =
       layer_param.mutable_convolution_param();
   convolution_param->set_num_output(12);

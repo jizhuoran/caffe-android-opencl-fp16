@@ -179,6 +179,8 @@ std::string ConvolutionLayer<Dtype>::generate_fw_defs(int TSK, int WPTM, int WPT
   
   std::stringstream ss;
 
+  this->add_def(ss, "v_g", this->group_);
+
   int skip_bi = this->bottom_shape_[0].size() - this->output_shape_.size();
   int fmaps_in_ = this->bottom_shape_[0][skip_bi-1];
   int fmaps_out_ = this->num_output_;

@@ -11,7 +11,7 @@ SyncedMemory::SyncedMemory()
 #ifdef DEBUG
   // CUDA_CHECK(cudaGetDevice(&device_)); TODOTODOO
 #endif 
-#endif
+#endif 
 }
 
 SyncedMemory::SyncedMemory(size_t size)
@@ -32,7 +32,7 @@ SyncedMemory::~SyncedMemory() {
 
 #ifdef USE_OPENCL
   if (gpu_ptr_ && own_gpu_data_) {
-    OPENCL_CHECK(clReleaseMemObject(gpu_ptr_));
+    // OPENCL_CHECK(clReleaseMemObject(gpu_ptr_));
   }
 #endif  // CPU_ONLY
 }
@@ -196,9 +196,24 @@ void SyncedMemory::set_gpu_data(void* data) {
   check_device();
 #ifdef USE_OPENCL
   // CHECK(data);
+
+
+
+  LOG(ERROR) << "Better not use this";
+  LOG(ERROR) << "Better not use this";
+  LOG(ERROR) << "Better not use this";
+  LOG(ERROR) << "Better not use this";
+  LOG(ERROR) << "Better not use this";
+  exit(0);
+
+  
   if (own_gpu_data_) {
-    clReleaseMemObject(gpu_ptr_);
+    OPENCL_CHECK(clReleaseMemObject(gpu_ptr_));
   }
+
+
+
+
   gpu_ptr_ = (cl_mem) data;
   head_ = HEAD_AT_GPU;
   own_gpu_data_ = false;

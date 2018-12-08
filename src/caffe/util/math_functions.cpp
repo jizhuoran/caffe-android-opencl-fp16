@@ -487,7 +487,7 @@ float caffe_nextafter(const float b) {
 #endif
 
 template <typename Dtype>
-void caffe_rng_uniform(const int n, const Dtype a, const Dtype b, Dtype* r) {
+void caffe_rng_uniform(const int n, const float a, const float b, Dtype* r) {
   CHECK_GE(n, 0);
   CHECK(r);
   CHECK_LE(a, b);
@@ -507,9 +507,13 @@ void caffe_rng_uniform(const int n, const Dtype a, const Dtype b, Dtype* r) {
 }
 
 template <>
-void caffe_rng_uniform<half>(const int n, const half a, const half b,
+void caffe_rng_uniform<half>(const int n, const float a, const float b,
                               half* r) {
-  NOT_IMPLEMENT;
+  float* convertor = (float*) malloc(n * sizeof(float));
+  caffe_rng_uniform<float>(n, a, b, convertor);
+  float2half(n, convertor, r);
+  free(convertor);
+  // NOT_IMPLEMENT;
 }
 
 template
