@@ -560,7 +560,7 @@ void caffe_rng_bernoulli(const int n, const Dtype p, int* r) {
   CHECK(r);
   CHECK_GE(p, 0);
   CHECK_LE(p, 1);
-#ifdef USE_BOOST
+#ifdef USE_BOOST 
   boost::bernoulli_distribution<Dtype> random_distribution(p);
   boost::variate_generator<caffe::rng_t*, boost::bernoulli_distribution<Dtype> >
       variate_generator(caffe_rng(), random_distribution);

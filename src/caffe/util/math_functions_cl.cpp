@@ -623,21 +623,34 @@ void caffe_gpu_rng_bernoulli<float>(const int n, const float p, int* r){
 
 template <>
 void caffe_gpu_dot<float>(const int n, const float* x, const float* y, float* out){
+
+    cl_mem temp_buffer = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, sizeof(float), NULL, NULL);
+
     CLBLAST_CHECK(CLBlastSdot(n,
-         (cl_mem) out, 0,
+         (cl_mem) temp_buffer, 0,
          (cl_mem) x, 0, 1,
          (cl_mem) y, 0, 1,
          &Caffe::Get().commandQueue, NULL));
+
+    OPENCL_CHECK(clEnqueueReadBuffer(Caffe::Get().commandQueue, temp_buffer, CL_TRUE, 0, sizeof(float), out, 0, NULL, NULL));
+    OPENCL_CHECK(clReleaseMemObject(temp_buffer));
 }
 
 
 template <>
 void caffe_gpu_dot<half>(const int n, const half* x, const half* y, half* out){
+
+  cl_mem temp_buffer = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, sizeof(half), NULL, NULL);
+
+
   CLBLAST_CHECK(CLBlastHdot(n,
-         (cl_mem) out, 0,
+         (cl_mem) temp_buffer, 0,
          (cl_mem) x, 0, 1,
          (cl_mem) y, 0, 1,
          &Caffe::Get().commandQueue, NULL));
+  
+  OPENCL_CHECK(clEnqueueReadBuffer(Caffe::Get().commandQueue, temp_buffer, CL_TRUE, 0, sizeof(half), out, 0, NULL, NULL));
+  OPENCL_CHECK(clReleaseMemObject(temp_buffer));
 }
 
 
@@ -648,19 +661,30 @@ void caffe_gpu_dot<half>(const int n, const half* x, const half* y, half* out){
 template <>
 void caffe_gpu_asum<float>(const int n, const float* x, float* y){
 
- CLBLAST_CHECK(CLBlastSasum(n,
-        (cl_mem) y, 0,
+  cl_mem temp_buffer = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, sizeof(float), NULL, NULL);
+
+  CLBLAST_CHECK(CLBlastSasum(n,
+        (cl_mem) temp_buffer, 0,
         (cl_mem) x, 0, 1,
         &Caffe::Get().commandQueue, NULL));
+  
+  OPENCL_CHECK(clEnqueueReadBuffer(Caffe::Get().commandQueue, temp_buffer, CL_TRUE, 0, sizeof(float), y, 0, NULL, NULL));
+  OPENCL_CHECK(clReleaseMemObject(temp_buffer));
 }
 
 
 template <>
 void caffe_gpu_asum<half>(const int n, const half* x, half* y){
-   CLBLAST_CHECK(CLBlastHasum(n,
-        (cl_mem) y, 0,
+
+  cl_mem temp_buffer = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, sizeof(half), NULL, NULL);
+
+  CLBLAST_CHECK(CLBlastHasum(n,
+        (cl_mem) temp_buffer, 0,
         (cl_mem) x, 0, 1,
         &Caffe::Get().commandQueue, NULL));
+
+  OPENCL_CHECK(clEnqueueReadBuffer(Caffe::Get().commandQueue, temp_buffer, CL_TRUE, 0, sizeof(half), y, 0, NULL, NULL));
+  OPENCL_CHECK(clReleaseMemObject(temp_buffer));
 }
 
 

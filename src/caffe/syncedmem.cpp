@@ -32,7 +32,7 @@ SyncedMemory::~SyncedMemory() {
 
 #ifdef USE_OPENCL
   if (gpu_ptr_ && own_gpu_data_) {
-    // OPENCL_CHECK(clReleaseMemObject(gpu_ptr_));
+    OPENCL_CHECK(clReleaseMemObject(gpu_ptr_));
   }
 #endif  // CPU_ONLY
 }

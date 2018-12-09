@@ -320,7 +320,7 @@ Dtype Blob<Dtype>::sumsq_data() const {
     break;
   case SyncedMemory::HEAD_AT_GPU:
   case SyncedMemory::SYNCED:
-#ifndef CPU_ONLY
+#ifdef USE_OPENCL
     data = gpu_data();
     caffe_gpu_dot(count_, data, data, &sumsq);
 #else
@@ -473,10 +473,10 @@ void Blob<Dtype>::CopyFrom(const Blob& source, bool copy_diff, bool reshape) {
   switch (Caffe::mode()) {
   case Caffe::GPU:
     if (copy_diff) {
-      caffe_copy(count_, source.gpu_diff(),
+      caffe_cl_copy(count_, source.gpu_diff(),
           static_cast<Dtype*>(diff_->mutable_gpu_data()));
     } else {
-      caffe_copy(count_, source.gpu_data(),
+      caffe_cl_copy(count_, source.gpu_data(),
           static_cast<Dtype*>(data_->mutable_gpu_data()));
     }
     break;

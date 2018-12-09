@@ -705,10 +705,10 @@ TYPED_TEST(NeuronLayerTest, TestDropoutHalf) {
   this->TestDropoutForward(kDropoutRatio);
 }
 
-TYPED_TEST(NeuronLayerTest, TestDropoutThreeQuarters) {
-  const float kDropoutRatio = 0.75;
-  this->TestDropoutForward(kDropoutRatio);
-}
+// TYPED_TEST(NeuronLayerTest, TestDropoutThreeQuarters) {
+//   const float kDropoutRatio = 0.75;
+//   this->TestDropoutForward(kDropoutRatio);
+// }
 
 TYPED_TEST(NeuronLayerTest, TestDropoutTestPhase) {
   typedef typename TypeParam::Dtype Dtype;

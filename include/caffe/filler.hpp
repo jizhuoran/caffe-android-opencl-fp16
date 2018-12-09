@@ -240,6 +240,8 @@ operation is equivalent to the following call in Python with Scikit.Image.
 out = skimage.transform.rescale(img, factor, mode='constant', cval=0)
 \endcode
  */
+
+
 template <typename Dtype>
 class BilinearFiller : public Filler<Dtype> {
  public:
@@ -250,16 +252,18 @@ class BilinearFiller : public Filler<Dtype> {
     CHECK_EQ(blob->width(), blob->height()) << "Filter must be square";
     Dtype* data = blob->mutable_cpu_data();
     int f = ceil(blob->width() / 2.);
-    float c = (2 * f - 1 - f % 2) / (2. * f);
+    Dtype c = (blob->width() - 1) / (2. * f);
     for (int i = 0; i < blob->count(); ++i) {
-      float x = i % blob->width();
-      float y = (i / blob->width()) % blob->height();
+      Dtype x = i % blob->width();
+      Dtype y = (i / blob->width()) % blob->height();
       data[i] = (1 - fabs(x / f - c)) * (1 - fabs(y / f - c));
     }
     CHECK_EQ(this->filler_param_.sparse(), -1)
          << "Sparsity not supported by this Filler.";
   }
 };
+
+
 
 /**
  * @brief Get a specific filler from the specification given in FillerParameter.

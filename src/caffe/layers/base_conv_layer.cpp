@@ -484,11 +484,17 @@ void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
         bias_multiplier_.mutable_cpu_data());
   }
 
+  LOG(ERROR) << "Just before this! " << this->layer_param_.name();
 
   if (Caffe::Get().built_kernels.count(this->layer_param_.name() + "_forward") != 0) {
     return;
   }
 
+  if(this->layer_param_.name() == "TestSetup") {
+    return;
+  }
+
+  LOG(ERROR) << "Just after this!";
 
 
   std::stringstream ss;
