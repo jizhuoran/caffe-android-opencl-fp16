@@ -218,7 +218,6 @@ class Caffe {
   cl_context context;
   cl_command_queue commandQueue;
   cl_program program;
-  std::set<std::string> built_kernels;
 
   
  protected:

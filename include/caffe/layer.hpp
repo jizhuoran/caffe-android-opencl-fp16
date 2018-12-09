@@ -69,6 +69,7 @@ class Layer {
     CheckBlobCounts(bottom, top);
     LayerSetUp(bottom, top);
     Reshape(bottom, top);
+    Compile_OpenCL();
     SetLossWeights(top);
   }
 
@@ -90,6 +91,10 @@ class Layer {
    */
   virtual void LayerSetUp(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top) {}
+
+
+  virtual void Compile_OpenCL();
+
 
   /**
    * @brief Adjust the shapes of top blobs and internal buffers to accommodate

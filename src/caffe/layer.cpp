@@ -10,5 +10,9 @@ namespace caffe {
 	void Layer<Dtype>::Qiaoge_free(const vector<Blob<Dtype>*>& bottom, const vector<Blob<Dtype>*>& top) { }
 #endif
 
+	template <typename Dtype> 
+	void Layer<Dtype>::Compile_OpenCL() { }
+
+
 	INSTANTIATE_CLASS(Layer);
 }

@@ -210,14 +210,88 @@ void BaseConvolutionLayer<Dtype>::LayerSetUp(const vector<Blob<Dtype>*>& bottom,
 
 }
 
+
+template <typename Dtype>
+void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
+      const vector<Blob<Dtype>*>& top) {
+  const int first_spatial_axis = channel_axis_ + 1;
+  CHECK_EQ(bottom[0]->num_axes(), first_spatial_axis + num_spatial_axes_)
+      << "bottom num_axes may not change.";
+  num_ = bottom[0]->count(0, channel_axis_);
+  CHECK_EQ(bottom[0]->shape(channel_axis_), channels_)
+      << "Input size incompatible with convolution kernel.";
+  // TODO: generalize to handle inputs of different shapes.
+  for (int bottom_id = 1; bottom_id < bottom.size(); ++bottom_id) {
+    CHECK(bottom[0]->shape() == bottom[bottom_id]->shape())
+        << "All inputs must have the same shape.";
+  }
+  // Shape the tops.
+  bottom_shape_ = &bottom[0]->shape();
+  compute_output_shape();
+  vector<int> top_shape(bottom[0]->shape().begin(),
+      bottom[0]->shape().begin() + channel_axis_);
+  top_shape.push_back(num_output_);
+  for (int i = 0; i < num_spatial_axes_; ++i) {
+    top_shape.push_back(output_shape_[i]);
+  }
+  for (int top_id = 0; top_id < top.size(); ++top_id) {
+    top[top_id]->Reshape(top_shape);
+  }
+  if (reverse_dimensions()) {
+    conv_out_spatial_dim_ = bottom[0]->count(first_spatial_axis);
+  } else {
+    conv_out_spatial_dim_ = top[0]->count(first_spatial_axis);
+  }
+  col_offset_ = kernel_dim_ * conv_out_spatial_dim_;
+  output_offset_ = conv_out_channels_ * conv_out_spatial_dim_ / group_;
+  // Setup input dimensions (conv_input_shape_).
+  vector<int> bottom_dim_blob_shape(1, num_spatial_axes_ + 1);
+  conv_input_shape_.Reshape(bottom_dim_blob_shape);
+  int* conv_input_shape_data = conv_input_shape_.mutable_cpu_data();
+  for (int i = 0; i < num_spatial_axes_ + 1; ++i) {
+    if (reverse_dimensions()) {
+      conv_input_shape_data[i] = top[0]->shape(channel_axis_ + i);
+    } else {
+      conv_input_shape_data[i] = bottom[0]->shape(channel_axis_ + i);
+    }
+  }
+  // The im2col result buffer will only hold one image at a time to avoid
+  // overly large memory usage. In the special case of 1x1 convolution
+  // it goes lazily unused to save memory.
+  col_buffer_shape_.clear();
+  col_buffer_shape_.push_back(kernel_dim_ * group_);
+  for (int i = 0; i < num_spatial_axes_; ++i) {
+    if (reverse_dimensions()) {
+      col_buffer_shape_.push_back(input_shape(i + 1));
+    } else {
+      col_buffer_shape_.push_back(output_shape_[i]);
+    }
+  }
+  col_buffer_.Reshape(col_buffer_shape_);
+  bottom_dim_ = bottom[0]->count(channel_axis_);
+  top_dim_ = top[0]->count(channel_axis_);
+  num_kernels_im2col_ = conv_in_channels_ * conv_out_spatial_dim_;
+  num_kernels_col2im_ = reverse_dimensions() ? top_dim_ : bottom_dim_;
+  // Set up the all ones "bias multiplier" for adding biases by BLAS
+  out_spatial_dim_ = top[0]->count(first_spatial_axis);
+  if (bias_term_) {
+    vector<int> bias_multiplier_shape(1, out_spatial_dim_);
+    bias_multiplier_.Reshape(bias_multiplier_shape);
+    caffe_set(bias_multiplier_.count(), Dtype(1),
+        bias_multiplier_.mutable_cpu_data());
+  }
+}
+
+
+
 template<typename Dtype>
 std::string BaseConvolutionLayer<Dtype>::generate_fw_defs(int TSK, int WPTM, int WPTN, int RTSM, int RTSN) {
-  return "aaa";
+  return "SHOULD NOT ENTER THIS FUNCTION: generate_fw_defs in base_conv_layer.cpp";
 }
 
 template<typename Dtype>
 std::string BaseConvolutionLayer<Dtype>::generate_fw_kernels(std::string name, int TSK, int WPTM, int WPTN, int RTSM, int RTSN) {
-  return "aaa";
+  return "SHOULD NOT ENTER THIS FUNCTION: generate_fw_kernels in base_conv_layer.cpp";
 }
 
 
@@ -414,88 +488,16 @@ std::string BaseConvolutionLayer<Dtype>::generate_accreg_init(bool dterm, bool l
 }
 
 
+
+
+
 template <typename Dtype>
-void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
-      const vector<Blob<Dtype>*>& top) {
-  const int first_spatial_axis = channel_axis_ + 1;
-  CHECK_EQ(bottom[0]->num_axes(), first_spatial_axis + num_spatial_axes_)
-      << "bottom num_axes may not change.";
-  num_ = bottom[0]->count(0, channel_axis_);
-  CHECK_EQ(bottom[0]->shape(channel_axis_), channels_)
-      << "Input size incompatible with convolution kernel.";
-  // TODO: generalize to handle inputs of different shapes.
-  for (int bottom_id = 1; bottom_id < bottom.size(); ++bottom_id) {
-    CHECK(bottom[0]->shape() == bottom[bottom_id]->shape())
-        << "All inputs must have the same shape.";
-  }
-  // Shape the tops.
-  bottom_shape_ = &bottom[0]->shape();
-  compute_output_shape();
-  vector<int> top_shape(bottom[0]->shape().begin(),
-      bottom[0]->shape().begin() + channel_axis_);
-  top_shape.push_back(num_output_);
-  for (int i = 0; i < num_spatial_axes_; ++i) {
-    top_shape.push_back(output_shape_[i]);
-  }
-  for (int top_id = 0; top_id < top.size(); ++top_id) {
-    top[top_id]->Reshape(top_shape);
-  }
-  if (reverse_dimensions()) {
-    conv_out_spatial_dim_ = bottom[0]->count(first_spatial_axis);
-  } else {
-    conv_out_spatial_dim_ = top[0]->count(first_spatial_axis);
-  }
-  col_offset_ = kernel_dim_ * conv_out_spatial_dim_;
-  output_offset_ = conv_out_channels_ * conv_out_spatial_dim_ / group_;
-  // Setup input dimensions (conv_input_shape_).
-  vector<int> bottom_dim_blob_shape(1, num_spatial_axes_ + 1);
-  conv_input_shape_.Reshape(bottom_dim_blob_shape);
-  int* conv_input_shape_data = conv_input_shape_.mutable_cpu_data();
-  for (int i = 0; i < num_spatial_axes_ + 1; ++i) {
-    if (reverse_dimensions()) {
-      conv_input_shape_data[i] = top[0]->shape(channel_axis_ + i);
-    } else {
-      conv_input_shape_data[i] = bottom[0]->shape(channel_axis_ + i);
-    }
-  }
-  // The im2col result buffer will only hold one image at a time to avoid
-  // overly large memory usage. In the special case of 1x1 convolution
-  // it goes lazily unused to save memory.
-  col_buffer_shape_.clear();
-  col_buffer_shape_.push_back(kernel_dim_ * group_);
-  for (int i = 0; i < num_spatial_axes_; ++i) {
-    if (reverse_dimensions()) {
-      col_buffer_shape_.push_back(input_shape(i + 1));
-    } else {
-      col_buffer_shape_.push_back(output_shape_[i]);
-    }
-  }
-  col_buffer_.Reshape(col_buffer_shape_);
-  bottom_dim_ = bottom[0]->count(channel_axis_);
-  top_dim_ = top[0]->count(channel_axis_);
-  num_kernels_im2col_ = conv_in_channels_ * conv_out_spatial_dim_;
-  num_kernels_col2im_ = reverse_dimensions() ? top_dim_ : bottom_dim_;
-  // Set up the all ones "bias multiplier" for adding biases by BLAS
-  out_spatial_dim_ = top[0]->count(first_spatial_axis);
-  if (bias_term_) {
-    vector<int> bias_multiplier_shape(1, out_spatial_dim_);
-    bias_multiplier_.Reshape(bias_multiplier_shape);
-    caffe_set(bias_multiplier_.count(), Dtype(1),
-        bias_multiplier_.mutable_cpu_data());
-  }
+void BaseConvolutionLayer<Dtype>::Compile_OpenCL() {
 
-  LOG(ERROR) << "Just before this! " << this->layer_param_.name();
-
-  if (Caffe::Get().built_kernels.count(this->layer_param_.name() + "_forward") != 0) {
+  if (this->layer_param_.name() == "TestSetup") {
+    LOG(INFO) << "You should not named you conv layers with TestSetup, unless you run the test!";
     return;
   }
-
-  if(this->layer_param_.name() == "TestSetup") {
-    return;
-  }
-
-  LOG(ERROR) << "Just after this!";
-
 
   std::stringstream ss;
 
@@ -504,54 +506,21 @@ void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
   ss << this->generate_fw_kernels(this->layer_param_.name() + "_forward", 8, 4, 4, 8, 8);
 
   std::string conv_kernel = ss.str();
+  size_t kernel_size = conv_kernel.size() + 1;
 
-  size_t kernel_size = conv_kernel.size();
-
-  char* kernelSource = (char*)malloc(kernel_size);
-
-  strcpy(kernelSource, conv_kernel.c_str());
+  const char* kernel_cstr = conv_kernel.c_str();
 
   cl_int ret = -1; 
-  program = clCreateProgramWithSource(Caffe::Get().context, 1, (const char **)&kernelSource, (const size_t *)&kernel_size, &ret); 
+  program = clCreateProgramWithSource(Caffe::Get().context, 1, (const char **)&kernel_cstr, (const size_t *)&kernel_size, &ret); 
+
+
   OPENCL_CHECK(ret);
   
-  // fprintf(stderr, "We are going to build the code!!!\n");
+  CLBUILD_CHECK(clBuildProgram(program, 1, &Caffe::Get().deviceID, NULL, NULL, NULL));
 
-  // LOG(INFO) << conv_kernel;
-
-  ret = clBuildProgram(program, 1, &Caffe::Get().deviceID, NULL, NULL, NULL);
-
-  if (ret != CL_SUCCESS) {
-    char *buff_erro;
-    cl_int errcode;
-    size_t build_log_len;
-    errcode = clGetProgramBuildInfo(program, Caffe::Get().deviceID, CL_PROGRAM_BUILD_LOG, 0, NULL, &build_log_len);
-    if (errcode) {
-      printf("clGetProgramBuildInfo failed at line %d\n", __LINE__);
-      exit(-1);
-    }
-
-    buff_erro = (char *)malloc(build_log_len);
-    if (!buff_erro) {
-        printf("malloc failed at line %d\n", __LINE__);
-        exit(-2);
-    }
-
-    errcode = clGetProgramBuildInfo(program, Caffe::Get().deviceID, CL_PROGRAM_BUILD_LOG, build_log_len, buff_erro, NULL);
-    if (errcode) {
-        printf("clGetProgramBuildInfo failed at line %d\n", __LINE__);
-        exit(-3);
-    }
-
-    fprintf(stderr,"Build log: \n%s\n", buff_erro); //Be careful with  the fprint
-    free(buff_erro);
-    fprintf(stderr,"clBuildProgram failed\n");
-    exit(EXIT_FAILURE);
-
-  }
-
-  Caffe::Get().built_kernels.insert(this->layer_param_.name() + "_forward");
 }
+
+
 
 template <typename Dtype>
 void BaseConvolutionLayer<Dtype>::forward_cpu_gemm(const Dtype* input,

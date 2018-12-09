@@ -101,8 +101,7 @@ TYPED_TEST(DeconvolutionLayerTest, TestSimpleDeconvolution) {
   this->blob_top_vec_.push_back(this->blob_top_2_);
   LayerParameter layer_param;
 
-  long long now = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
-  layer_param.set_name("TestSD" + std::to_string(now));
+  layer_param.set_name("TestSD");
 
   ConvolutionParameter* convolution_param =
       layer_param.mutable_convolution_param();
