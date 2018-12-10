@@ -72,9 +72,9 @@ class LogLayer : public NeuronLayer<Dtype> {
   virtual void Backward_gpu(const vector<Blob<Dtype>*>& top,
       const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom);
 
-  Dtype base_scale_;
-  Dtype input_scale_, input_shift_;
-  Dtype backward_num_scale_;
+  float base_scale_;
+  float input_scale_, input_shift_;
+  float backward_num_scale_;
 };
 
 }  // namespace caffe

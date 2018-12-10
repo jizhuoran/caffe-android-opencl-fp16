@@ -117,7 +117,65 @@ void SliceLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 #ifdef CPU_ONLY
 STUB_GPU(SliceLayer);
 #elif USE_OPENCL
-TEMP_GPU(SliceLayer);
+
+
+
+template <typename Dtype>
+void SliceLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
+    const vector<Blob<Dtype>*>& top) {
+
+ 
+
+  if (top.size() == 1) { return; }
+  int offset_slice_axis = 0;
+  const Dtype* bottom_data = bottom[0]->gpu_data();
+  const int bottom_slice_axis = bottom[0]->shape(slice_axis_);
+
+
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "Slice", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&bottom_data)); 
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&slice_size_));
+  OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_int), (void *)&bottom_slice_axis));
+
+
+  for (int i = 0; i < top.size(); ++i) {
+    Dtype* top_data = top[i]->mutable_gpu_data();
+    const int top_slice_axis = top[i]->shape(slice_axis_);
+    const int top_slice_size = top_slice_axis * slice_size_;
+    const int nthreads = top_slice_size * num_slices_;
+
+
+    OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&top_data));  
+    OPENCL_CHECK(clSetKernelArg(kernel, 4, sizeof(cl_int), (void *)&top_slice_axis));
+    OPENCL_CHECK(clSetKernelArg(kernel, 5, sizeof(cl_int), (void *)&offset_slice_axis));
+    OPENCL_CHECK(clSetKernelArg(kernel, 6, sizeof(cl_int), (void *)&nthreads));
+
+    size_t global_size = CAFFE_GET_BLOCKS(nthreads);
+  
+    OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+
+    offset_slice_axis += top_slice_axis;
+
+  }
+
+
+}
+
+
+template <typename Dtype>
+void SliceLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
+    const vector<bool>& propagate_down,
+    const vector<Blob<Dtype>*>& bottom) {
+
+  Backward_cpu(top, propagate_down, bottom);
+}
+
+
 #endif
 
 INSTANTIATE_CLASS(SliceLayer);

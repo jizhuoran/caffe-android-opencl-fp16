@@ -148,11 +148,22 @@ void classname<Dtype>::funcname##_##gpu(const vector<Blob<Dtype>*>& top, \
 #define TEMP_GPU(classname) \
 template <typename Dtype> \
 void classname<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom, \
-    const vector<Blob<Dtype>*>& top) { Forward_cpu(bottom, top); } \
+    const vector<Blob<Dtype>*>& top) { NOT_IMPLEMENT; } \
 template <typename Dtype> \
 void classname<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top, \
     const vector<bool>& propagate_down, \
-    const vector<Blob<Dtype>*>& bottom) { Backward_cpu(top, propagate_down, bottom); } \
+    const vector<Blob<Dtype>*>& bottom) { NOT_IMPLEMENT; } \
+
+
+
+// #define TEMP_GPU(classname) \
+// template <typename Dtype> \
+// void classname<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom, \
+//     const vector<Blob<Dtype>*>& top) { Forward_cpu(bottom, top); } \
+// template <typename Dtype> \
+// void classname<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top, \
+//     const vector<bool>& propagate_down, \
+//     const vector<Blob<Dtype>*>& bottom) { Backward_cpu(top, propagate_down, bottom); } \
 
 #define TEMP_GPU_FORWARD(classname, funcname) \
 template <typename Dtype> \

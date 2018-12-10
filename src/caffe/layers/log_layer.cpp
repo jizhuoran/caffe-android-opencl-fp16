@@ -78,7 +78,45 @@ void LogLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 #ifdef CPU_ONLY
 STUB_GPU(LogLayer);
 #elif USE_OPENCL
-TEMP_GPU(LogLayer);
+
+
+template <typename Dtype>
+void LogLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
+    const vector<Blob<Dtype>*>& top) {
+
+ 
+  const int count = bottom[0]->count();
+  const Dtype* bottom_data = bottom[0]->gpu_data();
+  Dtype* top_data = top[0]->mutable_gpu_data();
+  if (input_scale_ == float(1) && input_shift_ == float(0)) {
+    caffe_gpu_log(count, bottom_data, top_data);
+  } else {
+    caffe_cl_copy(count, bottom_data, top_data);
+    if (input_scale_ != float(1)) {
+      caffe_gpu_scal(count, input_scale_, top_data);
+    }
+    if (input_shift_ != float(0)) {
+      caffe_gpu_add_scalar(count, input_shift_, top_data);
+    }
+    caffe_gpu_log(count, top_data, top_data);
+  }
+  if (base_scale_ != float(1)) {
+    caffe_gpu_scal(count, base_scale_, top_data);
+  }
+
+
+}
+
+
+template <typename Dtype>
+void LogLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
+    const vector<bool>& propagate_down,
+    const vector<Blob<Dtype>*>& bottom) {
+
+  Backward_cpu(top, propagate_down, bottom);
+}
+
+
 #endif
 
 INSTANTIATE_CLASS(LogLayer);

@@ -68,8 +68,8 @@ void caffe_gpu_gemm<half>(const CBLAS_TRANSPOSE TransA,
       (TransB == CblasNoTrans) ? CLBlastTransposeNo : CLBlastTransposeYes;
 
 
-  half_b alpha_half = float2half_impl(alpha);
-  half_b beta_half = float2half_impl(beta);
+  half alpha_half = float2half_impl(alpha);
+  half beta_half = float2half_impl(beta);
 
   CLBLAST_CHECK(CLBlastHgemm(CLBlastLayoutRowMajor,
                               blastTransA, blastTransB,
@@ -112,8 +112,8 @@ void caffe_gpu_gemv<half>(const CBLAS_TRANSPOSE TransA, const int M, const int N
 
 
 
-    half_b alpha_half = float2half_impl(alpha);
-    half_b beta_half = float2half_impl(beta);
+    half alpha_half = float2half_impl(alpha);
+    half beta_half = float2half_impl(beta);
 
     CLBLAST_CHECK(CLBlastHgemv(CLBlastLayoutColMajor, 
                                             blastTransA, 
@@ -188,7 +188,7 @@ void caffe_gpu_bsum<half>(const int m, const int n, const half* X, const float a
   cl_kernel kernel2 = clCreateKernel(Caffe::Get().program, "XasumEpilogue", &ret);
   OPENCL_CHECK(ret);
 
-  half_b alpha_half = float2half_impl(alpha);
+  half alpha_half = float2half_impl(alpha);
 
 
   size_t temp_size = 2*64;
@@ -215,7 +215,7 @@ void caffe_gpu_bsum<half>(const int m, const int n, const half* X, const float a
   OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel1, 2, NULL, global_size, local_size, 0, NULL, NULL));  
 
 
-  half_b beta_half = float2half_impl(beta);
+  half beta_half = float2half_impl(beta);
   OPENCL_CHECK(clSetKernelArg(kernel2, 0, sizeof(cl_mem), (void *)&temp_buffer));  
   OPENCL_CHECK(clSetKernelArg(kernel2, 1, sizeof(cl_mem), (void *)&y));
   OPENCL_CHECK(clSetKernelArg(kernel2, 2, sizeof(cl_half), (void *)&beta_half));
@@ -280,7 +280,7 @@ void caffe_gpu_set<float>(const int N, const float alpha, float* Y) {
 template <>
 void caffe_gpu_set<half>(const int N, const float alpha, half* Y) {
 
-  half_b alpha_half = float2half_impl(alpha);
+  half alpha_half = float2half_impl(alpha);
   OPENCL_CHECK(clEnqueueFillBuffer(Caffe::Get().commandQueue, (cl_mem) Y, &alpha_half, sizeof(half), 0, N * sizeof(half), 0, NULL, NULL));
 
 }
@@ -318,7 +318,7 @@ void caffe_gpu_add_scalar<half>(const int N, const float alpha, half *X) {
   cl_kernel kernel = clCreateKernel(Caffe::Get().program, "add_scalar_kernel", &ret);
   OPENCL_CHECK(ret);
 
-  half_b alpha_half = float2half_impl(alpha);
+  half alpha_half = float2half_impl(alpha);
 
   // Set arguments for kernel
   OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&X));  
@@ -363,7 +363,7 @@ void caffe_gpu_scal<half>(const int N, const float alpha, half* X){
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
-  half_b alpha_half = float2half_impl(alpha);
+  half alpha_half = float2half_impl(alpha);
 
   OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&X));  
   OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_half), (void *)&alpha_half));
@@ -557,30 +557,172 @@ void caffe_gpu_div<half>(const int N, const half* a, const half* b, half* y){
 
 template <>
 void caffe_gpu_abs<float>(const int n, const float* a, float* y){
-  NOT_IMPLEMENT;
+  
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "abs_kernel", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&a));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&y));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&n));  
+
+  size_t global_size = CAFFE_GET_BLOCKS(n);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+  
 }
 
 
 template <>
 void caffe_gpu_abs<half>(const int n, const half* a, half* y){
-  NOT_IMPLEMENT;
+  
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "abs_kernel", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&a));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&y));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&n));  
+
+  size_t global_size = CAFFE_GET_BLOCKS(n);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+  
 }
 
 
 template <>
 void caffe_gpu_exp<float>(const int n, const float* a, float* y){
-  NOT_IMPLEMENT;
+  
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "exp_kernel", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&a));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&y));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&n));  
+
+  size_t global_size = CAFFE_GET_BLOCKS(n);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+  
 }
+
+
+template <>
+void caffe_gpu_exp<half>(const int n, const half* a, half* y){
+  
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "exp_kernel", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&a));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&y));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&n));  
+
+  size_t global_size = CAFFE_GET_BLOCKS(n);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+ 
+}
+
+
+
 
 template <>
 void caffe_gpu_log<float>(const int n, const float* a, float* y){
-  NOT_IMPLEMENT;
+  
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "log_kernel", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&a));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&y));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&n));  
+
+  size_t global_size = CAFFE_GET_BLOCKS(n);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+  
 }
+
+
+template <>
+void caffe_gpu_log<half>(const int n, const half* a, half* y){
+  
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "log_kernel", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&a));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&y));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&n));  
+
+  size_t global_size = CAFFE_GET_BLOCKS(n);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+  
+}
+
+
 
 template <>
 void caffe_gpu_powx<float>(const int n, const float* a, const float b, float* y){
-  NOT_IMPLEMENT;
+  
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "powx_kernel", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&a));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&y));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_float), (void *)&b));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_int), (void *)&n));  
+
+  size_t global_size = CAFFE_GET_BLOCKS(n);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+  
 }
+
+
+template <>
+void caffe_gpu_powx<half>(const int n, const half* a, const float b, half* y){
+  
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "powx_kernel", &ret);
+  OPENCL_CHECK(ret);
+
+  half b_half = float2half_impl(b);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&a));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&y));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_half), (void *)&b_half));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_int), (void *)&n));  
+
+  size_t global_size = CAFFE_GET_BLOCKS(n);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+  
+}
+
+
+
 
 template <>
 void caffe_gpu_sqrt<float>(const int n, const float* a, float* y){
@@ -622,14 +764,14 @@ void caffe_gpu_rng_bernoulli<float>(const int n, const float p, int* r){
 }
 
 template <>
-void caffe_gpu_dot<float>(const int n, const float* x, const float* y, float* out){
+void caffe_gpu_dot<float>(const int n, const float* x, const float* y, float* out, int x_offset, int y_offset){
 
     cl_mem temp_buffer = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, sizeof(float), NULL, NULL);
 
     CLBLAST_CHECK(CLBlastSdot(n,
          (cl_mem) temp_buffer, 0,
-         (cl_mem) x, 0, 1,
-         (cl_mem) y, 0, 1,
+         (cl_mem) x, x_offset, 1,
+         (cl_mem) y, y_offset, 1,
          &Caffe::Get().commandQueue, NULL));
 
     OPENCL_CHECK(clEnqueueReadBuffer(Caffe::Get().commandQueue, temp_buffer, CL_TRUE, 0, sizeof(float), out, 0, NULL, NULL));
@@ -638,15 +780,15 @@ void caffe_gpu_dot<float>(const int n, const float* x, const float* y, float* ou
 
 
 template <>
-void caffe_gpu_dot<half>(const int n, const half* x, const half* y, half* out){
+void caffe_gpu_dot<half>(const int n, const half* x, const half* y, half* out, int x_offset, int y_offset){
 
   cl_mem temp_buffer = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, sizeof(half), NULL, NULL);
 
 
   CLBLAST_CHECK(CLBlastHdot(n,
          (cl_mem) temp_buffer, 0,
-         (cl_mem) x, 0, 1,
-         (cl_mem) y, 0, 1,
+         (cl_mem) x, x_offset, 1,
+         (cl_mem) y, y_offset, 1,
          &Caffe::Get().commandQueue, NULL));
   
   OPENCL_CHECK(clEnqueueReadBuffer(Caffe::Get().commandQueue, temp_buffer, CL_TRUE, 0, sizeof(half), out, 0, NULL, NULL));
@@ -659,13 +801,13 @@ void caffe_gpu_dot<half>(const int n, const half* x, const half* y, half* out){
 
 
 template <>
-void caffe_gpu_asum<float>(const int n, const float* x, float* y){
+void caffe_gpu_asum<float>(const int n, const float* x, float* y, int x_offset){
 
   cl_mem temp_buffer = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, sizeof(float), NULL, NULL);
 
   CLBLAST_CHECK(CLBlastSasum(n,
         (cl_mem) temp_buffer, 0,
-        (cl_mem) x, 0, 1,
+        (cl_mem) x, x_offset, 1,
         &Caffe::Get().commandQueue, NULL));
   
   OPENCL_CHECK(clEnqueueReadBuffer(Caffe::Get().commandQueue, temp_buffer, CL_TRUE, 0, sizeof(float), y, 0, NULL, NULL));
@@ -674,13 +816,13 @@ void caffe_gpu_asum<float>(const int n, const float* x, float* y){
 
 
 template <>
-void caffe_gpu_asum<half>(const int n, const half* x, half* y){
+void caffe_gpu_asum<half>(const int n, const half* x, half* y, int x_offset){
 
   cl_mem temp_buffer = clCreateBuffer(Caffe::Get().context, CL_MEM_READ_WRITE, sizeof(half), NULL, NULL);
 
   CLBLAST_CHECK(CLBlastHasum(n,
         (cl_mem) temp_buffer, 0,
-        (cl_mem) x, 0, 1,
+        (cl_mem) x, x_offset, 1,
         &Caffe::Get().commandQueue, NULL));
 
   OPENCL_CHECK(clEnqueueReadBuffer(Caffe::Get().commandQueue, temp_buffer, CL_TRUE, 0, sizeof(half), y, 0, NULL, NULL));
@@ -713,40 +855,60 @@ void caffe_gpu_sgnbit<half>(const int n, const half* x, half* y){
 
 template <>
 void caffe_gpu_fabs<float>(const int n, const float* x, float* y){
-  NOT_IMPLEMENT;
+  
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "abs_kernel", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&x));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&y));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&n));  
+
+  size_t global_size = CAFFE_GET_BLOCKS(n);
+  
+  
 }
 
 template <>
 void caffe_gpu_fabs<half>(const int n, const half* x, half* y){
-  NOT_IMPLEMENT;
+  
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "abs_kernel", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&x));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&y));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&n));  
+
+  size_t global_size = CAFFE_GET_BLOCKS(n);
+  
+  
 }
 
 template <>
 void caffe_gpu_scale<float>(const int n, const float alpha, const float *x, float* y){
-  NOT_IMPLEMENT;
-}
-
-
-
-
-
-
-
-
-template <>
-void caffe_gpu_exp<half>(const int n, const half* a, half* y){
-  NOT_IMPLEMENT;
+  caffe_cl_copy(n, x, y);
+  caffe_gpu_scal(n, alpha, y);
 }
 
 template <>
-void caffe_gpu_log<half>(const int n, const half* a, half* y){
-  NOT_IMPLEMENT;
+void caffe_gpu_scale<half>(const int n, const float alpha, const half *x, half* y){
+  caffe_cl_copy(n, x, y);
+  caffe_gpu_scal(n, alpha, y);
 }
 
-template <>
-void caffe_gpu_powx<half>(const int n, const half* a, const float b, half* y){
-  NOT_IMPLEMENT;
-}
+
+
+
+
+
+
+
+
 
 template <>
 void caffe_gpu_sqrt<half>(const int n, const half* a, half* y){
@@ -788,10 +950,7 @@ void caffe_gpu_rng_bernoulli<half>(const int n, const half p, int* r){
 
 
 
-template <>
-void caffe_gpu_scale<half>(const int n, const float alpha, const half *x, half* y){
-  NOT_IMPLEMENT;
-}
+
 
 
 

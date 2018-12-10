@@ -262,10 +262,10 @@ template <typename Dtype>
 void caffe_gpu_rng_bernoulli(const int n, const Dtype p, int* r);
 
 template <typename Dtype>
-void caffe_gpu_dot(const int n, const Dtype* x, const Dtype* y, Dtype* out);
+void caffe_gpu_dot(const int n, const Dtype* x, const Dtype* y, Dtype* out, int x_offset = 0, int y_offset = 0);
 
 template <typename Dtype>
-void caffe_gpu_asum(const int n, const Dtype* x, Dtype* y);
+void caffe_gpu_asum(const int n, const Dtype* x, Dtype* y, int x_offset = 0);
 
 template<typename Dtype>
 void caffe_gpu_sign(const int n, const Dtype* x, Dtype* y);

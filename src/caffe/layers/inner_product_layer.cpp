@@ -143,7 +143,46 @@ void InnerProductLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 #ifdef CPU_ONLY
 STUB_GPU(InnerProductLayer);
 #elif USE_OPENCL
-TEMP_GPU(InnerProductLayer);
+
+
+template <typename Dtype>
+void InnerProductLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
+    const vector<Blob<Dtype>*>& top) {
+
+ 
+  const Dtype* bottom_data = bottom[0]->gpu_data();
+  Dtype* top_data = top[0]->mutable_gpu_data();
+  const Dtype* weight = this->blobs_[0]->gpu_data();
+  if (M_ == 1) {
+    caffe_gpu_gemv<Dtype>(CblasNoTrans, N_, K_, (float)1.,
+                         weight, bottom_data, (float)0., top_data);
+    if (bias_term_)
+      caffe_gpu_axpy<Dtype>(N_, bias_multiplier_.cpu_data()[0],
+                            this->blobs_[1]->gpu_data(), top_data);
+  } else {
+    caffe_gpu_gemm<Dtype>(CblasNoTrans,
+                          transpose_ ? CblasNoTrans : CblasTrans,
+                          M_, N_, K_, (float)1.,
+                          bottom_data, weight, (float)0., top_data);
+    if (bias_term_)
+      caffe_gpu_gemm<Dtype>(CblasNoTrans, CblasNoTrans, M_, N_, 1, (float)1.,
+                            bias_multiplier_.gpu_data(),
+                            this->blobs_[1]->gpu_data(), (float)1., top_data);
+  }
+
+
+}
+
+
+template <typename Dtype>
+void InnerProductLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
+    const vector<bool>& propagate_down,
+    const vector<Blob<Dtype>*>& bottom) {
+
+  Backward_cpu(top, propagate_down, bottom);
+}
+
+
 #endif
 
 INSTANTIATE_CLASS(InnerProductLayer);

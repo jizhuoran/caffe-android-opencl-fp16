@@ -43,7 +43,7 @@ class ReductionLayer : public Layer<Dtype> {
   /// @brief the reduction operation performed by the layer
   ReductionParameter_ReductionOp op_;
   /// @brief a scalar coefficient applied to all outputs
-  Dtype coeff_;
+  float coeff_;
   /// @brief the index of the first input axis to reduce
   int axis_;
   /// @brief the number of reductions performed

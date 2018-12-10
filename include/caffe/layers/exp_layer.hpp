@@ -72,7 +72,7 @@ class ExpLayer : public NeuronLayer<Dtype> {
   virtual void Backward_gpu(const vector<Blob<Dtype>*>& top,
       const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom);
 
-  Dtype inner_scale_, outer_scale_;
+  float inner_scale_, outer_scale_;
 };
 
 }  // namespace caffe

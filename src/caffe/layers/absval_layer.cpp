@@ -37,7 +37,29 @@ void AbsValLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 #ifdef CPU_ONLY
 STUB_GPU(AbsValLayer);
 #elif USE_OPENCL
-TEMP_GPU(AbsValLayer);
+
+
+template <typename Dtype>
+void AbsValLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
+    const vector<Blob<Dtype>*>& top) {
+
+ 
+  const int count = top[0]->count();
+  Dtype* top_data = top[0]->mutable_gpu_data();
+  caffe_gpu_abs(count, bottom[0]->gpu_data(), top_data);
+
+
+}
+
+
+template <typename Dtype>
+void AbsValLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
+    const vector<bool>& propagate_down,
+    const vector<Blob<Dtype>*>& bottom) {
+
+  Backward_cpu(top, propagate_down, bottom);
+}
+
 #endif
 
 INSTANTIATE_CLASS(AbsValLayer);

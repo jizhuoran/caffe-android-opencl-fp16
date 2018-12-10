@@ -145,7 +145,66 @@ void CropLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 #ifdef CPU_ONLY
 STUB_GPU(CropLayer);
 #elif USE_OPENCL
-TEMP_GPU(CropLayer);
+
+
+
+template <typename Dtype>
+void CropLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
+    const vector<Blob<Dtype>*>& top) {
+
+ 
+  const Dtype* bottom_data = bottom[0]->gpu_data();
+  Dtype* top_data = top[0]->mutable_gpu_data();
+  const int* src_strides_data = src_strides_.gpu_data();
+  const int* dest_strides_data = dest_strides_.gpu_data();
+  const int* offsets_data = offsets.gpu_data();
+  const int ndim = bottom[0]->num_axes();
+
+  int n = top[0]->count();
+
+
+  // NOLINT_NEXT_LINE(whitespace/operators)
+  // crop_kernel_forward<<<CAFFE_GET_BLOCKS(n), CAFFE_CUDA_NUM_THREADS>>>(n,
+  //     bottom[0]->num_axes(),
+  //     src_strides_.gpu_data(),
+  //     dest_strides_.gpu_data(),
+  //     offsets.gpu_data(),
+  //     bottom_data, top_data);
+
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "crop_kernel_forward", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&bottom_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&top_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&src_strides_data));
+  OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_mem), (void *)&dest_strides_data));
+  OPENCL_CHECK(clSetKernelArg(kernel, 4, sizeof(cl_mem), (void *)&offsets_data));
+  OPENCL_CHECK(clSetKernelArg(kernel, 5, sizeof(cl_int), (void *)&ndim));
+  OPENCL_CHECK(clSetKernelArg(kernel, 6, sizeof(cl_int), (void *)&n));
+
+  size_t global_size = CAFFE_GET_BLOCKS(n);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+
+
+
+
+
+}
+
+
+template <typename Dtype>
+void CropLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
+    const vector<bool>& propagate_down,
+    const vector<Blob<Dtype>*>& bottom) {
+
+  Backward_cpu(top, propagate_down, bottom);
+}
+
+
 #endif
 
 INSTANTIATE_CLASS(CropLayer);

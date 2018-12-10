@@ -160,7 +160,7 @@ Caffe::Caffe()
 
   std::stringstream ss;
 
-  ss << generate_opencl_defs(true);
+  ss << generate_opencl_defs(false);
   ss << generate_opencl_math();
 
 
@@ -175,7 +175,41 @@ Caffe::Caffe()
   program = clCreateProgramWithSource(context, 1, (const char **)&kernelSource, (const size_t *)&kernel_size, &ret); 
   OPENCL_CHECK(ret);
 
-  CLBUILD_CHECK(clBuildProgram(program, 1, &deviceID, NULL, NULL, NULL));
+  ret = clBuildProgram(program, 1, &deviceID, NULL, NULL, NULL);
+
+
+  if (ret != CL_SUCCESS) {
+    char *buff_erro;
+    cl_int errcode;
+    size_t build_log_len;
+    errcode = clGetProgramBuildInfo(program, deviceID, CL_PROGRAM_BUILD_LOG, 0, NULL, &build_log_len);
+    if (errcode) {
+      LOG(ERROR) << "clGetProgramBuildInfo failed at line " << __LINE__;
+      exit(-1);
+    }
+
+    buff_erro = (char *)malloc(build_log_len);
+    if (!buff_erro) {
+        printf("malloc failed at line %d\n", __LINE__);
+        exit(-2);
+    }
+
+    errcode = clGetProgramBuildInfo(program, deviceID, CL_PROGRAM_BUILD_LOG, build_log_len, buff_erro, NULL);
+    if (errcode) {
+        LOG(ERROR) << "clGetProgramBuildInfo failed at line " << __LINE__;
+        exit(-3);
+    }
+
+    
+    LOG(ERROR) << "Build log: " << buff_erro;
+
+
+    free(buff_erro);
+
+    LOG(ERROR) << "clBuildProgram failed";
+
+    exit(EXIT_FAILURE);
+  }
 
 }
 

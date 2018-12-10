@@ -6,33 +6,6 @@
 #include "caffe/util/im2col.hpp"
 #include "caffe/util/math_functions.hpp"
 
-
-
-
-// template<class T>
-// inline void add_def(std::stringstream& ss,  // NOLINT
-//     const char* name, T value) {
-//   ss << "#ifdef " << name << std::endl;
-//   ss << "#undef " << name << std::endl;
-//   ss << "#endif" << std::endl;
-//   if (std::is_same<T, float>::value) {
-//     ss << "#define " << name << " (float) " << std::setprecision(32) << value
-//         << std::endl;
-//   } else if (std::is_same<T, double>::value) {
-//     ss << "#define " << name << " (double) " << std::setprecision(32) << value
-//         << std::endl;
-//   } else {
-//     ss << "#define " << name << " " << value << std::endl;
-//   }
-// }
-
-// template<class T>
-// inline void add_def(std::stringstream& ss,  // NOLINT
-//     const std::string name, T value) {
-//   add_def(ss, name.c_str(), value);
-// }
-
-
 namespace caffe {
 
 template <typename Dtype>

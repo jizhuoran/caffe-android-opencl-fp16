@@ -35,6 +35,9 @@ std::string generate_opencl_defs(bool is_half) {
 
 
 
+
+
+
 std::string generate_opencl_math() {
 	
 	std::stringstream ss;
@@ -63,6 +66,17 @@ std::string generate_opencl_math() {
 	ss << "out[index] = in[index] > 0 ? in[index] : in[index] * negative_slope;" << std::endl;
 	ss << "}" << std::endl;
 	ss << "}" << std::endl;
+
+
+	ss << "__kernel void PReLUForward(__global Dtype *in, __global Dtype *slope_data," << std::endl;
+	ss << "__global Dtype *out," << std::endl;
+	ss << "int N, int channels, int dim, int div_factor) {" << std::endl;
+	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
+	ss << " int c = (index / dim) % channels / div_factor;" << std::endl;
+	ss << " out[index] = in[index] > 0 ? in[index] : in[index] * slope_data[c];" << std::endl;
+	ss << "}" << std::endl;
+	ss << "}" << std::endl;
+
 
 
 	ss << "__kernel void ELUForward(__global Dtype *in," << std::endl;
@@ -125,6 +139,44 @@ std::string generate_opencl_math() {
 	ss << " y[index] = sqrt(x[index]);" << std::endl;
 	ss << "}" << std::endl;
 	ss << "}" << std::endl;
+
+
+	ss << "__kernel void log_kernel(__global Dtype *a," << std::endl;
+	ss << "__global Dtype *y," << std::endl;
+	ss << "int N) {" << std::endl;
+	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
+	ss << " y[index] = log(a[index]);" << std::endl;
+	ss << "}" << std::endl;
+	ss << "}" << std::endl;
+
+
+	ss << "__kernel void exp_kernel(__global Dtype *a," << std::endl;
+	ss << "__global Dtype *y," << std::endl;
+	ss << "int N) {" << std::endl;
+	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
+	ss << " y[index] = exp(a[index]);" << std::endl;
+	ss << "}" << std::endl;
+	ss << "}" << std::endl;
+
+	ss << "__kernel void abs_kernel(__global Dtype *a," << std::endl;
+	ss << "__global Dtype *y," << std::endl;
+	ss << "int N) {" << std::endl;
+	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
+	ss << " y[index] = fabs(a[index]);" << std::endl;
+	ss << "}" << std::endl;
+	ss << "}" << std::endl;
+
+
+
+
+	ss << "__kernel void powx_kernel(__global Dtype *a," << std::endl;
+	ss << "__global Dtype *y," << std::endl;
+	ss << "Dtype alpha, int N) {" << std::endl;
+	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
+	ss << " y[index] = pow(a[index], alpha);" << std::endl;
+	ss << "}" << std::endl;
+	ss << "}" << std::endl;
+
 
 
 	ss << "__kernel void sub_kernel(__global Dtype *a, __global Dtype *b," << std::endl;
@@ -191,6 +243,188 @@ std::string generate_opencl_math() {
 	ss << "y[index] += alpha;" << std::endl;
 	ss << "}" << std::endl;
 	ss << "}" << std::endl;
+
+
+	ss << "__kernel void BiasForward(__global Dtype *in, __global Dtype *bias," << std::endl;
+	ss << "__global Dtype *out," << std::endl;
+	ss << "int bias_dim, int inner_dim, int N) {" << std::endl;
+	ss << "OPENCL_KERNEL_LOOP(index, N) {" << std::endl;
+	ss << "const int bias_index = (index / inner_dim) % bias_dim;" << std::endl;
+	ss << "out[index] = in[index] + bias[bias_index];" << std::endl;
+	ss << "}" << std::endl;
+	ss << "}" << std::endl;
+
+
+	ss << "int compute_uncropped_index(int index, const int ndims," << std::endl;
+	ss << "__global int *src_strides, __global int *dest_strides," << std::endl;
+	ss << "__global int *offsets) {" << std::endl;
+	ss << "int dest_index = index;" << std::endl;
+	ss << "int src_index = 0;" << std::endl;
+	ss << "for (int i = 0; i < ndims; ++i) {" << std::endl;
+	ss << "int coord = dest_index / dest_strides[i];" << std::endl;
+	ss << "dest_index -= coord * dest_strides[i];" << std::endl;
+	ss << "src_index += src_strides[i] * (coord + offsets[i]);" << std::endl;
+	ss << "}" << std::endl;
+	ss << "return src_index;" << std::endl;
+	ss << "}" << std::endl;
+
+
+	ss << "__kernel void crop_kernel_forward(__global Dtype *src," << std::endl;
+	ss << "__global Dtype *dest," << std::endl;
+	ss << "__global int *src_strides," << std::endl;
+	ss << "__global int *dest_strides," << std::endl;
+	ss << "__global int *offsets," << std::endl;
+	ss << "int ndims, int nthreads) {" << std::endl;
+	ss << "OPENCL_KERNEL_LOOP(index, nthreads) {" << std::endl;
+	ss << " int src_index = compute_uncropped_index(index, ndims, src_strides, dest_strides, offsets);" << std::endl;
+	ss << " dest[index] = src[src_index];" << std::endl;
+	ss << "}" << std::endl;
+	ss << "}" << std::endl;
+
+
+	ss << "__kernel void Concat(__global Dtype *in_data," << std::endl;
+	ss << "__global Dtype *out_data," << std::endl;
+	ss << "const int concat_size," << std::endl;
+	ss << "const int top_concat_axis, const int bottom_concat_axis," << std::endl;
+	ss << "const int offset_concat_axis, int nthreads) {" << std::endl;
+	ss << "OPENCL_KERNEL_LOOP(index, nthreads) {" << std::endl;
+	ss << " const int total_concat_size = concat_size * bottom_concat_axis;" << std::endl;
+	ss << " const int concat_num = index / total_concat_size;" << std::endl;
+	ss << " const int concat_index = index % total_concat_size;" << std::endl;
+	ss << " const int top_index = concat_index + (concat_num * top_concat_axis + offset_concat_axis) * concat_size;" << std::endl;
+	ss << " out_data[top_index] = in_data[index];" << std::endl;
+	ss << "}" << std::endl;
+	ss << "}" << std::endl;
+
+
+
+
+
+	ss << "__kernel void Slice(__global Dtype *in_data," << std::endl;
+	ss << "__global Dtype *out_data," << std::endl;
+	ss << "const int slice_size," << std::endl;
+	ss << "const int bottom_slice_axis, const int top_slice_axis," << std::endl;
+	ss << "const int offset_slice_axis, int nthreads) {" << std::endl;
+	ss << "OPENCL_KERNEL_LOOP(index, nthreads) {" << std::endl;
+	ss << " const int total_slice_size = slice_size * top_slice_axis;" << std::endl;
+	ss << " const int slice_num = index / total_slice_size;" << std::endl;
+	ss << " const int slice_index = index % total_slice_size;" << std::endl;
+	ss << " const int bottom_index = slice_index + " << std::endl;
+	ss << "(slice_num * bottom_slice_axis + offset_slice_axis) * slice_size;" << std::endl;
+	ss << " out_data[index] = in_data[bottom_index];" << std::endl;
+	ss << "}" << std::endl;
+	ss << "}" << std::endl;
+
+
+
+	ss << "__kernel void MaxPoolForward(int nthreads, " << std::endl;
+	ss << "    __global Dtype* bottom_data, int num, int channels, " << std::endl;
+	ss << "    int height, int width, int pooled_height, " << std::endl;
+	ss << "    int pooled_width, int kernel_h, int kernel_w, " << std::endl;
+	ss << "    int stride_h, int stride_w, __global Dtype* top_data, int pad_h, int pad_w, " << std::endl;
+	ss << "    __global int* mask, __global Dtype* top_mask) { " << std::endl;
+	ss << "  OPENCL_KERNEL_LOOP(index, nthreads) { " << std::endl;
+	ss << "    const int pw = index % pooled_width; " << std::endl;
+	ss << "    const int ph = (index / pooled_width) % pooled_height; " << std::endl;
+	ss << "    const int c = (index / pooled_width / pooled_height) % channels; " << std::endl;
+	ss << "    const int n = index / pooled_width / pooled_height / channels; " << std::endl;
+	ss << "    int hstart = ph * stride_h - pad_h; " << std::endl;
+	ss << "    int wstart = pw * stride_w - pad_w; " << std::endl;
+	ss << "    const int hend = min(hstart + kernel_h, height); " << std::endl;
+	ss << "    const int wend = min(wstart + kernel_w, width); " << std::endl;
+	ss << "    hstart = max(hstart, 0); " << std::endl;
+	ss << "    wstart = max(wstart, 0); " << std::endl;
+	ss << "    Dtype maxval = -FLT_MAX; " << std::endl;
+	ss << "    int maxidx = -1; " << std::endl;
+	ss << "    __global Dtype* bottom_slice = " << std::endl;
+	ss << "        bottom_data + (n * channels + c) * height * width; " << std::endl;
+	ss << "    for (int h = hstart; h < hend; ++h) { " << std::endl;
+	ss << "      for (int w = wstart; w < wend; ++w) { " << std::endl;
+	ss << "        if (bottom_slice[h * width + w] > maxval) { " << std::endl;
+	ss << "          maxidx = h * width + w; " << std::endl;
+	ss << "          maxval = bottom_slice[maxidx]; " << std::endl;
+	ss << "        } " << std::endl;
+	ss << "      } " << std::endl;
+	ss << "    } " << std::endl;
+	ss << "    top_data[index] = maxval; " << std::endl;
+	ss << "    if (mask) { " << std::endl;
+	ss << "      mask[index] = maxidx; " << std::endl;
+	ss << "    } else { " << std::endl;
+	ss << "      top_mask[index] = maxidx; " << std::endl;
+	ss << "    } " << std::endl;
+	ss << "  } " << std::endl;
+	ss << "} " << std::endl;
+
+	ss << "__kernel void AvePoolForward(const int nthreads, " << std::endl;
+	ss << "    __global Dtype* bottom_data, const int num, const int channels, " << std::endl;
+	ss << "    const int height, const int width, const int pooled_height, " << std::endl;
+	ss << "    const int pooled_width, const int kernel_h, const int kernel_w, " << std::endl;
+	ss << "    const int stride_h, const int stride_w, __global Dtype* top_data, const int pad_h, const int pad_w) {" << std::endl;
+	ss << "  OPENCL_KERNEL_LOOP(index, nthreads) { " << std::endl;
+	ss << "    const int pw = index % pooled_width; " << std::endl;
+	ss << "    const int ph = (index / pooled_width) % pooled_height; " << std::endl;
+	ss << "    const int c = (index / pooled_width / pooled_height) % channels; " << std::endl;
+	ss << "    const int n = index / pooled_width / pooled_height / channels; " << std::endl;
+	ss << "    int hstart = ph * stride_h - pad_h; " << std::endl;
+	ss << "    int wstart = pw * stride_w - pad_w; " << std::endl;
+	ss << "    int hend = min(hstart + kernel_h, height + pad_h); " << std::endl;
+	ss << "    int wend = min(wstart + kernel_w, width + pad_w); " << std::endl;
+	ss << "    const int pool_size = (hend - hstart) * (wend - wstart); " << std::endl;
+	ss << "    hstart = max(hstart, 0); " << std::endl;
+	ss << "    wstart = max(wstart, 0); " << std::endl;
+	ss << "    hend = min(hend, height); " << std::endl;
+	ss << "    wend = min(wend, width); " << std::endl;
+	ss << "    Dtype aveval = 0; " << std::endl;
+	ss << "    __global Dtype* const bottom_slice = " << std::endl;
+	ss << "        bottom_data + (n * channels + c) * height * width; " << std::endl;
+	ss << "    for (int h = hstart; h < hend; ++h) { " << std::endl;
+	ss << "      for (int w = wstart; w < wend; ++w) { " << std::endl;
+	ss << "        aveval += bottom_slice[h * width + w]; " << std::endl;
+	ss << "      } " << std::endl;
+	ss << "    } " << std::endl;
+	ss << "    top_data[index] = aveval / pool_size; " << std::endl;
+	ss << "  } " << std::endl;
+	ss << "} " << std::endl;
+
+
+	ss << "__kernel void StoPoolForwardTest(const int nthreads, " << std::endl;
+	ss << "    __global Dtype* bottom_data, " << std::endl;
+	ss << "    const int num, const int channels, const int height, " << std::endl;
+	ss << "    const int width, const int pooled_height, const int pooled_width, " << std::endl;
+	ss << "    const int kernel_h, const int kernel_w, const int stride_h, " << std::endl;
+	ss << "    const int stride_w, __global Dtype* top_data) { " << std::endl;
+	ss << "    OPENCL_KERNEL_LOOP(index, nthreads) { " << std::endl;
+	ss << "    const int pw = index % pooled_width; " << std::endl;
+	ss << "    const int ph = (index / pooled_width) % pooled_height; " << std::endl;
+	ss << "    const int c = (index / pooled_width / pooled_height) % channels; " << std::endl;
+	ss << "    const int n = index / pooled_width / pooled_height / channels; " << std::endl;
+	ss << "    const int hstart = ph * stride_h; " << std::endl;
+	ss << "    const int hend = min(hstart + kernel_h, height); " << std::endl;
+	ss << "    const int wstart = pw * stride_w; " << std::endl;
+	ss << "    const int wend = min(wstart + kernel_w, width); " << std::endl;
+	ss << "    // We set cumsum to be 0 to avoid divide-by-zero problems " << std::endl;
+	ss << "    Dtype cumsum = 0.; " << std::endl;
+	ss << "    Dtype cumvalues = 0.; " << std::endl;
+	ss << "    __global Dtype* const bottom_slice = " << std::endl;
+	ss << "        bottom_data + (n * channels + c) * height * width; " << std::endl;
+	ss << "    // First pass: get sum " << std::endl;
+	ss << "    for (int h = hstart; h < hend; ++h) { " << std::endl;
+	ss << "      for (int w = wstart; w < wend; ++w) { " << std::endl;
+	ss << "        cumsum += bottom_slice[h * width + w]; " << std::endl;
+	ss << "        cumvalues += bottom_slice[h * width + w] * bottom_slice[h * width + w]; " << std::endl;
+	ss << "      } " << std::endl;
+	ss << "    } " << std::endl;
+	ss << "    top_data[index] = (cumsum > 0.) ? cumvalues / cumsum : 0.; " << std::endl;
+	ss << "  } " << std::endl;
+	ss << "} " << std::endl;
+
+
+
+
+
+
+
+
 
 
 
