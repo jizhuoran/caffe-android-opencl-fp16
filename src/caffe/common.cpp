@@ -160,7 +160,7 @@ Caffe::Caffe()
 
   std::stringstream ss;
 
-  ss << generate_opencl_defs(false);
+  ss << generate_opencl_defs(true);
   ss << generate_opencl_math();
 
 

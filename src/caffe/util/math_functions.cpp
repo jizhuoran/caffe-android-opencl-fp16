@@ -521,37 +521,57 @@ void caffe_rng_uniform<float>(const int n, const float a, const float b,
                               float* r);
 
 
-template <typename Dtype>
-void caffe_rng_gaussian(const int n, const Dtype a,
-                        const Dtype sigma, Dtype* r) {
+// template <typename Dtype>
+// void caffe_rng_gaussian(const int n, const float a,
+//                         const float sigma, Dtype* r) {
+//   CHECK_GE(n, 0);
+//   CHECK(r);
+//   CHECK_GT(sigma, 0);
+// #ifdef USE_BOOST
+//   boost::normal_distribution<Dtype> random_distribution(a, sigma);
+//   boost::variate_generator<caffe::rng_t*, boost::normal_distribution<Dtype> >
+//       variate_generator(caffe_rng(), random_distribution);
+//   for (int i = 0; i < n; ++i) {
+//     r[i] = variate_generator();
+//   }
+// #else
+//   std::normal_distribution<Dtype> random_distribution(a, sigma);
+//   for (int i = 0; i < n; ++i) {
+//     r[i] = random_distribution(*caffe_rng());
+//   }
+// #endif
+// }
+
+template <>
+void caffe_rng_gaussian<half>(const int n, const float a,
+                               const float sigma, half* r) {
+  
   CHECK_GE(n, 0);
   CHECK(r);
   CHECK_GT(sigma, 0);
-#ifdef USE_BOOST
-  boost::normal_distribution<Dtype> random_distribution(a, sigma);
-  boost::variate_generator<caffe::rng_t*, boost::normal_distribution<Dtype> >
-      variate_generator(caffe_rng(), random_distribution);
+
+  std::normal_distribution<float> random_distribution(a, sigma);
   for (int i = 0; i < n; ++i) {
-    r[i] = variate_generator();
+    r[i] = float2half_impl(random_distribution(*caffe_rng()));
   }
-#else
-  std::normal_distribution<Dtype> random_distribution(a, sigma);
-  for (int i = 0; i < n; ++i) {
-    r[i] = random_distribution(*caffe_rng());
-  }
-#endif
+
 }
 
 template <>
-void caffe_rng_gaussian<half>(const int n, const half mu,
-                               const half sigma, half* r) {
-  NOT_IMPLEMENT;
+void caffe_rng_gaussian<float>(const int n, const float a,
+                               const float sigma, float* r) {
+
+  CHECK_GE(n, 0);
+  CHECK(r);
+  CHECK_GT(sigma, 0);
+
+
+  std::normal_distribution<float> random_distribution(a, sigma);
+  for (int i = 0; i < n; ++i) {
+    r[i] = random_distribution(*caffe_rng());
+  }
+
 }
-
-
-template
-void caffe_rng_gaussian<float>(const int n, const float mu,
-                               const float sigma, float* r);
 
 
 template <typename Dtype>
