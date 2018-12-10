@@ -57,7 +57,32 @@ void SplitLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 #ifdef CPU_ONLY
 STUB_GPU(SplitLayer);
 #elif USE_OPENCL
-TEMP_GPU(SplitLayer);
+
+
+
+
+template <typename Dtype>
+void SplitLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
+    const vector<Blob<Dtype>*>& top) {
+
+  for (int i = 0; i < top.size(); ++i) {
+    top[i]->ShareData(*bottom[0]);
+  }
+}
+
+
+template <typename Dtype>
+void SplitLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
+    const vector<bool>& propagate_down,
+    const vector<Blob<Dtype>*>& bottom) {
+
+  Backward_cpu(top, propagate_down, bottom);
+}
+
+
+
+
+
 #endif
 
 INSTANTIATE_CLASS(SplitLayer);

@@ -183,7 +183,6 @@ template <typename Dtype>
 void ReductionLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
     const vector<bool>& propagate_down,
     const vector<Blob<Dtype>*>& bottom) {
-
   Backward_cpu(top, propagate_down, bottom);
 }
 

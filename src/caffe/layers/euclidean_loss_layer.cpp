@@ -50,6 +50,28 @@ void EuclideanLossLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 STUB_GPU(EuclideanLossLayer);
 #elif USE_OPENCL
 TEMP_GPU(EuclideanLossLayer);
+// template <typename Dtype>
+// void EuclideanLossLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
+//     const vector<Blob<Dtype>*>& top) {
+//   int count = bottom[0]->count();
+//   caffe_gpu_sub(
+//       count,
+//       bottom[0]->gpu_data(),
+//       bottom[1]->gpu_data(),
+//       diff_.mutable_gpu_data());
+//   Dtype dot;
+//   caffe_gpu_dot(count, diff_.gpu_data(), diff_.gpu_data(), &dot);
+//   Dtype loss = dot / bottom[0]->num() / Dtype(2);
+//   top[0]->mutable_cpu_data()[0] = loss;
+// }
+
+// template <typename Dtype>
+// void EuclideanLossLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
+//     const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom) {
+
+//   Backward_cpu(top, propagate_down, bottom);
+// }
+
 #endif
 
 

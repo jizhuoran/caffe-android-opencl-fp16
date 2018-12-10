@@ -969,18 +969,21 @@ void caffe_gpu_memcpy(const size_t N, const void* X, void* Y) {
 
 
 template <typename Dtype>
-void caffe_cl_copy(const int N, const Dtype* X, Dtype* Y) {
-  if (X != Y) {
-    OPENCL_CHECK(clEnqueueCopyBuffer(Caffe::Get().commandQueue, (cl_mem) X, (cl_mem) Y, 0, 0, sizeof(Dtype) * N, 0, NULL, NULL));
+void caffe_cl_copy(const int N, const Dtype* X, Dtype* Y, int x_offset, int y_offset) {
+  if ((X != Y) || (x_offset != y_offset)) {
+    OPENCL_CHECK(clEnqueueCopyBuffer(Caffe::Get().commandQueue, (cl_mem) X, (cl_mem) Y, 
+                            x_offset, y_offset, sizeof(Dtype) * N, 0, NULL, NULL));
   }
 }
 
 
-template void caffe_cl_copy<int>(const int N, const int* X, int* Y);
+template void caffe_cl_copy<int>(const int N, const int* X, int* Y, int x_offset, int y_offset);
 template void caffe_cl_copy<unsigned int>(const int N, const unsigned int* X,
-    unsigned int* Y);
-template void caffe_cl_copy<half>(const int N, const half* X, half* Y);
-template void caffe_cl_copy<float>(const int N, const float* X, float* Y);
+    unsigned int* Y, int x_offset, int y_offset);
+template void caffe_cl_copy<half>(const int N, const half* X, half* Y, int x_offset, int y_offset);
+template void caffe_cl_copy<float>(const int N, const float* X, float* Y, int x_offset, int y_offset);
+
+
 
 
 

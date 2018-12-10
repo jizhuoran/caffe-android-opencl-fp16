@@ -89,7 +89,140 @@ void SoftmaxLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 #ifdef CPU_ONLY
 STUB_GPU(SoftmaxLayer);
 #elif USE_OPENCL
-TEMP_GPU(SoftmaxLayer);
+
+
+template <typename Dtype>
+void SoftmaxLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
+    const vector<Blob<Dtype>*>& top) {
+  const Dtype* bottom_data = bottom[0]->gpu_data();
+  Dtype* top_data = top[0]->mutable_gpu_data();
+  Dtype* scale_data = scale_.mutable_gpu_data();
+  int count = bottom[0]->count();
+  int channels = top[0]->shape(softmax_axis_);
+  caffe_cl_copy(count, bottom_data, top_data);
+
+
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "kernel_channel_max", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&top_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&scale_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&outer_num_));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_int), (void *)&inner_num_));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 4, sizeof(cl_int), (void *)&count));  
+
+  size_t global_size = CAFFE_GET_BLOCKS(outer_num_ * inner_num_);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+  
+
+
+  // We need to subtract the max to avoid numerical issues, compute the exp,
+  // and then normalize.
+  // compute max
+  // NOLINT_NEXT_LINE(whitespace/operators)
+
+  // kernel_channel_max<Dtype><<<CAFFE_GET_BLOCKS(outer_num_ * inner_num_),
+  //     CAFFE_CUDA_NUM_THREADS>>>(outer_num_, channels, inner_num_, top_data,
+  //     scale_data);
+  // subtract
+  // NOLINT_NEXT_LINE(whitespace/operators)
+
+
+
+  kernel = clCreateKernel(Caffe::Get().program, "kernel_channel_subtract", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&scale_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&top_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&count));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_int), (void *)&outer_num_));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 4, sizeof(cl_int), (void *)&channels));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 5, sizeof(cl_int), (void *)&inner_num_));  
+
+  global_size = CAFFE_GET_BLOCKS(count);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+  
+  // kernel_channel_subtract<Dtype><<<CAFFE_GET_BLOCKS(count),
+  //     CAFFE_CUDA_NUM_THREADS>>>(count, outer_num_, channels, inner_num_,
+  //     scale_data, top_data);
+  // exponentiate
+  // NOLINT_NEXT_LINE(whitespace/operators)
+
+  kernel = clCreateKernel(Caffe::Get().program, "exp_kernel", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&top_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&top_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&count));  
+
+  global_size = CAFFE_GET_BLOCKS(count);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+  
+
+
+  // kernel_exp<Dtype><<<CAFFE_GET_BLOCKS(count), CAFFE_CUDA_NUM_THREADS>>>(
+  //     count, top_data, top_data);
+  // sum after exp
+  // NOLINT_NEXT_LINE(whitespace/operators)
+
+
+  kernel = clCreateKernel(Caffe::Get().program, "kernel_channel_sum", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&top_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&scale_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&outer_num_));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_int), (void *)&channels));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 4, sizeof(cl_int), (void *)&inner_num_));  
+
+  global_size = CAFFE_GET_BLOCKS(outer_num_ * inner_num_);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+  
+
+  // kernel_channel_sum<Dtype><<<CAFFE_GET_BLOCKS(outer_num_ * inner_num_),
+  //     CAFFE_CUDA_NUM_THREADS>>>(outer_num_, channels, inner_num_, top_data,
+  //     scale_data);
+  // divide
+  // NOLINT_NEXT_LINE(whitespace/operators)
+
+
+  kernel = clCreateKernel(Caffe::Get().program, "kernel_channel_div", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&scale_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&top_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&count));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_int), (void *)&outer_num_));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 4, sizeof(cl_int), (void *)&channels));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 5, sizeof(cl_int), (void *)&inner_num_));  
+
+  global_size = CAFFE_GET_BLOCKS(count);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+  
+  // kernel_channel_div<Dtype><<<CAFFE_GET_BLOCKS(count),
+  //     CAFFE_CUDA_NUM_THREADS>>>(count, outer_num_, channels, inner_num_,
+  //     scale_data, top_data);
+}
+
+template <typename Dtype>
+void SoftmaxLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
+    const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom) {
+  Backward_cpu(top, propagate_down, bottom);
+
+}
+
 #endif
 
 INSTANTIATE_CLASS(SoftmaxLayer);

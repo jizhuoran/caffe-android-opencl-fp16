@@ -58,9 +58,9 @@ class LRNLayer : public Layer<Dtype> {
 
   int size_;
   int pre_pad_;
-  Dtype alpha_;
-  Dtype beta_;
-  Dtype k_;
+  float alpha_;
+  float beta_;
+  float k_;
   int num_;
   int channels_;
   int height_;

@@ -251,9 +251,152 @@ STUB_GPU(LRNLayer);
 STUB_GPU_FORWARD(LRNLayer, CrossChannelForward);
 STUB_GPU_BACKWARD(LRNLayer, CrossChannelBackward);
 #elif USE_OPENCL
-TEMP_GPU(LRNLayer);
-TEMP_GPU_FORWARD(LRNLayer, CrossChannelForward);
+
+template <typename Dtype>
+void LRNLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
+    const vector<Blob<Dtype>*>& top) {
+
+  switch (this->layer_param_.lrn_param().norm_region()) {
+  case LRNParameter_NormRegion_ACROSS_CHANNELS:
+    CrossChannelForward_gpu(bottom, top);
+    break;
+  case LRNParameter_NormRegion_WITHIN_CHANNEL:
+    WithinChannelForward(bottom, top);
+    break;
+  default:
+    LOG(FATAL) << "Unknown normalization region.";
+  }
+
+}
+
+template <>
+void LRNLayer<float>::CrossChannelForward_gpu(
+    const vector<Blob<float>*>& bottom, const vector<Blob<float>*>& top) {
+  // First, compute scale
+  const float* bottom_data = bottom[0]->gpu_data();
+  float* top_data = top[0]->mutable_gpu_data();
+  float* scale_data = scale_.mutable_gpu_data();
+  // We will launch one kernel for each pixel location, and have the kernel
+  // go through all the channels.
+  int n_threads = num_ * height_ * width_;
+  // NOLINT_NEXT_LINE(whitespace/operators)
+
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "LRNFillScale", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+
+  float alpha_over_size = alpha_ / size_;
+
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&bottom_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&scale_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&num_));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_int), (void *)&channels_));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 4, sizeof(cl_int), (void *)&height_));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 5, sizeof(cl_int), (void *)&width_));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 6, sizeof(cl_int), (void *)&size_));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 7, sizeof(cl_float), (void *)&alpha_over_size));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 8, sizeof(cl_float), (void *)&k_));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 9, sizeof(cl_int), (void *)&n_threads));  
+
+  size_t global_size = CAFFE_GET_BLOCKS(n_threads);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+
+  n_threads = bottom[0]->count();
+
+  kernel = clCreateKernel(Caffe::Get().program, "LRNComputeOutput", &ret);
+  OPENCL_CHECK(ret);
+
+  float negative_beta = -beta_;
+
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&bottom_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&scale_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&top_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_float), (void *)&negative_beta));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 4, sizeof(cl_int), (void *)&n_threads));  
+
+  global_size = CAFFE_GET_BLOCKS(n_threads);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+  
+}
+
+
+template <>
+void LRNLayer<half>::CrossChannelForward_gpu(
+    const vector<Blob<half>*>& bottom, const vector<Blob<half>*>& top) {
+  // First, compute scale
+  const half* bottom_data = bottom[0]->gpu_data();
+  half* top_data = top[0]->mutable_gpu_data();
+  half* scale_data = scale_.mutable_gpu_data();
+  // We will launch one kernel for each pixel location, and have the kernel
+  // go through all the channels.
+  int n_threads = num_ * height_ * width_;
+  // NOLINT_NEXT_LINE(whitespace/operators)
+
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "LRNFillScale", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+
+  half alpha_over_size = float2half_impl(alpha_ / size_);
+  half half_k = float2half_impl(k_);
+
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&bottom_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&scale_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&num_));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_int), (void *)&channels_));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 4, sizeof(cl_int), (void *)&height_));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 5, sizeof(cl_int), (void *)&width_));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 6, sizeof(cl_int), (void *)&size_));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 7, sizeof(cl_half), (void *)&alpha_over_size));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 8, sizeof(cl_half), (void *)&half_k));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 9, sizeof(cl_int), (void *)&n_threads));  
+
+  size_t global_size = CAFFE_GET_BLOCKS(n_threads);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+
+  n_threads = bottom[0]->count();
+
+  kernel = clCreateKernel(Caffe::Get().program, "LRNComputeOutput", &ret);
+  OPENCL_CHECK(ret);
+
+  half negative_beta = float2half_impl(-beta_);
+
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&bottom_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&scale_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&top_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_half), (void *)&negative_beta));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 4, sizeof(cl_int), (void *)&n_threads));  
+
+  global_size = CAFFE_GET_BLOCKS(n_threads);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+  
+}
+
+
+template void LRNLayer<float>::CrossChannelForward_gpu(
+    const vector<Blob<float>*>& bottom, const vector<Blob<float>*>& top);
+template void LRNLayer<half>::CrossChannelForward_gpu(
+    const vector<Blob<half>*>& bottom, const vector<Blob<half>*>& top);
+
+
+
+template <typename Dtype>
+void LRNLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
+    const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom) {
+  Backward_cpu(top, propagate_down, bottom);
+}
 TEMP_GPU_BACKWARD(LRNLayer, CrossChannelBackward);
+
+
 #endif
 
 INSTANTIATE_CLASS(LRNLayer);

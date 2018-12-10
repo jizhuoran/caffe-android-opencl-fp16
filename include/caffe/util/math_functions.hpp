@@ -56,7 +56,7 @@ template <typename Dtype>
 void caffe_copy(const int N, const Dtype *X, Dtype *Y);
 
 template <typename Dtype>
-void caffe_cl_copy(const int N, const Dtype *X, Dtype *Y);
+void caffe_cl_copy(const int N, const Dtype *X, Dtype *Y, int x_offset = 0, int y_offset = 0);
 
 template <typename Dtype>
 void caffe_set(const int N, const float alpha, Dtype *X);

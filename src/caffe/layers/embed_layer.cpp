@@ -112,7 +112,58 @@ void EmbedLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 #ifdef CPU_ONLY
 STUB_GPU(EmbedLayer);
 #elif USE_OPENCL
-TEMP_GPU(EmbedLayer);
+
+
+
+
+template <typename Dtype>
+void EmbedLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
+    const vector<Blob<Dtype>*>& top) {
+
+  
+  const Dtype* bottom_data = bottom[0]->gpu_data();
+  Dtype* top_data = top[0]->mutable_gpu_data();
+  const Dtype* weight = this->blobs_[0]->gpu_data();
+  const int count = top[0]->count();
+
+  cl_int ret;
+
+  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "EmbedForward", &ret);
+  OPENCL_CHECK(ret);
+
+  // Set arguments for kernel
+  OPENCL_CHECK(clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&bottom_data));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&weight));  
+  OPENCL_CHECK(clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&top_data));
+  OPENCL_CHECK(clSetKernelArg(kernel, 3, sizeof(cl_int), (void *)&M_));
+  OPENCL_CHECK(clSetKernelArg(kernel, 4, sizeof(cl_int), (void *)&N_));
+  OPENCL_CHECK(clSetKernelArg(kernel, 5, sizeof(cl_int), (void *)&K_));
+  OPENCL_CHECK(clSetKernelArg(kernel, 6, sizeof(cl_int), (void *)&count));
+
+  size_t global_size = CAFFE_GET_BLOCKS(count);
+  
+  OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
+
+  if (bias_term_) {
+    caffe_gpu_gemm<Dtype>(CblasNoTrans, CblasNoTrans, M_, N_, 1, float(1),
+        bias_multiplier_.gpu_data(),
+        this->blobs_[1]->gpu_data(), float(1), top_data);
+  }
+
+}
+
+
+template <typename Dtype>
+void EmbedLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
+    const vector<bool>& propagate_down,
+    const vector<Blob<Dtype>*>& bottom) {
+
+  Backward_cpu(top, propagate_down, bottom);
+}
+
+
+
+
 #endif
 
 INSTANTIATE_CLASS(EmbedLayer);

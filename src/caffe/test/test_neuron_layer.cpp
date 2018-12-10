@@ -700,10 +700,14 @@ TYPED_TEST(NeuronLayerTest, TestLogLayerBase2Shift1Scale3) {
 //   this->TestLogGradient(kBase, kScale, kShift);
 // }
 
+#ifndef FORWARD_ONLY
+
 TYPED_TEST(NeuronLayerTest, TestDropoutHalf) {
   const float kDropoutRatio = 0.5;
   this->TestDropoutForward(kDropoutRatio);
 }
+
+#endif
 
 // TYPED_TEST(NeuronLayerTest, TestDropoutThreeQuarters) {
 //   const float kDropoutRatio = 0.75;
@@ -912,40 +916,40 @@ TYPED_TEST(NeuronLayerTest, TestPReLUInPlace) {
     EXPECT_EQ(this->blob_top_->cpu_data()[s], blob_top_2->cpu_data()[s]);
   }
   // Fill top diff with random numbers
-  shared_ptr<Blob<Dtype> > tmp_blob(new Blob<Dtype>());
-  tmp_blob->ReshapeLike(*blob_top_2.get());
-  FillerParameter filler_param;
-  GaussianFiller<Dtype> filler(filler_param);
-  filler.Fill(tmp_blob.get());
-  caffe_copy(blob_top_2->count(), tmp_blob->cpu_data(),
-      this->blob_top_->mutable_cpu_diff());
-  caffe_copy(blob_top_2->count(), tmp_blob->cpu_data(),
-      blob_top_2->mutable_cpu_diff());
+  // shared_ptr<Blob<Dtype> > tmp_blob(new Blob<Dtype>());
+  // tmp_blob->ReshapeLike(*blob_top_2.get());
+  // FillerParameter filler_param;
+  // GaussianFiller<Dtype> filler(filler_param);
+  // filler.Fill(tmp_blob.get());
+  // caffe_copy(blob_top_2->count(), tmp_blob->cpu_data(),
+  //     this->blob_top_->mutable_cpu_diff());
+  // caffe_copy(blob_top_2->count(), tmp_blob->cpu_data(),
+  //     blob_top_2->mutable_cpu_diff());
   // Backward in-place
-  vector<bool> propagate_down;
-  propagate_down.push_back(true);
-  prelu.Backward(this->blob_top_vec_, propagate_down, this->blob_top_vec_);
-  ip.Backward(this->blob_top_vec_, propagate_down, this->blob_bottom_vec_);
-  // Backward non-in-place
-  prelu2.Backward(blob_top_vec_2, propagate_down, blob_middle_vec_2);
-  ip2.Backward(blob_middle_vec_2, propagate_down, blob_bottom_vec_2);
-  // Check numbers
-  for (int s = 0; s < blob_bottom_2->count(); ++s) {
-    EXPECT_FLOAT_EQ(this->blob_bottom_->cpu_diff()[s],
-        blob_bottom_2->cpu_diff()[s]);
-  }
-  for (int s = 0; s < ip.blobs()[0]->count(); ++s) {
-    EXPECT_FLOAT_EQ(ip.blobs()[0]->cpu_diff()[s],
-        ip2.blobs()[0]->cpu_diff()[s]);
-  }
-  for (int s = 0; s < ip.blobs()[1]->count(); ++s) {
-    EXPECT_FLOAT_EQ(ip.blobs()[1]->cpu_diff()[s],
-        ip2.blobs()[1]->cpu_diff()[s]);
-  }
-  for (int s = 0; s < prelu.blobs()[0]->count(); ++s) {
-    EXPECT_FLOAT_EQ(prelu.blobs()[0]->cpu_diff()[s],
-        prelu2.blobs()[0]->cpu_diff()[s]);
-  }
+  // vector<bool> propagate_down;
+  // propagate_down.push_back(true);
+  // prelu.Backward(this->blob_top_vec_, propagate_down, this->blob_top_vec_);
+  // ip.Backward(this->blob_top_vec_, propagate_down, this->blob_bottom_vec_);
+  // // Backward non-in-place
+  // prelu2.Backward(blob_top_vec_2, propagate_down, blob_middle_vec_2);
+  // ip2.Backward(blob_middle_vec_2, propagate_down, blob_bottom_vec_2);
+  // // Check numbers
+  // for (int s = 0; s < blob_bottom_2->count(); ++s) {
+  //   EXPECT_FLOAT_EQ(this->blob_bottom_->cpu_diff()[s],
+  //       blob_bottom_2->cpu_diff()[s]);
+  // }
+  // for (int s = 0; s < ip.blobs()[0]->count(); ++s) {
+  //   EXPECT_FLOAT_EQ(ip.blobs()[0]->cpu_diff()[s],
+  //       ip2.blobs()[0]->cpu_diff()[s]);
+  // }
+  // for (int s = 0; s < ip.blobs()[1]->count(); ++s) {
+  //   EXPECT_FLOAT_EQ(ip.blobs()[1]->cpu_diff()[s],
+  //       ip2.blobs()[1]->cpu_diff()[s]);
+  // }
+  // for (int s = 0; s < prelu.blobs()[0]->count(); ++s) {
+  //   EXPECT_FLOAT_EQ(prelu.blobs()[0]->cpu_diff()[s],
+  //       prelu2.blobs()[0]->cpu_diff()[s]);
+  // }
 }
 
 #ifdef USE_CUDNN
