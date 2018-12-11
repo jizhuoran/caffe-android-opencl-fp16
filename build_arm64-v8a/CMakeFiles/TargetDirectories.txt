@@ -1,7 +1,0 @@
-/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/edit_cache.dir
-/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/rebuild_cache.dir
-/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles/symlink_to_build.dir
-/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/edit_cache.dir
-/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir
-/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/rebuild_cache.dir
-/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/proto.dir

@@ -65,7 +65,7 @@ function build-Android {
 
 
 
-    if [ ! -s ${TARGET}-CLBlast/lib/libclblast.so ]; then
+    if [ ! -s ${TARGET}-CLBlast/lib/libclblast.a ]; then
         mkdir -p CLBlast-${CLBlast_VERSION}/$BUILD_DIR
         rm -rf CLBlast-${CLBlast_VERSION}/$BUILD_DIR/*
         cd CLBlast-${CLBlast_VERSION}/$BUILD_DIR
@@ -80,6 +80,7 @@ function build-Android {
             -DANDROID_NATIVE_API_LEVEL="$ANDROID_NATIVE_API_LEVEL" \
             -DCMAKE_ANDROID_NDK="$NDK_HOME" \
             -DCMAKE_ANDROID_STL_TYPE=gnustl_static \
+            -DBUILD_SHARED_LIBS=OFF \
             -DOPENCL_ROOT=$DEVICE_OPENCL_DIR
         make ${MAKE_FLAGS}
         make install
