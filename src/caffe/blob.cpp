@@ -559,19 +559,17 @@ void Blob<half>::ToProto(BlobProto* proto, bool write_diff) const {
   for (int i = 0; i < shape_.size(); ++i) {
     proto->mutable_shape()->add_dim(shape_[i]);
   }
-  proto->clear_double_data();
-  proto->clear_double_diff();
-  const half* data_vec = cpu_data();
-  for (int i = 0; i < count_; ++i) {
-    proto->add_double_data(data_vec[i]);
-  }
+  proto->clear_half_data();
+  proto->clear_half_diff();
+
+  proto->set_half_data((void*)cpu_data(), count_ * 2);
+
   if (write_diff) {
-    const half* diff_vec = cpu_diff();
-    for (int i = 0; i < count_; ++i) {
-      proto->add_double_diff(diff_vec[i]);
-    }
+    proto->set_half_diff((void*)cpu_diff(), count_ * 2);
   }
+
 }
+
 
 template <>
 void Blob<float>::ToProto(BlobProto* proto, bool write_diff) const {
@@ -580,24 +578,6 @@ void Blob<float>::ToProto(BlobProto* proto, bool write_diff) const {
   for (int i = 0; i < shape_.size(); ++i) {
     proto->mutable_shape()->add_dim(shape_[i]);
   }
-
-#ifdef WITH_HALF
-  proto->clear_half_data();
-  proto->clear_half_diff();
-
-  half_b* converter = (half_b*)malloc(count_ * 2);
-  float2half(count_, (float*)cpu_data(), converter);
-  proto->set_half_data((void*)converter, count_ * 2);
-  
-  if (write_diff) {
-    float2half(count_, (float*)cpu_diff(), converter);
-
-    proto->set_half_diff((void*)converter, count_ * 2);
-  }
-
-  free(converter);
-
-#else
 
   proto->clear_data();
   proto->clear_diff();
@@ -611,11 +591,35 @@ void Blob<float>::ToProto(BlobProto* proto, bool write_diff) const {
       proto->add_diff(diff_vec[i]);
     }
   }
+}
 
-#endif
 
+template <>
+void Blob<float>::ToHalfProto(BlobProto* proto, bool write_diff) const {
+
+  proto->clear_half_data();
+  proto->clear_half_diff();
+
+  half* converter = (half*)malloc(count_ * 2);
+  float2half(count_, (float*)cpu_data(), converter);
+  proto->set_half_data((void*)converter, count_ * 2);
+  
+  if (write_diff) {
+    float2half(count_, (float*)cpu_diff(), converter);
+
+    proto->set_half_diff((void*)converter, count_ * 2);
+  }
+
+  free(converter);
 
 }
+
+template <>
+void Blob<half>::ToHalfProto(BlobProto* proto, bool write_diff) const {
+  LOG(ERROR) << "You can not convert fp16 to fp16, user ToProto instead";
+}
+
+
 
 INSTANTIATE_CLASS(Blob);
 template class Blob<int>;

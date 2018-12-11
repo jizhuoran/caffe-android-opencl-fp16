@@ -273,7 +273,11 @@ std::string generate_opencl_math() {
 	ss << "  counts[index] = 0;" << std::endl;
 	ss << " } else {" << std::endl;
 	ss << "  loss[index] = -log(max(prob_data[n * dim + label_value * spatial_dim + s]," << std::endl;
+#ifdef __ANDROID__
+	ss << "    HALF_MIN));" << std::endl;
+#else
 	ss << "    FLT_MIN));" << std::endl;
+#endif
 	ss << "  counts[index] = 1;" << std::endl;
 	ss << " }" << std::endl;
 	ss << "}" << std::endl;

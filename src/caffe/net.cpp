@@ -1067,6 +1067,23 @@ void Net<Dtype>::ToProto(NetParameter* param, bool write_diff) const {
   }
 }
 
+
+template <typename Dtype>
+void Net<Dtype>::ToHalfProto(NetParameter* param, bool write_diff) const {
+  param->Clear();
+  param->set_name(name_);
+  // Add bottom and top
+  DLOG(INFO) << "Serializing " << layers_.size() << " layers";
+  for (int i = 0; i < layers_.size(); ++i) {
+    LayerParameter* layer_param = param->add_layer();
+    layers_[i]->ToHalfProto(layer_param, write_diff);
+  }
+}
+
+
+
+
+
 template <typename Dtype>
 void Net<Dtype>::ToHDF5(const string& filename, bool write_diff) const {
 #ifdef USE_HDF5

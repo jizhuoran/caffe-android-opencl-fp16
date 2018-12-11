@@ -181,6 +181,8 @@ class Layer {
    */
   virtual void ToProto(LayerParameter* param, bool write_diff = false);
 
+  virtual void ToHalfProto(LayerParameter* param, bool write_diff = false);
+
   /**
    * @brief Returns the scalar loss associated with a top blob at a given index.
    */
@@ -485,6 +487,16 @@ void Layer<Dtype>::ToProto(LayerParameter* param, bool write_diff) {
   param->clear_blobs();
   for (int i = 0; i < blobs_.size(); ++i) {
     blobs_[i]->ToProto(param->add_blobs(), write_diff);
+  }
+}
+
+template <typename Dtype>
+void Layer<Dtype>::ToHalfProto(LayerParameter* param, bool write_diff) {
+  param->Clear();
+  param->CopyFrom(layer_param_);
+  param->clear_blobs();
+  for (int i = 0; i < blobs_.size(); ++i) {
+    blobs_[i]->ToHalfProto(param->add_blobs(), write_diff);
   }
 }
 

@@ -205,7 +205,10 @@ void caffe_gpu_set(const int N, const float alpha, Dtype* X);
 void caffe_gpu_set(const int N, const int alpha, int* X);
 
 inline void caffe_gpu_memset(const size_t N, const int alpha, void* X) {
+
+#ifndef __ANDROID__ 
   OPENCL_CHECK(clEnqueueFillBuffer(Caffe::Get().commandQueue, (cl_mem) X, &alpha, sizeof(int), 0, N, 0, NULL, NULL));
+#endif
 }
 
 template <typename Dtype>
