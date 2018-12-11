@@ -10,12 +10,12 @@ Optimized (for memory usage, speed and enegry efficiency) Caffe with OpenCL supp
 - [x] **OpenCL supporting (mobile GPU)** (Partially finished)
 - [x] **FP16 Inference support**
   - [x] BatchNorm shifting to avoid overflow and underflow
-  - [ ] All Layer support (Only Layers with OpenCL has FP16 support now)
+  - [x] All Layer support
   - [x] FP16 caffemodel load and save
   - [ ] model convertor (From FP32 to FP16)
 - [ ] As few dependencies as possible (CLBlast Introduced, try to remove)
 - [x] Optimized memory usage
-- [x] Forward Only
+- [x] Forward Only (I just noticed that in the original implementation, forward only also do unnecessary copy)
 - [x] Zero Copy (Shared memory between Host and GPU)
 - [ ] Backward
 
@@ -29,12 +29,7 @@ Optimized (for memory usage, speed and enegry efficiency) Caffe with OpenCL supp
  - [x] Convolution Layer (libdnn)
  - [x] Deconvolution Layer (libdnn)
  - [x] Batch Norm Layer (with shift)
- - [x] ReLU Layer
- - [x] ELU Layer
- - [x] TanH Layer
- - [x] Scale Layer
- - [ ] Matrix Multiplication
- - [ ] Others
+ - [x] Others
 
 
 # For Android
