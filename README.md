@@ -6,18 +6,18 @@ Optimized (for memory usage, speed and enegry efficiency) Caffe with OpenCL supp
 **I am developing this project. You can watch this project if you want to get the latest news**
 
 # Features
-
+- [x] **double data type is removied, scala data store in float, others store in Dtype (half or float)**
 - [x] **OpenCL supporting (mobile GPU)** (Partially finished)
 - [x] **FP16 Inference support**
   - [x] BatchNorm shifting to avoid overflow and underflow
   - [x] All Layer support
   - [x] FP16 caffemodel load and save
   - [ ] model convertor (From FP32 to FP16)
-- [ ] As few dependencies as possible (CLBlast Introduced, try to remove)
+- [x] As few dependencies as possible (Protobuf, OpenBLAS, CLBlast)
 - [x] Optimized memory usage
 - [x] Forward Only (I just noticed that in the original implementation, forward only also do unnecessary copy)
 - [x] Zero Copy (Shared memory between Host and GPU)
-- [ ] Backward
+- [ ] Backward (I change my mind, Pure Forward Only library will be kept)
 
 
 ## Peak Memory Usage Reduction
@@ -30,6 +30,16 @@ Optimized (for memory usage, speed and enegry efficiency) Caffe with OpenCL supp
  - [x] Deconvolution Layer (libdnn)
  - [x] Batch Norm Layer (with shift)
  - [x] Others
+
+# On-going
+
+1. Modify the test cases to support half testing
+2. Check unnecessary data copy in Forward Only mode
+3. Caffemodel converotr (FP32 to FP16) 
+4. Tune for android devices
+5. Change the structure of the project (move test out of the src)
+6. Refactor: OpenCL kernls launch method, redundant code in math_fuctions_cl.cpp
+7. Doc
 
 
 # For Android
@@ -45,7 +55,8 @@ Optimized (for memory usage, speed and enegry efficiency) Caffe with OpenCL supp
 
 ```
 $ modify the NDK_HOME path in ./tools/build_android.sh to your NDK_HOME
-$ ./tools/build_android.sh (I introduce another dependencies these day, which makes this not work, I will fix it soon)
+$ modify the DEVICE_OPENCL_DIR path in ./tools/build_android.sh to the directory contains include/CL/cl.h and lib64/libOpencl.so
+$ ./tools/build_android.sh
 $ (You may want to choose your own make -j)
 
 ```
@@ -94,19 +105,11 @@ $ sudo apt install libprotobuf-dev protobuf-compiler libatlas-dev # Ubuntu
 ## Step 2: Build Caffe-Mobile Lib with cmake
 
 ```
-$ git clone --recursive https://github.com/solrex/caffe-mobile.git
+$ git clone https://github.com/jizhuoran/caffe-android-opencl.git
 $ mkdir build
 $ cd ../build
 $ cmake ..
-$ make -j 16
-```
-
-## Step 3: Build Caffe-bin with cmake
-
-```
-$ brew install gflags
-$ cmake ..
-$ make -j 4
+$ make -j 40
 ```
 
 # Thanks
