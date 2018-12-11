@@ -3,14 +3,19 @@
 
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/arena.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/arenastring.h
+src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/descriptor.h
+src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/descriptor.pb.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/extension_set.h
+src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/generated_enum_reflection.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/generated_enum_util.h
+src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/generated_message_reflection.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/generated_message_util.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/has_bits.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/io/coded_stream.h
-src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/io/zero_copy_stream.h
-src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/io/zero_copy_stream_impl_lite.h
+src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/message.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/message_lite.h
+src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/metadata.h
+src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/reflection_ops.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/repeated_field.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/stubs/atomic_sequence_num.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/stubs/atomicops.h
@@ -40,9 +45,10 @@ src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/stubs/port.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/stubs/scoped_ptr.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/stubs/shared_ptr.h
-src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/stubs/stl_util.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/stubs/template_util.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/stubs/type_traits.h
+src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/unknown_field_set.h
+src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/wire_format.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/wire_format_lite.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/wire_format_lite_inl.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: include/caffe/proto/caffe.pb.cc
@@ -85,6 +91,7 @@ src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: /home/zr
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/math.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/memory
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/new
+src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/set
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/stddef.h
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/stdexcept
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o: /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/stdint.h

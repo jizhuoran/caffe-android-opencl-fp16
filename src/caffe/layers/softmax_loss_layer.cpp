@@ -173,7 +173,7 @@ TEMP_GPU(SoftmaxWithLossLayer);
 
 //   cl_int ret;
 
-//   cl_kernel kernel = clCreateKernel(Caffe::Get().program, "SoftmaxLossForwardGPU", &ret);
+//   cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "SoftmaxLossForwardGPU", &ret);
 //   OPENCL_CHECK(ret);
 
 //   int has_ignore_label_int = has_ignore_label_? 1:0;

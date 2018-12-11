@@ -163,14 +163,26 @@ Caffe::Caffe()
   ss << generate_opencl_defs(false);
   ss << generate_opencl_math();
 
+  build_opencl_program(ss.str(), math_program);
 
-  std::string math_kernels = ss.str();
 
-  size_t kernel_size = math_kernels.size();
+}
 
-  char* kernelSource = (char*)malloc(kernel_size);
+Caffe::~Caffe() {
+  // if (cublas_handle_) CUBLAS_CHECK(cublasDestroy(cublas_handle_));
+  // if (curand_generator_) {
+  //   CURAND_CHECK(curandDestroyGenerator(curand_generator_));
+  // }
+}
 
-  strcpy(kernelSource, math_kernels.c_str());
+
+void Caffe::build_opencl_program(std::string kernel_code, cl_program &program) {
+
+  cl_int ret = -1;
+
+  size_t kernel_size = kernel_code.size() + 1;
+
+  const char* kernelSource = kernel_code.c_str();
 
   program = clCreateProgramWithSource(context, 1, (const char **)&kernelSource, (const size_t *)&kernel_size, &ret); 
   OPENCL_CHECK(ret);
@@ -199,10 +211,8 @@ Caffe::Caffe()
         LOG(ERROR) << "clGetProgramBuildInfo failed at line " << __LINE__;
         exit(-3);
     }
-
     
     LOG(ERROR) << "Build log: " << buff_erro;
-
 
     free(buff_erro);
 
@@ -210,14 +220,6 @@ Caffe::Caffe()
 
     exit(EXIT_FAILURE);
   }
-
-}
-
-Caffe::~Caffe() {
-  // if (cublas_handle_) CUBLAS_CHECK(cublasDestroy(cublas_handle_));
-  // if (curand_generator_) {
-  //   CURAND_CHECK(curandDestroyGenerator(curand_generator_));
-  // }
 }
 
 /*

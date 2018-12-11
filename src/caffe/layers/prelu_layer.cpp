@@ -159,7 +159,7 @@ void PReLULayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
 
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "PReLUForward", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "PReLUForward", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel

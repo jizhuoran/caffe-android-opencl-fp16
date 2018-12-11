@@ -20,7 +20,7 @@ add_definitions(-DWITH_HALF)
 #add_definitions(-DSNAPDRAGON)
 add_definitions(-DUSE_PROTOBUF_FULL)
 
-
+ 
 include(./cmake/Utils.cmake)
 include(./cmake/Misc.cmake)
 include(./cmake/Targets.cmake)
@@ -45,7 +45,7 @@ endif()
 if(ANDROID)
     STRING(REGEX MATCH "[^ ]+" ANDROID_ABI_PREFIX ${ANDROID_ABI})
     set(THIRD_PREFIX ${ANDROID_ABI_PREFIX}-${ANDROID_NATIVE_API_LEVEL}-)
-    list(INSERT CMAKE_FIND_ROOT_PATH 0 ${CMAKE_SOURCE_DIR}/third_party/${THIRD_PREFIX}protobuf ${CMAKE_SOURCE_DIR}/third_party/${THIRD_PREFIX}OpenBLAS ${CMAKE_SOURCE_DIR}/third_party/${THIRD_PREFIX}CLBlast)
+    list(INSERT CMAKE_FIND_ROOT_PATH 0 ${CMAKE_SOURCE_DIR}/third_party/${THIRD_PREFIX}protobuf ${CMAKE_SOURCE_DIR}/third_party/${THIRD_PREFIX}OpenBLAS ${CMAKE_SOURCE_DIR}/third_party/${THIRD_PREFIX}CLBlast ${OPENCL_ROOT})
 elseif(IOS)
     list(INSERT CMAKE_FIND_ROOT_PATH 0 ${CMAKE_SOURCE_DIR}/third_party/ios-protobuf)
 endif()
@@ -56,6 +56,7 @@ include(./cmake/Modules/FindOpenBLAS.cmake)
 include(./cmake/Modules/FindvecLib.cmake)
 include(./cmake/Modules/FindAtlas.cmake)
 include(./cmake/Modules/FindCLBlast.cmake)
+
 
 
 #if(NOT ANDROID)

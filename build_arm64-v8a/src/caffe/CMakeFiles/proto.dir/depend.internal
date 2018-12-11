@@ -4,14 +4,19 @@
 src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o
  ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/arena.h
  ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/arenastring.h
+ ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/descriptor.h
+ ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/descriptor.pb.h
  ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/extension_set.h
+ ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/generated_enum_reflection.h
  ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/generated_enum_util.h
+ ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/generated_message_reflection.h
  ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/generated_message_util.h
  ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/has_bits.h
  ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/io/coded_stream.h
- ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/io/zero_copy_stream.h
- ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/io/zero_copy_stream_impl_lite.h
+ ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/message.h
  ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/message_lite.h
+ ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/metadata.h
+ ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/reflection_ops.h
  ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/repeated_field.h
  ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/stubs/atomic_sequence_num.h
  ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/stubs/atomicops.h
@@ -41,9 +46,10 @@ src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o
  ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/stubs/port.h
  ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/stubs/scoped_ptr.h
  ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/stubs/shared_ptr.h
- ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/stubs/stl_util.h
  ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/stubs/template_util.h
  ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/stubs/type_traits.h
+ ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/unknown_field_set.h
+ ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/wire_format.h
  ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/wire_format_lite.h
  ../third_party/arm64-v8a-28-protobuf/include/google/protobuf/wire_format_lite_inl.h
  /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/include/caffe/proto/caffe.pb.cc
@@ -86,6 +92,7 @@ src/caffe/CMakeFiles/proto.dir/__/__/include/caffe/proto/caffe.pb.cc.o
  /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/math.h
  /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/memory
  /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/new
+ /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/set
  /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/stddef.h
  /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/stdexcept
  /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sources/cxx-stl/llvm-libc++/include/stdint.h

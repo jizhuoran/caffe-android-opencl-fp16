@@ -35,7 +35,7 @@ void Timer::Start() {
 
       cl_int ret;
 
-      cl_kernel kernel = clCreateKernel(Caffe::Get().program, "null_kernel_float", &ret);
+      cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "null_kernel_float", &ret);
       OPENCL_CHECK(ret);
 
       int arg = 0;
@@ -75,7 +75,7 @@ void Timer::Stop() {
 
       cl_int ret;
 
-      cl_kernel kernel = clCreateKernel(Caffe::Get().program, "null_kernel_float", &ret);
+      cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "null_kernel_float", &ret);
       OPENCL_CHECK(ret);
 
       int arg = 0;

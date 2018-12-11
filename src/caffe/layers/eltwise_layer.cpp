@@ -155,14 +155,12 @@ void EltwiseLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 #ifdef CPU_ONLY
 STUB_GPU(EltwiseLayer);
 #elif USE_OPENCL
+
 template <typename Dtype>
 void EltwiseLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
     const vector<Blob<Dtype>*>& top) {
 
-
-
   int* mask = NULL;
-
 
   const Dtype* bottom_data_a = NULL;
   const Dtype* bottom_data_b = NULL;
@@ -196,9 +194,7 @@ void EltwiseLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
     bottom_data_b = bottom[1]->gpu_data();
     blob_idx = 0;
 
-    ret;
-
-    kernel = clCreateKernel(Caffe::Get().program, "MaxForward", &ret);
+    kernel = clCreateKernel(Caffe::Get().math_program, "MaxForward", &ret);
     OPENCL_CHECK(ret);
 
     // Set arguments for kernel

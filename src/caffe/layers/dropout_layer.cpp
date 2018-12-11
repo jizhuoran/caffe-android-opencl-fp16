@@ -68,7 +68,24 @@ void DropoutLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 #ifdef CPU_ONLY
 STUB_GPU(DropoutLayer);
 #elif USE_OPENCL
-TEMP_GPU(DropoutLayer);
+
+
+template <typename Dtype>
+void DropoutLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
+    const vector<Blob<Dtype>*>& top) {
+  const Dtype* bottom_data = bottom[0]->gpu_data();
+  Dtype* top_data = top[0]->mutable_gpu_data();
+
+  caffe_cl_copy(bottom[0]->count(), bottom_data, top_data);
+
+}
+
+template <typename Dtype>
+void DropoutLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
+    const vector<bool>& propagate_down,
+    const vector<Blob<Dtype>*>& bottom) {
+  NOT_IMPLEMENT;
+}  
 #endif
 
 INSTANTIATE_CLASS(DropoutLayer);

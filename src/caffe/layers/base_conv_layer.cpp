@@ -478,18 +478,7 @@ void BaseConvolutionLayer<Dtype>::Compile_OpenCL() {
   ss << this->generate_fw_defs(8, 4, 4, 8, 8); //TSK, WPTM, WPTN, RTSM, RTSN
   ss << this->generate_fw_kernels(this->layer_param_.name() + "_forward", 8, 4, 4, 8, 8);
 
-  std::string conv_kernel = ss.str();
-  size_t kernel_size = conv_kernel.size() + 1;
-
-  const char* kernel_cstr = conv_kernel.c_str();
-
-  cl_int ret = -1; 
-  program = clCreateProgramWithSource(Caffe::Get().context, 1, (const char **)&kernel_cstr, (const size_t *)&kernel_size, &ret); 
-
-
-  OPENCL_CHECK(ret);
-  
-  CLBUILD_CHECK(clBuildProgram(program, 1, &Caffe::Get().deviceID, NULL, NULL, NULL));
+  Caffe::Get().build_opencl_program(ss.str(), this->program);
 
 }
 

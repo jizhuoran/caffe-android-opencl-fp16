@@ -252,7 +252,7 @@ void ScaleLayer<Dtype>::Forward_gpu(
     
     cl_int ret;
 
-    cl_kernel kernel = clCreateKernel(Caffe::Get().program, "ScaleBiasForward", &ret);
+    cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "ScaleBiasForward", &ret);
     OPENCL_CHECK(ret);
 
     // Set arguments for kernel
@@ -274,7 +274,7 @@ void ScaleLayer<Dtype>::Forward_gpu(
 
     cl_int ret;
 
-    cl_kernel kernel = clCreateKernel(Caffe::Get().program, "ScaleForward", &ret);
+    cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "ScaleForward", &ret);
     OPENCL_CHECK(ret);
 
     // Set arguments for kernel

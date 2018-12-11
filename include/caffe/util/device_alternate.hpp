@@ -60,37 +60,6 @@
     } \
   } while (0)
 
-#define CLBUILD_CHECK(condition) \
-  do { \
-    cl_int error = condition; \
-    if (ret != CL_SUCCESS) { \
-      char *buff_erro; \
-      cl_int errcode; \
-      size_t build_log_len; \
-      errcode = clGetProgramBuildInfo(program, Caffe::Get().deviceID, CL_PROGRAM_BUILD_LOG, 0, NULL, &build_log_len); \
-      if (errcode) { \
-        LOG(ERROR) << "clGetProgramBuildInfo failed at line " << __LINE__; \
-        exit(-1); \
-      } \
-      buff_erro = (char *)malloc(build_log_len); \
-      if (!buff_erro) { \
-          printf("malloc failed at line %d\n", __LINE__); \
-          exit(-2); \
-      } \
-      errcode = clGetProgramBuildInfo(program, Caffe::Get().deviceID, CL_PROGRAM_BUILD_LOG, build_log_len, buff_erro, NULL); \
-      if (errcode) { \
-          LOG(ERROR) << "clGetProgramBuildInfo failed at line " << __LINE__; \
-          exit(-3); \
-      } \
-      LOG(ERROR) << "Build log: " << buff_erro; \
-      free(buff_erro); \
-      LOG(ERROR) << "clBuildProgram failed"; \
-      exit(EXIT_FAILURE); \
-    } \
-  } while (0)
-
-
-
   
 #endif
 

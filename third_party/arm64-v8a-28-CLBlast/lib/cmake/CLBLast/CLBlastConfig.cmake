@@ -54,7 +54,7 @@ endif()
 add_library(clblast SHARED IMPORTED)
 
 set_target_properties(clblast PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/home/zrji/android_caffe/caffe-android-opencl/third_party/OpenCL/"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/home/zrji/android_caffe/caffe-android-opencl/third_party/OpenCL/include"
 )
 
 # Load information for each installed configuration.

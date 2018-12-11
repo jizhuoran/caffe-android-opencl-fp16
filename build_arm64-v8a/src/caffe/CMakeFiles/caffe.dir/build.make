@@ -135,9 +135,22 @@ src/caffe/CMakeFiles/caffe.dir/layers/absval_layer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/caffe.dir/layers/absval_layer.cpp.s"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/absval_layer.cpp -o CMakeFiles/caffe.dir/layers/absval_layer.cpp.s
 
+src/caffe/CMakeFiles/caffe.dir/layers/accuracy_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
+src/caffe/CMakeFiles/caffe.dir/layers/accuracy_layer.cpp.o: ../src/caffe/layers/accuracy_layer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/accuracy_layer.cpp.o"
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/accuracy_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/accuracy_layer.cpp
+
+src/caffe/CMakeFiles/caffe.dir/layers/accuracy_layer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/caffe.dir/layers/accuracy_layer.cpp.i"
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/accuracy_layer.cpp > CMakeFiles/caffe.dir/layers/accuracy_layer.cpp.i
+
+src/caffe/CMakeFiles/caffe.dir/layers/accuracy_layer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/caffe.dir/layers/accuracy_layer.cpp.s"
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/accuracy_layer.cpp -o CMakeFiles/caffe.dir/layers/accuracy_layer.cpp.s
+
 src/caffe/CMakeFiles/caffe.dir/layers/argmax_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/argmax_layer.cpp.o: ../src/caffe/layers/argmax_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/argmax_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/argmax_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/argmax_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/argmax_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/argmax_layer.cpp.i: cmake_force
@@ -150,7 +163,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/argmax_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/base_conv_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/base_conv_layer.cpp.o: ../src/caffe/layers/base_conv_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/base_conv_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/base_conv_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/base_conv_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/base_conv_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/base_conv_layer.cpp.i: cmake_force
@@ -163,7 +176,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/base_conv_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/base_data_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/base_data_layer.cpp.o: ../src/caffe/layers/base_data_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/base_data_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/base_data_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/base_data_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/base_data_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/base_data_layer.cpp.i: cmake_force
@@ -176,7 +189,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/base_data_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/batch_norm_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/batch_norm_layer.cpp.o: ../src/caffe/layers/batch_norm_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/batch_norm_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/batch_norm_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/batch_norm_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/batch_norm_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/batch_norm_layer.cpp.i: cmake_force
@@ -189,7 +202,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/batch_norm_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/batch_reindex_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/batch_reindex_layer.cpp.o: ../src/caffe/layers/batch_reindex_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/batch_reindex_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/batch_reindex_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/batch_reindex_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/batch_reindex_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/batch_reindex_layer.cpp.i: cmake_force
@@ -202,7 +215,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/batch_reindex_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/bias_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/bias_layer.cpp.o: ../src/caffe/layers/bias_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/bias_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/bias_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/bias_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/bias_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/bias_layer.cpp.i: cmake_force
@@ -215,7 +228,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/bias_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/bnll_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/bnll_layer.cpp.o: ../src/caffe/layers/bnll_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/bnll_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/bnll_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/bnll_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/bnll_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/bnll_layer.cpp.i: cmake_force
@@ -228,7 +241,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/bnll_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/concat_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/concat_layer.cpp.o: ../src/caffe/layers/concat_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/concat_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/concat_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/concat_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/concat_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/concat_layer.cpp.i: cmake_force
@@ -241,7 +254,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/concat_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/conv_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/conv_layer.cpp.o: ../src/caffe/layers/conv_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/conv_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/conv_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/conv_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/conv_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/conv_layer.cpp.i: cmake_force
@@ -254,7 +267,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/conv_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/crop_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/crop_layer.cpp.o: ../src/caffe/layers/crop_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/crop_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/crop_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/crop_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/crop_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/crop_layer.cpp.i: cmake_force
@@ -267,7 +280,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/crop_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/deconv_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/deconv_layer.cpp.o: ../src/caffe/layers/deconv_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/deconv_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/deconv_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/deconv_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/deconv_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/deconv_layer.cpp.i: cmake_force
@@ -280,7 +293,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/deconv_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/dropout_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/dropout_layer.cpp.o: ../src/caffe/layers/dropout_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/dropout_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/dropout_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/dropout_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/dropout_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/dropout_layer.cpp.i: cmake_force
@@ -293,7 +306,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/dropout_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/dummy_data_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/dummy_data_layer.cpp.o: ../src/caffe/layers/dummy_data_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/dummy_data_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/dummy_data_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/dummy_data_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/dummy_data_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/dummy_data_layer.cpp.i: cmake_force
@@ -306,7 +319,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/dummy_data_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/eltwise_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/eltwise_layer.cpp.o: ../src/caffe/layers/eltwise_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/eltwise_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/eltwise_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/eltwise_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/eltwise_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/eltwise_layer.cpp.i: cmake_force
@@ -319,7 +332,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/eltwise_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/elu_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/elu_layer.cpp.o: ../src/caffe/layers/elu_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/elu_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/elu_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/elu_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/elu_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/elu_layer.cpp.i: cmake_force
@@ -332,7 +345,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/elu_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/embed_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/embed_layer.cpp.o: ../src/caffe/layers/embed_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/embed_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/embed_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/embed_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/embed_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/embed_layer.cpp.i: cmake_force
@@ -343,9 +356,22 @@ src/caffe/CMakeFiles/caffe.dir/layers/embed_layer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/caffe.dir/layers/embed_layer.cpp.s"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/embed_layer.cpp -o CMakeFiles/caffe.dir/layers/embed_layer.cpp.s
 
+src/caffe/CMakeFiles/caffe.dir/layers/euclidean_loss_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
+src/caffe/CMakeFiles/caffe.dir/layers/euclidean_loss_layer.cpp.o: ../src/caffe/layers/euclidean_loss_layer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/euclidean_loss_layer.cpp.o"
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/euclidean_loss_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/euclidean_loss_layer.cpp
+
+src/caffe/CMakeFiles/caffe.dir/layers/euclidean_loss_layer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/caffe.dir/layers/euclidean_loss_layer.cpp.i"
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/euclidean_loss_layer.cpp > CMakeFiles/caffe.dir/layers/euclidean_loss_layer.cpp.i
+
+src/caffe/CMakeFiles/caffe.dir/layers/euclidean_loss_layer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/caffe.dir/layers/euclidean_loss_layer.cpp.s"
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/euclidean_loss_layer.cpp -o CMakeFiles/caffe.dir/layers/euclidean_loss_layer.cpp.s
+
 src/caffe/CMakeFiles/caffe.dir/layers/exp_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/exp_layer.cpp.o: ../src/caffe/layers/exp_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/exp_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/exp_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/exp_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/exp_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/exp_layer.cpp.i: cmake_force
@@ -358,7 +384,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/exp_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/filter_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/filter_layer.cpp.o: ../src/caffe/layers/filter_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/filter_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/filter_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/filter_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/filter_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/filter_layer.cpp.i: cmake_force
@@ -371,7 +397,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/filter_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/flatten_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/flatten_layer.cpp.o: ../src/caffe/layers/flatten_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/flatten_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/flatten_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/flatten_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/flatten_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/flatten_layer.cpp.i: cmake_force
@@ -384,7 +410,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/flatten_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/im2col_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/im2col_layer.cpp.o: ../src/caffe/layers/im2col_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/im2col_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/im2col_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/im2col_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/im2col_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/im2col_layer.cpp.i: cmake_force
@@ -397,7 +423,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/im2col_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/inner_product_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/inner_product_layer.cpp.o: ../src/caffe/layers/inner_product_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/inner_product_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/inner_product_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/inner_product_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/inner_product_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/inner_product_layer.cpp.i: cmake_force
@@ -410,7 +436,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/inner_product_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/input_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/input_layer.cpp.o: ../src/caffe/layers/input_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/input_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/input_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/input_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/input_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/input_layer.cpp.i: cmake_force
@@ -423,7 +449,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/input_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/log_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/log_layer.cpp.o: ../src/caffe/layers/log_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/log_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/log_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/log_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/log_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/log_layer.cpp.i: cmake_force
@@ -434,9 +460,22 @@ src/caffe/CMakeFiles/caffe.dir/layers/log_layer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/caffe.dir/layers/log_layer.cpp.s"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/log_layer.cpp -o CMakeFiles/caffe.dir/layers/log_layer.cpp.s
 
+src/caffe/CMakeFiles/caffe.dir/layers/loss_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
+src/caffe/CMakeFiles/caffe.dir/layers/loss_layer.cpp.o: ../src/caffe/layers/loss_layer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/loss_layer.cpp.o"
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/loss_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/loss_layer.cpp
+
+src/caffe/CMakeFiles/caffe.dir/layers/loss_layer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/caffe.dir/layers/loss_layer.cpp.i"
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/loss_layer.cpp > CMakeFiles/caffe.dir/layers/loss_layer.cpp.i
+
+src/caffe/CMakeFiles/caffe.dir/layers/loss_layer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/caffe.dir/layers/loss_layer.cpp.s"
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/loss_layer.cpp -o CMakeFiles/caffe.dir/layers/loss_layer.cpp.s
+
 src/caffe/CMakeFiles/caffe.dir/layers/lrn_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/lrn_layer.cpp.o: ../src/caffe/layers/lrn_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/lrn_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/lrn_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/lrn_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/lrn_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/lrn_layer.cpp.i: cmake_force
@@ -449,7 +488,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/lrn_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/lstm_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/lstm_layer.cpp.o: ../src/caffe/layers/lstm_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/lstm_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/lstm_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/lstm_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/lstm_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/lstm_layer.cpp.i: cmake_force
@@ -462,7 +501,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/lstm_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/memory_data_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/memory_data_layer.cpp.o: ../src/caffe/layers/memory_data_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/memory_data_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/memory_data_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/memory_data_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/memory_data_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/memory_data_layer.cpp.i: cmake_force
@@ -475,7 +514,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/memory_data_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/mvn_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/mvn_layer.cpp.o: ../src/caffe/layers/mvn_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/mvn_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/mvn_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/mvn_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/mvn_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/mvn_layer.cpp.i: cmake_force
@@ -488,7 +527,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/mvn_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/neuron_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/neuron_layer.cpp.o: ../src/caffe/layers/neuron_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/neuron_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/neuron_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/neuron_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/neuron_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/neuron_layer.cpp.i: cmake_force
@@ -501,7 +540,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/neuron_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/parameter_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/parameter_layer.cpp.o: ../src/caffe/layers/parameter_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/parameter_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/parameter_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/parameter_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/parameter_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/parameter_layer.cpp.i: cmake_force
@@ -514,7 +553,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/parameter_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/pooling_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/pooling_layer.cpp.o: ../src/caffe/layers/pooling_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/pooling_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/pooling_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/pooling_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/pooling_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/pooling_layer.cpp.i: cmake_force
@@ -527,7 +566,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/pooling_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/power_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/power_layer.cpp.o: ../src/caffe/layers/power_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/power_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/power_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/power_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/power_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/power_layer.cpp.i: cmake_force
@@ -540,7 +579,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/power_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/prelu_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/prelu_layer.cpp.o: ../src/caffe/layers/prelu_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/prelu_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/prelu_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/prelu_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/prelu_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/prelu_layer.cpp.i: cmake_force
@@ -553,7 +592,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/prelu_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/recurrent_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/recurrent_layer.cpp.o: ../src/caffe/layers/recurrent_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/recurrent_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/recurrent_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/recurrent_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/recurrent_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/recurrent_layer.cpp.i: cmake_force
@@ -566,7 +605,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/recurrent_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/reduction_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/reduction_layer.cpp.o: ../src/caffe/layers/reduction_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/reduction_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/reduction_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/reduction_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/reduction_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/reduction_layer.cpp.i: cmake_force
@@ -579,7 +618,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/reduction_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/relu_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/relu_layer.cpp.o: ../src/caffe/layers/relu_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/relu_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/relu_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/relu_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/relu_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/relu_layer.cpp.i: cmake_force
@@ -592,7 +631,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/relu_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/reshape_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/reshape_layer.cpp.o: ../src/caffe/layers/reshape_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/reshape_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/reshape_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/reshape_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/reshape_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/reshape_layer.cpp.i: cmake_force
@@ -605,7 +644,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/reshape_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/rnn_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/rnn_layer.cpp.o: ../src/caffe/layers/rnn_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/rnn_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/rnn_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/rnn_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/rnn_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/rnn_layer.cpp.i: cmake_force
@@ -618,7 +657,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/rnn_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/scale_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/scale_layer.cpp.o: ../src/caffe/layers/scale_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/scale_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/scale_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/scale_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/scale_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/scale_layer.cpp.i: cmake_force
@@ -631,7 +670,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/scale_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/sigmoid_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/sigmoid_layer.cpp.o: ../src/caffe/layers/sigmoid_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/sigmoid_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/sigmoid_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/sigmoid_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/sigmoid_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/sigmoid_layer.cpp.i: cmake_force
@@ -644,7 +683,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/sigmoid_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/silence_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/silence_layer.cpp.o: ../src/caffe/layers/silence_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/silence_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/silence_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/silence_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/silence_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/silence_layer.cpp.i: cmake_force
@@ -657,7 +696,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/silence_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/slice_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/slice_layer.cpp.o: ../src/caffe/layers/slice_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/slice_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/slice_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/slice_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/slice_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/slice_layer.cpp.i: cmake_force
@@ -670,7 +709,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/slice_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/softmax_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/softmax_layer.cpp.o: ../src/caffe/layers/softmax_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/softmax_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/softmax_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/softmax_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/softmax_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/softmax_layer.cpp.i: cmake_force
@@ -681,9 +720,22 @@ src/caffe/CMakeFiles/caffe.dir/layers/softmax_layer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/caffe.dir/layers/softmax_layer.cpp.s"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/softmax_layer.cpp -o CMakeFiles/caffe.dir/layers/softmax_layer.cpp.s
 
+src/caffe/CMakeFiles/caffe.dir/layers/softmax_loss_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
+src/caffe/CMakeFiles/caffe.dir/layers/softmax_loss_layer.cpp.o: ../src/caffe/layers/softmax_loss_layer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/softmax_loss_layer.cpp.o"
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/softmax_loss_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/softmax_loss_layer.cpp
+
+src/caffe/CMakeFiles/caffe.dir/layers/softmax_loss_layer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/caffe.dir/layers/softmax_loss_layer.cpp.i"
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/softmax_loss_layer.cpp > CMakeFiles/caffe.dir/layers/softmax_loss_layer.cpp.i
+
+src/caffe/CMakeFiles/caffe.dir/layers/softmax_loss_layer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/caffe.dir/layers/softmax_loss_layer.cpp.s"
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/softmax_loss_layer.cpp -o CMakeFiles/caffe.dir/layers/softmax_loss_layer.cpp.s
+
 src/caffe/CMakeFiles/caffe.dir/layers/split_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/split_layer.cpp.o: ../src/caffe/layers/split_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/split_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/split_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/split_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/split_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/split_layer.cpp.i: cmake_force
@@ -696,7 +748,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/split_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/spp_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/spp_layer.cpp.o: ../src/caffe/layers/spp_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/spp_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/spp_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/spp_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/spp_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/spp_layer.cpp.i: cmake_force
@@ -709,7 +761,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/spp_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/tanh_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/tanh_layer.cpp.o: ../src/caffe/layers/tanh_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/tanh_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/tanh_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/tanh_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/tanh_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/tanh_layer.cpp.i: cmake_force
@@ -722,7 +774,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/tanh_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/threshold_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/threshold_layer.cpp.o: ../src/caffe/layers/threshold_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/threshold_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/threshold_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/threshold_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/threshold_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/threshold_layer.cpp.i: cmake_force
@@ -735,7 +787,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/threshold_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/layers/tile_layer.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/layers/tile_layer.cpp.o: ../src/caffe/layers/tile_layer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/tile_layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object src/caffe/CMakeFiles/caffe.dir/layers/tile_layer.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/layers/tile_layer.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/tile_layer.cpp
 
 src/caffe/CMakeFiles/caffe.dir/layers/tile_layer.cpp.i: cmake_force
@@ -748,7 +800,7 @@ src/caffe/CMakeFiles/caffe.dir/layers/tile_layer.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/net.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/net.cpp.o: ../src/caffe/net.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object src/caffe/CMakeFiles/caffe.dir/net.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object src/caffe/CMakeFiles/caffe.dir/net.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/net.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/net.cpp
 
 src/caffe/CMakeFiles/caffe.dir/net.cpp.i: cmake_force
@@ -761,7 +813,7 @@ src/caffe/CMakeFiles/caffe.dir/net.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/syncedmem.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/syncedmem.cpp.o: ../src/caffe/syncedmem.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object src/caffe/CMakeFiles/caffe.dir/syncedmem.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object src/caffe/CMakeFiles/caffe.dir/syncedmem.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/syncedmem.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/syncedmem.cpp
 
 src/caffe/CMakeFiles/caffe.dir/syncedmem.cpp.i: cmake_force
@@ -774,7 +826,7 @@ src/caffe/CMakeFiles/caffe.dir/syncedmem.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/util/benchmark.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/util/benchmark.cpp.o: ../src/caffe/util/benchmark.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object src/caffe/CMakeFiles/caffe.dir/util/benchmark.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object src/caffe/CMakeFiles/caffe.dir/util/benchmark.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/util/benchmark.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/benchmark.cpp
 
 src/caffe/CMakeFiles/caffe.dir/util/benchmark.cpp.i: cmake_force
@@ -787,7 +839,7 @@ src/caffe/CMakeFiles/caffe.dir/util/benchmark.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/util/im2col.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/util/im2col.cpp.o: ../src/caffe/util/im2col.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object src/caffe/CMakeFiles/caffe.dir/util/im2col.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object src/caffe/CMakeFiles/caffe.dir/util/im2col.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/util/im2col.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/im2col.cpp
 
 src/caffe/CMakeFiles/caffe.dir/util/im2col.cpp.i: cmake_force
@@ -800,7 +852,7 @@ src/caffe/CMakeFiles/caffe.dir/util/im2col.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/util/im2col_cl.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/util/im2col_cl.cpp.o: ../src/caffe/util/im2col_cl.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object src/caffe/CMakeFiles/caffe.dir/util/im2col_cl.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object src/caffe/CMakeFiles/caffe.dir/util/im2col_cl.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/util/im2col_cl.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/im2col_cl.cpp
 
 src/caffe/CMakeFiles/caffe.dir/util/im2col_cl.cpp.i: cmake_force
@@ -813,7 +865,7 @@ src/caffe/CMakeFiles/caffe.dir/util/im2col_cl.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/util/insert_splits.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/util/insert_splits.cpp.o: ../src/caffe/util/insert_splits.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object src/caffe/CMakeFiles/caffe.dir/util/insert_splits.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object src/caffe/CMakeFiles/caffe.dir/util/insert_splits.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/util/insert_splits.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/insert_splits.cpp
 
 src/caffe/CMakeFiles/caffe.dir/util/insert_splits.cpp.i: cmake_force
@@ -826,7 +878,7 @@ src/caffe/CMakeFiles/caffe.dir/util/insert_splits.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/util/io.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/util/io.cpp.o: ../src/caffe/util/io.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object src/caffe/CMakeFiles/caffe.dir/util/io.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object src/caffe/CMakeFiles/caffe.dir/util/io.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/util/io.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/io.cpp
 
 src/caffe/CMakeFiles/caffe.dir/util/io.cpp.i: cmake_force
@@ -839,7 +891,7 @@ src/caffe/CMakeFiles/caffe.dir/util/io.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/util/math_functions.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/util/math_functions.cpp.o: ../src/caffe/util/math_functions.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object src/caffe/CMakeFiles/caffe.dir/util/math_functions.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building CXX object src/caffe/CMakeFiles/caffe.dir/util/math_functions.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/util/math_functions.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/math_functions.cpp
 
 src/caffe/CMakeFiles/caffe.dir/util/math_functions.cpp.i: cmake_force
@@ -852,7 +904,7 @@ src/caffe/CMakeFiles/caffe.dir/util/math_functions.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/util/math_functions_cl.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/util/math_functions_cl.cpp.o: ../src/caffe/util/math_functions_cl.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object src/caffe/CMakeFiles/caffe.dir/util/math_functions_cl.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building CXX object src/caffe/CMakeFiles/caffe.dir/util/math_functions_cl.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/util/math_functions_cl.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/math_functions_cl.cpp
 
 src/caffe/CMakeFiles/caffe.dir/util/math_functions_cl.cpp.i: cmake_force
@@ -865,7 +917,7 @@ src/caffe/CMakeFiles/caffe.dir/util/math_functions_cl.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/util/opencl_kernel.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/util/opencl_kernel.cpp.o: ../src/caffe/util/opencl_kernel.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object src/caffe/CMakeFiles/caffe.dir/util/opencl_kernel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building CXX object src/caffe/CMakeFiles/caffe.dir/util/opencl_kernel.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/util/opencl_kernel.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/opencl_kernel.cpp
 
 src/caffe/CMakeFiles/caffe.dir/util/opencl_kernel.cpp.i: cmake_force
@@ -878,7 +930,7 @@ src/caffe/CMakeFiles/caffe.dir/util/opencl_kernel.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/util/upgrade_proto.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/util/upgrade_proto.cpp.o: ../src/caffe/util/upgrade_proto.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object src/caffe/CMakeFiles/caffe.dir/util/upgrade_proto.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building CXX object src/caffe/CMakeFiles/caffe.dir/util/upgrade_proto.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/util/upgrade_proto.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/caffe/util/upgrade_proto.cpp
 
 src/caffe/CMakeFiles/caffe.dir/util/upgrade_proto.cpp.i: cmake_force
@@ -891,7 +943,7 @@ src/caffe/CMakeFiles/caffe.dir/util/upgrade_proto.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_jni.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_jni.cpp.o: ../src/jni/caffe_jni.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building CXX object src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_jni.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building CXX object src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_jni.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/__/jni/caffe_jni.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/jni/caffe_jni.cpp
 
 src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_jni.cpp.i: cmake_force
@@ -904,7 +956,7 @@ src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_jni.cpp.s: cmake_force
 
 src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_mobile.cpp.o: src/caffe/CMakeFiles/caffe.dir/flags.make
 src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_mobile.cpp.o: ../src/jni/caffe_mobile.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building CXX object src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_mobile.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building CXX object src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_mobile.cpp.o"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && /home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android28 --gcc-toolchain=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/sysroot  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/caffe.dir/__/jni/caffe_mobile.cpp.o -c /home/zrji/android_caffe/caffe-android-opencl/src/jni/caffe_mobile.cpp
 
 src/caffe/CMakeFiles/caffe.dir/__/jni/caffe_mobile.cpp.i: cmake_force
@@ -923,6 +975,7 @@ caffe_OBJECTS = \
 "CMakeFiles/caffe.dir/layer.cpp.o" \
 "CMakeFiles/caffe.dir/layer_factory.cpp.o" \
 "CMakeFiles/caffe.dir/layers/absval_layer.cpp.o" \
+"CMakeFiles/caffe.dir/layers/accuracy_layer.cpp.o" \
 "CMakeFiles/caffe.dir/layers/argmax_layer.cpp.o" \
 "CMakeFiles/caffe.dir/layers/base_conv_layer.cpp.o" \
 "CMakeFiles/caffe.dir/layers/base_data_layer.cpp.o" \
@@ -939,6 +992,7 @@ caffe_OBJECTS = \
 "CMakeFiles/caffe.dir/layers/eltwise_layer.cpp.o" \
 "CMakeFiles/caffe.dir/layers/elu_layer.cpp.o" \
 "CMakeFiles/caffe.dir/layers/embed_layer.cpp.o" \
+"CMakeFiles/caffe.dir/layers/euclidean_loss_layer.cpp.o" \
 "CMakeFiles/caffe.dir/layers/exp_layer.cpp.o" \
 "CMakeFiles/caffe.dir/layers/filter_layer.cpp.o" \
 "CMakeFiles/caffe.dir/layers/flatten_layer.cpp.o" \
@@ -946,6 +1000,7 @@ caffe_OBJECTS = \
 "CMakeFiles/caffe.dir/layers/inner_product_layer.cpp.o" \
 "CMakeFiles/caffe.dir/layers/input_layer.cpp.o" \
 "CMakeFiles/caffe.dir/layers/log_layer.cpp.o" \
+"CMakeFiles/caffe.dir/layers/loss_layer.cpp.o" \
 "CMakeFiles/caffe.dir/layers/lrn_layer.cpp.o" \
 "CMakeFiles/caffe.dir/layers/lstm_layer.cpp.o" \
 "CMakeFiles/caffe.dir/layers/memory_data_layer.cpp.o" \
@@ -965,6 +1020,7 @@ caffe_OBJECTS = \
 "CMakeFiles/caffe.dir/layers/silence_layer.cpp.o" \
 "CMakeFiles/caffe.dir/layers/slice_layer.cpp.o" \
 "CMakeFiles/caffe.dir/layers/softmax_layer.cpp.o" \
+"CMakeFiles/caffe.dir/layers/softmax_loss_layer.cpp.o" \
 "CMakeFiles/caffe.dir/layers/split_layer.cpp.o" \
 "CMakeFiles/caffe.dir/layers/spp_layer.cpp.o" \
 "CMakeFiles/caffe.dir/layers/tanh_layer.cpp.o" \
@@ -993,6 +1049,7 @@ lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/data_transformer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layer_factory.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/absval_layer.cpp.o
+lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/accuracy_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/argmax_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/base_conv_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/base_data_layer.cpp.o
@@ -1009,6 +1066,7 @@ lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/dummy_data_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/eltwise_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/elu_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/embed_layer.cpp.o
+lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/euclidean_loss_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/exp_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/filter_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/flatten_layer.cpp.o
@@ -1016,6 +1074,7 @@ lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/im2col_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/inner_product_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/input_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/log_layer.cpp.o
+lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/loss_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/lrn_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/lstm_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/memory_data_layer.cpp.o
@@ -1035,6 +1094,7 @@ lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/sigmoid_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/silence_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/slice_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/softmax_layer.cpp.o
+lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/softmax_loss_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/split_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/spp_layer.cpp.o
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/layers/tanh_layer.cpp.o
@@ -1061,7 +1121,7 @@ lib/libcaffe.so: ../third_party/arm64-v8a-28-OpenBLAS/lib/libopenblas.a
 lib/libcaffe.so: ../third_party/arm64-v8a-28-CLBlast/lib/libclblast.so
 lib/libcaffe.so: ../third_party/OpenCL/libOpenCL.so
 lib/libcaffe.so: src/caffe/CMakeFiles/caffe.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Linking CXX shared library ../../lib/libcaffe.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Linking CXX shared library ../../lib/libcaffe.so"
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/caffe.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

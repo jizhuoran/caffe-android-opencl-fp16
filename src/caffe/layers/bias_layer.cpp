@@ -130,7 +130,7 @@ void BiasLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "BiasForward", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "BiasForward", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel

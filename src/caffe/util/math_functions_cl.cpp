@@ -133,9 +133,9 @@ void caffe_gpu_bsum<float>(const int m, const int n, const float* X, const float
 
   cl_int ret;
 
-  cl_kernel kernel1 = clCreateKernel(Caffe::Get().program, "Xasum", &ret);
+  cl_kernel kernel1 = clCreateKernel(Caffe::Get().math_program, "Xasum", &ret);
   OPENCL_CHECK(ret);
-  cl_kernel kernel2 = clCreateKernel(Caffe::Get().program, "XasumEpilogue", &ret);
+  cl_kernel kernel2 = clCreateKernel(Caffe::Get().math_program, "XasumEpilogue", &ret);
   OPENCL_CHECK(ret);
 
 
@@ -183,9 +183,9 @@ void caffe_gpu_bsum<half>(const int m, const int n, const half* X, const float a
                             half* y, const int x_inc) {
   
   cl_int ret;
-  cl_kernel kernel1 = clCreateKernel(Caffe::Get().program, "Xasum", &ret);
+  cl_kernel kernel1 = clCreateKernel(Caffe::Get().math_program, "Xasum", &ret);
   OPENCL_CHECK(ret);
-  cl_kernel kernel2 = clCreateKernel(Caffe::Get().program, "XasumEpilogue", &ret);
+  cl_kernel kernel2 = clCreateKernel(Caffe::Get().math_program, "XasumEpilogue", &ret);
   OPENCL_CHECK(ret);
 
   half alpha_half = float2half_impl(alpha);
@@ -234,7 +234,7 @@ void caffe_gpu_axpy<float>(const int N, const float alpha, const float* X,
       
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "axpy_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "axpy_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -254,7 +254,7 @@ void caffe_gpu_axpy<half>(const int N, const float alpha, const half* X,
     half* Y) {
   
   cl_int ret;
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "axpy_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "axpy_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -295,7 +295,7 @@ void caffe_gpu_add_scalar<float>(const int N, const float alpha, float *X) {
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "add_scalar_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "add_scalar_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -315,7 +315,7 @@ void caffe_gpu_add_scalar<half>(const int N, const float alpha, half *X) {
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "add_scalar_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "add_scalar_kernel", &ret);
   OPENCL_CHECK(ret);
 
   half alpha_half = float2half_impl(alpha);
@@ -339,7 +339,7 @@ void caffe_gpu_scal<float>(const int N, const float alpha, float* X){
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "scal_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "scal_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -359,7 +359,7 @@ void caffe_gpu_scal<half>(const int N, const float alpha, half* X){
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "scal_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "scal_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -396,7 +396,7 @@ void caffe_gpu_add<float>(const int N, const float* a, const float* b, float* y)
     
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "add_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "add_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -416,7 +416,7 @@ void caffe_gpu_add<half>(const int N, const half* a, const half* b, half* y){
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "add_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "add_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -437,7 +437,7 @@ void caffe_gpu_sub<float>(const int N, const float* a, const float* b, float* y)
     
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "sub_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "sub_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -457,7 +457,7 @@ void caffe_gpu_sub<half>(const int N, const half* a, const half* b, half* y){
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "sub_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "sub_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -477,7 +477,7 @@ void caffe_gpu_mul<float>(const int N, const float* a, const float* b, float* y)
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "mul_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "mul_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -499,7 +499,7 @@ void caffe_gpu_mul<half>(const int N, const half* a, const half* b, half* y){
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "mul_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "mul_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -518,7 +518,7 @@ void caffe_gpu_div<float>(const int N, const float* a, const float* b, float* y)
     
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "div_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "div_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -539,7 +539,7 @@ void caffe_gpu_div<half>(const int N, const half* a, const half* b, half* y){
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "div_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "div_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -560,7 +560,7 @@ void caffe_gpu_abs<float>(const int n, const float* a, float* y){
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "abs_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "abs_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -580,7 +580,7 @@ void caffe_gpu_abs<half>(const int n, const half* a, half* y){
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "abs_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "abs_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -600,7 +600,7 @@ void caffe_gpu_exp<float>(const int n, const float* a, float* y){
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "exp_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "exp_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -620,7 +620,7 @@ void caffe_gpu_exp<half>(const int n, const half* a, half* y){
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "exp_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "exp_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -642,7 +642,7 @@ void caffe_gpu_log<float>(const int n, const float* a, float* y){
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "log_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "log_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -662,7 +662,7 @@ void caffe_gpu_log<half>(const int n, const half* a, half* y){
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "log_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "log_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -683,7 +683,7 @@ void caffe_gpu_powx<float>(const int n, const float* a, const float b, float* y)
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "powx_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "powx_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -704,7 +704,7 @@ void caffe_gpu_powx<half>(const int n, const half* a, const float b, half* y){
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "powx_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "powx_kernel", &ret);
   OPENCL_CHECK(ret);
 
   half b_half = float2half_impl(b);
@@ -729,7 +729,7 @@ void caffe_gpu_sqrt<float>(const int n, const float* a, float* y){
       
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "sqrt_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "sqrt_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -858,7 +858,7 @@ void caffe_gpu_fabs<float>(const int n, const float* x, float* y){
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "abs_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "abs_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -876,7 +876,7 @@ void caffe_gpu_fabs<half>(const int n, const half* x, half* y){
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "abs_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "abs_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -915,7 +915,7 @@ void caffe_gpu_sqrt<half>(const int n, const half* a, half* y){
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "sqrt_kernel", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "sqrt_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel

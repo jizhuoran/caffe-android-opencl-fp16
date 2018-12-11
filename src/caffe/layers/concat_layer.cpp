@@ -112,7 +112,7 @@ void ConcatLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
 
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "Concat", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "Concat", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel

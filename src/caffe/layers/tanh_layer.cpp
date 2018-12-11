@@ -52,7 +52,7 @@ void TanHLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
 
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "TanHForward", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "TanHForward", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel

@@ -94,7 +94,7 @@ void BatchReindexLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "BRForward", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "BRForward", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel

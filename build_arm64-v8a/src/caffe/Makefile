@@ -383,6 +383,33 @@ layers/absval_layer.cpp.s:
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/layers/absval_layer.cpp.s
 .PHONY : layers/absval_layer.cpp.s
 
+layers/accuracy_layer.o: layers/accuracy_layer.cpp.o
+
+.PHONY : layers/accuracy_layer.o
+
+# target to build an object file
+layers/accuracy_layer.cpp.o:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/layers/accuracy_layer.cpp.o
+.PHONY : layers/accuracy_layer.cpp.o
+
+layers/accuracy_layer.i: layers/accuracy_layer.cpp.i
+
+.PHONY : layers/accuracy_layer.i
+
+# target to preprocess a source file
+layers/accuracy_layer.cpp.i:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/layers/accuracy_layer.cpp.i
+.PHONY : layers/accuracy_layer.cpp.i
+
+layers/accuracy_layer.s: layers/accuracy_layer.cpp.s
+
+.PHONY : layers/accuracy_layer.s
+
+# target to generate assembly for a file
+layers/accuracy_layer.cpp.s:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/layers/accuracy_layer.cpp.s
+.PHONY : layers/accuracy_layer.cpp.s
+
 layers/argmax_layer.o: layers/argmax_layer.cpp.o
 
 .PHONY : layers/argmax_layer.o
@@ -815,6 +842,33 @@ layers/embed_layer.cpp.s:
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/layers/embed_layer.cpp.s
 .PHONY : layers/embed_layer.cpp.s
 
+layers/euclidean_loss_layer.o: layers/euclidean_loss_layer.cpp.o
+
+.PHONY : layers/euclidean_loss_layer.o
+
+# target to build an object file
+layers/euclidean_loss_layer.cpp.o:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/layers/euclidean_loss_layer.cpp.o
+.PHONY : layers/euclidean_loss_layer.cpp.o
+
+layers/euclidean_loss_layer.i: layers/euclidean_loss_layer.cpp.i
+
+.PHONY : layers/euclidean_loss_layer.i
+
+# target to preprocess a source file
+layers/euclidean_loss_layer.cpp.i:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/layers/euclidean_loss_layer.cpp.i
+.PHONY : layers/euclidean_loss_layer.cpp.i
+
+layers/euclidean_loss_layer.s: layers/euclidean_loss_layer.cpp.s
+
+.PHONY : layers/euclidean_loss_layer.s
+
+# target to generate assembly for a file
+layers/euclidean_loss_layer.cpp.s:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/layers/euclidean_loss_layer.cpp.s
+.PHONY : layers/euclidean_loss_layer.cpp.s
+
 layers/exp_layer.o: layers/exp_layer.cpp.o
 
 .PHONY : layers/exp_layer.o
@@ -1003,6 +1057,33 @@ layers/log_layer.s: layers/log_layer.cpp.s
 layers/log_layer.cpp.s:
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/layers/log_layer.cpp.s
 .PHONY : layers/log_layer.cpp.s
+
+layers/loss_layer.o: layers/loss_layer.cpp.o
+
+.PHONY : layers/loss_layer.o
+
+# target to build an object file
+layers/loss_layer.cpp.o:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/layers/loss_layer.cpp.o
+.PHONY : layers/loss_layer.cpp.o
+
+layers/loss_layer.i: layers/loss_layer.cpp.i
+
+.PHONY : layers/loss_layer.i
+
+# target to preprocess a source file
+layers/loss_layer.cpp.i:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/layers/loss_layer.cpp.i
+.PHONY : layers/loss_layer.cpp.i
+
+layers/loss_layer.s: layers/loss_layer.cpp.s
+
+.PHONY : layers/loss_layer.s
+
+# target to generate assembly for a file
+layers/loss_layer.cpp.s:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/layers/loss_layer.cpp.s
+.PHONY : layers/loss_layer.cpp.s
 
 layers/lrn_layer.o: layers/lrn_layer.cpp.o
 
@@ -1517,6 +1598,33 @@ layers/softmax_layer.cpp.s:
 	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/layers/softmax_layer.cpp.s
 .PHONY : layers/softmax_layer.cpp.s
 
+layers/softmax_loss_layer.o: layers/softmax_loss_layer.cpp.o
+
+.PHONY : layers/softmax_loss_layer.o
+
+# target to build an object file
+layers/softmax_loss_layer.cpp.o:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/layers/softmax_loss_layer.cpp.o
+.PHONY : layers/softmax_loss_layer.cpp.o
+
+layers/softmax_loss_layer.i: layers/softmax_loss_layer.cpp.i
+
+.PHONY : layers/softmax_loss_layer.i
+
+# target to preprocess a source file
+layers/softmax_loss_layer.cpp.i:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/layers/softmax_loss_layer.cpp.i
+.PHONY : layers/softmax_loss_layer.cpp.i
+
+layers/softmax_loss_layer.s: layers/softmax_loss_layer.cpp.s
+
+.PHONY : layers/softmax_loss_layer.s
+
+# target to generate assembly for a file
+layers/softmax_loss_layer.cpp.s:
+	cd /home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a && $(MAKE) -f src/caffe/CMakeFiles/caffe.dir/build.make src/caffe/CMakeFiles/caffe.dir/layers/softmax_loss_layer.cpp.s
+.PHONY : layers/softmax_loss_layer.cpp.s
+
 layers/split_layer.o: layers/split_layer.cpp.o
 
 .PHONY : layers/split_layer.o
@@ -1986,6 +2094,9 @@ help:
 	@echo "... layers/absval_layer.o"
 	@echo "... layers/absval_layer.i"
 	@echo "... layers/absval_layer.s"
+	@echo "... layers/accuracy_layer.o"
+	@echo "... layers/accuracy_layer.i"
+	@echo "... layers/accuracy_layer.s"
 	@echo "... layers/argmax_layer.o"
 	@echo "... layers/argmax_layer.i"
 	@echo "... layers/argmax_layer.s"
@@ -2034,6 +2145,9 @@ help:
 	@echo "... layers/embed_layer.o"
 	@echo "... layers/embed_layer.i"
 	@echo "... layers/embed_layer.s"
+	@echo "... layers/euclidean_loss_layer.o"
+	@echo "... layers/euclidean_loss_layer.i"
+	@echo "... layers/euclidean_loss_layer.s"
 	@echo "... layers/exp_layer.o"
 	@echo "... layers/exp_layer.i"
 	@echo "... layers/exp_layer.s"
@@ -2055,6 +2169,9 @@ help:
 	@echo "... layers/log_layer.o"
 	@echo "... layers/log_layer.i"
 	@echo "... layers/log_layer.s"
+	@echo "... layers/loss_layer.o"
+	@echo "... layers/loss_layer.i"
+	@echo "... layers/loss_layer.s"
 	@echo "... layers/lrn_layer.o"
 	@echo "... layers/lrn_layer.i"
 	@echo "... layers/lrn_layer.s"
@@ -2112,6 +2229,9 @@ help:
 	@echo "... layers/softmax_layer.o"
 	@echo "... layers/softmax_layer.i"
 	@echo "... layers/softmax_layer.s"
+	@echo "... layers/softmax_loss_layer.o"
+	@echo "... layers/softmax_loss_layer.i"
+	@echo "... layers/softmax_loss_layer.s"
 	@echo "... layers/split_layer.o"
 	@echo "... layers/split_layer.i"
 	@echo "... layers/split_layer.s"

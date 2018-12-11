@@ -16,7 +16,7 @@
 #endif
 
 #ifdef USE_OPENCL
-#define CL_TARGET_OPENCL_VERSION 220
+#define CL_TARGET_OPENCL_VERSION 120
 #endif
 
 #include <climits>
@@ -200,6 +200,9 @@ class Caffe {
   // Search from start_id to the highest possible device ordinal,
   // return the ordinal of the first available device.
   static int FindDevice(const int start_id = 0);
+
+  void build_opencl_program(std::string kernel_code, cl_program &program);
+
   // Parallel training
   inline static int solver_count() { return Get().solver_count_; }
   inline static void set_solver_count(int val) { Get().solver_count_ = val; }
@@ -217,7 +220,7 @@ class Caffe {
   cl_uint retNumPlatforms;
   cl_context context;
   cl_command_queue commandQueue;
-  cl_program program;
+  cl_program math_program;
 
   
  protected:

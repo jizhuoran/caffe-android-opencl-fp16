@@ -66,17 +66,6 @@ void caffe_axpy<float>(const int N, const float alpha, const float* X,
 
 
 template <>
-void caffe_set(const int N, const float alpha, float* Y) {
-  if (alpha == 0) {
-    memset(Y, 0, sizeof(float) * N);  // NOLINT(caffe/alt_fn)
-    return;
-  }
-  for (int i = 0; i < N; ++i) {
-    Y[i] = alpha;
-  }
-}
-
-template <>
 void caffe_set(const int N, const float alpha, half* Y) {
 
   half alpha_half = float2half_impl(alpha);
@@ -96,7 +85,6 @@ void caffe_set(const int N, const float alpha, float* Y) {
   vDSP_vfill(&alpha, Y, 1, N);
 }
 
-
 #elif defined(__ARM_NEON_H)
 template <>
 void caffe_set(const int N, const float alpha, float* Y) {
@@ -111,6 +99,20 @@ void caffe_set(const int N, const float alpha, float* Y) {
     Y[i] = alpha;
   }
 }
+
+#else
+
+template <>
+void caffe_set(const int N, const float alpha, float* Y) {
+  if (alpha == 0) {
+    memset(Y, 0, sizeof(float) * N);  // NOLINT(caffe/alt_fn)
+    return;
+  }
+  for (int i = 0; i < N; ++i) {
+    Y[i] = alpha;
+  }
+}
+
 #endif
 
 

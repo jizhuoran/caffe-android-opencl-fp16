@@ -236,6 +236,9 @@ CMAKE_TOOLCHAIN_FILE:FILEPATH=/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b/
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//No help, variable specified on the command line.
+OPENCL_ROOT:UNINITIALIZED=/home/zrji/android_caffe/caffe-android-opencl/third_party/OpenCL/
+
 //Path to a file.
 OpenBLAS_INCLUDE_DIR:PATH=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-OpenBLAS/include
 

@@ -47,7 +47,7 @@ void ReLULayer<float>::Forward_gpu(const vector<Blob<float>*>& bottom,
 
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "ReLUForward", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "ReLUForward", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -73,7 +73,7 @@ void ReLULayer<half>::Forward_gpu(const vector<Blob<half>*>& bottom,
 
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "ReLUForward", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "ReLUForward", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel

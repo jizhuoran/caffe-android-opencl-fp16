@@ -52,7 +52,7 @@ void ELULayer<half>::Forward_gpu(const vector<Blob<half>*>& bottom,
 
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "ELUForward", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "ELUForward", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -80,7 +80,7 @@ void ELULayer<float>::Forward_gpu(const vector<Blob<float>*>& bottom,
 
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "ELUForward", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "ELUForward", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel

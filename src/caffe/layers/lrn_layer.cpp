@@ -283,7 +283,7 @@ void LRNLayer<float>::CrossChannelForward_gpu(
 
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "LRNFillScale", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "LRNFillScale", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -307,7 +307,7 @@ void LRNLayer<float>::CrossChannelForward_gpu(
 
   n_threads = bottom[0]->count();
 
-  kernel = clCreateKernel(Caffe::Get().program, "LRNComputeOutput", &ret);
+  kernel = clCreateKernel(Caffe::Get().math_program, "LRNComputeOutput", &ret);
   OPENCL_CHECK(ret);
 
   float negative_beta = -beta_;
@@ -339,7 +339,7 @@ void LRNLayer<half>::CrossChannelForward_gpu(
 
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "LRNFillScale", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "LRNFillScale", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -364,7 +364,7 @@ void LRNLayer<half>::CrossChannelForward_gpu(
 
   n_threads = bottom[0]->count();
 
-  kernel = clCreateKernel(Caffe::Get().program, "LRNComputeOutput", &ret);
+  kernel = clCreateKernel(Caffe::Get().math_program, "LRNComputeOutput", &ret);
   OPENCL_CHECK(ret);
 
   half negative_beta = float2half_impl(-beta_);
@@ -380,13 +380,6 @@ void LRNLayer<half>::CrossChannelForward_gpu(
   OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
   
 }
-
-
-template void LRNLayer<float>::CrossChannelForward_gpu(
-    const vector<Blob<float>*>& bottom, const vector<Blob<float>*>& top);
-template void LRNLayer<half>::CrossChannelForward_gpu(
-    const vector<Blob<half>*>& bottom, const vector<Blob<half>*>& top);
-
 
 
 template <typename Dtype>

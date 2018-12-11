@@ -13,6 +13,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
   "FORWARD_ONLY"
   "USE_NEON_MATH"
   "USE_OPENCL"
+  "USE_PROTOBUF_FULL"
+  "WITH_HALF"
   )
 
 # The include file search paths:

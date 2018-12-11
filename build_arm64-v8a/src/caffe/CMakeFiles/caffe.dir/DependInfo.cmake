@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layer_factory.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layer_factory.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/absval_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/absval_layer.cpp.o"
+  "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/accuracy_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/accuracy_layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/argmax_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/argmax_layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/base_conv_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/base_conv_layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/base_data_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/base_data_layer.cpp.o"
@@ -28,6 +29,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/eltwise_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/eltwise_layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/elu_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/elu_layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/embed_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/embed_layer.cpp.o"
+  "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/euclidean_loss_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/euclidean_loss_layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/exp_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/exp_layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/filter_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/filter_layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/flatten_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/flatten_layer.cpp.o"
@@ -35,6 +37,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/inner_product_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/inner_product_layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/input_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/input_layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/log_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/log_layer.cpp.o"
+  "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/loss_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/loss_layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/lrn_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/lrn_layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/lstm_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/lstm_layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/memory_data_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/memory_data_layer.cpp.o"
@@ -54,6 +57,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/silence_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/silence_layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/slice_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/slice_layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/softmax_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/softmax_layer.cpp.o"
+  "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/softmax_loss_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/softmax_loss_layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/split_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/split_layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/spp_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/spp_layer.cpp.o"
   "/home/zrji/android_caffe/caffe-android-opencl/src/caffe/layers/tanh_layer.cpp" "/home/zrji/android_caffe/caffe-android-opencl/build_arm64-v8a/src/caffe/CMakeFiles/caffe.dir/layers/tanh_layer.cpp.o"
@@ -78,6 +82,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
   "FORWARD_ONLY"
   "USE_NEON_MATH"
   "USE_OPENCL"
+  "USE_PROTOBUF_FULL"
+  "WITH_HALF"
   )
 
 # The include file search paths:

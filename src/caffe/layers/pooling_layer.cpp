@@ -343,7 +343,7 @@ const Dtype* bottom_data = bottom[0]->gpu_data();
   }
 
   cl_int ret;
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, kernel_string.c_str(), &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, kernel_string.c_str(), &ret);
   OPENCL_CHECK(ret);
 
   int bottom_num = bottom[0]->num();
@@ -413,9 +413,6 @@ const Dtype* bottom_data = bottom[0]->gpu_data();
   size_t global_size = CAFFE_GET_BLOCKS(count);
   
   OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 1, NULL, &global_size, &CAFFE_CUDA_NUM_THREADS, 0, NULL, NULL));  
-
-
-
 
 
 }

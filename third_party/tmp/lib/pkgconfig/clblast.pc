@@ -1,0 +1,10 @@
+prefix=/home/zrji/android_caffe/caffe-android-opencl/third_party/arm64-v8a-28-CLBlast
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+
+Name: CLBlast
+Description: CLBlast is a modern, lightweight, performant and tunable OpenCL BLAS library written in C++11
+Version: 1.4.1
+Libs: -L${libdir} -lclblast
+Cflags: -I${includedir}

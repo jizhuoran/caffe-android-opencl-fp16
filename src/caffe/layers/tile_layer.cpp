@@ -70,7 +70,7 @@ void TileLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
 
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "Tile", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "Tile", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel

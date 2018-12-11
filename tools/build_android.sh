@@ -1,10 +1,22 @@
 #!/bin/bash
+
 export NDK_HOME="/home/zrji/android_caffe/tmp_ndk/android-ndk-r18b"
+export DEVICE_OPENCL_DIR="/home/zrji/android_caffe/caffe-android-opencl/third_party/OpenCL/"
 
 if [ ! -d "$NDK_HOME" ]; then
     echo "$(tput setaf 2)"
     echo "###########################################################"
     echo " ERROR: Invalid NDK_HOME=\"$NDK_HOME\" env variable, exit. "
+    echo "###########################################################"
+    echo "$(tput sgr0)"
+    exit 1
+fi
+
+
+if [ ! -d "$DEVICE_OPENCL_DIR" ]; then
+    echo "$(tput setaf 2)"
+    echo "###########################################################"
+    echo " ERROR: Invalid DEVICE_OPENCL_DIR=\"$DEVICE_OPENCL_DIR\" env variable, exit. "
     echo "###########################################################"
     echo "$(tput sgr0)"
     exit 1
@@ -16,7 +28,7 @@ function build-abi {
     cd third_party
     ./build-protobuf-3.1.0.sh Android || exit 1
     #exit 1
-    ./build-openblas.sh || exit 1
+    ./build-openblas.sh Android || exit 1
     #exit 1
     ./build-clblast.sh || exit 1
 
@@ -28,6 +40,7 @@ function build-abi {
         -DANDROID_NDK=$NDK_HOME \
         -DANDROID_ABI="$ANDROID_ABI" \
         -DANDROID_NATIVE_API_LEVEL=$ANDROID_NATIVE_API_LEVEL \
+        -DOPENCL_ROOT=$DEVICE_OPENCL_DIR \
         -G "Unix Makefiles" || exit 1
     make -j 40 || exit 1
     cd ../examples/android/CaffeSimple/app/

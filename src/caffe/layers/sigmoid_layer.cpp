@@ -52,7 +52,7 @@ void SigmoidLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
 
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "SigmoidForward", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "SigmoidForward", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel

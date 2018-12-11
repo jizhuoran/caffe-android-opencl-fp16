@@ -104,7 +104,7 @@ void SoftmaxLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
 
   cl_int ret;
 
-  cl_kernel kernel = clCreateKernel(Caffe::Get().program, "kernel_channel_max", &ret);
+  cl_kernel kernel = clCreateKernel(Caffe::Get().math_program, "kernel_channel_max", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -133,7 +133,7 @@ void SoftmaxLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
 
 
 
-  kernel = clCreateKernel(Caffe::Get().program, "kernel_channel_subtract", &ret);
+  kernel = clCreateKernel(Caffe::Get().math_program, "kernel_channel_subtract", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -154,7 +154,7 @@ void SoftmaxLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   // exponentiate
   // NOLINT_NEXT_LINE(whitespace/operators)
 
-  kernel = clCreateKernel(Caffe::Get().program, "exp_kernel", &ret);
+  kernel = clCreateKernel(Caffe::Get().math_program, "exp_kernel", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -174,7 +174,7 @@ void SoftmaxLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   // NOLINT_NEXT_LINE(whitespace/operators)
 
 
-  kernel = clCreateKernel(Caffe::Get().program, "kernel_channel_sum", &ret);
+  kernel = clCreateKernel(Caffe::Get().math_program, "kernel_channel_sum", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
@@ -196,7 +196,7 @@ void SoftmaxLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   // NOLINT_NEXT_LINE(whitespace/operators)
 
 
-  kernel = clCreateKernel(Caffe::Get().program, "kernel_channel_div", &ret);
+  kernel = clCreateKernel(Caffe::Get().math_program, "kernel_channel_div", &ret);
   OPENCL_CHECK(ret);
 
   // Set arguments for kernel
