@@ -83,15 +83,15 @@ include_directories(${CLBlast_INCLUDE_DIR})
 list(APPEND Caffe_LINKER_LIBS ${CLBlast_LIB})
 
 
-if(ANDROID)
-    include_directories(${CMAKE_SOURCE_DIR}/third_party/OpenCL)
-    list(APPEND Caffe_LINKER_LIBS ${CMAKE_SOURCE_DIR}/third_party/OpenCL/libOpenCL.so)
-else()
+#if(ANDROID)
+#    include_directories(${CMAKE_SOURCE_DIR}/third_party/OpenCL)
+#    list(APPEND Caffe_LINKER_LIBS ${CMAKE_SOURCE_DIR}/third_party/OpenCL/libOpenCL.so)
+#else()
     include(./cmake/Modules/FindOpenCL.cmake)
     message(STATUS ${OPENCL_INCLUDE_DIRS})
     include_directories(${OPENCL_INCLUDE_DIRS})
     list(APPEND Caffe_LINKER_LIBS ${OPENCL_LIBRARIES})  
-endif()
+#endif()
 
 
 caffe_set_caffe_link()

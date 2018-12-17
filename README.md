@@ -12,7 +12,7 @@ Optimized (for memory usage, speed and enegry efficiency) Caffe with OpenCL supp
   - [x] BatchNorm shifting to avoid overflow and underflow
   - [x] All Layer support
   - [x] FP16 caffemodel load and save
-  - [ ] model convertor (From FP32 to FP16)
+  - [x] model convertor (From FP32 to FP16)
 - [x] As few dependencies as possible (Protobuf, OpenBLAS, CLBlast)
 - [x] Optimized memory usage
 - [x] Forward Only (I just noticed that in the original implementation, forward only also do unnecessary copy)
@@ -35,7 +35,6 @@ Optimized (for memory usage, speed and enegry efficiency) Caffe with OpenCL supp
 
 1. Modify the test cases to support half testing
 2. Check unnecessary data copy in Forward Only mode
-3. Caffemodel converotr (FP32 to FP16) 
 4. Tune for android devices
 5. Change the structure of the project (move test out of the src)
 6. Refactor: OpenCL kernls launch method, redundant code in math_fuctions_cl.cpp
