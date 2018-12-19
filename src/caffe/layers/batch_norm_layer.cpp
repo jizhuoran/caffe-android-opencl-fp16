@@ -98,12 +98,7 @@ template <typename Dtype>
 void BatchNormLayer<Dtype>::Forward_cpu(const vector<Blob<Dtype>*>& bottom,
     const vector<Blob<Dtype>*>& top) {
 
-  LOG(INFO) << "Before forward";
-
   const Dtype* bottom_data = bottom[0]->cpu_data();
-
-  LOG(INFO) << "Before first get";
-
 
   Dtype* top_data = top[0]->mutable_cpu_data();
   int num = bottom[0]->shape(0);

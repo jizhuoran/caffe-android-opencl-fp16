@@ -258,12 +258,12 @@ void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
 
 
 template<typename Dtype>
-std::string BaseConvolutionLayer<Dtype>::generate_fw_defs(int TSK, int WPTM, int WPTN, int RTSM, int RTSN) {
+std::string BaseConvolutionLayer<Dtype>::generate_fw_defs() {
   return "SHOULD NOT ENTER THIS FUNCTION: generate_fw_defs in base_conv_layer.cpp";
 }
 
 template<typename Dtype>
-std::string BaseConvolutionLayer<Dtype>::generate_fw_kernels(std::string name, int TSK, int WPTM, int WPTN, int RTSM, int RTSN) {
+std::string BaseConvolutionLayer<Dtype>::generate_fw_kernels(std::string name) {
   return "SHOULD NOT ENTER THIS FUNCTION: generate_fw_kernels in base_conv_layer.cpp";
 }
 
@@ -315,17 +315,12 @@ std::string BaseConvolutionLayer<Dtype>::generate_header() {
 
 
 template<typename Dtype>
-std::string BaseConvolutionLayer<Dtype>::generate_gemm_core(bool dterm, int RTSM, int RTSN) {
+std::string BaseConvolutionLayer<Dtype>::generate_gemm_core(bool dterm) {
   std::stringstream ss;
-  int vwm = 4;
-  int vwn = 4;
-  int rtsn = RTSN;
-  int rtsm = RTSM;
-  bool unroll = true;
 
   // Temporary registers for A and B
-  ss << "Dtype" << vwm << " Areg;" << std::endl;
-  ss << "Dtype" << vwn << " Breg[WPTN/VWN];" << std::endl;
+  ss << "Dtype" << this->vwm_ << " Areg;" << std::endl;
+  ss << "Dtype" << this->vwn_ << " Breg[WPTN/VWN];" << std::endl;
 
   // Loop over the values of a single tile
   ss << "#pragma unroll 1" << std::endl;
@@ -338,9 +333,9 @@ std::string BaseConvolutionLayer<Dtype>::generate_gemm_core(bool dterm, int RTSM
   ss << "#pragma unroll" << std::endl;
   ss << "for (int wn=0; wn<WPTN/VWN; ++wn) {" << std::endl;
   ss << "int col = tidn + wn*VWN*RTSN;" << std::endl;
-  for (int i = 0; i < vwn; ++i) {
-    ss << "VEC_" << vwn << "_" << i << "(Breg[wn])"
-       << " = Bsub[k][col + " << (i*rtsn)
+  for (int i = 0; i < this->vwn_; ++i) {
+    ss << "VEC_" << this->vwn_ << "_" << i << "(Breg[wn])"
+       << " = Bsub[k][col + " << (i*this->rtsn_)
        << "];" << std::endl;
   }
   ss << "}" << std::endl;
@@ -349,14 +344,14 @@ std::string BaseConvolutionLayer<Dtype>::generate_gemm_core(bool dterm, int RTSM
   ss << "#pragma unroll" << std::endl;
   ss << "for (int wm=0; wm<WPTM/VWM; ++wm) {" << std::endl;
   ss << "int row = tidm + wm*VWM*RTSM;" << std::endl;
-  for (int i = 0; i < vwm; ++i) {
-    ss << "VEC_" << vwm << "_" << i << "(Areg)" << " = Asub[row + " << (i*rtsm)
+  for (int i = 0; i < this->vwm_; ++i) {
+    ss << "VEC_" << this->vwm_ << "_" << i << "(Areg)" << " = Asub[row + " << (i*this->rtsm_)
        << "][k];" << std::endl;
   }
   if (dterm) {
-    if (unroll) {
-      for (int i = 0; i < vwm; ++i) {
-        ss << "VEC_" << vwm << "_" << i << "(Dreg[wm]) " << "+= VEC_" << vwm
+    if (unroll_) {
+      for (int i = 0; i < this->vwm_; ++i) {
+        ss << "VEC_" << this->vwm_ << "_" << i << "(Dreg[wm]) " << "+= VEC_" << this->vwm_
            << "_" << i << "(Areg) * v_bmul;" << std::endl;
       }
     } else {
@@ -365,18 +360,18 @@ std::string BaseConvolutionLayer<Dtype>::generate_gemm_core(bool dterm, int RTSM
   }
   ss << "#pragma unroll" << std::endl;
   ss << "for (int wn=0; wn<WPTN/VWN; ++wn) {" << std::endl;
-  if (unroll) {
-    for (int n = 0; n < vwn; ++n) {
-      for (int m = 0; m < vwm; ++m) {
-        ss << "VEC_" << vwn << "_" << n << "(Creg[wm * VWM + " << m << "][wn])"
-           << " += VEC_" << vwm << "_" << m << "(Areg)" << " * VEC_" << vwn
+  if (unroll_) {
+    for (int n = 0; n < this->vwn_; ++n) {
+      for (int m = 0; m < this->vwm_; ++m) {
+        ss << "VEC_" << this->vwn_ << "_" << n << "(Creg[wm * VWM + " << m << "][wn])"
+           << " += VEC_" << this->vwm_ << "_" << m << "(Areg)" << " * VEC_" << this->vwn_
            << "_" << n << "(Breg[wn]);" << std::endl;
       }
     }
   } else {
-    for (int m = 0; m < vwm; ++m) {
+    for (int m = 0; m < this->vwm_; ++m) {
       ss << "Creg[wm * VWM + " << m << "][wn]"
-         << " += VEC_"<< vwm << "_" << m << "(Areg)" << " * (Breg[wn]);"
+         << " += VEC_"<< this->vwm_ << "_" << m << "(Areg)" << " * (Breg[wn]);"
          << std::endl;
     }
   }
@@ -394,14 +389,10 @@ template<typename Dtype>
 std::string BaseConvolutionLayer<Dtype>::generate_accreg_init(bool dterm, bool load) {
   std::stringstream ss;
 
-  int vwm = 4;
-  int vwn = 4;
-  bool unroll = true;
-
   if (dterm) {
-    ss << "Dtype" << vwm << " Dreg[WPTM/VWM];" << std::endl;
+    ss << "Dtype" << this->vwm_ << " Dreg[WPTM/VWM];" << std::endl;
   }
-  ss << "Dtype" << vwn << " Creg[WPTM][WPTN/VWN];" << std::endl;
+  ss << "Dtype" << this->vwn_ << " Creg[WPTM][WPTN/VWN];" << std::endl;
 
   // Initialize the accumulation registers
   if (load) {
@@ -434,9 +425,9 @@ std::string BaseConvolutionLayer<Dtype>::generate_accreg_init(bool dterm, bool l
     if (dterm) {
       ss << "#pragma unroll" << std::endl;
       ss << "for (int wm=0; wm<WPTM/VWM; ++wm) {" << std::endl;
-      if (unroll) {
-        for (int i = 0; i < vwm; ++i) {
-          ss << "VEC_" << vwm << "_" << i << "(Dreg[wm]) = 0.0;" << std::endl;
+      if (unroll_) {
+        for (int i = 0; i < this->vwm_; ++i) {
+          ss << "VEC_" << this->vwm_ << "_" << i << "(Dreg[wm]) = 0.0;" << std::endl;
         }
       } else {
         ss << "Dreg[wm] = 0.0;" << std::endl;
@@ -447,9 +438,9 @@ std::string BaseConvolutionLayer<Dtype>::generate_accreg_init(bool dterm, bool l
     ss << "for (int wm=0; wm<WPTM; ++wm) {" << std::endl;
     ss << "#pragma unroll" << std::endl;
     ss << "for (int wn=0; wn<WPTN/VWN; ++wn) {" << std::endl;
-    if (unroll) {
-      for (int i = 0; i < vwn; ++i) {
-        ss << "VEC_" << vwn << "_" << i << "(Creg[wm][wn]) = 0.0;" << std::endl;
+    if (unroll_) {
+      for (int i = 0; i < this->vwn_; ++i) {
+        ss << "VEC_" << this->vwn_ << "_" << i << "(Creg[wm][wn]) = 0.0;" << std::endl;
       }
     } else {
       ss << "Creg[wm][wn] = 0.0;" << std::endl;
@@ -475,8 +466,8 @@ void BaseConvolutionLayer<Dtype>::Compile_OpenCL() {
   std::stringstream ss;
 
   ss << this->generate_header(); 
-  ss << this->generate_fw_defs(8, 4, 4, 8, 8); //TSK, WPTM, WPTN, RTSM, RTSN
-  ss << this->generate_fw_kernels(this->layer_param_.name() + "_forward", 8, 4, 4, 8, 8);
+  ss << this->generate_fw_defs();
+  ss << this->generate_fw_kernels(this->layer_param_.name() + "_forward");
 
   Caffe::Get().build_opencl_program(ss.str(), this->program);
 

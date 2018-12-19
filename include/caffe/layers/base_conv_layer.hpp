@@ -68,9 +68,9 @@ class BaseConvolutionLayer : public Layer<Dtype> {
 
 
   std::string generate_header();
-  virtual std::string generate_fw_defs(int TSK, int WPTM, int WPTN, int RTSM, int RTSN);
-  virtual std::string generate_fw_kernels(std::string name, int TSK, int WPTM, int WPTN, int RTSM, int RTSN);
-  virtual std::string generate_gemm_core(bool dterm, int RTSM, int RTSN);
+  virtual std::string generate_fw_defs();
+  virtual std::string generate_fw_kernels(std::string name);
+  virtual std::string generate_gemm_core(bool dterm);
   virtual std::string generate_accreg_init(bool dterm, bool load);
 
   cl_program program;
@@ -127,6 +127,21 @@ class BaseConvolutionLayer : public Layer<Dtype> {
   bool bias_term_;
   bool is_1x1_;
   bool force_nd_im2col_;
+
+
+  int vwm_ = 4;
+  int vwn_ = 4;
+  int tsk_unroll_ = 8;
+  int wptm_ = 4;
+  int wptn_ = 8;
+  int rtsm_ = 4;
+  int rtsn_ = 16;
+  int tsk_ = 8;
+  int tsm_ = wptm_ * rtsm_;
+  int tsn_ = wptn_ * rtsn_;
+  int lpta_ = (tsm_ * tsk_) / (rtsm_ * rtsn_);
+  int lptb_ = (tsn_ * tsk_) / (rtsm_ * rtsn_);
+  bool unroll_ = true;
 
  private:
   // wrap im2col/col2im so we don't have to remember the (long) argument lists

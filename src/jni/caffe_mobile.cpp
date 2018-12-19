@@ -195,28 +195,18 @@ CaffeMobileh::CaffeMobileh(const string &param_file, const string &trained_file,
 
   // Get input_layer info
 
-  LOG(INFO) << "jni debug 1.5";
-
   vector<Blob<half>*> net_input_blobs_ = net_->input_blobs();
  
-  LOG(INFO) << "jni debug 1.55";
-
   Blob<half> *input_layer = net_input_blobs_[0];
   
-  LOG(INFO) << "jni debug 1.6";
-
 
   input_channels_ = input_layer->channels();
   CHECK(input_channels_ == 3 || input_channels_ == 1)
       << "Input layer should have 1 or 3 channels.";
 
-  LOG(INFO) << "jni debug 1.7";
-
 
   input_width_  = input_layer->width();
   input_height_ = input_layer->height();
-
-  LOG(INFO) << "jni debug 2";
 
 }
 
@@ -288,7 +278,6 @@ bool CaffeMobileh::predictImage(const uint8_t* rgba,
   net_->Forward();
 
   
-
   // timer.Stop();
   // LOG(INFO) << "Inference use " << timer.MilliSeconds() << " ms.";
   Blob<half> *output_layer = net_->output_blobs()[0];

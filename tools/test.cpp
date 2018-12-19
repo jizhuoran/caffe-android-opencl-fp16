@@ -165,6 +165,7 @@ int main(int argc, char** argv) {
     
     timer.Start();
     _net->Forward();
+    _net->Forward();
     timer.Stop();
     
     std::cout << "The time used is " << timer.MicroSeconds() << std::endl;

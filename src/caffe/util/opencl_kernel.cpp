@@ -274,7 +274,7 @@ std::string generate_opencl_math() {
 	ss << " } else {" << std::endl;
 	ss << "  loss[index] = -log(max(prob_data[n * dim + label_value * spatial_dim + s]," << std::endl;
 #ifdef __ANDROID__
-	ss << "    HALF_MIN));" << std::endl;
+	ss << "    0x1.0p-14h));" << std::endl;
 #else
 	ss << "    FLT_MIN));" << std::endl;
 #endif

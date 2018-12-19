@@ -102,16 +102,18 @@ void DeconvolutionLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
     }
 
     size_t* local_size = new size_t[3];
-    local_size[0] = static_cast<size_t>(8);
-    local_size[1] = static_cast<size_t>(8);
+    local_size[0] = static_cast<size_t>(this->rtsn_);
+    local_size[1] = static_cast<size_t>(this->rtsm_);
     local_size[2] = static_cast<size_t>(1);
 
     size_t* global_size = new size_t[3];
-    global_size[0] = static_cast<size_t>((((top[i]->shape(2) * top[i]->shape(3)) - 1) / 32 + 1)*8);
-    global_size[1] = static_cast<size_t>((((top[i]->shape(1) / this->group_) - 1) / 32 + 1)*8);
+    global_size[0] = static_cast<size_t>((((top[i]->shape(2) * top[i]->shape(3)) - 1) / this->tsn_ + 1)*this->rtsn_);
+    global_size[1] = static_cast<size_t>((((top[i]->shape(1) / this->group_) - 1) / this->tsm_ + 1)*this->rtsm_);
     global_size[2] = static_cast<size_t>(bottom[i]->shape()[0] * 1);
 
-#ifndef ANDROID
+    OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 3, NULL, global_size, local_size, 0, NULL, NULL));  
+
+#ifndef __ANDROID__
     int skip_bi = this->bottom_shape_[0].size() - this->output_shape_.size();
     int fmaps_in_ = this->bottom_shape_[0][skip_bi-1];
     int fmaps_out_ = this->num_output_;
@@ -130,8 +132,6 @@ void DeconvolutionLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
 
     LOG(INFO) << "The size of deconv are " << M_FW_ << " and "<< N_FW_ << " and " << K_FW_;
 #endif
-    OPENCL_CHECK(clEnqueueNDRangeKernel(Caffe::Get().commandQueue, kernel, 3, NULL, global_size, local_size, 0, NULL, NULL));  
-
   }
 
 }
@@ -172,7 +172,7 @@ void DeconvolutionLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
 }
 
 template<typename Dtype>
-std::string DeconvolutionLayer<Dtype>::generate_fw_defs(int TSK, int WPTM, int WPTN, int RTSM, int RTSN) {
+std::string DeconvolutionLayer<Dtype>::generate_fw_defs() {
   
   std::stringstream ss;
 
@@ -264,23 +264,23 @@ std::string DeconvolutionLayer<Dtype>::generate_fw_defs(int TSK, int WPTM, int W
   this->add_def(ss, "v_pad_B", 1);
 
   // The tile-size in dimension M
-  this->add_def(ss, "TSM", WPTM * RTSM);
+  this->add_def(ss, "TSM", this->tsm_);
   // The tile-size in dimension N
-  this->add_def(ss, "TSN", WPTN * RTSN);
+  this->add_def(ss, "TSN", this->tsn_);
   // The tile-size in dimension K
-  this->add_def(ss, "TSK", TSK);
+  this->add_def(ss, "TSK", this->tsk_);
   // TSK unrolling
-  this->add_def(ss, "TSK_UNROLL", 1);
+  this->add_def(ss, "TSK_UNROLL", this->tsk_unroll_);
   // The work-per-thread in dimension M
-  this->add_def(ss, "WPTM", WPTM);
-  this->add_def(ss, "VWM", 4);
+  this->add_def(ss, "WPTM", this->wptm_);
+  this->add_def(ss, "VWM", this->vwm_);
   // The work-per-thread in dimension N
-  this->add_def(ss, "WPTN", WPTN);
-  this->add_def(ss, "VWN", 4);
+  this->add_def(ss, "WPTN", this->wptn_);
+  this->add_def(ss, "VWN", this->vwn_);
   // The reduced tile-size in dimension M
-  this->add_def(ss, "RTSM", RTSM);
+  this->add_def(ss, "RTSM", this->rtsm_);
   // The reduced tile-size in dimension N
-  this->add_def(ss, "RTSN", RTSN);
+  this->add_def(ss, "RTSN", this->rtsn_);
   // Loads-per-thread for A
   this->add_def(ss, "LPTA", "((TSK*TSM)/(RTSM*RTSN))");
   // Loads-per-thread for B
@@ -298,20 +298,8 @@ std::string DeconvolutionLayer<Dtype>::generate_fw_defs(int TSK, int WPTM, int W
 
 
 template <typename Dtype>
-std::string DeconvolutionLayer<Dtype>::generate_fw_kernels(std::string name,int TSK, int WPTM, int WPTN, int RTSM, int RTSN) {
+std::string DeconvolutionLayer<Dtype>::generate_fw_kernels(std::string name) {
   std::stringstream ss;
-
-  int wptn = WPTN;
-  int wptm = WPTM;
-  int tsk = TSK;
-  int rtsn = RTSN;
-  int rtsm = RTSM;
-  int tsm = wptm * rtsm;
-  int tsn = wptn * rtsn;
-  int vwm = 4;
-  int vwn = 4;
-  int lpta = (tsm * tsk) / (rtsm * rtsn);
-  int lptb = (tsn * tsk) / (rtsm * rtsn);
 
   bool skip_range_check_ = true;
 
@@ -325,9 +313,9 @@ std::string DeconvolutionLayer<Dtype>::generate_fw_kernels(std::string name,int 
   // Backward kernel
   ss << "__kernel" << std::endl;
   ss << "__attribute__((reqd_work_group_size("
-     << rtsn << ", " << rtsm << ", 1)))" << std::endl;
+     << this->rtsn_ << ", " << this->rtsm_ << ", 1)))" << std::endl;
   ss << "__attribute__((vec_type_hint(Dtype"
-     << std::min(vwm, vwn) << ")))" << std::endl;
+     << std::min(this->vwm_, this->vwn_) << ")))" << std::endl;
   ss << "void " + name + "(";
   ss << "__global const Dtype* __restrict im_out, ";
   ss << "__global const Dtype* __restrict wg, ";
@@ -349,10 +337,10 @@ std::string DeconvolutionLayer<Dtype>::generate_fw_kernels(std::string name,int 
 
   // Local tile memory
   // Asub for loading weights & shuffling the output
-  ss << "volatile __local Dtype Asub[" << tsm << "][" << tsk << " + v_pad_A];"
+  ss << "volatile __local Dtype Asub[" << this->tsm_ << "][" << this->tsk_ << " + v_pad_A];"
      << std::endl;
   // Bsub for loading the input image and shuffling the output image
-  ss << "volatile __local Dtype Bsub[" << tsk << "][" << tsn << " + v_pad_B];"
+  ss << "volatile __local Dtype Bsub[" << this->tsk_ << "][" << this->tsn_ << " + v_pad_B];"
      << std::endl;
 
   // Batch and group
@@ -491,7 +479,7 @@ std::string DeconvolutionLayer<Dtype>::generate_fw_kernels(std::string name,int 
   // Synchronize to make sure the tile is loaded
   ss << "barrier(CLK_LOCAL_MEM_FENCE);" << std::endl;
 
-  ss << this->generate_gemm_core(false, rtsm, rtsn) << std::endl;
+  ss << this->generate_gemm_core(false) << std::endl;
 
   // Synchronize before loading the next tile
   ss << "barrier(CLK_LOCAL_MEM_FENCE);" << std::endl;
@@ -510,20 +498,15 @@ std::string DeconvolutionLayer<Dtype>::generate_fw_kernels(std::string name,int 
   ss << "#pragma unroll" << std::endl;
   ss << "for (int wn=0; wn<WPTN; ++wn) {" << std::endl;
   ss << "int globalCol = offN + tidn + wn * RTSN;" << std::endl;
-#ifndef SNAPDRAGON
-    ss << "if (globalRow < M && globalCol < N) {" << std::endl;
-#endif
-    ss << "Cptr[globalRow * N + globalCol] = ";
-    if (this->bias_term_) {
-      ss << "((Dtype*)(&(Creg[wm][wn/VWN])))[wn%VWN]"
-         << " + biasval;" << std::endl;
-    } else {
-      ss << "((Dtype*)(&(Creg[wm][wn/VWN])))[wn%VWN];" << std::endl;
-    }
-
-#ifndef SNAPDRAGON    
-    ss << "}" << std::endl;
-#endif
+  ss << "if (globalRow < M && globalCol < N) {" << std::endl;
+  ss << "Cptr[globalRow * N + globalCol] = ";
+  if (this->bias_term_) {
+    ss << "((Dtype*)(&(Creg[wm][wn/VWN])))[wn%VWN]"
+       << " + biasval;" << std::endl;
+  } else {
+    ss << "((Dtype*)(&(Creg[wm][wn/VWN])))[wn%VWN];" << std::endl;
+  }
+  ss << "}" << std::endl;
 
 
   ss << "}" << std::endl;

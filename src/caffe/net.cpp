@@ -571,12 +571,15 @@ float Net<float>::ForwardFromTo(int start, int end) {
 
 #endif
 
+#ifdef PROFILE
   Timer timer;
-
+#endif
 
   for (int i = start; i <= end; ++i) {
 
+#ifdef PROFILE
     timer.Start();
+#endif
 
     // clock_t begin = std::clock();
     
@@ -605,22 +608,11 @@ float Net<float>::ForwardFromTo(int start, int end) {
     // double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
 
     // clFinish(Caffe::Get().commandQueue);
-
+#ifdef PROFILE
     timer.Stop();
-
-
     LOG(INFO) << "Finish " << layers_[i]->type() << " layer: " << i << " with time: " << timer.Seconds() << " seconds";
+#endif
 
-    // if (sizeof(float) == 2) {
-    //   float* convertor = (float*) malloc(10 * sizeof(float));
-    //   half2float(10, top_vecs_[i][0]->cpu_data(), convertor);
-
-    //   std::cout << "Some value ";
-    //   for (int conv_i = 0; conv_i < 10; ++conv_i) {
-    //     std::cout << convertor[conv_i] << " ";
-    //   }
-    //   std::cout << "!" << std::endl;
-    // }
 
 
 #ifdef FORWARD_LESS_MEM
@@ -670,13 +662,15 @@ half Net<half>::ForwardFromTo(int start, int end) {
 
 #endif
 
+#ifdef PROFILE
   Timer timer;
-
+#endif
 
   for (int i = start; i <= end; ++i) {
 
+#ifdef PROFILE
     timer.Start();
-
+#endif
     // clock_t begin = std::clock();
     
 #ifdef FORWARD_LESS_MEM
@@ -690,7 +684,6 @@ half Net<half>::ForwardFromTo(int start, int end) {
 
     half layer_loss = layers_[i]->Forward(bottom_vecs_[i], top_vecs_[i]);
     loss += layer_loss;
-    
 
 
     if (debug_info_) { ForwardDebugInfo(i); }
@@ -700,27 +693,27 @@ half Net<half>::ForwardFromTo(int start, int end) {
     }
 
 
+    // float* convertor = (float*) malloc(10 * sizeof(float));
+    // half2float(10, top_vecs_[i][0]->cpu_data(), convertor);
+
+    // LOG(INFO) << "Some value ";
+    // for (int conv_i = 0; conv_i < 10; ++conv_i) {
+    //   LOG(INFO) << convertor[conv_i] << " ";
+    // }
+    // LOG(INFO) << "!" << std::endl;
+
+
     // clock_t end = std::clock();
     // double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
 
     // clFinish(Caffe::Get().commandQueue);
 
+#ifdef PROFILE
     timer.Stop();
-
-
     LOG(INFO) << "Finish " << layers_[i]->type() << " layer: " << i << " with time: " << timer.Seconds() << " seconds";
-
-    if (sizeof(half) == 2) {
-      float* convertor = (float*) malloc(10 * sizeof(float));
-      half2float(10, top_vecs_[i][0]->cpu_data(), convertor);
-
-      std::cout << "Some value ";
-      for (int conv_i = 0; conv_i < 10; ++conv_i) {
-        std::cout << convertor[conv_i] << " ";
-      }
-      std::cout << "!" << std::endl;
-    }
-
+#else
+    LOG(INFO) << "Finish " << layers_[i]->type() << " layer: " << i;
+#endif
 
 #ifdef FORWARD_LESS_MEM
     layers_[i]->Qiaoge_free(bottom_vecs_[i], top_vecs_[i]);
@@ -730,8 +723,6 @@ half Net<half>::ForwardFromTo(int start, int end) {
 #endif
     
   }
-
-
 
   return loss;
 }
@@ -1172,6 +1163,8 @@ void Net<Dtype>::ClearParamDiffs() {
     }
   }
 }
+
+
 
 template <typename Dtype>
 void Net<Dtype>::ShareWeights() {

@@ -26,14 +26,9 @@ Java_com_example_gsq_caffe_1android_1project_CaffeMobile_loadModelh(JNIEnv *env,
     const char *modelPath = env->GetStringUTFChars(modelPath_, 0);
     const char *weightPath = env->GetStringUTFChars(weightPath_, 0);
 
-    LOG(INFO) << "jni debug 1";
-
     if (caffe::CaffeMobileh::get(modelPath, weightPath, engine) == NULL) {
         ret = false;
     }
-
-    LOG(INFO) << "jni debug 3";
-
 
     env->ReleaseStringUTFChars(modelPath_, modelPath);
     env->ReleaseStringUTFChars(weightPath_, weightPath);
