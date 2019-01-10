@@ -160,12 +160,8 @@ Caffe::Caffe()
 
   std::stringstream ss;
 
-#ifdef __ANDROID__
-  ss << generate_opencl_defs(true);
-#else
   ss << generate_opencl_defs(false);
-#endif 
-  ss << generate_opencl_math();
+  ss << generate_opencl_math(false);
 
   build_opencl_program(ss.str(), math_program);
 

@@ -37,6 +37,8 @@ public:
    */
   static CaffeMobilef *get();
 
+  void benchmark();
+
   /**
    * @brief Use loaded model to classify a Image
    * @param rgba: Grayscale(1 channel) or BGR(3 channels) pixels array
@@ -100,6 +102,9 @@ public:
    */
   static CaffeMobileh *get();
 
+  void benchmark();
+
+  
   /**
    * @brief Use loaded model to classify a Image
    * @param rgba: Grayscale(1 channel) or BGR(3 channels) pixels array

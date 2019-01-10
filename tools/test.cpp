@@ -140,31 +140,8 @@ int main(int argc, char** argv) {
     }
 
 
-    // float* converter = (float*) malloc(input_layer->count() * sizeof(float));
-
-    // for (int y = 0; y < input_layer->width(); y++) {
-    //     for (int x = 0; x < input_layer->width(); x++) {
-    //       converter[y * input_layer->width() + x] = image->data[y * input_layer->width() + x].red;
-    //       converter[y * input_layer->width() + x + input_layer->width() * input_layer->width()] = image->data[y * input_layer->width() + x].green;
-    //       converter[y * input_layer->width() + x + 2 * input_layer->width() * input_layer->width()] = image->data[y * input_layer->width() + x].blue;
-    //     }
-    // }
-
-    // float2float(input_layer->count(), converter, input_layer->mutable_cpu_data());
-
-
-
-    // for (int y = 0; y < input_layer->width(); y++) {
-    //     for (int x = 0; x < input_layer->width(); x++) {
-    //       input_layer->mutable_cpu_data()[y * input_layer->width() + x] = image->data[y * input_layer->width() + x].red;
-    //       input_layer->mutable_cpu_data()[y * input_layer->width() + x + input_layer->width() * input_layer->width()] = image->data[y * input_layer->width() + x].green;
-    //       input_layer->mutable_cpu_data()[y * input_layer->width() + x + 2 * input_layer->width() * input_layer->width()] = image->data[y * input_layer->width() + x].blue;
-    //     }
-    // }
-
     
     timer.Start();
-    _net->Forward();
     _net->Forward();
     timer.Stop();
     
@@ -172,11 +149,8 @@ int main(int argc, char** argv) {
     
     
     
-    // //  code for style transfer
     caffe::Blob<float> *output_layer = _net->output_blobs()[0]; 
 
-
-    // float2float(output_layer->count(), output_layer->mutable_cpu_data(), converter);
 
     converter = output_layer->mutable_cpu_data();
 
@@ -195,13 +169,5 @@ int main(int argc, char** argv) {
     fclose(f);
     
     caffe::Caffe::Get().DeviceQuery();
-    
-    exit(0);
-    
-    // caffe::NetParameter net_param;
-    // _net->ToProto(&net_param);
-    // caffe::WriteProtoToBinaryFile(net_param, "./fp16.caffemodel");
-
-    // exit(0);
     
 }

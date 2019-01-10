@@ -277,8 +277,8 @@ void BatchNormLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   int spatial_dim = bottom[0]->count()/(channels_*bottom[0]->shape(0));
 
 
-  float sum_shift_num = 64.0;
-  float top_shift_num = 32.0;
+  float sum_shift_num = 1.;//64.0;
+  float top_shift_num = 1.;//32.0;
 
   if (bottom[0] != top[0]) {
     caffe_cl_copy(bottom[0]->count(), bottom_data, top_data);

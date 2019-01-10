@@ -68,6 +68,24 @@ CaffeMobilef::~CaffeMobilef() {
   net_.reset();
 }
 
+void CaffeMobilef::benchmark() {
+  
+  
+  Timer timer;
+  timer.Start();
+
+  Blob<float> *input_layer = net_->input_blobs()[0];
+  float *input_data = input_layer->mutable_cpu_data();
+
+
+  net_->Forward();
+
+
+  timer.Stop();
+  LOG(INFO) << "During benckmark, inference use " << timer.MilliSeconds() << " ms.";
+  
+}
+
 bool CaffeMobilef::predictImage(const uint8_t* rgba,
                                int channels,
                                const std::vector<float> &mean,
@@ -124,11 +142,14 @@ bool CaffeMobilef::predictImage(const uint8_t* rgba,
   // Do Inference
 
     
-  LOG(ERROR) << "Before this";
+  Timer timer;
+  timer.Start();
 
   net_->Forward();
 
-  LOG(ERROR) << "After this";
+  
+  timer.Stop();
+  LOG(INFO) << "Inference use " << timer.MilliSeconds() << " ms.";
 
   
 
@@ -215,6 +236,23 @@ CaffeMobileh::~CaffeMobileh() {
   net_.reset();
 }
 
+void CaffeMobileh::benchmark() {
+
+  Timer timer;
+  timer.Start();
+
+  Blob<half> *input_layer = net_->input_blobs()[0];
+  half *input_data = input_layer->mutable_cpu_data();
+
+
+  net_->Forward();
+
+  
+  timer.Stop();
+  LOG(INFO) << "During benckmark, Inference use " << timer.MilliSeconds() << " ms.";
+
+}
+
 bool CaffeMobileh::predictImage(const uint8_t* rgba,
                                int channels,
                                const std::vector<float> &mean,
@@ -229,8 +267,7 @@ bool CaffeMobileh::predictImage(const uint8_t* rgba,
   }
 
 
-  // CPUTimer timer;
-  // timer.Start();
+
 
   // Write input
   Blob<half> *input_layer = net_->input_blobs()[0];
@@ -274,12 +311,15 @@ bool CaffeMobileh::predictImage(const uint8_t* rgba,
 
   float2half(input_layer->count(), input_convertor, input_layer->mutable_cpu_data());
   free(input_convertor);
-    
+  
+  Timer timer;
+  timer.Start();
+
   net_->Forward();
 
   
-  // timer.Stop();
-  // LOG(INFO) << "Inference use " << timer.MilliSeconds() << " ms.";
+  timer.Stop();
+  LOG(INFO) << "Inference use " << timer.MilliSeconds() << " ms.";
   Blob<half> *output_layer = net_->output_blobs()[0];
 
   result.resize(output_layer->count());

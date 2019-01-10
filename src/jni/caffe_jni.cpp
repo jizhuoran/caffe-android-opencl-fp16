@@ -54,6 +54,29 @@ Java_com_example_gsq_caffe_1android_1project_CaffeMobile_loadModelf(JNIEnv *env,
 }
 
 
+
+JNIEXPORT void JNICALL
+Java_com_example_gsq_caffe_1android_1project_CaffeMobile_benckmarkf(JNIEnv *env, jobject instance) {
+
+  caffe::CaffeMobilef *caffe_mobile = caffe::CaffeMobilef::get();
+  caffe_mobile->benchmark();
+
+}
+
+
+JNIEXPORT void JNICALL
+Java_com_example_gsq_caffe_1android_1project_CaffeMobile_benckmarkh(JNIEnv *env, jobject instance) {
+
+  caffe::CaffeMobileh *caffe_mobile = caffe::CaffeMobileh::get();
+
+  LOG(INFO) << "log debug 1";
+
+
+  caffe_mobile->benchmark();
+
+}
+
+
 JNIEXPORT jfloatArray JNICALL
 Java_com_example_gsq_caffe_1android_1project_CaffeMobile_predicth(JNIEnv *env, jobject instance,
                                                    jbyteArray jrgba, jint jchannels, jfloatArray jmean) {
@@ -107,6 +130,7 @@ Java_com_example_gsq_caffe_1android_1project_CaffeMobile_predicth(JNIEnv *env, j
   env->SetFloatArrayRegion(result, 0, predict.size(), predict.data());
   return result;
 }
+
 
 
 JNIEXPORT jfloatArray JNICALL
