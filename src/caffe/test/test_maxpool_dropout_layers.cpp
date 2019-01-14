@@ -86,42 +86,42 @@ TYPED_TEST(MaxPoolingDropoutTest, TestForward) {
   EXPECT_LE(sum, this->blob_top_->count()*scale);
 }
 
-TYPED_TEST(MaxPoolingDropoutTest, TestBackward) {
-  typedef typename TypeParam::Dtype Dtype;
-  LayerParameter layer_param;
-  layer_param.set_phase(TRAIN);
-  PoolingParameter* pooling_param = layer_param.mutable_pooling_param();
-  pooling_param->set_kernel_size(3);
-  pooling_param->set_stride(2);
-  PoolingLayer<Dtype> layer(layer_param);
-  layer.SetUp(this->blob_bottom_vec_, this->blob_top_vec_);
-  layer.Forward(this->blob_bottom_vec_, this->blob_top_vec_);
-  for (int i = 0; i < this->blob_top_->count(); ++i) {
-    this->blob_top_->mutable_cpu_diff()[i] = 1.;
-  }
-  vector<bool> propagate_down(this->blob_bottom_vec_.size(), true);
-  layer.Backward(this->blob_top_vec_, propagate_down,
-                 this->blob_bottom_vec_);
-  const Dtype* bottom_diff = this->blob_bottom_->cpu_diff();
-  Dtype sum = 0.;
-  for (int i = 0; i < this->blob_bottom_->count(); ++i) {
-    sum += bottom_diff[i];
-  }
-  EXPECT_EQ(sum, this->blob_top_->count());
-  // Dropout in-place
-  DropoutLayer<Dtype> dropout_layer(layer_param);
-  dropout_layer.SetUp(this->blob_top_vec_, this->blob_top_vec_);
-  dropout_layer.Forward(this->blob_top_vec_, this->blob_top_vec_);
-  dropout_layer.Backward(this->blob_top_vec_, propagate_down,
-                         this->blob_top_vec_);
-  layer.Backward(this->blob_top_vec_, propagate_down,
-                 this->blob_bottom_vec_);
-  Dtype sum_with_dropout = 0.;
-  bottom_diff = this->blob_bottom_->cpu_diff();
-  for (int i = 0; i < this->blob_bottom_->count(); ++i) {
-    sum_with_dropout += bottom_diff[i];
-  }
-  EXPECT_GE(sum_with_dropout, sum);
-}
+// TYPED_TEST(MaxPoolingDropoutTest, TestBackward) {
+//   typedef typename TypeParam::Dtype Dtype;
+//   LayerParameter layer_param;
+//   layer_param.set_phase(TRAIN);
+//   PoolingParameter* pooling_param = layer_param.mutable_pooling_param();
+//   pooling_param->set_kernel_size(3);
+//   pooling_param->set_stride(2);
+//   PoolingLayer<Dtype> layer(layer_param);
+//   layer.SetUp(this->blob_bottom_vec_, this->blob_top_vec_);
+//   layer.Forward(this->blob_bottom_vec_, this->blob_top_vec_);
+//   for (int i = 0; i < this->blob_top_->count(); ++i) {
+//     this->blob_top_->mutable_cpu_diff()[i] = 1.;
+//   }
+//   vector<bool> propagate_down(this->blob_bottom_vec_.size(), true);
+//   layer.Backward(this->blob_top_vec_, propagate_down,
+//                  this->blob_bottom_vec_);
+//   const Dtype* bottom_diff = this->blob_bottom_->cpu_diff();
+//   Dtype sum = 0.;
+//   for (int i = 0; i < this->blob_bottom_->count(); ++i) {
+//     sum += bottom_diff[i];
+//   }
+//   EXPECT_EQ(sum, this->blob_top_->count());
+//   // Dropout in-place
+//   DropoutLayer<Dtype> dropout_layer(layer_param);
+//   dropout_layer.SetUp(this->blob_top_vec_, this->blob_top_vec_);
+//   dropout_layer.Forward(this->blob_top_vec_, this->blob_top_vec_);
+//   dropout_layer.Backward(this->blob_top_vec_, propagate_down,
+//                          this->blob_top_vec_);
+//   layer.Backward(this->blob_top_vec_, propagate_down,
+//                  this->blob_bottom_vec_);
+//   Dtype sum_with_dropout = 0.;
+//   bottom_diff = this->blob_bottom_->cpu_diff();
+//   for (int i = 0; i < this->blob_bottom_->count(); ++i) {
+//     sum_with_dropout += bottom_diff[i];
+//   }
+//   EXPECT_GE(sum_with_dropout, sum);
+// }
 
 }  // namespace caffe

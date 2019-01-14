@@ -144,8 +144,6 @@ class RecurrentLayer : public Layer<Dtype> {
       const vector<Blob<Dtype>*>& top);
   virtual void Forward_gpu(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top);
-  virtual void Backward_cpu(const vector<Blob<Dtype>*>& top,
-      const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom);
 
   /// @brief A Net to implement the Recurrent functionality.
   shared_ptr<Net<Dtype> > unrolled_net_;

@@ -34,11 +34,6 @@ class BaseDataLayer : public Layer<Dtype> {
   virtual void Reshape(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top) {}
 
-  virtual void Backward_cpu(const vector<Blob<Dtype>*>& top,
-      const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom) {}
-  virtual void Backward_gpu(const vector<Blob<Dtype>*>& top,
-      const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom) {}
-
  protected:
   TransformationParameter transform_param_;
   shared_ptr<DataTransformer<Dtype> > data_transformer_;
@@ -50,36 +45,6 @@ class Batch {
  public:
   Blob<Dtype> data_, label_;
 };
-
-#ifdef NO_CAFFE_MOBILE
-template <typename Dtype>
-class BasePrefetchingDataLayer :
-    public BaseDataLayer<Dtype>, public InternalThread {
- public:
-  explicit BasePrefetchingDataLayer(const LayerParameter& param);
-  // LayerSetUp: implements common data layer setup functionality, and calls
-  // DataLayerSetUp to do special data layer setup for individual layer types.
-  // This method may not be overridden.
-  void LayerSetUp(const vector<Blob<Dtype>*>& bottom,
-      const vector<Blob<Dtype>*>& top);
-
-  virtual void Forward_cpu(const vector<Blob<Dtype>*>& bottom,
-      const vector<Blob<Dtype>*>& top);
-  virtual void Forward_gpu(const vector<Blob<Dtype>*>& bottom,
-      const vector<Blob<Dtype>*>& top);
-
- protected:
-  virtual void InternalThreadEntry();
-  virtual void load_batch(Batch<Dtype>* batch) = 0;
-
-  vector<shared_ptr<Batch<Dtype> > > prefetch_;
-  BlockingQueue<Batch<Dtype>*> prefetch_free_;
-  BlockingQueue<Batch<Dtype>*> prefetch_full_;
-  Batch<Dtype>* prefetch_current_;
-
-  Blob<Dtype> transformed_data_;
-};
-#endif // NO_CAFFE_MOBILE
 
 }  // namespace caffe
 

@@ -106,17 +106,17 @@ TYPED_TEST(SPPLayerTest, TestEqualOutputDims2) {
   EXPECT_EQ(this->blob_top_->width(), 1);
 }
 
-TYPED_TEST(SPPLayerTest, TestForwardBackward) {
-  typedef typename TypeParam::Dtype Dtype;
-  LayerParameter layer_param;
-  layer_param.mutable_spp_param()->set_pyramid_height(3);
-  SPPLayer<Dtype> layer(layer_param);
-  layer.SetUp(this->blob_bottom_vec_, this->blob_top_vec_);
-  layer.Forward(this->blob_bottom_vec_, this->blob_top_vec_);
-  vector<bool> propagate_down(this->blob_bottom_vec_.size(), true);
-  layer.Backward(this->blob_top_vec_, propagate_down,
-                 this->blob_bottom_vec_);
-}
+// TYPED_TEST(SPPLayerTest, TestForwardBackward) {
+//   typedef typename TypeParam::Dtype Dtype;
+//   LayerParameter layer_param;
+//   layer_param.mutable_spp_param()->set_pyramid_height(3);
+//   SPPLayer<Dtype> layer(layer_param);
+//   layer.SetUp(this->blob_bottom_vec_, this->blob_top_vec_);
+//   layer.Forward(this->blob_bottom_vec_, this->blob_top_vec_);
+//   vector<bool> propagate_down(this->blob_bottom_vec_.size(), true);
+//   layer.Backward(this->blob_top_vec_, propagate_down,
+//                  this->blob_bottom_vec_);
+// }
 
 // TYPED_TEST(SPPLayerTest, TestGradient) {
 //   typedef typename TypeParam::Dtype Dtype;

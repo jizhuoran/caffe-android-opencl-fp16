@@ -64,17 +64,6 @@ class Net {
    */
   void ClearParamDiffs();
 
-#ifdef ENABLE_BACKWARD
-  /**
-   * The network backward should take no input and output, since it solely
-   * computes the gradient w.r.t the parameters, and the data has already been
-   * provided during the forward pass.
-   */
-  void Backward();
-  void BackwardFromTo(int start, int end);
-  void BackwardFrom(int start);
-  void BackwardTo(int end);
-#endif
 
   /**
    * @brief Reshape all layers from bottom to top.
@@ -84,17 +73,6 @@ class Net {
    */
   void Reshape();
 
-#ifdef ENABLE_BACKWARD
-  Dtype ForwardBackward() {
-    Dtype loss;
-    Forward(&loss);
-    Backward();
-    return loss;
-  }
-
-  /// @brief Updates the network weights based on the diff values computed.
-  void Update();
-#endif
   /**
    * @brief Shares weight data of owner blobs with shared blobs.
    *

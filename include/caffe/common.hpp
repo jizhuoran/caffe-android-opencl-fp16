@@ -100,7 +100,6 @@ private:\
 
 #define INSTANTIATE_LAYER_GPU_FUNCS(classname) \
   INSTANTIATE_LAYER_GPU_FORWARD(classname); \
-  INSTANTIATE_LAYER_GPU_BACKWARD(classname)
 
 // A simple macro to mark codes that are not implemented, so that when the code
 // is executed we will see a fatal log.

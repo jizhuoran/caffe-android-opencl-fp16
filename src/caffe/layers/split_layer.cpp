@@ -35,23 +35,6 @@ void SplitLayer<Dtype>::Forward_cpu(const vector<Blob<Dtype>*>& bottom,
   }
 }
 
-template <typename Dtype>
-void SplitLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
-      const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom) {
-  if (!propagate_down[0]) { return; }
-  if (top.size() == 1) {
-    caffe_copy(count_, top[0]->cpu_diff(), bottom[0]->mutable_cpu_diff());
-    return;
-  }
-  caffe_add(count_, top[0]->cpu_diff(), top[1]->cpu_diff(),
-            bottom[0]->mutable_cpu_diff());
-  // Add remaining top blob diffs.
-  for (int i = 2; i < top.size(); ++i) {
-    const Dtype* top_diff = top[i]->cpu_diff();
-    Dtype* bottom_diff = bottom[0]->mutable_cpu_diff();
-    caffe_axpy(count_, Dtype(1.), top_diff, bottom_diff);
-  }
-}
 
 
 #ifdef CPU_ONLY
@@ -69,16 +52,6 @@ void SplitLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
     top[i]->ShareData(*bottom[0]);
   }
 }
-
-
-template <typename Dtype>
-void SplitLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
-    const vector<bool>& propagate_down,
-    const vector<Blob<Dtype>*>& bottom) {
-
-  Backward_cpu(top, propagate_down, bottom);
-}
-
 
 
 
