@@ -1,6 +1,5 @@
-Caffe on Mobile Devices (Still under developing)
+Caffe on Mobile Devices (V2 is moved to https://github.com/jizhuoran/HyperTea, focusing on extreme light-weight)
 ==================
-
 Optimized (for memory usage, speed and enegry efficiency) Caffe with OpenCL supporting for less powerful devices such as mobile phone (NO_BACKWARD, NO_BOOST, NO_HDF5, NO_LEVELDB). 
 
 **I am developing this project. You can watch this project if you want to get the latest news**
